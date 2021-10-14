@@ -23,19 +23,34 @@
 #' @param x vector of values
 #' @param round number of decimals to round to
 #' @param force.decimals force printing decimals, even with trailing zeroes
-#' @param non.scientific force non-scientific notation
 #' @param min.length minimal length of output, overwrites `force.decimals`
 #' @param format format to use, can be set with human-readable text such as `"d mmmm yyyy"` or POSIX such as `"%e %B %Y"`
+#' @param locale language to set for dates
+#' @param decimal.mark,big.mark decimal and thousands limiters
+#' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
 #' @exportMethod format2
 #' @rdname format2
 #' @export
+#' @examples
+#' format2("2021-01-01")
+#' 
+#' format2(Sys.time(), "d mmmm yyyy HH:MM")
+#' 
+#' # content-aware of decimal use
+#' format2(1024)
+#' format2(c(1024, 0.123))
+#' 
+#' format2(2.1)
+#' format2(2.1, force.decimals = TRUE) # since default is 2 decimals
+#' 
+#' p <- cleaner::as.percentage(0.123)
+#' format2(p)
 format2 <- function(x,...) {
   UseMethod("format2")
 }
 
-#' @method format2 default
 #' @rdname format2
-#' @export format2.default
+#' @importFrom readr guess_parser
 #' @export
 format2.default <- function(x,
                             format = "d mmmm yyyy",
@@ -44,6 +59,7 @@ format2.default <- function(x,
                             force.decimals = ifelse(percent, TRUE, FALSE),
                             decimal.mark = ",",
                             big.mark = ".",
+                            locale = "nl",
                             ...) {
   if (percent == TRUE) {
     format2(as.percentage(x),
@@ -57,8 +73,8 @@ format2.default <- function(x,
       format(x, ...)
     } else if (any(c("list", "formula", "expression", "matrix") %in% class(x))) {
       format(x, ...)
-    } else if (readr::guess_parser(x) == "date") {
-      format2(as.Date(x), format = format, ...)
+    } else if (guess_parser(x) == "date") {
+      format2(as.Date(x), format = format, locale = locale, ...)
     } else if (all(is.double2(x))) {
       format2.numeric(x,
                       round = round,
@@ -72,7 +88,6 @@ format2.default <- function(x,
   }
 }
 
-#' @method format2 percentage
 #' @rdname format2
 #' @importFrom cleaner percentage
 #' @export
@@ -91,46 +106,41 @@ format2.percentage <- function(x,
              big.mark = big.mark)
 }
 
-#' @method format2 percent
 #' @rdname format2
 #' @export
-format2.percent <- format2.percentage
+format2.percent <- function(...) {
+  .Deprecated("format2.percentage()", package = "certestyle")
+  format2.percentage(...)
+}
 
-#' @method format2 POSIXct
 #' @rdname format2
 #' @export
-format2.POSIXct <- function(x, format = "d mmmm yyyy", ...) {
+format2.POSIXct <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
   if (inherits(x, "POSIXt")) {
     # so it's a time object
     if (missing(format)) {
-      format2.POSIXt(x, ...)
+      format2.POSIXt(x = x, locale = locale, ...)
     } else {
-      format2.POSIXt(x, format, ...)
+      format2.POSIXt(x = x, format = format, locale = locale, ...)
     }
   } else {
-    format2.Date(x, format, ...)
+    format2.Date(x = x, format = format, locale = locale, ...)
   }
 }
 
-#' @method format2 POSIXlt
 #' @rdname format2
-#' @export format2.POSIXlt
 #' @export
-format2.POSIXlt <- function(x, format = "d mmmm yyyy", ...) {
-  format2.Date(x, format, ...)
+format2.POSIXlt <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
+  format2.Date(x = x, format = format, locale = locale, ...)
 }
 
-#' @method format2 POSIXt
 #' @rdname format2
-#' @export format2.POSIXt
 #' @export
-format2.POSIXt <- function(x, format = "HH:MM:SS", ...) {
-  format2.Date(x, format, ...)
+format2.POSIXt <- function(x, format = "HH:MM:SS", locale = "nl", ...) {
+  format2.Date(x = x, format = format, locale = locale, ...)
 }
 
-#' @method format2 hms
 #' @rdname format2
-#' @export format2.hms
 #' @export
 format2.hms <- function(x,
                         format = "HH:MM:SS",
@@ -151,9 +161,7 @@ format2.hms <- function(x,
   }
 }
 
-#' @method format2 difftime
 #' @rdname format2
-#' @export format2.difftime
 #' @export
 format2.difftime <- function(x,
                              round = 2,
@@ -169,18 +177,16 @@ format2.difftime <- function(x,
                   ...)
 }
 
-#' @method format2 Date
 #' @rdname format2
-#' @export format2.Date
+#' @importFrom lubridate month quarter
+#' @importFrom certetoolbox `%like%` `%unlike%`
+#' @importFrom stringr str_replace_all
+#' @importFrom cleaner format_datetime
 #' @export
-format2.Date <- function(x, format = "d mmmm yyyy", ...) {
+format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
   
-  format <- date_generic(format)
-  # if (all(x %like% '^[0-9]+:[0-9]+')) {
-  #   x <- paste("1970-01-01", x)
-  # }
+  format <- format_datetime(format)
   
-  locale <- list(...)$locale
   if (!is.null(locale)) {
     if (locale %like% "^[a-z]{2}$") {
       locale <- paste0(toupper(locale), "_", tolower(locale))
@@ -191,49 +197,58 @@ format2.Date <- function(x, format = "d mmmm yyyy", ...) {
   
   # bij alleen maanden een factor retourneren, zodat labels bij plot2() kloppen
   if (format == "%B") {
-    # zelfde als format = "mmmm"
+    # same as format = "mmmm"
     return(month(x, label = TRUE, abbr = FALSE, locale = locale))
   } else if (format == "%b") {
-    # zelfde als format = "mmm"
+    # same as format = "mmm"
     return(month(x, label = TRUE, abbr = TRUE, locale = locale))
   }
   
-  if (any(x %>% class() %in% c("hms", "difftime", "POSIXlt"))) {
+  if (Sys.getlocale("LC_TIME") %unlike% locale) {
+    old_option <- Sys.getlocale("LC_TIME")
+    Sys.setlocale("LC_TIME", locale = locale)
+  } else {
+    old_option <- NULL
+  }
+  
+  if (inherits(x, c("hms", "difftime", "POSIXlt"))) {
     if (all(x %like% '^[0-9]+:[0-9]+')) {
       x <- paste("1970-01-01", x)
     }
-    # df <- tibble(dat = as.POSIXlt(x), form = format(as.POSIXlt(x), format))
-    df <- tibble(dat = as.POSIXct(x), form = format(as.POSIXct(x), format))
+    df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
   } else {
-    df <- tibble(dat = as.POSIXct(x), form = format(as.POSIXct(x), format))
+    df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
   }
   
-  # Voorloopspatie moet verwijderd worden
-  df$form <- trimws(df$form, "left")
-  df$form <- gsub(" +", " ", df$form)
+  # remove extra spaces
+  df$form <- gsub(" +", " ", trimws(df$form))
   
-  # kwartalen vervangen
+  # replace quarters
   if (any(df$form %like% "(q|qq)")) {
-    df$kwartaal <- quarter(df$dat)
-    df$kwartaal[df$form %like% "qq"] <- paste0("Q", df$kwartaal[df$form %like% "qq"])
-    df$form <- str_replace_all(df$form, '(q|qq)+', df$kwartaal)
+    df$quarter <- quarter(df$dat)
+    df$quarter[df$form %like% "qq"] <- paste0("Q", df$quarter[df$form %like% "qq"])
+    df$form <- str_replace_all(df$form, '(q|qq)+', df$quarter)
+  }
+  
+  if (!is.null(old_option)) {
+    tryCatch(Sys.setlocale("LC_TIME", locale = old_option),
+             error = function(e) warning("Unable to reset original language when running: ",
+                                         'Sys.setlocale("LC_TIME", locale = "', old_option, '")'))
   }
   
   if (format == "unix") {
-    df$form %>% as.double()
+    as.double(df$form)
   } else {
     df$form
   }
 }
 
-#' @method format2 numeric
 #' @rdname format2
-#' @export format2.numeric
+#' @importFrom cleaner as.percentage
 #' @export
 format2.numeric <- function(x,
                             round = ifelse(percent, 1, 2),
                             force.decimals = ifelse(percent, TRUE, FALSE),
-                            non.scientific = FALSE,
                             decimal.mark = ",",
                             big.mark = ".",
                             min.length = 0,
@@ -241,31 +256,12 @@ format2.numeric <- function(x,
                             ...) {
   
   if (percent == TRUE) {
-    format2.percentage(x = as.percentage(x),
-                       round = round,
-                       force.decimals = force.decimals,
-                       decimal.mark = decimal.mark,
-                       big.mark = big.mark)
+    format2(x = as.percentage(x),
+            round = round,
+            force.decimals = force.decimals,
+            decimal.mark = decimal.mark,
+            big.mark = big.mark)
   } else {
-    label_wetenschappelijk <- function(l) {
-      # bron: http://stackoverflow.com/a/24241954
-      
-      # turn in to character string in scientific notation
-      l <- format(l, scientific = TRUE)
-      # quote the part before the exponent to keep all the digits
-      l <- gsub("^(.*)e", "'\\1'e", l)
-      # verwijder de + bij de exponent
-      l <- gsub("e+", "e", l, fixed = TRUE)
-      # afronden op ingestelde aantalen decimalen
-      #l <- gsub("^(.*)e", paste0('"', substr(l, 1, 2 + round), '"e'), l)
-      # turn the 'e+' into plotmath format
-      l <- gsub("e", "%*%10^", l)
-      # punt vervangen door komma
-      l <- gsub(".", decimal.mark, l, fixed = TRUE)
-      # return this as an expression
-      parse(text = l)
-    }
-    
     if (length(x) == 0) {
       return(character())
     }
@@ -274,30 +270,25 @@ format2.numeric <- function(x,
       if (force.decimals == TRUE) {
         warning('`force.decimals = TRUE` will be overwritten by `min.length = ', min.length, '`.')
       }
-      # if (!(x %>% identical(x %>% as.integer()))) {
-      #   warning('`force.decimals = TRUE` overwritten by `min.length = ', min.length, '`; transforming to real numbers.')
-      # }
-      x <- formatC(x %>% as.integer(),
+      x <- formatC(as.integer(x),
                    width = min.length,
                    flag = "0")
     } else {
       if (force.decimals == TRUE) {
-        x <-
-          formatC(
-            round(as.double(x), digits = round),
-            digits = round,
-            big.mark = big.mark,
-            decimal.mark = decimal.mark,
-            format = "f"
-          )
+        x <- formatC(
+          round(as.double(x), digits = round),
+          digits = round,
+          big.mark = big.mark,
+          decimal.mark = decimal.mark,
+          format = "f"
+        )
       } else {
-        x <-
-          format(
-            round(as.double(x), round),
-            scientific = FALSE,
-            big.mark = big.mark,
-            decimal.mark = decimal.mark
-          )
+        x <- format(
+          round(as.double(x), round),
+          scientific = FALSE,
+          big.mark = big.mark,
+          decimal.mark = decimal.mark
+        )
       }
     }
     x <- gsub("NA", NA, x, fixed = TRUE)
@@ -307,16 +298,37 @@ format2.numeric <- function(x,
   }
 }
 
-#' @method format percent
-#' @export
-#' @noRd
-format.percent <- function(x,
-                           round = 2,
-                           force.decimals = TRUE,
-                           ...) {
-  format2.percentage(as.percentage(x), round, force.decimals, ...)
-}
 
-#' @importFrom cleaner format_datetime
+#' @rdname format2
 #' @export
-date_generic <- cleaner::format_datetime
+#' @examples 
+#' 
+#' # use format2_scientific for scientific labels in plots:
+#' if (require("certeplot2")) {
+#'   plot2.point(mtcars,
+#'               y = hp * 1000,
+#'               y.labels = format2_scientific)
+#' }
+#' if (require("ggplot2")) {
+#'   ggplot(mtcars) +
+#'     geom_point(aes(x = mpg, y = hp * 1000)) +
+#'     scale_y_continuous(label = format2_scientific)
+#' }
+format2_scientific <- function(x, 
+                               decimal.mark = ",",
+                               ...) {
+  # source: http://stackoverflow.com/a/24241954
+  
+  # turn in to character string in scientific notation
+  l <- format(as.double(x), scientific = TRUE)
+  # quote the part before the exponent to keep all the digits
+  l <- gsub("^(.*)e", "'\\1'e", l)
+  # remove + of exponent
+  l <- gsub("e+", "e", l, fixed = TRUE)
+  # turn the 'e+' into plotmath format
+  l <- gsub("e", "%*%10^", l)
+  # replace comma
+  l <- gsub(".", decimal.mark, l, fixed = TRUE)
+  # return this as an expression
+  parse(text = l)
+}

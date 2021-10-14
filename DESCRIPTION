@@ -21,11 +21,15 @@ Description: A Certe R Package for applying the organisational colours
   This package is part of the 'certedata' universe.
 URL: https://github.com/certe-medical-epidemiology/certestyle
 Depends: 
-  R (>= 4.0.0)
+  R (>= 3.6.0)
 Imports:
   certetoolbox,
-  cleaner (>= 1.5.2)
+  cleaner (>= 1.5.2),
+  lubridate (>= 1.7.0),
+  readr (>= 2.0.0),
+  stringr (>= 1.4.0)
 Suggests: 
+  ggplot2( >= 3.0.0),
   testthat (>= 2.0.0)
 License: GPL-2
 Encoding: UTF-8
