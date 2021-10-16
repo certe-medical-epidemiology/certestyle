@@ -10,6 +10,8 @@ is.double2(x, dec = c(".", ","), na.rm = TRUE, ...)
 as.double2(x, ...)
 }
 \arguments{
+\item{x}{vector of values}
+
 \item{dec}{characters to be treated as comma}
 
 \item{na.rm}{ignore empty values}
@@ -21,4 +23,18 @@ This works like \code{\link[=is.double]{is.double()}} and \code{\link[=as.double
 }
 \details{
 \code{is.double()} for comma-decimal numbers.
+}
+\examples{
+is.double(0.1)
+is.double("0.1")
+is.double("0,1")
+
+is.double2(0.1)
+is.double2("0.1")
+is.double2("0,1")
+
+is.double(c(0.1, "0.1", "0,1"))
+is.double2(c(0.1, "0.1", "0,1"))
+
+as.double2(c(0.1, "0.1", "0,1"))
 }

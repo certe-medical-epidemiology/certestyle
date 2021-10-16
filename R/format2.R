@@ -27,8 +27,9 @@
 #' @param format format to use, can be set with human-readable text such as `"d mmmm yyyy"` or POSIX such as `"%e %B %Y"`
 #' @param locale language to set for dates
 #' @param decimal.mark,big.mark decimal and thousands limiters
+#' @param percent logical to transform numeric to percentage (character)
+#' @param ... arguments given to methods such as [format()]
 #' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
-#' @exportMethod format2
 #' @rdname format2
 #' @export
 #' @examples
@@ -304,11 +305,11 @@ format2.numeric <- function(x,
 #' @examples 
 #' 
 #' # use format2_scientific for scientific labels in plots:
-#' if (require("certeplot2")) {
-#'   plot2.point(mtcars,
-#'               y = hp * 1000,
-#'               y.labels = format2_scientific)
-#' }
+#' # if (require("certeplot2")) {
+#' #    plot2.point(mtcars,
+#' #                y = hp * 1000,
+#' #                y.labels = format2_scientific)
+#' # }
 #' if (require("ggplot2")) {
 #'   ggplot(mtcars) +
 #'     geom_point(aes(x = mpg, y = hp * 1000)) +

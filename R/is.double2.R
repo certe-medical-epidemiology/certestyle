@@ -20,6 +20,7 @@
 #' `is.double()` for comma-decimal numbers
 #' 
 #' `is.double()` for comma-decimal numbers.
+#' @param x vector of values
 #' @param dec characters to be treated as comma
 #' @param na.rm ignore empty values
 #' @param ... currently not in use
@@ -27,6 +28,19 @@
 #' @rdname as.double2
 #' @importFrom certetoolbox `%like%` concat
 #' @export is.double2
+#' @examples 
+#' is.double(0.1)
+#' is.double("0.1")
+#' is.double("0,1")
+#' 
+#' is.double2(0.1)
+#' is.double2("0.1")
+#' is.double2("0,1")
+#' 
+#' is.double(c(0.1, "0.1", "0,1"))
+#' is.double2(c(0.1, "0.1", "0,1"))
+#' 
+#' as.double2(c(0.1, "0.1", "0,1"))
 is.double2 <- function(x, dec = c(".", ","), na.rm = TRUE, ...) {
   if (na.rm == TRUE) {
     x <- x[!is.na(x)]

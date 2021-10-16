@@ -76,7 +76,11 @@ format2_scientific(x, decimal.mark = ",", ...)
 \arguments{
 \item{x}{vector of values}
 
+\item{...}{arguments given to methods such as \code{\link[=format]{format()}}}
+
 \item{format}{format to use, can be set with human-readable text such as \code{"d mmmm yyyy"} or POSIX such as \code{"\%e \%B \%Y"}}
+
+\item{percent}{logical to transform numeric to percentage (character)}
 
 \item{round}{number of decimals to round to}
 
@@ -108,12 +112,13 @@ format2(2.1, force.decimals = TRUE) # since default is 2 decimals
 
 p <- cleaner::as.percentage(0.123)
 format2(p)
+
 # use format2_scientific for scientific labels in plots:
-if (require("certeplot2")) {
-  plot2.point(mtcars,
-              y = hp * 1000,
-              y.labels = format2_scientific)
-}
+# if (require("certeplot2")) {
+#    plot2.point(mtcars,
+#                y = hp * 1000,
+#                y.labels = format2_scientific)
+# }
 if (require("ggplot2")) {
   ggplot(mtcars) +
     geom_point(aes(x = mpg, y = hp * 1000)) +
