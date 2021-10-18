@@ -17,40 +17,9 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-#' `is.double()` for comma-decimal numbers
-#' 
-#' `is.double()` for comma-decimal numbers.
-#' @param x vector of values
-#' @param dec characters to be treated as comma
-#' @param na.rm ignore empty values
-#' @param ... currently not in use
-#' @description This works like [is.double()] and [as.double()], but can also check (and transform) comma-decimal input such as `"0,1"`.
-#' @rdname as.double2
-#' @export is.double2
-#' @examples 
-#' is.double(0.1)
-#' is.double("0.1")
-#' is.double("0,1")
-#' 
-#' is.double2(0.1)
-#' is.double2("0.1")
-#' is.double2("0,1")
-#' 
-#' is.double(c(0.1, "0.1", "0,1"))
-#' is.double2(c(0.1, "0.1", "0,1"))
-#' 
-#' as.double2(c(0.1, "0.1", "0,1"))
-is.double2 <- function(x, dec = c(".", ","), na.rm = TRUE, ...) {
-  if (na.rm == TRUE) {
-    x <- x[!is.na(x)]
-  } else if (length(x[is.na(x)]) > 0) {
-    return(NA_real_)
-  }
-  x %like% paste0("^[0-9]+[", paste0(dec, collapse = ""), "][0-9]+$") | x %like% "^[0-9]+$"
+`%like%` <- function(el1, el2) {
+  grepl(x = el1, pattern = el2, ignore.case = TRUE)
 }
-
-#' @rdname as.double2
-#' @export
-as.double2 <- function(x, ...) {
-  as.double(gsub(",", ".", x))
+`%unlike%` <- function(el1, el2) {
+  !grepl(x = el1, pattern = el2, ignore.case = TRUE)
 }

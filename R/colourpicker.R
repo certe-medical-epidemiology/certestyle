@@ -109,7 +109,6 @@ viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket
 #' @rdname colourpicker
 #' @importFrom grDevices rainbow heat.colors terrain.colors topo.colors col2rgb colours grey.colors palette.colors palette.pals rgb
 #' @importFrom viridisLite viridis
-#' @importFrom certetoolbox `%like%` `%unlike%`
 #' @export
 #' @examples
 #' colourpicker("certegroen")

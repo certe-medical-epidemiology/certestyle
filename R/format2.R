@@ -180,7 +180,6 @@ format2.difftime <- function(x,
 
 #' @rdname format2
 #' @importFrom lubridate month quarter
-#' @importFrom certetoolbox `%like%` `%unlike%`
 #' @importFrom stringr str_replace_all
 #' @importFrom cleaner format_datetime
 #' @export
