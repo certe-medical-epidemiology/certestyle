@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -143,19 +143,46 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>colour or colour palette name. Certe colours will be used from the <a href='certe.colours.html'>certe.colours</a> object. Input can be any colour from base <span style="R">R</span> <code><a href='https://rdrr.io/r/grDevices/colors.html'>colours()</a></code>, or:</p><ul>
+      <td><p>colour or colour palette name. Certe colours will be used from the <a href='certe.colours.html'>certe.colours</a> object. Input can be:</p><ul>
 <li><p><code>"certe"</code></p></li>
 <li><p><code>"certe0"</code> until <code>"certe6"</code> (higher numbers give lighter colours)</p></li>
 <li><p><code>"certeblauw"</code>, <code>"certegroen"</code>, <code>"certeroze"</code>, <code>"certegeel"</code>, <code>"certelila"</code>, or <code>"certezachtlila"</code> (or any of these followed by a 0 until 6)</p></li>
 <li><p><code>"certe_rsi"</code> or <code>"certe_rsi2"</code> for certeroze/certegeel/certegroen (will <strong>always</strong> return length 3)</p></li>
-<li><p><code>"R3"</code> for colours from <span style="R">R</span> version 3</p></li>
-<li><p><code>"R4"</code> for colours from <span style="R">R</span> version 4</p></li>
-<li><p><code>"viridis"</code> for colourblind-safe colours</p></li>
+<li><p>One of the colourblind-safe <code>viridisLite</code> palettes:</p><ul>
+<li><p><code>"viridis"</code></p></li>
+<li><p><code>"magma"</code></p></li>
+<li><p><code>"inferno"</code></p></li>
+<li><p><code>"plasma"</code></p></li>
+<li><p><code>"cividis"</code></p></li>
+<li><p><code>"rocket"</code></p></li>
+<li><p><code>"mako"</code></p></li>
+<li><p><code>"turbo"</code></p></li>
+</ul></li>
+<li><p>One of the built-in palettes in <span style="R">R</span>:</p><ul>
+<li><p><code>"R3"</code></p></li>
+<li><p><code>"R4"</code></p></li>
+<li><p><code>"ggplot2"</code></p></li>
+<li><p><code>"Okabe-Ito"</code></p></li>
+<li><p><code>"Accent"</code></p></li>
+<li><p><code>"Dark 2"</code></p></li>
+<li><p><code>"Paired"</code></p></li>
+<li><p><code>"Pastel 1"</code></p></li>
+<li><p><code>"Pastel 2"</code></p></li>
+<li><p><code>"Set 1"</code></p></li>
+<li><p><code>"Set 2"</code></p></li>
+<li><p><code>"Set 3"</code></p></li>
+<li><p><code>"Tableau 10"</code></p></li>
+<li><p><code>"Classic Tableau"</code></p></li>
+<li><p><code>"Polychrome 36"</code></p></li>
+<li><p><code>"Alphabet"</code></p></li>
 <li><p><code>"topo"</code></p></li>
 <li><p><code>"heatmap"</code></p></li>
 <li><p><code>"rainbow"</code></p></li>
 <li><p><code>"terrain"</code></p></li>
-<li><p><code>"greyscale"</code> or <code>"grayscale"</code></p></li>
+<li><p><code>"greyscale"</code></p></li>
+<li><p><code>"grayscale"</code></p></li>
+</ul></li>
+<li><p>One of the 657 built-in <code><a href='https://rdrr.io/r/grDevices/colors.html'>colours()</a></code> in <span style="R">R</span>, such as <code>"brown"</code>, <code>"orchid3"</code>, <code>"palevioletred1"</code>, <code>"rosybrown2"</code>, <code>"seashell1"</code></p></li>
 </ul></td>
     </tr>
     <tr>
@@ -175,12 +202,35 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><a href='https://rdrr.io/r/base/character.html'>character</a> vector in HTML format (i.e., <code>"#AABBCC"</code>) with new class <code>colourpicker</code></p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Certe colours will be chosen as divergent as possible if the required output length is not too high. For example:</p><ul>
+<li><p><code>x = "certe"</code> tries to only return the <code>"certe"</code> colours (<code>"certeblauw"</code>, <code>"certegroen"</code>, ...), the <code>"certe3"</code> colours (<code>"certeblauw3"</code>, <code>"certegroen3"</code>, ...) and the <code>"certe5"</code> colours (<code>"certeblauw5"</code>, <code>"certegroen5"</code>, ...)</p></li>
+<li><p><code>x = "certe2"</code> tries to only return the regular <code>"certe2"</code> colours (<code>"certeblauw2"</code>, <code>"certegroen2"</code>, ...), the <code>"certe4"</code> colours (<code>"certeblauw4"</code>, <code>"certegroen4"</code>, ...) and the <code>"certe6"</code> colours (<code>"certeblauw6"</code>, <code>"certegroen6"</code>, ...)</p></li>
+<li><p><code>x = "certe3"</code> tries to only return the <code>"certe3"</code> colours (<code>"certeblauw3"</code>, <code>"certegroen3"</code>, ...) and the <code>"certe5"</code> colours (<code>"certeblauw5"</code>, <code>"certegroen5"</code>, ...)</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"certegroen"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "#8B9934"<span style='background-color: #AFAF5F;'> </span></div><div class='input'><span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"certe"</span>, <span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "#01617E"<span style='background-color: #008787;'> </span> "#8B9934"<span style='background-color: #AFAF5F;'> </span> "#E04883"<span style='background-color: #FF5FAF;'> </span> "#FFE400"<span style='background-color: #FFFF00;'> </span> "#AB79B3"<span style='background-color: #D787D7;'> </span></div><div class='input'><span class='fu'>colourpicker</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"certeblauw"</span>, <span class='st'>"red"</span>, <span class='st'>"tan1"</span>, <span class='st'>"ffa"</span>, <span class='st'>"#FFAA00"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "#01617E"<span style='background-color: #008787;'> </span> "#FF0000"<span style='background-color: #FF0000;'> </span> "#FFA54F"<span style='background-color: #FFAF5F;'> </span> "#FFFFAA"<span style='background-color: #FFFFAF;'> </span> "#FFAA00"<span style='background-color: #FFAF00;'> </span></div></pre>
+</div><div class='output co'>#&gt; [1] "#01617E"<span style='background-color: #008787;'> </span> "#8B9934"<span style='background-color: #AFAF5F;'> </span> "#E04883"<span style='background-color: #FF5FAF;'> </span> "#FFE400"<span style='background-color: #FFFF00;'> </span> "#AB79B3"<span style='background-color: #D787D7;'> </span></div><div class='input'><span class='fu'>colourpicker</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"certeblauw"</span>, <span class='st'>"red"</span>, <span class='st'>"tan1"</span>, <span class='st'>"#ffa"</span>, <span class='st'>"FFAA00"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "#01617E"<span style='background-color: #008787;'> </span> "#FF0000"<span style='background-color: #FF0000;'> </span> "#FFA54F"<span style='background-color: #FFAF5F;'> </span> "#FFFFAA"<span style='background-color: #FFFFAF;'> </span> "#FFAA00"<span style='background-color: #FFAF00;'> </span></div><div class='input'>
+<span class='co'># Certe colours</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>:</span><span class='fl'>1</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"certe"</span>, <span class='fl'>12</span><span class='op'>)</span>, main <span class='op'>=</span> <span class='st'>"'certe': uses 'certe' + 'certe3'"</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>:</span><span class='fl'>1</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"certe2"</span>, <span class='fl'>12</span><span class='op'>)</span>, main <span class='op'>=</span> <span class='st'>"'certe2': uses 'certe2' + 'certe4'"</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>12</span><span class='op'>:</span><span class='fl'>1</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"certe3"</span>, <span class='fl'>12</span><span class='op'>)</span>, main <span class='op'>=</span> <span class='st'>"'certe3': uses 'certe3' + 'certe5'"</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># default colours of R3</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"R3"</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># default colours of R4</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"R4"</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># all colourblind-safe colour palettes from the viridisLite package</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"viridis"</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span>, col <span class='op'>=</span> <span class='fu'>colourpicker</span><span class='op'>(</span><span class='st'>"magma"</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='colourpicker-7.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
