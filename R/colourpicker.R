@@ -345,7 +345,7 @@ print.colourpicker <- function(x, ...) {
 }
 
 # for expanding the colours from dark to light
-#' @importFrom certetoolbox .case_when
+#' @importFrom dplyr case_when
 expand_colours <- function(colour.list, extended_spectrum) {
   
   lightness_values <- c(-0.30, 0.35, 0.50, 0.70, 0.85, 0.95)
@@ -362,13 +362,13 @@ expand_colours <- function(colour.list, extended_spectrum) {
     df_col <- gsub("(.*)[0-5]$", "\\1", paste0(names(colour.list)[i]))
     hsl <- colour.list.hsl[[df_col]]
     for (tint in c(0, 2:length(lightness_values))) {
-      s_new <- .case_when(tint == 0 ~ hsl[2] * saturation_values[1],
-                          tint == 2 ~ hsl[2] * saturation_values[2],
-                          tint == 3 ~ hsl[2] * saturation_values[3],
-                          tint == 4 ~ hsl[2] * saturation_values[4],
-                          tint == 5 ~ hsl[2] * saturation_values[5],
-                          tint == 6 ~ hsl[2] * saturation_values[6],
-                          TRUE ~ hsl[2])
+      s_new <- case_when(tint == 0 ~ hsl[2] * saturation_values[1],
+                         tint == 2 ~ hsl[2] * saturation_values[2],
+                         tint == 3 ~ hsl[2] * saturation_values[3],
+                         tint == 4 ~ hsl[2] * saturation_values[4],
+                         tint == 5 ~ hsl[2] * saturation_values[5],
+                         tint == 6 ~ hsl[2] * saturation_values[6],
+                         TRUE ~ hsl[2])
       if (df_col %like% "certeblauw") {
         if (tint == 0) {
           l_new <- hsl[3] + ((1 - hsl[3]) * -0.15)
@@ -381,13 +381,13 @@ expand_colours <- function(colour.list, extended_spectrum) {
         }
       } else {
         # all except certeblauw
-        l_new <- .case_when(tint == 0 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[1]),
-                            tint == 2 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[2]),
-                            tint == 3 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[3]),
-                            tint == 4 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[4]),
-                            tint == 5 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[5]),
-                            tint == 6 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[6]),
-                            TRUE ~ hsl[3])
+        l_new <- case_when(tint == 0 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[1]),
+                           tint == 2 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[2]),
+                           tint == 3 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[3]),
+                           tint == 4 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[4]),
+                           tint == 5 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[5]),
+                           tint == 6 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[6]),
+                           TRUE ~ hsl[3])
       }
       colour.list.hsl[[length(colour.list.hsl) + 1]] <- c(hsl[1], s_new, l_new)
       names(colour.list.hsl)[length(colour.list.hsl)] <- paste0(df_col, tint)

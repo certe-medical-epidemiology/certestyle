@@ -38,4 +38,6 @@ test_that("colourpicker works", {
   
   expect_identical(as.character(colourpicker("red")), "#FF0000")
   expect_identical(as.character(colourpicker("red", opacity = 0.5)), "#FF000080")
+  
+  expect_gt(length(expand_colours(list(red = c(255, 0, 0)), TRUE)), 1)
 })

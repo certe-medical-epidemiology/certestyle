@@ -55,7 +55,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"gold2"}, \code{"lightcyan3"}, \code{"mediumslateblue"}, \code{"pink"}, \code{"snow3"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"coral4"}, \code{"peachpuff1"}, \code{"peachpuff2"}, \code{"sandybrown"}, \code{"wheat4"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -107,7 +107,6 @@ barplot(1:7,
 # all colourblind-safe colour palettes from the famous viridisLite package
 barplot(1:7,
         col = colourpicker("viridis", 7))
-
 barplot(1:7,
         col = colourpicker("magma", 7))
 }
