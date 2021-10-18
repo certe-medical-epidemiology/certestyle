@@ -17,25 +17,15 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-test_that("colourpicker works", {
-  expect_identical(colourpicker("viridis", 10),
-                   colourpicker(viridisLite::viridis(10)))
-  expect_identical(palette.colors(8, "R3"),
-                   as.character(colourpicker("R3", 8)))
-  expect_identical(palette.colors(8, "R4"),
-                   as.character(colourpicker("R4", 8)))
+test_that("format2 works", {
+  expect_identical(format2(Sys.Date(), "dd-mm-yyyy"),
+                   format(Sys.Date(), "%d-%m-%Y"))
   
+  expect_identical(format2(Sys.time()),
+                   format(Sys.time(), "%H:%M:%S"))
   
-  expect_identical(as.character(colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))),
-                   c("#01617E", "#FF0000", "#FFA54F", "#FFFFAA", "#FFAA00"))
+  expect_identical(format2(0.123), "0,12")
+  expect_identical(format2(0.123, percent = TRUE), "12,3%")
   
-  expect_identical(as.character(colourpicker("certe", 12)),
-                   unname(c(certe.colours[1:6], certe.colours[13:18])))
-  expect_identical(as.character(colourpicker("certe2", 12)),
-                   unname(c(certe.colours[7:12], certe.colours[19:24])))
-  expect_identical(as.character(colourpicker("certe3", 12)),
-                   unname(c(certe.colours[13:18], certe.colours[25:30])))
-  
-  expect_identical(as.character(colourpicker("red")), "#FF0000")
-  expect_identical(as.character(colourpicker("red", opacity = 0.5)), "#FF000080")
+  expect_identical(class(format2_scientific(1)), "expression")
 })

@@ -16,8 +16,8 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item{x}{colour or colour palette name. Certe colours will be used from the \link{certe.colours} object. Input can be:
 \itemize{
 \item \code{"certe"}
-\item \code{"certe0"} until \code{"certe6"} (higher numbers give lighter colours)
-\item \code{"certeblauw"}, \code{"certegroen"}, \code{"certeroze"}, \code{"certegeel"}, \code{"certelila"}, or \code{"certezachtlila"} (or any of these followed by a 0 until 6)
+\item \code{"certe0"} to \code{"certe6"} (higher numbers give lighter colours)
+\item \code{"certeblauw"}, \code{"certegroen"}, \code{"certeroze"}, \code{"certegeel"}, \code{"certelila"}, or \code{"certezachtlila"} (or any of these followed by a 0 to 6)
 \item \code{"certe_rsi"} or \code{"certe_rsi2"} for certeroze/certegeel/certegroen (will \strong{always} return length 3)
 \item One of the colourblind-safe \code{viridisLite} palettes:
 \itemize{
@@ -30,7 +30,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R:
+\item One of the built-in palettes in \R (currently \R 4.1.0):
 \itemize{
 \item \code{"R3"}
 \item \code{"R4"}
@@ -55,7 +55,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"brown"}, \code{"orchid3"}, \code{"palevioletred1"}, \code{"rosybrown2"}, \code{"seashell1"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"gold2"}, \code{"lightcyan3"}, \code{"mediumslateblue"}, \code{"pink"}, \code{"snow3"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -83,18 +83,31 @@ colourpicker("certegroen")
 colourpicker("certe", 5)
 colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))
 
+par(mar = c(0.5, 2.5, 1.5, 0)) # set plot margins for below plots
+
 # Certe colours
-barplot(12:1, col = colourpicker("certe", 12), main = "'certe': uses 'certe' + 'certe3'")
-barplot(12:1, col = colourpicker("certe2", 12), main = "'certe2': uses 'certe2' + 'certe4'")
-barplot(12:1, col = colourpicker("certe3", 12), main = "'certe3': uses 'certe3' + 'certe5'")
+barplot(12:1,
+        col = colourpicker("certe", 12),
+        main = "'certe': uses 'certe' + 'certe3'")
+barplot(12:1,
+        col = colourpicker("certe2", 12),
+        main = "'certe2': uses 'certe2' + 'certe4'")
+barplot(12:1,
+        col = colourpicker("certe3", 12),
+        main = "'certe3': uses 'certe3' + 'certe5'")
 
 # default colours of R3
-barplot(1:7, col = colourpicker("R3", 7))
+barplot(1:7,
+        col = colourpicker("R3", 7))
 
 # default colours of R4
-barplot(1:7, col = colourpicker("R4", 7))
+barplot(1:7,
+        col = colourpicker("R4", 7))
 
-# all colourblind-safe colour palettes from the viridisLite package
-barplot(1:7, col = colourpicker("viridis", 7))
-barplot(1:7, col = colourpicker("magma", 7))
+# all colourblind-safe colour palettes from the famous viridisLite package
+barplot(1:7,
+        col = colourpicker("viridis", 7))
+
+barplot(1:7,
+        col = colourpicker("magma", 7))
 }

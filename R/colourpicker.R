@@ -91,11 +91,11 @@ viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket
 #' Colours from \R, Certe, viridis and more. The output prints in the console with the actual colours.
 #' @param x colour or colour palette name. Certe colours will be used from the [certe.colours] object. Input can be:
 #' * `"certe"`
-#' * `"certe0"` until `"certe6"` (higher numbers give lighter colours)
-#' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 until 6)
+#' * `"certe0"` to `"certe6"` (higher numbers give lighter colours)
+#' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 to 6)
 #' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 3)
 #' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridis.colours, '"``', collapse = "")`
-#' * One of the built-in palettes in \R: `r paste0('\n  - ``"', c(palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
+#' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - ``"', c(palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
 #' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('``"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"``', collapse = ", ")`
 #' @param length size of the vector to be returned
 #' @param opacity amount of opacity (0 = solid, 1 = transparent)
@@ -116,20 +116,32 @@ viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket
 #' colourpicker("certe", 5)
 #' colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))
 #' 
+#' par(mar = c(0.5, 2.5, 1.5, 0)) # set plot margins for below plots
+#' 
 #' # Certe colours
-#' barplot(12:1, col = colourpicker("certe", 12), main = "'certe': uses 'certe' + 'certe3'")
-#' barplot(12:1, col = colourpicker("certe2", 12), main = "'certe2': uses 'certe2' + 'certe4'")
-#' barplot(12:1, col = colourpicker("certe3", 12), main = "'certe3': uses 'certe3' + 'certe5'")
+#' barplot(12:1,
+#'         col = colourpicker("certe", 12),
+#'         main = "'certe': uses 'certe' + 'certe3'")
+#' barplot(12:1,
+#'         col = colourpicker("certe2", 12),
+#'         main = "'certe2': uses 'certe2' + 'certe4'")
+#' barplot(12:1,
+#'         col = colourpicker("certe3", 12),
+#'         main = "'certe3': uses 'certe3' + 'certe5'")
 #' 
 #' # default colours of R3
-#' barplot(1:7, col = colourpicker("R3", 7))
+#' barplot(1:7,
+#'         col = colourpicker("R3", 7))
 #' 
 #' # default colours of R4
-#' barplot(1:7, col = colourpicker("R4", 7))
+#' barplot(1:7,
+#'         col = colourpicker("R4", 7))
 #' 
-#' # all colourblind-safe colour palettes from the viridisLite package
-#' barplot(1:7, col = colourpicker("viridis", 7))
-#' barplot(1:7, col = colourpicker("magma", 7))
+#' # all colourblind-safe colour palettes from the famous viridisLite package
+#' barplot(1:7,
+#'         col = colourpicker("viridis", 7))
+#' barplot(1:7,
+#'         col = colourpicker("magma", 7))
 colourpicker <- function(x, length = 1, opacity = 0, ...) {
   
   x <- tolower(x)
@@ -143,8 +155,9 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
   x_names <- names(x) # required for named colour vectors such as in ggplot2 and certeplot2
   x <- unname(x)
                     
-  # 100% transparent for NAs
-  x[is.na(x)] <- "#XXXXXX"
+  # NA: should become transparent white
+  x_na <- is.na(x)
+  x[x_na] <- "#FFFFFF"
   
   # "certe1" and "certeblauw1" should just be "certe" and "certeblauw"
   x[x %like% "^certe.*1$"] <- gsub("1", "", x[x %like% "^certe.*1$"])
@@ -208,9 +221,20 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
       
     } else if (x %in% viridis.colours) {
       x <- viridis(length, option = x)
-    
+      
     } else if (x %in% tolower(palette.pals())) {
       x <- palette.colors(length, palette = x)
+      
+    } else if (x == "topo") {
+      x <- topo.colors(length)
+    } else if (x == "heatmap") {
+      x <- heat.colors(length)
+    } else if (x == "rainbow") {
+      x <- rainbow(length)
+    } else if (x == "terrain") {
+      x <- terrain.colors(length)
+    } else if (x %in% c("greyscale", "grayscale")) {
+      x <- grey.colors(length)
     }
     
     if (length > 1 & length(x) == 1) {
@@ -263,13 +287,17 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
            grey.colors(length - length(x), start = 0.7, end = 0.95))
   }
   
-  # so it's now hexadecimal; paste alpha to it
-  if (opacity > 0) {
-    x <- paste0(x, toupper(as.hexmode(round((1 - opacity) * 255))))
+  # so everything is now hexadecimal; paste alpha (opacity) to it
+  if (opacity > 0 & any(nchar(x) == 7)) {
+    opacity <- toupper(as.hexmode(round((1 - opacity) * 255)))
+    if (nchar(opacity) == 1) {
+      opacity <- paste0("0", opacity)
+    }
+    x[nchar(x) == 7] <- paste0(x[nchar(x) == 7], opacity)
   }
   
-  # support NA - it had become #XXXXXX earlier, now make it white and transparent
-  x[x %like% "#XXXXXX"] <- "#FFFFFF00"
+  # support NA - make them white and transparent
+  x[x_na] <- "#FFFFFF00"
   
   x <- toupper(unname(x))
   names(x) <- x_names
@@ -280,23 +308,25 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
 #' @rdname colourpicker
 #' @export
 as.character.colourpicker <- function(x, ...) {
-  substr(unclass(x), 1, 7)
+  substr(unclass(x), 1, 9)
 }
 
 #' @method print colourpicker
-#' @importFrom crayon red make_style
+#' @importFrom crayon make_style
 #' @rdname colourpicker
 #' @export
 print.colourpicker <- function(x, ...) {
-  y <- sapply(x, function(y) {
-    if (is.na(y)) {
-      red("NA        ")
-    } else {
-      paste0('"', substr(y, 1, 7), '"', make_style(y, bg = TRUE)(" "))
-    }
-  })
-  # each item has 10 characters: '"#FFE400" ' (llast one is the colour) plus 1 space after the colour
-  max_print <- floor(options()$width / 12) + 1
+  if (any(nchar(as.character(x)) == 9)) {
+    # some have opacity as last 2 characters
+    str_length <- 9
+  } else {
+    str_length <- 7
+  }
+  y <- x
+  cols <- substr(y[!is.na(x)], 1, str_length)
+  y[!is.na(x)] <- paste0('"', cols, '"',
+                         sapply(cols, function(z) make_style(z, bg = TRUE)(" ")))
+  max_print <- floor(options()$width / (str_length + 5)) + 1
   for (i in c(0:(length(y) / max_print))) {
     from <- i * max_print + 1
     to <- min(i * max_print + max_print, length(y))
@@ -307,6 +337,7 @@ print.colourpicker <- function(x, ...) {
                          width = ifelse(length(y) <= max_print, 1, nchar(length(y)))),
                  "]"),
           y[ind], sep = " ")
+      
       cat("\n")
     }
   }

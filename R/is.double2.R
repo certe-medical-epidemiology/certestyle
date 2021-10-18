@@ -47,9 +47,7 @@ is.double2 <- function(x, dec = c(".", ","), na.rm = TRUE, ...) {
   } else if (length(x[is.na(x)]) > 0) {
     return(NA_real_)
   }
-  
   x %like% paste0("^[0-9]+[", concat(dec), "][0-9]+$") | x %like% "^[0-9]+$"
-  
 }
 
 #' @rdname as.double2
