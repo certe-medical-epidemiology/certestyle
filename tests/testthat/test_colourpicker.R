@@ -17,35 +17,18 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-on:
-  push:
-    branches: 'main' # only update gh-pages branch when change is accepted on main
-
-name: website
-
-jobs:
-  website:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: r-lib/actions/setup-pandoc@v1
-
-      - uses: r-lib/actions/setup-r@v1
-        with:
-          use-public-rspm: true
-          # be sure to enable our R-universe
-          extra-repositories: 'https://certe-medical-epidemiology.r-universe.dev'
-
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: pkgdown
-          needs: website
-
-      - name: Deploy package
-        run: |
-          git config --local user.name "$GITHUB_ACTOR"
-          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE)'
+test_that("colourpicker works", {
+  expect_identical(colourpicker("viridis", 10),
+                   colourpicker(viridisLite::viridis(10)))
+  expect_identical(palette.colors(8, "R3"),
+                   as.character(colourpicker("R3", 8)))
+  expect_identical(palette.colors(8, "R4"),
+                   as.character(colourpicker("R4", 8)))
+  
+  expect_identical(as.character(colourpicker("certe", 12)),
+                   unname(c(certe.colours[1:6], certe.colours[13:18])))
+  expect_identical(as.character(colourpicker("certe2", 12)),
+                   unname(c(certe.colours[7:12], certe.colours[19:24])))
+  expect_identical(as.character(colourpicker("certe3", 12)),
+                   unname(c(certe.colours[13:18], certe.colours[25:30])))
+})

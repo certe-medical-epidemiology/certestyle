@@ -13,20 +13,49 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \method{print}{colourpicker}(x, ...)
 }
 \arguments{
-\item{x}{colour or colour palette name. Certe colours will be used from the \link{certe.colours} object. Input can be any colour from base \R \code{\link[=colours]{colours()}}, or:
+\item{x}{colour or colour palette name. Certe colours will be used from the \link{certe.colours} object. Input can be:
 \itemize{
 \item \code{"certe"}
 \item \code{"certe0"} until \code{"certe6"} (higher numbers give lighter colours)
 \item \code{"certeblauw"}, \code{"certegroen"}, \code{"certeroze"}, \code{"certegeel"}, \code{"certelila"}, or \code{"certezachtlila"} (or any of these followed by a 0 until 6)
 \item \code{"certe_rsi"} or \code{"certe_rsi2"} for certeroze/certegeel/certegroen (will \strong{always} return length 3)
-\item \code{"R3"} for colours from \R version 3
-\item \code{"R4"} for colours from \R version 4
-\item \code{"viridis"} for colourblind-safe colours
+\item One of the colourblind-safe \code{viridisLite} palettes:
+\itemize{
+\item \code{"viridis"}
+\item \code{"magma"}
+\item \code{"inferno"}
+\item \code{"plasma"}
+\item \code{"cividis"}
+\item \code{"rocket"}
+\item \code{"mako"}
+\item \code{"turbo"}
+}
+\item One of the built-in palettes in \R:
+\itemize{
+\item \code{"R3"}
+\item \code{"R4"}
+\item \code{"ggplot2"}
+\item \code{"Okabe-Ito"}
+\item \code{"Accent"}
+\item \code{"Dark 2"}
+\item \code{"Paired"}
+\item \code{"Pastel 1"}
+\item \code{"Pastel 2"}
+\item \code{"Set 1"}
+\item \code{"Set 2"}
+\item \code{"Set 3"}
+\item \code{"Tableau 10"}
+\item \code{"Classic Tableau"}
+\item \code{"Polychrome 36"}
+\item \code{"Alphabet"}
 \item \code{"topo"}
 \item \code{"heatmap"}
 \item \code{"rainbow"}
 \item \code{"terrain"}
-\item \code{"greyscale"} or \code{"grayscale"}
+\item \code{"greyscale"}
+\item \code{"grayscale"}
+}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"brown"}, \code{"orchid3"}, \code{"palevioletred1"}, \code{"rosybrown2"}, \code{"seashell1"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -41,8 +70,31 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \description{
 Colours from \R, Certe, viridis and more. The output prints in the console with the actual colours.
 }
+\details{
+Certe colours will be chosen as divergent as possible if the required output length is not too high. For example:
+\itemize{
+\item \code{x = "certe"} tries to only return the \code{"certe"} colours (\code{"certeblauw"}, \code{"certegroen"}, ...), the \code{"certe3"} colours (\code{"certeblauw3"}, \code{"certegroen3"}, ...) and the \code{"certe5"} colours (\code{"certeblauw5"}, \code{"certegroen5"}, ...)
+\item \code{x = "certe2"} tries to only return the regular \code{"certe2"} colours (\code{"certeblauw2"}, \code{"certegroen2"}, ...), the \code{"certe4"} colours (\code{"certeblauw4"}, \code{"certegroen4"}, ...) and the \code{"certe6"} colours (\code{"certeblauw6"}, \code{"certegroen6"}, ...)
+\item \code{x = "certe3"} tries to only return the \code{"certe3"} colours (\code{"certeblauw3"}, \code{"certegroen3"}, ...) and the \code{"certe5"} colours (\code{"certeblauw5"}, \code{"certegroen5"}, ...)
+}
+}
 \examples{
 colourpicker("certegroen")
 colourpicker("certe", 5)
-colourpicker(c("certeblauw", "red", "tan1", "ffa", "#FFAA00"))
+colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))
+
+# Certe colours
+barplot(12:1, col = colourpicker("certe", 12), main = "'certe': uses 'certe' + 'certe3'")
+barplot(12:1, col = colourpicker("certe2", 12), main = "'certe2': uses 'certe2' + 'certe4'")
+barplot(12:1, col = colourpicker("certe3", 12), main = "'certe3': uses 'certe3' + 'certe5'")
+
+# default colours of R3
+barplot(1:7, col = colourpicker("R3", 7))
+
+# default colours of R4
+barplot(1:7, col = colourpicker("R4", 7))
+
+# all colourblind-safe colour palettes from the viridisLite package
+barplot(1:7, col = colourpicker("viridis", 7))
+barplot(1:7, col = colourpicker("magma", 7))
 }

@@ -17,7 +17,36 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-test_that("function_name works", {
-  expect_true(1 + 1 == 2)
-  expect_identical(1, 2 - 1)
-})
+# set up in https://app.codecov.io/gh/certe-medical-epidemiology
+# and add repo secret CODECOV_TOKEN to GitHub
+
+on:
+  push:
+    branches: '**' # matches every branch
+  pull_request:
+    branches: '**' # matches every branch
+
+name: Codecov
+
+jobs:
+  Codecov:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+          # be sure to enable our R-universe
+          extra-repositories: 'https://certe-medical-epidemiology.r-universe.dev'
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: covr
+
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}

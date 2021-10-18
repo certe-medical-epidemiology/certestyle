@@ -34,83 +34,102 @@ update_certe_cols <- function() {
 certe.colours <- c(
   certeblauw = "#01617E",
   certegroen = "#8B9934",
-  certeroze = "E04883",
-  certegeel = "FFE400",
-  certelila = "AB79B3",
+  certeroze = "#E04883",
+  certegeel = "#FFE400",
+  certelila = "#AB79B3",
   certezachtlila = "#D6B6D6",
-  certeblauw2 = "1691B6",
-  certegroen2 = "B8C375",
+  certeblauw2 = "#1691B6",
+  certegroen2 = "#B8C375",
   certeroze2 = "#E192B1",
   certegeel2 = "#EEE06A",
   certelila2 = "#C6ACCA",
-  certezachtlila2 = "E2D2E2",
-  certeblauw3 = "14AFDE",
-  certegroen3 = "CAD393",
+  certezachtlila2 = "#E2D2E2",
+  certeblauw3 = "#14AFDE",
+  certegroen3 = "#CAD393",
   certeroze3 = "#EAA9C2",
   certegeel3 = "#F5EA89",
   certelila3 = "#D3BED7",
-  certezachtlila3 = "E9DCE9",
-  certeblauw4 = "93E1F8",
-  certegroen4 = "E0E6BD",
+  certezachtlila3 = "#E9DCE9",
+  certeblauw4 = "#93E1F8",
+  certegroen4 = "#E0E6BD",
   certeroze4 = "#F3CADA",
   certegeel4 = "#FBF4B6",
   certelila4 = "#E5D8E7",
-  certezachtlila4 = "F2EAF2",
-  certeblauw5 = "CCEEF9",
-  certegroen5 = "EFF1DF",
+  certezachtlila4 = "#F2EAF2",
+  certeblauw5 = "#CCEEF9",
+  certegroen5 = "#EFF1DF",
   certeroze5 = "#F8E6ED",
   certegeel5 = "#FBF8DD",
   certelila5 = "#F2ECF3",
-  certezachtlila5 = "F8F5F8",
-  certeblauw6 = "F0F8FB",
-  certegroen6 = "F9FAF5",
+  certezachtlila5 = "#F8F5F8",
+  certeblauw6 = "#F0F8FB",
+  certegroen6 = "#F9FAF5",
   certeroze6 = "#FCF7F9",
   certegeel6 = "#FCFCF5",
   certelila6 = "#FAF9FB",
-  certezachtlila6 = "FDFCFD",
-  certeblauw0 = "043342",
-  certegroen0 = "4B5220",
+  certezachtlila6 = "#FDFCFD",
+  certeblauw0 = "#043342",
+  certegroen0 = "#4B5220",
   certeroze0 = "#BE2A63",
   certegeel0 = "#AA9909",
   certelila0 = "#8C5994",
-  certezachtlila0 = "C8A2C8"
+  certezachtlila0 = "#C8A2C8"
 )
+
+viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket", "mako", "turbo")
 
 #' Certe Colour Vector
 #' 
 #' This is a character vector with all Certe colours.
 #' @export
+#' @examples 
+#' certe.colours
 "certe.colours"
 
 #' Colours from \R, Certe, Viridis and More
 #'
 #' Colours from \R, Certe, viridis and more. The output prints in the console with the actual colours.
-#' @param x colour or colour palette name. Certe colours will be used from the [certe.colours] object. Input can be any colour from base \R [colours()], or:
+#' @param x colour or colour palette name. Certe colours will be used from the [certe.colours] object. Input can be:
 #' * `"certe"`
 #' * `"certe0"` until `"certe6"` (higher numbers give lighter colours)
 #' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 until 6)
 #' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 3)
-#' * `"R3"` for colours from \R version 3
-#' * `"R4"` for colours from \R version 4
-#' * `"viridis"` for colourblind-safe colours
-#' * `"topo"`
-#' * `"heatmap"`
-#' * `"rainbow"`
-#' * `"terrain"`
-#' * `"greyscale"` or `"grayscale"`
+#' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridis.colours, '"``', collapse = "")`
+#' * One of the built-in palettes in \R: `r paste0('\n  - ``"', c(palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
+#' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('``"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"``', collapse = ", ")`
 #' @param length size of the vector to be returned
 #' @param opacity amount of opacity (0 = solid, 1 = transparent)
 #' @param ... not used at the moment
+#' @details Certe colours will be chosen as divergent as possible if the required output length is not too high. For example:
+#' 
+#' * `x = "certe"` tries to only return the `"certe"` colours (`"certeblauw"`, `"certegroen"`, ...), the `"certe3"` colours (`"certeblauw3"`, `"certegroen3"`, ...) and the `"certe5"` colours (`"certeblauw5"`, `"certegroen5"`, ...)
+#' * `x = "certe2"` tries to only return the regular `"certe2"` colours (`"certeblauw2"`, `"certegroen2"`, ...), the `"certe4"` colours (`"certeblauw4"`, `"certegroen4"`, ...) and the `"certe6"` colours (`"certeblauw6"`, `"certegroen6"`, ...)
+#' * `x = "certe3"` tries to only return the `"certe3"` colours (`"certeblauw3"`, `"certegroen3"`, ...) and the `"certe5"` colours (`"certeblauw5"`, `"certegroen5"`, ...)
 #' @return [character] vector in HTML format (i.e., `"#AABBCC"`) with new class `colourpicker`
 #' @rdname colourpicker
-#' @importFrom grDevices rainbow heat.colors terrain.colors topo.colors col2rgb colours grey.colors palette.colors rgb
+#' @importFrom grDevices rainbow heat.colors terrain.colors topo.colors col2rgb colours grey.colors palette.colors palette.pals rgb
 #' @importFrom viridisLite viridis
 #' @importFrom certetoolbox `%like%` `%unlike%`
 #' @export
 #' @examples
 #' colourpicker("certegroen")
 #' colourpicker("certe", 5)
-#' colourpicker(c("certeblauw", "red", "tan1", "ffa", "#FFAA00"))
+#' colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))
+#' 
+#' # Certe colours
+#' barplot(12:1, col = colourpicker("certe", 12), main = "'certe': uses 'certe' + 'certe3'")
+#' barplot(12:1, col = colourpicker("certe2", 12), main = "'certe2': uses 'certe2' + 'certe4'")
+#' barplot(12:1, col = colourpicker("certe3", 12), main = "'certe3': uses 'certe3' + 'certe5'")
+#' 
+#' # default colours of R3
+#' barplot(1:7, col = colourpicker("R3", 7))
+#' 
+#' # default colours of R4
+#' barplot(1:7, col = colourpicker("R4", 7))
+#' 
+#' # all colourblind-safe colour palettes from the viridisLite package
+#' barplot(1:7, col = colourpicker("viridis", 7))
+#' barplot(1:7, col = colourpicker("magma", 7))
 colourpicker <- function(x, length = 1, opacity = 0, ...) {
   if (is.null(x)) {
     return("#XXXXXX")
@@ -139,14 +158,30 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
       
       if (x == "certe") {
         certe_selection <- certe.colours[names(certe.colours) %unlike% "0"]
+        if (length <= sum(names(certe_selection) %unlike% "[246]")) {
+          # since we don't need so many colours, only keep e.g. certeblauw, certeblauw3, certeblauw5
+          certe_selection <- certe_selection[names(certe_selection) %unlike% "[246]"]
+        }
       } else if (x == "certe0") {
-        certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+0"]
+        # dark Certe colours
+        certe_selection <- c(certe.colours[names(certe.colours) %like% "certe[a-z]+0"],
+                             certe.colours[names(certe.colours) %like% "certe[a-z]+$"],
+                             certe.colours[names(certe.colours) %like% "certe[a-z]+[246]"])
       } else if (x == "certe2") {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+[2-6]"]
+        if (length <= sum(names(certe_selection) %unlike% "[35]")) {
+          certe_selection <- certe_selection[names(certe_selection) %unlike% "[35]"]
+        }
       } else if (x == "certe3") {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+[3-6]"]
+        if (length <= sum(names(certe_selection) %unlike% "[46]")) {
+          certe_selection <- certe_selection[names(certe_selection) %unlike% "[46]"]
+        }
       } else if (x == "certe4") {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+[4-6]"]
+        if (length <= sum(names(certe_selection) %unlike% "5")) {
+          certe_selection <- certe_selection[names(certe_selection) %unlike% "5"]
+        }
       } else if (x == "certe5") {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+[5-6]"]
       } else if (x == "certe6") {
@@ -174,29 +209,11 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
       }
       x <- certe_selection[seq_len(min(length, length(certe_selection)))]
       
-    } else if (x == "viridis") {
-      x <- viridis(length)
-      
-    } else if (x == "r3") {
-      x <- palette.colors(length, palette = "R3")
-      
-    } else if (x == "r4") {
-      x <- palette.colors(length, palette = "R4")
-      
-    } else if (x %in% c("rainbow")) {
-      x <- rainbow(length)
-      
-    } else if (x %in% c("heat", "heatmap")) {
-      x <- heat.colors(length)
-      
-    } else if (x %in% c("terrain")) {
-      x <- terrain.colors(length)
-      
-    } else if (x %in% c("topo", "geo")) {
-      x <- topo.colors(length)
-      
-    } else if (x %in% c("greyscale", "grayscale")) {
-      x <- grey.colors(length)
+    } else if (x %in% viridis.colours) {
+      x <- viridis(length, option = x)
+    
+    } else if (x %in% tolower(palette.pals())) {
+      x <- palette.colors(length, palette = x)
     }
     
     if (length > 1 & length(x) == 1) {
@@ -230,6 +247,9 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     x[missing_hastag] <- paste0("#", x[missing_hastag])
   }
   
+  # some colours add FF as opacity to HTML colour - remove them
+  x[which(nchar(x) > 7 & x %like% "FF$")] <- substr(x[which(nchar(x) > 7 & x %like% "FF$")], 1, 7)
+  
   invalid <- x %unlike% "^#[0-F]{6}$"
   if (any(invalid)) {
     warning("Invalid colours, replacing with grey: ", paste0(unique(x[invalid]), collapse = ", "), call. = FALSE)
@@ -245,9 +265,6 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     x <- c(x[1:length(x)],
            grey.colors(length - length(x), start = 0.7, end = 0.95))
   }
-  
-  # some colours add FF as opacity to HTML colour - remove them
-  x[which(nchar(x) > 7 & x %like% "FF$")] <- substr(x[which(nchar(x) > 7 & x %like% "FF$")], 1, 7)
   
   # so it's now hexadecimal; paste alpha to it
   if (opacity > 0) {

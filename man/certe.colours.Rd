@@ -13,4 +13,7 @@ certe.colours
 \description{
 This is a character vector with all Certe colours.
 }
+\examples{
+certe.colours
+}
 \keyword{datasets}
