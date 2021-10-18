@@ -91,20 +91,26 @@
 <div id="the-certestyle-package-for-r" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#the-certestyle-package-for-r" class="anchor"></a>The <code>certestyle</code> package for R</h1></div>
-<p><img src="./man/figures/logo.svg" height="150px"></p>
+
+<p><img src="./logo.svg" height="150px"></p>
 <div id="general-information" class="section level3">
 <h3 class="hasAnchor">
 <a href="#general-information" class="anchor"></a>General Information</h3>
 <p>This is an R package developed by <a href="https://www.certe.nl"><strong>Certe</strong></a>, a non-profit medical laboratory in the Northern Netherlands that provides routine diagnostic tests for clinical chemistry and clinical microbiology, as well as medical logistics and a thrombosis service. Their department of Medical Epidemiology, which developed this R package, conducts (and develops new methods for) medical data analyses, for both routine workflows and scientific research.</p>
-<p>For all our packages, please visit <a href="https://github.com/certe-medical-epidemiology">our GitHub organisation overview</a>. Our R packages are not on CRAN since their use is primarily intended for own staff, but they are publicly available to support open science. All our R packages are published <a href="https://certe-medical-epidemiology.r-universe.dev">here at R-universe</a>, allowing anyone to install and update the packages using common methods, such as the RStudio menu bar or <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. To use the R-universe of Certe Medical Epidemiology, run:</p>
+<p>For all our packages, please visit <a href="https://github.com/certe-medical-epidemiology">our GitHub organisation overview</a>. Our R packages are not on CRAN since their use is primarily intended for own staff, but they are publicly available to support open science.</p>
+<div id="r-universe" class="section level4">
+<h4 class="hasAnchor">
+<a href="#r-universe" class="anchor"></a>R-universe</h4>
+<p>All our R packages are published <a href="https://certe-medical-epidemiology.r-universe.dev">here at R-universe</a>, allowing anyone to install and update the packages using common methods, such as the RStudio menu bar or <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. To use the R-universe of Certe Medical Epidemiology, run:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># set the repos option to include the Certe R-universe</span>
+<code class="sourceCode R"><span class="co"># set the repos option to include the Certe Medical Epidemiology R-universe</span>
 <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
   CerteMedEpi <span class="op">=</span> <span class="st">"https://certe-medical-epidemiology.r-universe.dev"</span>,
   CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># our 'loader package' certedata installs all Certe R packages:</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"certedata"</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 <div id="copyright-regarding-this-software" class="section level3">
 <h3 class="hasAnchor">
@@ -130,7 +136,8 @@
 <li>Comes with a LIMITATION of liability</li>
 <li>Comes with NO warranty</li>
 </ul>
-<p>© Certe Medical Diagnostics &amp; Advice Foundation. Certe is the sole copyright holder and funder of this software.</p>
+<hr>
+<p>© Certe Medical Diagnostics &amp; Advice Foundation - <a href="https://www.certe.nl">www.certe.nl</a>. Certe is the sole copyright holder and funder of this software.</p>
 </div>
 </div>
   </div>
@@ -160,7 +167,16 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://certe-medical-epidemiology.r-universe.dev"><img src="https://certe-medical-epidemiology.r-universe.dev/badges/certestyle?color=01617e" alt="certestyle status badge"></a></li>
+<li><a href="https://codecov.io/gh/certe-medical-epidemiology/certestyle"><img src="https://codecov.io/gh/certe-medical-epidemiology/certestyle/branch/main/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://github.com/certe-medical-epidemiology/certestyle/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/certe-medical-epidemiology/certestyle/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main" alt="R-CMD-check"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/certe-medical-epidemiology/certestyle/overview/main"><img src="https://www.codefactor.io/repository/github/certe-medical-epidemiology/certestyle/badge/main" alt="CodeFactor"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
