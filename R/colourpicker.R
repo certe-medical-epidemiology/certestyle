@@ -131,9 +131,6 @@ viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket
 #' barplot(1:7, col = colourpicker("viridis", 7))
 #' barplot(1:7, col = colourpicker("magma", 7))
 colourpicker <- function(x, length = 1, opacity = 0, ...) {
-  if (is.null(x)) {
-    return("#XXXXXX")
-  }
   
   x <- tolower(x)
   opacity <- as.double(opacity)

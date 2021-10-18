@@ -1,8 +1,8 @@
 # The `certestyle` package for R
 
-### General Information
+<img src="./logo.svg" height="150px" />
 
-<img src="https://www.certe.nl/img/logo.png" height="144px" />
+### General Information
 
 This is an R package developed by [**Certe**](https://www.certe.nl), a non-profit medical laboratory in the Northern Netherlands that provides routine diagnostic tests for clinical chemistry and clinical microbiology, as well as medical logistics and a thrombosis service. Their department of Medical Epidemiology, which developed this R package, conducts (and develops new methods for) medical data analyses, for both routine workflows and scientific research.
 
