@@ -1,6 +1,6 @@
 # The `certestyle` package for R
 
-<img src="./logo.svg" height="150px" />
+<img src="./man/figures/logo.svg" height="150px" />
 
 ### General Information
 
