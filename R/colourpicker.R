@@ -17,74 +17,7 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-# if the Certe colours change, run below function again and change these lines
-update_certe_cols <- function() {
-  expand_colours(
-    list(
-      certeblauw = c(1, 97, 126),
-      certegroen = c(139, 153, 52),
-      certeroze = c(224, 72, 131),
-      certegeel = c(255, 228, 0),
-      certelila = c(171, 121, 179),
-      certezachtlila = c(214, 182, 214)
-    ),
-    extended_spectrum = TRUE)
-}
-
-certe.colours <- c(
-  certeblauw = "#01617E",
-  certegroen = "#8B9934",
-  certeroze = "#E04883",
-  certegeel = "#FFE400",
-  certelila = "#AB79B3",
-  certezachtlila = "#D6B6D6",
-  certeblauw2 = "#1691B6",
-  certegroen2 = "#B8C375",
-  certeroze2 = "#E192B1",
-  certegeel2 = "#EEE06A",
-  certelila2 = "#C6ACCA",
-  certezachtlila2 = "#E2D2E2",
-  certeblauw3 = "#14AFDE",
-  certegroen3 = "#CAD393",
-  certeroze3 = "#EAA9C2",
-  certegeel3 = "#F5EA89",
-  certelila3 = "#D3BED7",
-  certezachtlila3 = "#E9DCE9",
-  certeblauw4 = "#93E1F8",
-  certegroen4 = "#E0E6BD",
-  certeroze4 = "#F3CADA",
-  certegeel4 = "#FBF4B6",
-  certelila4 = "#E5D8E7",
-  certezachtlila4 = "#F2EAF2",
-  certeblauw5 = "#CCEEF9",
-  certegroen5 = "#EFF1DF",
-  certeroze5 = "#F8E6ED",
-  certegeel5 = "#FBF8DD",
-  certelila5 = "#F2ECF3",
-  certezachtlila5 = "#F8F5F8",
-  certeblauw6 = "#F0F8FB",
-  certegroen6 = "#F9FAF5",
-  certeroze6 = "#FCF7F9",
-  certegeel6 = "#FCFCF5",
-  certelila6 = "#FAF9FB",
-  certezachtlila6 = "#FDFCFD",
-  certeblauw0 = "#043342",
-  certegroen0 = "#4B5220",
-  certeroze0 = "#BE2A63",
-  certegeel0 = "#AA9909",
-  certelila0 = "#8C5994",
-  certezachtlila0 = "#C8A2C8"
-)
-
-viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket", "mako", "turbo")
-
-#' Certe Colour Vector
-#' 
-#' This is a character vector with all Certe colours.
-#' @export
-#' @examples 
-#' certe.colours
-"certe.colours"
+viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket", "mako", "turbo")
 
 #' Colours from \R, Certe, Viridis and More
 #'
@@ -94,7 +27,7 @@ viridis.colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "rocket
 #' * `"certe0"` to `"certe6"` (higher numbers give lighter colours)
 #' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 to 6)
 #' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 3)
-#' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridis.colours, '"``', collapse = "")`
+#' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridisLite_colours, '"``', collapse = "")`
 #' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - ``"', c(palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
 #' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('``"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"``', collapse = ", ")`
 #' @param length size of the vector to be returned
@@ -218,7 +151,7 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
       }
       x <- certe_selection[seq_len(min(length, length(certe_selection)))]
       
-    } else if (x %in% viridis.colours) {
+    } else if (x %in% viridisLite_colours) {
       x <- viridis(length, option = x)
       
     } else if (x %in% tolower(palette.pals())) {
@@ -343,133 +276,3 @@ print.colourpicker <- function(x, ...) {
   invisible(x)
 }
 
-# for expanding the colours from dark to light
-#' @importFrom dplyr case_when
-expand_colours <- function(colour.list, extended_spectrum) {
-  
-  lightness_values <- c(-0.30, 0.35, 0.50, 0.70, 0.85, 0.95)
-  saturation_values <- c( 0.9, 0.80, 0.85, 0.90, 0.80, 0.6)
-  if (extended_spectrum == FALSE) {
-    lightness_values <- lightness_values[c(1, 3, 6)]
-    saturation_values <- saturation_values[c(1, 3, 6)]
-  }
-  
-  # get HSL (hue, saturation, lightness); we will change the L (0 is black, 1 is white)
-  colour.list.hsl <- lapply(colour.list, function(x) rgb2hsl(x[1], x[2], x[3]))
-  
-  for (i in 1:length(colour.list)) {
-    df_col <- gsub("(.*)[0-5]$", "\\1", paste0(names(colour.list)[i]))
-    hsl <- colour.list.hsl[[df_col]]
-    for (tint in c(0, 2:length(lightness_values))) {
-      s_new <- case_when(tint == 0 ~ hsl[2] * saturation_values[1],
-                         tint == 2 ~ hsl[2] * saturation_values[2],
-                         tint == 3 ~ hsl[2] * saturation_values[3],
-                         tint == 4 ~ hsl[2] * saturation_values[4],
-                         tint == 5 ~ hsl[2] * saturation_values[5],
-                         tint == 6 ~ hsl[2] * saturation_values[6],
-                         TRUE ~ hsl[2])
-      if (df_col %like% "certeblauw") {
-        if (tint == 0) {
-          l_new <- hsl[3] + ((1 - hsl[3]) * -0.15)
-        } else if (tint == 2) {
-          l_new <- hsl[3] + ((1 - hsl[3]) * 0.20)
-        } else if (tint == 3 & extended_spectrum == TRUE) {
-          l_new <- hsl[3] + ((1 - hsl[3]) * 0.30)
-        } else {
-          l_new <- hsl[3] + ((1 - hsl[3]) * lightness_values[tint])
-        }
-      } else {
-        # all except certeblauw
-        l_new <- case_when(tint == 0 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[1]),
-                           tint == 2 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[2]),
-                           tint == 3 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[3]),
-                           tint == 4 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[4]),
-                           tint == 5 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[5]),
-                           tint == 6 ~ hsl[3] + ((1 - hsl[3]) * lightness_values[6]),
-                           TRUE ~ hsl[3])
-      }
-      colour.list.hsl[[length(colour.list.hsl) + 1]] <- c(hsl[1], s_new, l_new)
-      names(colour.list.hsl)[length(colour.list.hsl)] <- paste0(df_col, tint)
-    }
-  }
-  colour.list <- lapply(colour.list.hsl, function(x) hsl2rgb(x[1], x[2], x[3]))
-  colour.list <- sapply(colour.list, function(x) rgb(x[1], x[2], x[3], maxColorValue = 255))
-  colour.list
-}
-
-# below from plotwidgets::rgb2hsl and plotwidgets::hsl2rgb under same license
-hsl2rgb <- function(h, s, l, a = NULL) {
-  if (is.null(a)) {
-    hsl <- as.matrix(c(h, s, l))
-  } else {
-    hsl <- as.matrix(c(h, s, l, a))
-  }
-  
-  if (nrow(hsl) == 4) {
-    alpha <- hsl[4, , drop = F]
-    hsl <- hsl[-4, , drop = F]
-  }
-  else {
-    alpha <- NULL
-  }
-  H <- hsl[1, ]
-  S <- hsl[2, ]
-  L <- hsl[3, ]
-  C <- (1 - abs(2 * L - 1)) * S
-  X <- C * (1 - abs(((H/60)%%2) - 1))
-  m <- L - C/2
-  rgb <- matrix(0, ncol = ncol(hsl), nrow = 3)
-  rownames(rgb) <- c("R", "G", "B")
-  iX <- c(2, 1, 3, 2, 1, 3)
-  iC <- c(1, 2, 2, 3, 3, 1)
-  for (i in 1:6) {
-    sel <- 60 * (i - 1) <= H & H < 60 * i
-    kX <- iX[i]
-    kC <- iC[i]
-    rgb[kX, sel] <- X[sel]
-    rgb[kC, sel] <- C[sel]
-  }
-  rgb <- rgb + rep(m, each = 3)
-  rgb <- round(rgb * 255)
-  if (!is.null(alpha))
-    rgb <- rbind(rgb, alpha = alpha)
-  as.double(rgb)
-}
-
-rgb2hsl <- function(r, g, b, a = NULL) {
-  if (is.null(a)) {
-    rgb <- as.matrix(c(r, g, b), )
-  } else {
-    rgb <- as.matrix(c(r, g, b, a))
-  }
-  
-  if (nrow(rgb) == 4) {
-    alpha <- rgb[4, , drop = F]
-    rgb <- rgb[-4, , drop = F]
-  }
-  else {
-    alpha <- NULL
-  }
-  rgb <- rgb/255
-  mins <- apply(rgb, 2, min)
-  maxs <- apply(rgb, 2, max)
-  d <- maxs - mins
-  L <- (maxs + mins)/2
-  S <- d/(1 - abs(2 * L - 1))
-  sel <- d == 0
-  S[sel] <- 0
-  wmax <- apply(rgb, 2, which.max)
-  H <- L
-  HR <- (rgb[2, ] - rgb[3, ])/(maxs - mins)
-  HG <- 2 + (rgb[3, ] - rgb[1, ])/(maxs - mins)
-  HB <- 4 + (rgb[1, ] - rgb[2, ])/(maxs - mins)
-  sel <- wmax == 1
-  H[sel] <- HR[sel]
-  sel <- wmax == 2
-  H[sel] <- HG[sel]
-  sel <- wmax == 3
-  H[sel] <- HB[sel]
-  H <- (H * 60)%%360
-  H[mins == maxs] <- 0
-  as.double(rbind(H = H, S = S, L = L, alpha = alpha))
-}

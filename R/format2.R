@@ -180,7 +180,6 @@ format2.difftime <- function(x,
 
 #' @rdname format2
 #' @importFrom lubridate month quarter
-#' @importFrom stringr str_replace_all
 #' @importFrom cleaner format_datetime
 #' @export
 format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
@@ -189,7 +188,10 @@ format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
   
   if (!is.null(locale)) {
     if (locale %like% "^[a-z]{2}$") {
-      locale <- paste0(toupper(locale), "_", tolower(locale))
+      locale <- paste0(tolower(locale), "_", toupper(locale))
+    }
+    if (Sys.getlocale("LC_TIME") %like% ".UTF-8" & locale %unlike% ".UTF-8") {
+      locale <- paste0(locale, ".UTF-8")
     }
   } else {
     locale <- Sys.getlocale("LC_TIME")
@@ -227,13 +229,14 @@ format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
   if (any(df$form %like% "(q|qq)")) {
     df$quarter <- quarter(df$dat)
     df$quarter[df$form %like% "qq"] <- paste0("Q", df$quarter[df$form %like% "qq"])
-    df$form <- str_replace_all(df$form, '(q|qq)+', df$quarter)
+    df$form <- gsub(pattern = '(q|qq)+', replacement = df$quarter, x = df$form)
   }
   
   if (!is.null(old_option)) {
     tryCatch(Sys.setlocale("LC_TIME", locale = old_option),
              error = function(e) warning("Unable to reset original language when running: ",
-                                         'Sys.setlocale("LC_TIME", locale = "', old_option, '")'))
+                                         'Sys.setlocale("LC_TIME", locale = "', old_option, '")',
+                                         call. = FALSE))
   }
   
   if (format == "unix") {

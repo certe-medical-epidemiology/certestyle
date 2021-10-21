@@ -17,25 +17,55 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-test_that("colourpicker works", {
-  expect_identical(colourpicker("viridis", 10),
-                   colourpicker(viridisLite::viridis(10)))
-  expect_identical(palette.colors(8, "R3"),
-                   as.character(colourpicker("R3", 8)))
-  expect_identical(palette.colors(8, "R4"),
-                   as.character(colourpicker("R4", 8)))
-  
-  
-  expect_identical(as.character(colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))),
-                   c("#01617E", "#FF0000", "#FFA54F", "#FFFFAA", "#FFAA00"))
-  
-  expect_identical(as.character(colourpicker("certe", 12)),
-                   unname(c(certe.colours[1:6], certe.colours[13:18])))
-  expect_identical(as.character(colourpicker("certe2", 12)),
-                   unname(c(certe.colours[7:12], certe.colours[19:24])))
-  expect_identical(as.character(colourpicker("certe3", 12)),
-                   unname(c(certe.colours[13:18], certe.colours[25:30])))
-  
-  expect_identical(as.character(colourpicker("red")), "#FF0000")
-  expect_identical(as.character(colourpicker("red", opacity = 0.5)), "#FF000080")
-})
+#' Certe Colour Vector
+#' 
+#' This is a character vector with all Certe colours. It is used by [colourpicker()].
+#' @export
+#' @examples 
+#' certe.colours
+"certe.colours"
+
+certe.colours <- c(
+  certeblauw = "#01617E",
+  certegroen = "#8B9934",
+  certeroze = "#E04883",
+  certegeel = "#FFE400",
+  certelila = "#AB79B3",
+  certezachtlila = "#D6B6D6",
+  certeblauw2 = "#1691B6",
+  certegroen2 = "#B8C375",
+  certeroze2 = "#E192B1",
+  certegeel2 = "#EEE06A",
+  certelila2 = "#C6ACCA",
+  certezachtlila2 = "#E2D2E2",
+  certeblauw3 = "#14AFDE",
+  certegroen3 = "#CAD393",
+  certeroze3 = "#EAA9C2",
+  certegeel3 = "#F5EA89",
+  certelila3 = "#D3BED7",
+  certezachtlila3 = "#E9DCE9",
+  certeblauw4 = "#93E1F8",
+  certegroen4 = "#E0E6BD",
+  certeroze4 = "#F3CADA",
+  certegeel4 = "#FBF4B6",
+  certelila4 = "#E5D8E7",
+  certezachtlila4 = "#F2EAF2",
+  certeblauw5 = "#CCEEF9",
+  certegroen5 = "#EFF1DF",
+  certeroze5 = "#F8E6ED",
+  certegeel5 = "#FBF8DD",
+  certelila5 = "#F2ECF3",
+  certezachtlila5 = "#F8F5F8",
+  certeblauw6 = "#F0F8FB",
+  certegroen6 = "#F9FAF5",
+  certeroze6 = "#FCF7F9",
+  certegeel6 = "#FCFCF5",
+  certelila6 = "#FAF9FB",
+  certezachtlila6 = "#FDFCFD",
+  certeblauw0 = "#043342",
+  certegroen0 = "#4B5220",
+  certeroze0 = "#BE2A63",
+  certegeel0 = "#AA9909",
+  certelila0 = "#8C5994",
+  certezachtlila0 = "#C8A2C8"
+)
