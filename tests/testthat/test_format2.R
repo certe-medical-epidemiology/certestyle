@@ -18,11 +18,13 @@
 # ===================================================================== #
 
 test_that("format2 works", {
-  expect_identical(format2(Sys.Date(), "dd-mm-yyyy"),
-                   format(Sys.Date(), "%d-%m-%Y"))
+  dt <- Sys.Date()
+  expect_identical(format2(dt, "dd-mm-yyyy"),
+                   format(dt, "%d-%m-%Y"))
   
-  expect_identical(format2(Sys.time()),
-                   format(Sys.time(), "%H:%M:%S"))
+  tm <- Sys.time()
+  expect_identical(format2(tm),
+                   format(tm, "%H:%M:%S"))
   
   expect_identical(format2(0.123), "0,12")
   expect_identical(format2(0.123, percent = TRUE), "12,3%")
