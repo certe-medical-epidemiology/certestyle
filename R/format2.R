@@ -32,6 +32,7 @@
 #' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
 #' @rdname format2
 #' @export
+#' @return [format2()] always returns a [character].
 #' @examples
 #' format2("2021-01-01")
 #' 
@@ -70,179 +71,22 @@ format2.default <- function(x,
             big.mark = big.mark,
             ...)
   } else {
-    if (identical(class(x), "NULL")) {
+    if (identical(class(x), "NULL") || inherits(x, c("list", "formula", "expression", "matrix"))) {
       format(x, ...)
-    } else if (any(c("list", "formula", "expression", "matrix") %in% class(x))) {
-      format(x, ...)
-    } else if (guess_parser(x) == "date") {
+    } else if (tryCatch(guess_parser(x) == "date", error = function(e) FALSE)) {
+      # fails on factor, so wrapped it in tryCatch()
       format2(as.Date(x), format = format, locale = locale, ...)
     } else if (all(is.double2(x))) {
-      format2.numeric(x,
-                      round = round,
-                      force.decimals = force.decimals,
-                      decimal.mark = decimal.mark,
-                      big.mark = big.mark,
-                      ...)
+      format2(as.double2(x),
+              round = round,
+              force.decimals = force.decimals,
+              decimal.mark = decimal.mark,
+              big.mark = big.mark,
+              ...)
     } else {
+      # fall back to base R format(), e.g. for character
       format(x, digits = round, ...)
     }
-  }
-}
-
-#' @rdname format2
-#' @importFrom cleaner percentage
-#' @export
-format2.percentage <- function(x,
-                               round = NULL,
-                               decimal.mark = ",",
-                               big.mark = ".",
-                               ...) {
-  
-  if (length(x) == 0) {
-    return(character())
-  }
-  percentage(as.double(x),
-             digits = round,
-             decimal.mark = decimal.mark,
-             big.mark = big.mark)
-}
-
-#' @rdname format2
-#' @export
-format2.percent <- function(...) {
-  .Deprecated("format2.percentage()", package = "certestyle")
-  format2.percentage(...)
-}
-
-#' @rdname format2
-#' @export
-format2.POSIXct <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
-  if (inherits(x, "POSIXt")) {
-    # so it's a time object
-    if (missing(format)) {
-      format2.POSIXt(x = x, locale = locale, ...)
-    } else {
-      format2.POSIXt(x = x, format = format, locale = locale, ...)
-    }
-  } else {
-    format2.Date(x = x, format = format, locale = locale, ...)
-  }
-}
-
-#' @rdname format2
-#' @export
-format2.POSIXlt <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
-  format2.Date(x = x, format = format, locale = locale, ...)
-}
-
-#' @rdname format2
-#' @export
-format2.POSIXt <- function(x, format = "HH:MM:SS", locale = "nl", ...) {
-  format2.Date(x = x, format = format, locale = locale, ...)
-}
-
-#' @rdname format2
-#' @export
-format2.hms <- function(x,
-                        format = "HH:MM:SS",
-                        round = 2,
-                        force.decimals = FALSE,
-                        decimal.mark = ",",
-                        big.mark = ".",
-                        ...) {
-  if (is.double2(x)) {
-    format2.numeric(x,
-                    round = round,
-                    force.decimals = force.decimals,
-                    percent = FALSE,
-                    decimal.mark = decimal.mark,
-                    ...)
-  } else {
-    format2.Date(as.POSIXct(x), format = format, ...)
-  }
-}
-
-#' @rdname format2
-#' @export
-format2.difftime <- function(x,
-                             round = 2,
-                             force.decimals = FALSE,
-                             decimal.mark = ",",
-                             big.mark = ".",
-                             ...) {
-  format2.numeric(x,
-                  round = round,
-                  force.decimals = force.decimals,
-                  percent = FALSE,
-                  decimal.mark = decimal.mark,
-                  ...)
-}
-
-#' @rdname format2
-#' @importFrom lubridate month quarter
-#' @importFrom cleaner format_datetime
-#' @export
-format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
-  
-  format <- format_datetime(format)
-  
-  if (!is.null(locale)) {
-    if (locale %like% "^[a-z]{2}$") {
-      locale <- paste0(tolower(locale), "_", toupper(locale))
-    }
-    if (Sys.getlocale("LC_TIME") %like% ".UTF-8" & locale %unlike% ".UTF-8") {
-      locale <- paste0(locale, ".UTF-8")
-    }
-  } else {
-    locale <- Sys.getlocale("LC_TIME")
-  }
-  
-  # bij alleen maanden een factor retourneren, zodat labels bij plot2() kloppen
-  if (format == "%B") {
-    # same as format = "mmmm"
-    return(month(x, label = TRUE, abbr = FALSE, locale = locale))
-  } else if (format == "%b") {
-    # same as format = "mmm"
-    return(month(x, label = TRUE, abbr = TRUE, locale = locale))
-  }
-  
-  if (Sys.getlocale("LC_TIME") %unlike% locale) {
-    old_option <- Sys.getlocale("LC_TIME")
-    Sys.setlocale("LC_TIME", locale = locale)
-  } else {
-    old_option <- NULL
-  }
-  
-  if (inherits(x, c("hms", "difftime", "POSIXlt"))) {
-    if (all(x %like% '^[0-9]+:[0-9]+')) {
-      x <- paste("1970-01-01", x)
-    }
-    df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
-  } else {
-    df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
-  }
-  
-  # remove extra spaces
-  df$form <- gsub(" +", " ", trimws(df$form))
-  
-  # replace quarters
-  if (any(df$form %like% "(q|qq)")) {
-    df$quarter <- quarter(df$dat)
-    df$quarter[df$form %like% "qq"] <- paste0("Q", df$quarter[df$form %like% "qq"])
-    df$form <- gsub(pattern = '(q|qq)+', replacement = df$quarter, x = df$form)
-  }
-  
-  if (!is.null(old_option)) {
-    tryCatch(Sys.setlocale("LC_TIME", locale = old_option),
-             error = function(e) warning("Unable to reset original language when running: ",
-                                         'Sys.setlocale("LC_TIME", locale = "', old_option, '")',
-                                         call. = FALSE))
-  }
-  
-  if (format == "unix") {
-    as.double(df$form)
-  } else {
-    df$form
   }
 }
 
@@ -301,6 +145,144 @@ format2.numeric <- function(x,
   }
 }
 
+#' @rdname format2
+#' @importFrom cleaner percentage
+#' @export
+format2.percentage <- function(x,
+                               round = NULL,
+                               decimal.mark = ",",
+                               big.mark = ".",
+                               ...) {
+  
+  if (length(x) == 0) {
+    return(character())
+  }
+  percentage(as.double(x),
+             digits = round,
+             decimal.mark = decimal.mark,
+             big.mark = big.mark)
+}
+
+#' @rdname format2
+#' @export
+format2.percent <- function(...) {
+  .Deprecated("format2.percentage()", package = "certestyle")
+  format2.percentage(...)
+}
+
+#' @rdname format2
+#' @export
+format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
+  coerce_datetime(x = x, format = format, locale = locale, ...)
+}
+
+#' @rdname format2
+#' @export
+format2.POSIXt <- function(x, format = "HH:MM:SS", locale = "nl", ...) {
+  coerce_datetime(x = x, format = format, locale = locale, ...)
+}
+
+#' @rdname format2
+#' @export
+format2.hms <- function(x,
+                        format = "HH:MM:SS",
+                        round = 2,
+                        force.decimals = FALSE,
+                        decimal.mark = ",",
+                        big.mark = ".",
+                        ...) {
+  if (is.double2(x)) {
+    format2.numeric(x,
+                    round = round,
+                    force.decimals = force.decimals,
+                    percent = FALSE,
+                    decimal.mark = decimal.mark,
+                    ...)
+  } else {
+    coerce_datetime(as.POSIXct(x), format = format, ...)
+  }
+}
+
+#' @rdname format2
+#' @export
+format2.difftime <- function(x,
+                             round = 2,
+                             force.decimals = FALSE,
+                             decimal.mark = ",",
+                             big.mark = ".",
+                             ...) {
+  format2.numeric(x,
+                  round = round,
+                  force.decimals = force.decimals,
+                  percent = FALSE,
+                  decimal.mark = decimal.mark,
+                  ...)
+}
+
+#' @importFrom lubridate month quarter
+#' @importFrom cleaner format_datetime
+coerce_datetime <- function(x, format, locale, ...) {
+  
+  format <- format_datetime(format)
+  
+  if (!is.null(locale)) {
+    if (locale %like% "^[a-z]{2}$") {
+      locale <- paste0(tolower(locale), "_", toupper(locale))
+    }
+    if (Sys.getlocale("LC_TIME") %like% ".UTF-8" & locale %unlike% ".UTF-8") {
+      locale <- paste0(locale, ".UTF-8")
+    }
+  } else {
+    locale <- Sys.getlocale("LC_TIME")
+  }
+  
+  if (format == "%B") {
+    # same as format = "mmmm"
+    return(month(x, label = TRUE, abbr = FALSE, locale = locale))
+  } else if (format == "%b") {
+    # same as format = "mmm"
+    return(month(x, label = TRUE, abbr = TRUE, locale = locale))
+  }
+  
+  if (Sys.getlocale("LC_TIME") %unlike% locale) {
+    old_option <- Sys.getlocale("LC_TIME")
+    Sys.setlocale("LC_TIME", locale = locale)
+  } else {
+    old_option <- NULL
+  }
+  
+  if (inherits(x, c("hms", "difftime", "POSIXlt"))) {
+    if (all(x %like% '^[0-9]+:[0-9]+')) {
+      x <- paste("1970-01-01", x)
+    }
+    df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
+  } else {
+    df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
+  }
+  
+  # remove extra spaces
+  df$form <- gsub(" +", " ", trimws(df$form))
+  
+  # replace quarters
+  if (any(df$form %like% "(q|qq)")) {
+    df$quarter <- quarter(df$dat)
+    df$quarter[df$form %like% "qq"] <- paste0("Q", df$quarter[df$form %like% "qq"])
+    df$form <- gsub(pattern = '(q|qq)+', replacement = df$quarter, x = df$form)
+  }
+  
+  if (!is.null(old_option)) {
+    tryCatch(Sys.setlocale("LC_TIME", locale = old_option),
+             error = function(e) warning("Unable to reset original language when running: ",
+                                         'Sys.setlocale("LC_TIME", locale = "', old_option, '")',
+                                         call. = FALSE))
+  }
+  
+  if (format == "unix") {
+    as.double(df$form)
+  } else {
+    df$form
+  }
+}
 
 #' @rdname format2
 #' @export
@@ -308,9 +290,9 @@ format2.numeric <- function(x,
 #' 
 #' # use format2_scientific for scientific labels in plots:
 #' # if (require("certeplot2")) {
-#' #    plot2.point(mtcars,
-#' #                y = hp * 1000,
-#' #                y.labels = format2_scientific)
+#' #    plot2(mtcars,
+#' #          y = hp * 1000,
+#' #          y.labels = format2_scientific)
 #' # }
 #' if (require("ggplot2")) {
 #'   ggplot(mtcars) +

@@ -55,7 +55,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"burlywood2"}, \code{"darkorange"}, \code{"orangered3"}, \code{"orchid2"}, \code{"seagreen2"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"azure2"}, \code{"darkorange3"}, \code{"darkviolet"}, \code{"turquoise"}, \code{"yellow1"}
 }}
 
 \item{length}{size of the vector to be returned}

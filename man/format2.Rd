@@ -3,15 +3,13 @@
 \name{format2}
 \alias{format2}
 \alias{format2.default}
+\alias{format2.numeric}
 \alias{format2.percentage}
 \alias{format2.percent}
-\alias{format2.POSIXct}
-\alias{format2.POSIXlt}
+\alias{format2.Date}
 \alias{format2.POSIXt}
 \alias{format2.hms}
 \alias{format2.difftime}
-\alias{format2.Date}
-\alias{format2.numeric}
 \alias{format2_scientific}
 \title{Formatting with readable \code{format} settings and Dutch defaults}
 \usage{
@@ -29,13 +27,22 @@ format2(x, ...)
   ...
 )
 
+\method{format2}{numeric}(
+  x,
+  round = ifelse(percent, 1, 2),
+  force.decimals = ifelse(percent, TRUE, FALSE),
+  decimal.mark = ",",
+  big.mark = ".",
+  min.length = 0,
+  percent = FALSE,
+  ...
+)
+
 \method{format2}{percentage}(x, round = NULL, decimal.mark = ",", big.mark = ".", ...)
 
 \method{format2}{percent}(...)
 
-\method{format2}{POSIXct}(x, format = "d mmmm yyyy", locale = "nl", ...)
-
-\method{format2}{POSIXlt}(x, format = "d mmmm yyyy", locale = "nl", ...)
+\method{format2}{Date}(x, format = "d mmmm yyyy", locale = "nl", ...)
 
 \method{format2}{POSIXt}(x, format = "HH:MM:SS", locale = "nl", ...)
 
@@ -55,19 +62,6 @@ format2(x, ...)
   force.decimals = FALSE,
   decimal.mark = ",",
   big.mark = ".",
-  ...
-)
-
-\method{format2}{Date}(x, format = "d mmmm yyyy", locale = "nl", ...)
-
-\method{format2}{numeric}(
-  x,
-  round = ifelse(percent, 1, 2),
-  force.decimals = ifelse(percent, TRUE, FALSE),
-  decimal.mark = ",",
-  big.mark = ".",
-  min.length = 0,
-  percent = FALSE,
   ...
 )
 
@@ -92,6 +86,9 @@ format2_scientific(x, decimal.mark = ",", ...)
 
 \item{min.length}{minimal length of output, overwrites \code{force.decimals}}
 }
+\value{
+\code{\link[=format2]{format2()}} always returns a \link{character}.
+}
 \description{
 Formatting with readable \code{format} settings and Dutch defaults
 }
@@ -115,9 +112,9 @@ format2(p)
 
 # use format2_scientific for scientific labels in plots:
 # if (require("certeplot2")) {
-#    plot2.point(mtcars,
-#                y = hp * 1000,
-#                y.labels = format2_scientific)
+#    plot2(mtcars,
+#          y = hp * 1000,
+#          y.labels = format2_scientific)
 # }
 if (require("ggplot2")) {
   ggplot(mtcars) +

@@ -2,8 +2,6 @@
 
 S3method(as.character,colourpicker)
 S3method(format2,Date)
-S3method(format2,POSIXct)
-S3method(format2,POSIXlt)
 S3method(format2,POSIXt)
 S3method(format2,default)
 S3method(format2,difftime)
