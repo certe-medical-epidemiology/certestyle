@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Certe Colour Vector — certe.colours • certestyle</title>
+<title>Syntax Format According to Certe Coding Guidelines — certedata_style_transformer • certestyle</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,10 @@
 
 
 
-<meta property="og:title" content="Certe Colour Vector — certe.colours" />
-<meta property="og:description" content="This is a character vector with all Certe colours. It is used by colourpicker()." />
+<meta property="og:title" content="Syntax Format According to Certe Coding Guidelines — certedata_style_transformer" />
+<meta property="og:description" content="Use this styler for formatting code by setting this as an option:
+options(styler.addins_style_transformer = &quot;certedata_style_transformer()&quot;)
+Then use the keyboard shortcut of the styler package to apply the formatting." />
 <meta property="og:image" content="https://certe-medical-epidemiology.github.io/certestyle/logo.svg" />
 
 
@@ -129,43 +131,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Certe Colour Vector</h1>
-    <small class="dont-index">Source: <a href='https://github.com/certe-medical-epidemiology/certestyle/blob/master/R/certe_colours.R'><code>R/certe_colours.R</code></a></small>
-    <div class="hidden name"><code>certe.colours.Rd</code></div>
+    <h1>Syntax Format According to Certe Coding Guidelines</h1>
+    <small class="dont-index">Source: <a href='https://github.com/certe-medical-epidemiology/certestyle/blob/master/R/styler.R'><code>R/styler.R</code></a></small>
+    <div class="hidden name"><code>certedata_style_transformer.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is a character vector with all Certe colours. It is used by <code><a href='colourpicker.html'>colourpicker()</a></code>.</p>
+    <p>Use this styler for formatting code by setting this as an option:</p>
+<p><code>options(styler.addins_style_transformer = "certedata_style_transformer()")</code></p>
+<p>Then use the keyboard shortcut of the <code>styler</code> package to apply the formatting.</p>
     </div>
 
-    <pre class="usage"><span class='va'>certe.colours</span></pre>
+    <pre class="usage"><span class='fu'>certedata_style_transformer</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>arguments passed on to <code><a href='https://styler.r-lib.org/reference/tidyverse_style.html'>styler::tidyverse_style()</a></code></p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>An object of class <code>character</code> of length 42.</p>
+    <p>The Certe styler keeps the first argument of a function on the same line, puts all following arguments on a new line, and does not add another new line after the last argument. This makes these lines:</p><pre><span class='va'>example_isolates</span> <span class='op'>%&gt;%</span> <span class='fu'>count</span><span class='op'>(</span><span class='va'>hospital_id</span>, <span class='va'>gender</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>plot2</span><span class='op'>(</span>x.title <span class='op'>=</span> <span class='st'>"Hospital"</span>, y.title <span class='op'>=</span> <span class='st'>"Count"</span>, title <span class='op'>=</span> <span class='st'>"Count isolates per hospital/gender"</span><span class='op'>)</span>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>certe.colours</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      certeblauw      certegroen       certeroze       certegeel       certelila </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#01617E"       "#8B9934"       "#E04883"       "#FFE400"       "#AB79B3" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>  certezachtlila     certeblauw2     certegroen2      certeroze2      certegeel2 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#D6B6D6"       "#1691B6"       "#B8C375"       "#E192B1"       "#EEE06A" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      certelila2 certezachtlila2     certeblauw3     certegroen3      certeroze3 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#C6ACCA"       "#E2D2E2"       "#14AFDE"       "#CAD393"       "#EAA9C2" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      certegeel3      certelila3 certezachtlila3     certeblauw4     certegroen4 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#F5EA89"       "#D3BED7"       "#E9DCE9"       "#93E1F8"       "#E0E6BD" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      certeroze4      certegeel4      certelila4 certezachtlila4     certeblauw5 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#F3CADA"       "#FBF4B6"       "#E5D8E7"       "#F2EAF2"       "#CCEEF9" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     certegroen5      certeroze5      certegeel5      certelila5 certezachtlila5 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#EFF1DF"       "#F8E6ED"       "#FBF8DD"       "#F2ECF3"       "#F8F5F8" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>     certeblauw6     certegroen6      certeroze6      certegeel6      certelila6 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#F0F8FB"       "#F9FAF5"       "#FCF7F9"       "#FCFCF5"       "#FAF9FB" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> certezachtlila6     certeblauw0     certegroen0      certeroze0      certegeel0 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#FDFCFD"       "#043342"       "#4B5220"       "#BE2A63"       "#AA9909" </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>      certelila0 certezachtlila0 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>       "#8C5994"       "#C8A2C8" </span>
+<span class='va'>example_isolates</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>hospital_id</span>, <span class='va'>gender</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>plot2</span><span class='op'>(</span>x.title <span class='op'>=</span> <span class='st'>"Hospital"</span>, y.title <span class='op'>=</span> <span class='st'>"Count"</span>, title <span class='op'>=</span> <span class='st'>"Count isolates per hospital/gender"</span><span class='op'>)</span>
 </pre>
+
+<p>Change into:</p><pre><span class='va'>example_isolates</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>hospital_id</span>,
+        <span class='va'>gender</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>plot2</span><span class='op'>(</span>x.title <span class='op'>=</span> <span class='st'>"Hospital"</span>,
+        y.title <span class='op'>=</span> <span class='st'>"Count"</span>,
+        title <span class='op'>=</span> <span class='st'>"Count isolates per hospital/gender"</span><span class='op'>)</span>
+</pre>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
