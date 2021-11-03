@@ -20,9 +20,9 @@
 #' Certe Themes for RStudio
 #' 
 #' Install and apply RStudio syntax highlighting in Certe theme colours.
-#' @details This package comes with two styles that can be installed with [install_rstudio_certe_themes()]: "Certe Light" and "Certe Dark". Needless to say, this function requires RStudio.
+#' @details This package comes with two styles that can be installed with [rstudio_install_certe_themes()]: "Certe Light" and "Certe Dark". Needless to say, this function requires RStudio.
 #' 
-#' Quickly apply the light theme with [rstudio_certe_light()] and the dark theme with [rstudio_certe_dark()] (they will be installed if needed).
+#' Quickly apply the light theme with [rstudio_set_certe_light()] and the dark theme with [rstudio_set_certe_dark()] (they will be installed if needed).
 #' @rdname rstudio_theme
 #' @importFrom rstudioapi getThemeInfo getThemes applyTheme removeTheme convertTheme addTheme
 #' @importFrom readr write_lines
@@ -80,7 +80,7 @@ rstudio_install_certe_themes <- function() {
 rstudio_set_certe_light <- function() {
   tryCatch(applyTheme("Certe Light"),
            error = function(e) {
-             install_rstudio_certe_themes()
+             rstudio_install_certe_themes()
              applyTheme("Certe Light")
            })
 }
@@ -91,7 +91,7 @@ rstudio_set_certe_light <- function() {
 rstudio_set_certe_dark <- function() {
   tryCatch(rstudioapi::applyTheme("Certe Dark"),
            error = function(e) {
-             install_rstudio_certe_themes()
+             rstudio_install_certe_themes()
              rstudioapi::applyTheme("Certe Dark")
            })
 }

@@ -1,6 +1,6 @@
 Package: certestyle
 Title: A Certe R Package for Applying Certe Organisational Style
-Version: 0.0.11
+Version: 0.0.12
 Authors@R: c(
   person(given = c("Matthijs", "S."), 
          family = "Berends",

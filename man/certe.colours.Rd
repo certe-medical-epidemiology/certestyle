@@ -13,7 +13,25 @@ certe.colours
 \description{
 This is a character vector with all Certe colours. It is used by \code{\link[=colourpicker]{colourpicker()}}.
 }
-\examples{
-certe.colours
+\details{
+The colours are:\preformatted{#>      certeblauw      certegroen       certeroze       certegeel       certelila 
+#>       "#01617E"       "#8B9934"       "#E04883"       "#FFE400"       "#AB79B3" 
+#>  certezachtlila     certeblauw2     certegroen2      certeroze2      certegeel2 
+#>       "#D6B6D6"       "#1691B6"       "#B8C375"       "#E192B1"       "#EEE06A" 
+#>      certelila2 certezachtlila2     certeblauw3     certegroen3      certeroze3 
+#>       "#C6ACCA"       "#E2D2E2"       "#14AFDE"       "#CAD393"       "#EAA9C2" 
+#>      certegeel3      certelila3 certezachtlila3     certeblauw4     certegroen4 
+#>       "#F5EA89"       "#D3BED7"       "#E9DCE9"       "#93E1F8"       "#E0E6BD" 
+#>      certeroze4      certegeel4      certelila4 certezachtlila4     certeblauw5 
+#>       "#F3CADA"       "#FBF4B6"       "#E5D8E7"       "#F2EAF2"       "#CCEEF9" 
+#>     certegroen5      certeroze5      certegeel5      certelila5 certezachtlila5 
+#>       "#EFF1DF"       "#F8E6ED"       "#FBF8DD"       "#F2ECF3"       "#F8F5F8" 
+#>     certeblauw6     certegroen6      certeroze6      certegeel6      certelila6 
+#>       "#F0F8FB"       "#F9FAF5"       "#FCF7F9"       "#FCFCF5"       "#FAF9FB" 
+#> certezachtlila6     certeblauw0     certegroen0      certeroze0      certegeel0 
+#>       "#FDFCFD"       "#043342"       "#4B5220"       "#BE2A63"       "#AA9909" 
+#>      certelila0 certezachtlila0 
+#>       "#8C5994"       "#C8A2C8"
+}
 }
 \keyword{datasets}

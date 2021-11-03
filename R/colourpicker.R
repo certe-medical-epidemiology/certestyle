@@ -146,8 +146,8 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     } else if (x %in% viridisLite_colours) {
       x <- viridis(length, option = x)
       
-    } else if (getRversion() >= 4 && x %in% tolower(grDevices::palette.pals())) {
-      x <- grDevices::palette.colors(length, palette = x)
+    } else if (getRversion() >= 4 && x %in% tolower(utils::getFromNamespace("palette.pals", asNamespace("grDevices"))())) {
+      x <- utils::getFromNamespace("palette.colors", asNamespace("grDevices"))(length, palette = x)
       
     } else if (x == "topo") {
       x <- topo.colors(length)

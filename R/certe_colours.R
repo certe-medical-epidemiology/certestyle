@@ -20,9 +20,12 @@
 #' Certe Colour Vector
 #' 
 #' This is a character vector with all Certe colours. It is used by [colourpicker()].
-#' @export
-#' @examples 
+#' @details The colours are:
+#' 
+#' ```{r, echo = FALSE, comment = "#>"}
 #' certe.colours
+#' ````
+#' @export
 "certe.colours"
 
 certe.colours <- c(

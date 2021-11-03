@@ -18,7 +18,7 @@
 # ===================================================================== #
 
 title: "certestyle"
-url: "https://certe-medical-epidemiology.github.io/certestyle/"
+url: "https://certe-medical-epidemiology.github.io/certestyle"
 
 navbar:
   title: "certestyle"
@@ -33,6 +33,9 @@ navbar:
       icon: "fab fa-github"
       href: "https://github.com/certe-medical-epidemiology/certestyle"
   right:
+    - text: "Certe Med Epi"
+      icon: "fab fa-github"
+      href: "https://github.com/certe-medical-epidemiology"
     - text: "Certe Website"
       icon: "fa-flask"
       href: "https://certe.nl"

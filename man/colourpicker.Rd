@@ -39,7 +39,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"ivory"}, \code{"khaki4"}, \code{"navy"}, \code{"thistle1"}, \code{"tomato3"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"lightblue3"}, \code{"navajowhite4"}, \code{"orchid2"}, \code{"skyblue1"}, \code{"slategrey"}
 }}
 
 \item{length}{size of the vector to be returned}
