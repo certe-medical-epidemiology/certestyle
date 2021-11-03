@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • certestyle</title>
+<title>Format Data Set as HTML — plain_html_table • certestyle</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Format Data Set as HTML — plain_html_table" />
+<meta property="og:description" content="Formats a data.frame into HTML code, to be used in mail() or teams()." />
 <meta property="og:image" content="https://certe-medical-epidemiology.github.io/certestyle/logo.svg" />
 
 
@@ -66,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -133,84 +134,38 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Format Data Set as HTML</h1>
+    <small class="dont-index">Source: <a href='https://github.com/certe-medical-epidemiology/certestyle/blob/master/R/plain_html_table.R'><code>R/plain_html_table.R</code></a></small>
+    <div class="hidden name"><code>plain_html_table.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Formats a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a> into HTML code, to be used in <code>mail()</code> or <code>teams()</code>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>plain_html_table</span><span class='op'>(</span><span class='va'>x</span>, max_col <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="as.double2.html">is.double2()</a></code> <code><a href="as.double2.html">as.double2()</a></code> </p>
-        </td>
-        <td><p><code>is.double()</code> for comma-decimal numbers</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="certe.colours.html">certe.colours</a></code> </p>
-        </td>
-        <td><p>Certe Colour Vector</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="certedata_style_transformer.html">certedata_style_transformer()</a></code> </p>
-        </td>
-        <td><p>Syntax Format According to Certe Coding Guidelines</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="colourpicker.html">colourpicker()</a></code> <code><a href="colourpicker.html">as.character(<i>&lt;colourpicker&gt;</i>)</a></code> <code><a href="colourpicker.html">print(<i>&lt;colourpicker&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Colours from <span style="R">R</span>, Certe, Viridis and More</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="font_colours.html">font_black()</a></code> <code><a href="font_colours.html">font_blue()</a></code> <code><a href="font_colours.html">font_green()</a></code> <code><a href="font_colours.html">font_magenta()</a></code> <code><a href="font_colours.html">font_red()</a></code> <code><a href="font_colours.html">font_silver()</a></code> <code><a href="font_colours.html">font_white()</a></code> <code><a href="font_colours.html">font_yellow()</a></code> <code><a href="font_colours.html">font_subtle()</a></code> <code><a href="font_colours.html">font_grey()</a></code> <code><a href="font_colours.html">font_bold()</a></code> <code><a href="font_colours.html">font_italic()</a></code> <code><a href="font_colours.html">font_underline()</a></code> <code><a href="font_colours.html">font_stripstyle()</a></code> </p>
-        </td>
-        <td><p>Console Font Colours</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="format2.html">format2()</a></code> <code><a href="format2.html">format2_scientific()</a></code> </p>
-        </td>
-        <td><p>Formatting with readable <code>format</code> settings and Dutch defaults</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plain_html_table.html">plain_html_table()</a></code> </p>
-        </td>
-        <td><p>Format Data Set as HTML</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rstudio_theme.html">rstudio_install_certe_themes()</a></code> <code><a href="rstudio_theme.html">rstudio_set_certe_light()</a></code> <code><a href="rstudio_theme.html">rstudio_set_certe_dark()</a></code> </p>
-        </td>
-        <td><p>Certe Themes for RStudio</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></p></td>
+    </tr>
+    <tr>
+      <th>max_col</th>
+      <td><p>maximum number of columns to return</p></td>
+    </tr>
     </table>
-  </div>
 
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'><span class='fu'>plain_html_table</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "&lt;table&gt;&lt;thead&gt;&lt;td&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;mpg&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;cyl&lt;/strong&gt;&lt;/td&gt;&lt;/thead&gt;&lt;tr&gt;&lt;td&gt;Mazda RX4&lt;/td&gt;&lt;td align='right'&gt;21&lt;/td&gt;&lt;td align='right'&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Mazda RX4 Wag&lt;/td&gt;&lt;td align='right'&gt;21&lt;/td&gt;&lt;td align='right'&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"</span>
+</pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

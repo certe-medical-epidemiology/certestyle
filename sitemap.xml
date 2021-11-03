@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//index.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/index.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/as.double2.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/as.double2.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/certe.colours.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/certe.colours.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/certedata_style_transformer.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/certedata_style_transformer.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/colourpicker.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/colourpicker.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/font_colours.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/font_colours.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/format2.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/format2.html</loc>
   </url>
   <url>
-    <loc>https://certe-medical-epidemiology.github.io/certestyle//reference/rstudio_theme.html</loc>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/plain_html_table.html</loc>
+  </url>
+  <url>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/rstudio_theme.html</loc>
   </url>
 </urlset>
