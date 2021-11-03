@@ -24,7 +24,7 @@
 				<key>lineHighlight</key>
 				<string>#1A1A1A</string>
 				<key>selection</key>
-				<string>#333333</string>
+				<string>#444444</string>
 			</dict>
 		</dict>
 		<dict>
@@ -417,7 +417,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#01617E</string>
+				<string>#1691B6</string>
 			</dict>
 		</dict>
 	</array>
@@ -426,7 +426,7 @@
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>semanticClass</key>
-	<string>theme.light.certe</string>
+	<string>theme.dark.certe</string>
 	<key>author</key>
 	<string>Matthijs Berends</string>
 </dict>

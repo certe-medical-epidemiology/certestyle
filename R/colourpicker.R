@@ -28,7 +28,7 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 to 6)
 #' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 3)
 #' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridisLite_colours, '"``', collapse = "")`
-#' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - ``"', c(palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
+#' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - ``"', c(if (getRversion() >= 4) grDevices::palette.pals() else character(0), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
 #' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('``"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"``', collapse = ", ")`
 #' @param length size of the vector to be returned
 #' @param opacity amount of opacity (0 = solid, 1 = transparent)
@@ -40,7 +40,7 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `x = "certe3"` tries to only return the `"certe3"` colours (`"certeblauw3"`, `"certegroen3"`, ...) and the `"certe5"` colours (`"certeblauw5"`, `"certegroen5"`, ...)
 #' @return [character] vector in HTML format (i.e., `"#AABBCC"`) with new class `colourpicker`
 #' @rdname colourpicker
-#' @importFrom grDevices rainbow heat.colors terrain.colors topo.colors col2rgb colours grey.colors palette.colors palette.pals rgb
+#' @importFrom grDevices rainbow heat.colors terrain.colors topo.colors col2rgb colours grey.colors rgb
 #' @importFrom viridisLite viridis
 #' @export
 #' @examples
@@ -60,14 +60,6 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' barplot(12:1,
 #'         col = colourpicker("certe3", 12),
 #'         main = "'certe3': uses 'certe3' + 'certe5'")
-#' 
-#' # default colours of R3
-#' barplot(1:7,
-#'         col = colourpicker("R3", 7))
-#' 
-#' # default colours of R4
-#' barplot(1:7,
-#'         col = colourpicker("R4", 7))
 #' 
 #' # all colourblind-safe colour palettes from the famous viridisLite package
 #' barplot(1:7,
@@ -154,8 +146,8 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     } else if (x %in% viridisLite_colours) {
       x <- viridis(length, option = x)
       
-    } else if (x %in% tolower(palette.pals())) {
-      x <- palette.colors(length, palette = x)
+    } else if (getRversion() >= 4 && x %in% tolower(grDevices::palette.pals())) {
+      x <- grDevices::palette.colors(length, palette = x)
       
     } else if (x == "topo") {
       x <- topo.colors(length)

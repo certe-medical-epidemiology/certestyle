@@ -27,7 +27,7 @@
 #' @importFrom rstudioapi getThemeInfo getThemes applyTheme removeTheme convertTheme addTheme
 #' @importFrom readr write_lines
 #' @export
-install_rstudio_certe_themes <- function() {
+rstudio_install_certe_themes <- function() {
   # Created the themes with:
   # https://tmtheme-editor.herokuapp.com/
   
@@ -42,10 +42,10 @@ install_rstudio_certe_themes <- function() {
   }
   
   # try to remove old versions first
-  try(removeTheme("Certe"), silent = TRUE)
-  try(removeTheme("Certe donker"), silent = TRUE)
-  try(removeTheme("Certe Light"), silent = TRUE)
-  try(removeTheme("Certe Dark"), silent = TRUE)
+  suppressWarnings(try(removeTheme("Certe"), silent = TRUE))
+  suppressWarnings(try(removeTheme("Certe donker"), silent = TRUE))
+  suppressWarnings(try(removeTheme("Certe Light"), silent = TRUE))
+  suppressWarnings(try(removeTheme("Certe Dark"), silent = TRUE))
   
   # convert tmTheme to rsTheme
   convertTheme(themePath = system.file("rstudio/certe_light.tmTheme", package = "certestyle"),
@@ -77,7 +77,7 @@ install_rstudio_certe_themes <- function() {
 #' @rdname rstudio_theme
 #' @importFrom rstudioapi applyTheme
 #' @export
-rstudio_certe_light <- function() {
+rstudio_set_certe_light <- function() {
   tryCatch(applyTheme("Certe Light"),
            error = function(e) {
              install_rstudio_certe_themes()
@@ -88,7 +88,7 @@ rstudio_certe_light <- function() {
 #' @rdname rstudio_theme
 #' @importFrom rstudioapi applyTheme
 #' @export
-rstudio_certe_dark <- function() {
+rstudio_set_certe_dark <- function() {
   tryCatch(rstudioapi::applyTheme("Certe Dark"),
            error = function(e) {
              install_rstudio_certe_themes()

@@ -1,6 +1,6 @@
 Package: certestyle
 Title: A Certe R Package for Applying Certe Organisational Style
-Version: 0.0.9
+Version: 0.0.10
 Authors@R: c(
   person(given = c("Matthijs", "S."), 
          family = "Berends",
@@ -26,7 +26,7 @@ Imports:
   cleaner (>= 1.5.2),
   crayon (>= 1.4.0),
   lubridate (>= 1.7.0),
-  readr (>= 2.0.0),
+  readr (>= 1.4.0),
   rstudioapi (>= 0.8),
   viridisLite (>= 0.4.0),
   yaml (>= 2.2.0)

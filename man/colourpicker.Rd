@@ -30,24 +30,8 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R (currently \R 4.1.0):
+\item One of the built-in palettes in \R (currently \R 3.6.3):
 \itemize{
-\item \code{"R3"}
-\item \code{"R4"}
-\item \code{"ggplot2"}
-\item \code{"Okabe-Ito"}
-\item \code{"Accent"}
-\item \code{"Dark 2"}
-\item \code{"Paired"}
-\item \code{"Pastel 1"}
-\item \code{"Pastel 2"}
-\item \code{"Set 1"}
-\item \code{"Set 2"}
-\item \code{"Set 3"}
-\item \code{"Tableau 10"}
-\item \code{"Classic Tableau"}
-\item \code{"Polychrome 36"}
-\item \code{"Alphabet"}
 \item \code{"topo"}
 \item \code{"heatmap"}
 \item \code{"rainbow"}
@@ -55,7 +39,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"azure2"}, \code{"darkorange3"}, \code{"darkviolet"}, \code{"turquoise"}, \code{"yellow1"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"darkolivegreen4"}, \code{"honeydew"}, \code{"lightsteelblue1"}, \code{"mistyrose"}, \code{"orchid1"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -95,14 +79,6 @@ barplot(12:1,
 barplot(12:1,
         col = colourpicker("certe3", 12),
         main = "'certe3': uses 'certe3' + 'certe5'")
-
-# default colours of R3
-barplot(1:7,
-        col = colourpicker("R3", 7))
-
-# default colours of R4
-barplot(1:7,
-        col = colourpicker("R4", 7))
 
 # all colourblind-safe colour palettes from the famous viridisLite package
 barplot(1:7,

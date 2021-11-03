@@ -26,10 +26,13 @@
 #' @name font_colours
 #' @export
 #' @examples 
-#' cat(font_black("TEXT TEST\n"))
-#' cat(font_red("TEXT TEST\n"))
-#' cat(font_green("TEXT TEST\n"))
-#' cat(font_blue("TEXT TEST\n"))
+#' cat(font_black("TEXT TEST"), "\n")
+#' cat(font_red("TEXT TEST"), "\n")
+#' cat(font_green("TEXT TEST"), "\n")
+#' cat(font_blue("TEXT TEST"), "\n")
+#' cat(font_bold("TEXT TEST"), "\n")
+#' cat(font_italic("TEXT TEST"), "\n")
+#' cat(font_underline("TEXT TEST"), "\n")
 font_black <- function(..., collapse = " ") {
   try_colour(..., before = "\033[38;5;232m", after = "\033[39m", collapse = collapse)
 }

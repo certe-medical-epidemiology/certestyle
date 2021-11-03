@@ -55,8 +55,11 @@ font_stripstyle(...)
 Add colours and font formatting to console text.
 }
 \examples{
-cat(font_black("TEXT TEST\n"))
-cat(font_red("TEXT TEST\n"))
-cat(font_green("TEXT TEST\n"))
-cat(font_blue("TEXT TEST\n"))
+cat(font_black("TEXT TEST"), "\n")
+cat(font_red("TEXT TEST"), "\n")
+cat(font_green("TEXT TEST"), "\n")
+cat(font_blue("TEXT TEST"), "\n")
+cat(font_bold("TEXT TEST"), "\n")
+cat(font_italic("TEXT TEST"), "\n")
+cat(font_underline("TEXT TEST"), "\n")
 }
