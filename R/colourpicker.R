@@ -68,6 +68,12 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #'         col = colourpicker("magma", 7))
 colourpicker <- function(x, length = 1, opacity = 0, ...) {
   
+  if (is.null(x)) {
+    # transparent white
+    return(structure(rep("#FFFFFFFF", length),
+                     class = c("colourpicker", "character")))
+  }
+  
   x <- tolower(x)
   opacity <- as.double(opacity)
   length <- as.double(length)

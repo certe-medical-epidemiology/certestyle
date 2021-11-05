@@ -232,6 +232,10 @@ coerce_datetime <- function(x, format, locale, ...) {
     if (Sys.getlocale("LC_TIME") %like% ".UTF-8" & locale %unlike% ".UTF-8") {
       locale <- paste0(locale, ".UTF-8")
     }
+    # exception for Dutch on Windows
+    if (locale %like% "nl_NL" && tolower(.Platform$OS.type) == "windows") {
+      locale <- "Dutch_Netherlands.1252"
+    }
   } else {
     locale <- Sys.getlocale("LC_TIME")
   }
