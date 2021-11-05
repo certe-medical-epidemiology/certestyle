@@ -274,3 +274,34 @@ print.colourpicker <- function(x, ...) {
   invisible(x)
 }
 
+#' @method rev colourpicker
+#' @noRd
+#' @export
+rev.colourpicker <- function(x) {
+  structure(stats::setNames(rev(as.character(x)), rev(names(x))),
+            class = class(x))
+}
+
+#' @method rep colourpicker
+#' @noRd
+#' @export
+rep.colourpicker <- function(x, ...) {
+  structure(rep(as.character(x), ...),
+            class = class(x))
+}
+
+#' @method unique colourpicker
+#' @noRd
+#' @export
+unique.colourpicker <- function(x, ...) {
+  structure(stats::setNames(unique(as.character(x), ...), unique(names(x))),
+            class = class(x))
+}
+
+#' @method c colourpicker
+#' @noRd
+#' @export
+c.colourpicker <- function(x, ...) {
+  structure(c(as.character(x), ...),
+            class = class(x))
+}

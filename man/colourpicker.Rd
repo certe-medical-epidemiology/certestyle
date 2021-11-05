@@ -30,8 +30,24 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R (currently \R 3.6.3):
+\item One of the built-in palettes in \R (currently \R 4.1.0):
 \itemize{
+\item \code{"R3"}
+\item \code{"R4"}
+\item \code{"ggplot2"}
+\item \code{"Okabe-Ito"}
+\item \code{"Accent"}
+\item \code{"Dark 2"}
+\item \code{"Paired"}
+\item \code{"Pastel 1"}
+\item \code{"Pastel 2"}
+\item \code{"Set 1"}
+\item \code{"Set 2"}
+\item \code{"Set 3"}
+\item \code{"Tableau 10"}
+\item \code{"Classic Tableau"}
+\item \code{"Polychrome 36"}
+\item \code{"Alphabet"}
 \item \code{"topo"}
 \item \code{"heatmap"}
 \item \code{"rainbow"}
@@ -39,7 +55,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"lightblue3"}, \code{"navajowhite4"}, \code{"orchid2"}, \code{"skyblue1"}, \code{"slategrey"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"aquamarine4"}, \code{"darkgrey"}, \code{"ivory4"}, \code{"orangered"}, \code{"turquoise4"}
 }}
 
 \item{length}{size of the vector to be returned}
