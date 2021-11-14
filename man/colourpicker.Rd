@@ -4,6 +4,7 @@
 \alias{colourpicker}
 \alias{as.character.colourpicker}
 \alias{print.colourpicker}
+\alias{add_white}
 \title{Colours from \R, Certe, Viridis and More}
 \usage{
 colourpicker(x, length = 1, opacity = 0, ...)
@@ -11,6 +12,8 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \method{as.character}{colourpicker}(x, ...)
 
 \method{print}{colourpicker}(x, ...)
+
+add_white(x, white)
 }
 \arguments{
 \item{x}{colour or colour palette name. Certe colours will be used from the \link{certe.colours} object. Input can be:
@@ -30,7 +33,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R (currently \R 4.1.0):
+\item One of the built-in palettes in \R (currently \R 4.1.2):
 \itemize{
 \item \code{"R3"}
 \item \code{"R4"}
@@ -55,7 +58,7 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"aquamarine4"}, \code{"darkgrey"}, \code{"ivory4"}, \code{"orangered"}, \code{"turquoise4"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"burlywood2"}, \code{"deeppink3"}, \code{"gold4"}, \code{"lightslateblue"}, \code{"tomato"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -63,6 +66,8 @@ colourpicker(x, length = 1, opacity = 0, ...)
 \item{opacity}{amount of opacity (0 = solid, 1 = transparent)}
 
 \item{...}{not used at the moment}
+
+\item{white}{number between \verb{[0, 1]} to add white to \code{x}}
 }
 \value{
 \link{character} vector in HTML format (i.e., \code{"#AABBCC"}) with new class \code{colourpicker}
