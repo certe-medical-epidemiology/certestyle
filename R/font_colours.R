@@ -33,6 +33,7 @@
 #' cat(font_bold("TEXT TEST"), "\n")
 #' cat(font_italic("TEXT TEST"), "\n")
 #' cat(font_underline("TEXT TEST"), "\n")
+#' cat(font_red_bg(font_white("TEXT TEST")), "\n")
 font_black <- function(..., collapse = " ") {
   try_colour(..., before = "\033[38;5;232m", after = "\033[39m", collapse = collapse)
 }
@@ -59,6 +60,12 @@ font_magenta <- function(..., collapse = " ") {
 #' @export
 font_red <- function(..., collapse = " ") {
   try_colour(..., before = "\033[31m", after = "\033[39m", collapse = collapse)
+}
+
+#' @rdname font_colours
+#' @export
+font_red_bg <- function(..., collapse = " ") {
+  try_colour(..., before = "\033[41m", after = "\033[49m", collapse = collapse)
 }
 
 #' @rdname font_colours

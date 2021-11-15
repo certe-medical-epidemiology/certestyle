@@ -7,6 +7,7 @@
 \alias{font_green}
 \alias{font_magenta}
 \alias{font_red}
+\alias{font_red_bg}
 \alias{font_silver}
 \alias{font_white}
 \alias{font_yellow}
@@ -27,6 +28,8 @@ font_green(..., collapse = " ")
 font_magenta(..., collapse = " ")
 
 font_red(..., collapse = " ")
+
+font_red_bg(..., collapse = " ")
 
 font_silver(..., collapse = " ")
 
@@ -62,4 +65,5 @@ cat(font_blue("TEXT TEST"), "\n")
 cat(font_bold("TEXT TEST"), "\n")
 cat(font_italic("TEXT TEST"), "\n")
 cat(font_underline("TEXT TEST"), "\n")
+cat(font_red_bg(font_white("TEXT TEST")), "\n")
 }
