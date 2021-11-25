@@ -19,7 +19,7 @@
 
 #' Format Data Set as HTML
 #'
-#' Formats a [data.frame] into HTML code, to be used in [`mail()`][certemail::mail()] or [`teams()`][certetoolbox::teams()].
+#' Formats a [data.frame] into HTML code, to be used in [`mail()`][certemail::mail()] or [`teams()`][certeprojects::teams()].
 #' @param x a [data.frame]
 #' @param max_col maximum number of columns to return
 #' @export

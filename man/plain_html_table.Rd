@@ -12,7 +12,7 @@ plain_html_table(x, max_col = Inf)
 \item{max_col}{maximum number of columns to return}
 }
 \description{
-Formats a \link{data.frame} into HTML code, to be used in \code{\link[certemail:mail]{mail()}} or \code{\link[certetoolbox:teams]{teams()}}.
+Formats a \link{data.frame} into HTML code, to be used in \code{\link[certemail:mail]{mail()}} or \code{\link[certeprojects:teams]{teams()}}.
 }
 \examples{
 plain_html_table(mtcars[1:2, 1:2])
