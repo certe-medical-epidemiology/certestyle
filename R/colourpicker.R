@@ -26,7 +26,7 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `"certe"`
 #' * `"certe0"` to `"certe6"` (higher numbers give lighter colours)
 #' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 to 6)
-#' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 3)
+#' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 5, with names "S", "SI", "I", "IR", "R")
 #' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridisLite_colours, '"``', collapse = "")`
 #' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - ``"', c(if (getRversion() >= 4) grDevices::palette.pals() else character(0), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
 #' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('``"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"``', collapse = ", ")`
@@ -82,6 +82,16 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     stop("Either the length of `x`, or `length` must be 1")
   }
   
+  # exceptions for "certe_rsi" and "certe_rsi2"
+  # they are named vectors for ggplot2() and plot2()
+  if (identical(x, "certe_rsi")) {
+    return(structure(colourpicker(c("certegroen", "certegroen", "certegeel", "certeroze", "certeroze")),
+                     names = c("S", "SI", "I", "IR", "R")))
+  } else if (identical(x, "certe_rsi2")) {
+    return(structure(colourpicker(c("certegroen2", "certegroen2", "certegeel2", "certeroze2", "certeroze2")),
+                     names = c("S", "SI", "I", "IR", "R")))
+  }
+  
   x_names <- names(x) # required for named colour vectors such as in ggplot2 and certeplot2
   x <- unname(x)
                     
@@ -128,25 +138,11 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+6"]
       } else if (x %in% names(certe.colours)) {
         certe_selection <- rep(certe.colours[names(certe.colours) == x], length = length)
-      } else if (x == "certe_rsi") {
-        certe_selection <- c(certe.colours[names(certe.colours) == "certeroze"],
-                             certe.colours[names(certe.colours) == "certegeel"],
-                             certe.colours[names(certe.colours) == "certegroen"])
-        if (!length %in% c(1, 3)) {
-          length <- 3
-          warning("`length` will be forced to 3 when using 'certe_rsi'", call. = FALSE)
-        }
-      } else if (x == "certe_rsi2") {
-        certe_selection <- c(certe.colours[names(certe.colours) == "certeroze2"],
-                             certe.colours[names(certe.colours) == "certegeel2"],
-                             certe.colours[names(certe.colours) == "certegroen2"])
-        if (!length %in% c(1, 3)) {
-          length <- 3
-          warning("`length` will be forced to 3 when using 'certe_rsi2'", call. = FALSE)
-        }
       } else {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+6"]
       }
+      # extend, to be sure a long length (despite the duplicates)
+      certe_selection <- rep(certe_selection, 3)
       x <- certe_selection[seq_len(min(length, length(certe_selection)))]
       
     } else if (x %in% viridisLite_colours) {
