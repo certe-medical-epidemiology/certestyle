@@ -63,6 +63,9 @@ format2.default <- function(x,
                             big.mark = ".",
                             locale = "nl",
                             ...) {
+  if (inherits(x, c("call", "expression", "function"))) {
+    x <- as.character(deparse(x))
+  }
   if (percent == TRUE) {
     format2(as.percentage(x),
             round = round,
