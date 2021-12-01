@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/404.html</loc>
+  </url>
+  <url>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/authors.html</loc>
+  </url>
+  <url>
     <loc>https://certe-medical-epidemiology.github.io/certestyle/index.html</loc>
   </url>
   <url>
@@ -20,6 +29,9 @@
   </url>
   <url>
     <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/format2.html</loc>
+  </url>
+  <url>
+    <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/index.html</loc>
   </url>
   <url>
     <loc>https://certe-medical-epidemiology.github.io/certestyle/reference/plain_html_table.html</loc>
