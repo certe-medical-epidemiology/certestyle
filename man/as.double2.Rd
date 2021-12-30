@@ -3,26 +3,19 @@
 \name{is.double2}
 \alias{is.double2}
 \alias{as.double2}
-\title{\code{is.double()} for comma-decimal numbers}
+\title{\code{is.double()} for Comma-Decimal Input}
 \usage{
-is.double2(x, dec = c(".", ","), na.rm = TRUE, ...)
+is.double2(x, dec = c(".", ","))
 
-as.double2(x, ...)
+as.double2(x, dec = c(".", ","))
 }
 \arguments{
 \item{x}{vector of values}
 
 \item{dec}{characters to be treated as comma}
-
-\item{na.rm}{ignore empty values}
-
-\item{...}{currently not in use}
 }
 \description{
-This works like \code{\link[=is.double]{is.double()}} and \code{\link[=as.double]{as.double()}}, but can also check (and transform) comma-decimal input such as \code{"0,1"}.
-}
-\details{
-\code{is.double()} for comma-decimal numbers.
+This works like \code{\link[=is.double]{is.double()}} and \code{\link[=as.double]{as.double()}}, but is vectorised and can also check (and transform) comma-decimal input such as \code{"0,1"}.
 }
 \examples{
 is.double(0.1)
@@ -36,5 +29,6 @@ is.double2("0,1")
 is.double(c(0.1, "0.1", "0,1"))
 is.double2(c(0.1, "0.1", "0,1"))
 
+as.double(c(0.1, "0.1", "0,1"))
 as.double2(c(0.1, "0.1", "0,1"))
 }

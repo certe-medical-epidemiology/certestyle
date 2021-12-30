@@ -26,11 +26,11 @@ toproper <- function(text,
                      every_word = FALSE,
                      ...) {
   text <- as.character(text)
-  titlecase <- tools::toTitleCase(text)
   if (isTRUE(every_word)) {
-    titlecase
-  } else {
-    substr(text, 1, 1) <- substr(titlecase, 1, 1)
-    text
+    text <- tools::toTitleCase(text)
   }
+  if (grepl("^[a-z]+( |$)", text, ignore.case = FALSE)) {
+    substr(text, 1, 1) <- toupper(substr(text, 1, 1))
+  }
+  text
 }

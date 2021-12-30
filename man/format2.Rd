@@ -46,15 +46,7 @@ format2(x, ...)
 
 \method{format2}{POSIXt}(x, format = "HH:MM:SS", locale = "nl", ...)
 
-\method{format2}{hms}(
-  x,
-  format = "HH:MM:SS",
-  round = 2,
-  force.decimals = FALSE,
-  decimal.mark = ",",
-  big.mark = ".",
-  ...
-)
+\method{format2}{hms}(x, format = "HH:MM:SS", ...)
 
 \method{format2}{difftime}(
   x,
@@ -111,14 +103,9 @@ p <- cleaner::as.percentage(0.123)
 format2(p)
 
 # use format2_scientific for scientific labels in plots:
-# if (require("certeplot2")) {
-#    plot2(mtcars,
-#          y = hp * 1000,
-#          y.labels = format2_scientific)
-# }
-if (require("ggplot2")) {
-  ggplot(mtcars) +
-    geom_point(aes(x = mpg, y = hp * 1000)) +
-    scale_y_continuous(label = format2_scientific)
+if (require("certeplot2")) {
+   plot2(mtcars,
+         y = hp * 1000,
+         y.labels = format2_scientific)
 }
 }

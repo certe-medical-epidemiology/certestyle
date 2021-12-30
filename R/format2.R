@@ -63,9 +63,6 @@ format2.default <- function(x,
                             big.mark = ".",
                             locale = "nl",
                             ...) {
-  if (inherits(x, c("call", "expression", "function"))) {
-    x <- as.character(deparse(x))
-  }
   if (percent == TRUE) {
     format2(as.percentage(x),
             round = round,
@@ -74,7 +71,7 @@ format2.default <- function(x,
             big.mark = big.mark,
             ...)
   } else {
-    if (identical(class(x), "NULL") || inherits(x, c("list", "formula", "expression", "matrix"))) {
+    if (identical(class(x), "NULL") || inherits(x, c("list", "call", "function", "formula", "expression", "matrix"))) {
       format(x, ...)
     } else if (tryCatch(guess_parser(x) == "date", error = function(e) FALSE)) {
       # fails on factor, so wrapped it in tryCatch()
@@ -175,13 +172,19 @@ format2.percent <- function(...) {
 
 #' @rdname format2
 #' @export
-format2.Date <- function(x, format = "d mmmm yyyy", locale = "nl", ...) {
+format2.Date <- function(x,
+                         format = "d mmmm yyyy",
+                         locale = "nl",
+                         ...) {
   coerce_datetime(x = x, format = format, locale = locale, ...)
 }
 
 #' @rdname format2
 #' @export
-format2.POSIXt <- function(x, format = "HH:MM:SS", locale = "nl", ...) {
+format2.POSIXt <- function(x,
+                           format = "HH:MM:SS",
+                           locale = "nl",
+                           ...) {
   coerce_datetime(x = x, format = format, locale = locale, ...)
 }
 
@@ -189,21 +192,8 @@ format2.POSIXt <- function(x, format = "HH:MM:SS", locale = "nl", ...) {
 #' @export
 format2.hms <- function(x,
                         format = "HH:MM:SS",
-                        round = 2,
-                        force.decimals = FALSE,
-                        decimal.mark = ",",
-                        big.mark = ".",
                         ...) {
-  if (is.double2(x)) {
-    format2.numeric(x,
-                    round = round,
-                    force.decimals = force.decimals,
-                    percent = FALSE,
-                    decimal.mark = decimal.mark,
-                    ...)
-  } else {
-    coerce_datetime(as.POSIXct(x), format = format, ...)
-  }
+  format2(as.POSIXct(x), format = format, ...)
 }
 
 #' @rdname format2
@@ -296,15 +286,10 @@ coerce_datetime <- function(x, format, locale, ...) {
 #' @examples 
 #' 
 #' # use format2_scientific for scientific labels in plots:
-#' # if (require("certeplot2")) {
-#' #    plot2(mtcars,
-#' #          y = hp * 1000,
-#' #          y.labels = format2_scientific)
-#' # }
-#' if (require("ggplot2")) {
-#'   ggplot(mtcars) +
-#'     geom_point(aes(x = mpg, y = hp * 1000)) +
-#'     scale_y_continuous(label = format2_scientific)
+#' if (require("certeplot2")) {
+#'    plot2(mtcars,
+#'          y = hp * 1000,
+#'          y.labels = format2_scientific)
 #' }
 format2_scientific <- function(x, 
                                decimal.mark = ",",

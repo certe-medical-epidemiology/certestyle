@@ -17,17 +17,6 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-test_that("format2 works", {
-  dt <- Sys.Date()
-  expect_identical(format2(dt, "dd-mm-yyyy"),
-                   format(dt, "%d-%m-%Y"))
-  
-  tm <- Sys.time()
-  expect_identical(format2(tm),
-                   format(tm, "%H:%M:%S"))
-  
-  expect_identical(format2(0.123), "0,12")
-  expect_identical(format2(0.123, percent = TRUE), "12,3%")
-  
-  expect_identical(class(format2_scientific(1)), "expression")
-})
+ignore:
+  - "R/rstudio_themes.R"
+  - "R/universal.R"

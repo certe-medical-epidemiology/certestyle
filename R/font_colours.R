@@ -120,55 +120,17 @@ font_underline <- function(..., collapse = " ") {
 #' @export
 font_stripstyle <- function(...) {
   # from crayon:::ansi_regex
-  gsub("(?:(?:\\x{001b}\\[)|\\x{009b})(?:(?:[0-9]{1,3})?(?:(?:;[0-9]{0,3})*)?[A-M|f-m])|\\x{001b}[A-M]", "", concat(...), perl = TRUE)
+  gsub("(?:(?:\\x{001b}\\[)|\\x{009b})(?:(?:[0-9]{1,3})?(?:(?:;[0-9]{0,3})*)?[A-M|f-m])|\\x{001b}[A-M]", "", c(...), perl = TRUE)
 }
 
+#' @importFrom crayon has_color
 has_colour <- function() {
-  # this is a base R version of crayon::has_color, but disables colours on emacs
-  
+  # always disables colours on emacs
   if (Sys.getenv("EMACS") != "" || Sys.getenv("INSIDE_EMACS") != "") {
     # disable on emacs, which only supports 8 colours
     return(FALSE)
   }
-  enabled <- getOption("crayon.enabled")
-  if (!is.null(enabled)) {
-    return(isTRUE(enabled))
-  }
-  rstudio_with_ansi_support <- function(x) {
-    if (Sys.getenv("RSTUDIO", "") == "") {
-      return(FALSE)
-    }
-    if ((cols <- Sys.getenv("RSTUDIO_CONSOLE_COLOR", "")) != "" && !is.na(as.double(cols))) {
-      return(TRUE)
-    }
-    tryCatch(get("isAvailable", envir = asNamespace("rstudioapi"))(), error = function(e) return(FALSE)) &&
-      tryCatch(get("hasFun", envir = asNamespace("rstudioapi"))("getConsoleHasColor"), error = function(e) return(FALSE))
-  }
-  if (rstudio_with_ansi_support() && sink.number() == 0) {
-    return(TRUE)
-  }
-  if (!isatty(stdout())) {
-    return(FALSE)
-  }
-  if (tolower(Sys.info()["sysname"]) == "windows") {
-    if (Sys.getenv("ConEmuANSI") == "ON") {
-      return(TRUE)
-    }
-    if (Sys.getenv("CMDER_ROOT") != "") {
-      return(TRUE)
-    }
-    return(FALSE)
-  }
-  if ("COLORTERM" %in% names(Sys.getenv())) {
-    return(TRUE)
-  }
-  if (Sys.getenv("TERM") == "dumb") {
-    return(FALSE)
-  }
-  grepl(pattern = "^screen|^xterm|^vt100|color|ansi|cygwin|linux",
-        x = Sys.getenv("TERM"),
-        ignore.case = TRUE,
-        perl = TRUE)
+  has_color()
 }
 
 # set colours if console has_colour()

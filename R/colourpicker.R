@@ -70,7 +70,7 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
   
   if (is.null(x)) {
     # transparent white
-    return(structure(rep("#FFFFFFFF", length),
+    return(structure(rep("#FFFFFF00", length),
                      class = c("colourpicker", "character")))
   }
   
@@ -83,7 +83,7 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
   }
   
   # exceptions for "certe_rsi" and "certe_rsi2"
-  # they are named vectors for ggplot2() and plot2()
+  # they are named vectors for ggplot2::ggplot() and certeplot2::plot2()
   if (identical(x, "certe_rsi")) {
     return(structure(colourpicker(c("certegroen", "certegroen", "certegeel", "certeroze", "certeroze")),
                      names = c("S", "SI", "I", "IR", "R")))
@@ -150,6 +150,8 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
       
     } else if (getRversion() >= 4 && x %in% tolower(utils::getFromNamespace("palette.pals", asNamespace("grDevices"))())) {
       x <- utils::getFromNamespace("palette.colors", asNamespace("grDevices"))(length, palette = x)
+      # some support names, so return the object
+      return(structure(x, class = c("colourpicker", "character")))
       
     } else if (x == "topo") {
       x <- topo.colors(length)
@@ -249,6 +251,8 @@ print.colourpicker <- function(x, ...) {
     str_length <- 7
   }
   y <- x
+  nms <- substr(names(x), 1, str_length + 3)
+  nms <- format(c(nms, strrep(" ", str_length + 4)), justify = "right")[seq_len(length(x))]
   cols <- substr(y[!is.na(x)], 1, str_length)
   y[!is.na(x)] <- paste0('"', cols, '"',
                          sapply(cols, function(z) make_style(z, bg = TRUE)(" ")))
@@ -258,12 +262,18 @@ print.colourpicker <- function(x, ...) {
     to <- min(i * max_print + max_print, length(y))
     if (from <= length(y)) {
       ind <- seq(from = from, to = to, by = 1)
-      cat(paste0("[",
-                 formatC(from,
-                         width = ifelse(length(y) <= max_print, 1, nchar(length(y)))),
-                 "]"),
-          y[ind], sep = " ")
-      
+      formatted_index_nr <- formatC(from,
+                                    width = ifelse(length(y) <= max_print, 1, nchar(length(y))))
+      cat(
+        # names, should they exist
+        ifelse(!is.null(names(x)),
+               paste0(strrep(" ", nchar(formatted_index_nr) + 2), paste0(nms[ind], collapse = ""), "\n"),
+               ""),
+        # index number
+        paste0("[", formatted_index_nr, "]"),
+        " ",
+        # actual colours
+        paste0(y[ind], " "), sep = "")
       cat("\n")
     }
   }
