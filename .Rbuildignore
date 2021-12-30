@@ -5,4 +5,7 @@
 ^certestyle\.Rproj$
 ^_pkgdown\.yml$
 ^logo\.svg$
+^\.DS_Store$
 ^data-raw$
+^pkgdown$
+^codecov.yml$

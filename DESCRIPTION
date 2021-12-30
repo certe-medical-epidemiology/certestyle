@@ -1,6 +1,6 @@
 Package: certestyle
 Title: A Certe R Package for Applying Certe Organisational Style
-Version: 0.0.20
+Version: 0.0.21
 Authors@R: c(
   person(given = c("Matthijs", "S."), 
          family = "Berends",
@@ -33,7 +33,9 @@ Imports:
   viridisLite (>= 0.4.0),
   yaml (>= 2.2.0)
 Suggests: 
+  certemail,
   certeplot2,
+  certeprojects,
   hms (>= 1.0.0),
   testthat (>= 2.0.0)
 License: GPL-2

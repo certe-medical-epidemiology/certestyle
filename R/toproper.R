@@ -21,6 +21,7 @@
 #' 
 #' @param text text to transform
 #' @param every_word set captial to every word
+#' @param ... unused, allows for backwards compatibility and future extension
 #' @export
 toproper <- function(text,
                      every_word = FALSE,

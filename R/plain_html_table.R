@@ -19,7 +19,7 @@
 
 #' Format Data Set as HTML
 #'
-#' Formats a [data.frame] into HTML code, to be used in [`mail()`][certemail::mail()] or [`teams()`][certeprojects::teams()].
+#' Formats a [data.frame] into HTML code, so it can be used in e.g. [`mail()`][certemail::mail()] or [`teams()`][certeprojects::teams()].
 #' @param x a [data.frame]
 #' @param max_col maximum number of columns to return
 #' @export
@@ -32,9 +32,11 @@ plain_html_table <- function(x, max_col = Inf) {
     x$percent <- gsub(".", ",", x$percent, fixed = TRUE)
     x$cum_percent <- gsub(".", ",", x$cum_percent, fixed = TRUE)
     colnames(x) <- c("Item", "Count", "Percent", "Cum. Count", "Cum. Percent")
+  } else {
+    x <- as.data.frame(x, stringsAsFactors = FALSE)
   }
   
-  if (!all(rownames(x) == as.character(1:nrow(x)))) {
+  if (!all(rownames(x) == as.character(seq_len(nrow(x))))) {
     # add row names as columns
     cols <- colnames(x)
     x$` ` <- rownames(x)
@@ -53,7 +55,7 @@ plain_html_table <- function(x, max_col = Inf) {
   body <- lapply(x, function(col) {
     if (is.numeric(col) | all(col %like% "[0-9]%")) {
       # numbers and percentages: align to the right
-      paste0("<td align='right'>", format2(col), "</td>")
+      paste0("<td align=\"right\">", format2(col), "</td>")
     } else {
       paste0("<td>", as.character(col), "</td>")
     }

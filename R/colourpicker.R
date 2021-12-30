@@ -316,6 +316,8 @@ c.colourpicker <- function(x, ...) {
 #' @param white number between `[0, 1]` to add white to `x`
 #' @export
 add_white <- function(x, white) {
+  # scale down to [0, 0.5]:
+  white <- white / 2
   x <- as.character(colourpicker(x))
   r <- strtoi(substr(x, 2, 3), 16)
   g <- strtoi(substr(x, 4, 5), 16)

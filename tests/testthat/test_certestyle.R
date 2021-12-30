@@ -106,6 +106,14 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker("yellow")), "#FFFF00")
 })
 
+test_that("adding white to a colour works", {
+  expect_identical(as.character(add_white("red", 0.1)), "#FF1A1A")
+  expect_identical(as.character(add_white("red", 0.2)), "#FF3333")
+  expect_identical(as.character(add_white("red", 0.3)), "#FF4D4D")
+  expect_identical(as.character(add_white("red", 0.4)), "#FF6666")
+  expect_identical(as.character(add_white("red", 0.5)), "#FF8080")
+  expect_identical(as.character(add_white("red", 0.95)), "#FFF2F2")
+})
 
 test_that("font colours works", {
   options(crayon.enabled = TRUE)
@@ -133,6 +141,7 @@ test_that("font colours works", {
 
 test_that("format2 works", {
   
+  expect_identical(format2(mean), format(mean))
   expect_identical(format2("test"), "test")
   
   dt <- Sys.Date()
@@ -144,8 +153,13 @@ test_that("format2 works", {
                    format(tm, "%H:%M:%S"))
   
   expect_identical(format2(0.123), "0,12")
+  expect_identical(format2("0.123"), "0,12")
   expect_identical(format2(0.123, percent = TRUE), "12,3%")
-  expect_equal(format2(cleaner::as.percentage(0.123)), "12,3%")
+  expect_identical(format2("0.123", percent = TRUE), "12,3%")
+  expect_identical(format2(cleaner::as.percentage(0.123)), "12,3%")
+  
+  expect_identical(format2(123, min.length = 6), "000123")
+  expect_identical(format2(123, force.decimals = TRUE), "123,00")
   
   expect_equal(format2(hms::as_hms(tm)), format(tm, "%H:%M:%S"))
   expect_equal(format2(hms::hms(3, 2, 1)), "01:02:03")

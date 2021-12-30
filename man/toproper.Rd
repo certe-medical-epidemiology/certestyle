@@ -10,6 +10,8 @@ toproper(text, every_word = FALSE, ...)
 \item{text}{text to transform}
 
 \item{every_word}{set captial to every word}
+
+\item{...}{unused, allows for backwards compatibility and future extension}
 }
 \description{
 Proper Case for Text
