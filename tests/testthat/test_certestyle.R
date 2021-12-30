@@ -104,6 +104,14 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker("firebrick1")), "#FF3030")
   expect_identical(as.character(colourpicker("lightgoldenrod")), "#EEDD82")
   expect_identical(as.character(colourpicker("yellow")), "#FFFF00")
+  
+  expect_output(print(rep(colourpicker("certe_rsi"), 10)))
+  expect_s3_class(c(colourpicker("red"), colourpicker("red")), "colourpicker")
+  expect_s3_class(rev(c(colourpicker("red"), colourpicker("blue"))), "colourpicker")
+  expect_length(unique(c(colourpicker("red"), colourpicker("red"))), 1)
+  expect_s3_class(unique(c(colourpicker("red"), colourpicker("red"))), "colourpicker")
+  
+  expect_warning(colourpicker("qwerty"))
 })
 
 test_that("adding white to a colour works", {
