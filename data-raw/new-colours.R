@@ -46,7 +46,7 @@ expand_colours <- function(colour.list, extended_spectrum) {
   # get HSL (hue, saturation, lightness); we will change the L (0 is black, 1 is white)
   colour.list.hsl <- lapply(colour.list, function(x) rgb2hsl(x[1], x[2], x[3]))
   
-  for (i in 1:length(colour.list)) {
+  for (i in seq_len(length(colour.list))) {
     df_col <- gsub("(.*)[0-5]$", "\\1", paste0(names(colour.list)[i]))
     hsl <- colour.list.hsl[[df_col]]
     for (tint in c(0, 2:length(lightness_values))) {
@@ -82,7 +82,7 @@ expand_colours <- function(colour.list, extended_spectrum) {
     }
   }
   colour.list <- lapply(colour.list.hsl, function(x) hsl2rgb(x[1], x[2], x[3]))
-  colour.list <- sapply(colour.list, function(x) rgb(x[1], x[2], x[3], maxColorValue = 255))
+  colour.list <- vapply(FUN.VALUE = character(1), colour.list, function(x) rgb(x[1], x[2], x[3], maxColorValue = 255))
   colour.list
 }
 

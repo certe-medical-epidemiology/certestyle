@@ -31,8 +31,9 @@ rstudio_install_certe_themes <- function() {
   # Created the themes with:
   # https://tmtheme-editor.herokuapp.com/
   
-  first_dark_theme <- names(which(sapply(getThemes(), function(t) t$isDark)))[1]
-  first_light_theme <- names(which(sapply(getThemes(), function(t) !t$isDark)))[1]
+  themes <- getThemes()[which(names(getThemes()) %unlike% "certe")]
+  first_dark_theme <- names(which(vapply(FUN.VALUE = logical(1), themes, function(t) t$isDark)))[1]
+  first_light_theme <- names(which(vapply(FUN.VALUE = logical(1), themes, function(t) !t$isDark)))[1]
   
   now_dark <- getThemeInfo()$dark
   if (now_dark) {
@@ -80,8 +81,7 @@ rstudio_install_certe_themes <- function() {
 rstudio_set_certe_light <- function() {
   tryCatch(applyTheme("Certe Light"),
            error = function(e) {
-             rstudio_install_certe_themes()
-             applyTheme("Certe Light")
+             rstudio_install_certe_themes() # will also apply the theme
            })
 }
 
@@ -91,7 +91,6 @@ rstudio_set_certe_light <- function() {
 rstudio_set_certe_dark <- function() {
   tryCatch(rstudioapi::applyTheme("Certe Dark"),
            error = function(e) {
-             rstudio_install_certe_themes()
-             rstudioapi::applyTheme("Certe Dark")
+             rstudio_install_certe_themes() # will also apply the theme
            })
 }

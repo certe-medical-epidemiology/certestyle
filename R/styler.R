@@ -79,7 +79,7 @@ certedata_style_transformer <- function(...) {
       pd[idx_close_paren[length(idx_close_paren)], "lag_newlines"] <- 1L
     }
     # pd$token_before is sometimes NA, create a new one (take lag):
-    token_lag <- c(NA, pd$token[c(1:length(pd$token) - 1)])
+    token_lag <- c(NA, pd$token[seq_len(length(pd$token) - 1)])
     # no new lines before first argument or after last argument
     pd[which(pd$token == "')'" | token_lag == "'('"), "lag_newlines"] <- 0L
     # indent the arguments: the first starts on the same line as the command, but
