@@ -15,17 +15,7 @@
 \usage{
 format2(x, ...)
 
-\method{format2}{default}(
-  x,
-  format = "d mmmm yyyy",
-  percent = FALSE,
-  round = ifelse(percent, 1, 2),
-  force.decimals = ifelse(percent, TRUE, FALSE),
-  decimal.mark = ",",
-  big.mark = ".",
-  locale = "nl",
-  ...
-)
+\method{format2}{default}(x, ...)
 
 \method{format2}{numeric}(
   x,
@@ -44,7 +34,7 @@ format2(x, ...)
 
 \method{format2}{Date}(x, format = "d mmmm yyyy", locale = "nl", ...)
 
-\method{format2}{POSIXt}(x, format = "HH:MM:SS", locale = "nl", ...)
+\method{format2}{POSIXt}(x, format = "yyyy-mm-dd HH:MM:SS", locale = "nl", ...)
 
 \method{format2}{hms}(x, format = "HH:MM:SS", ...)
 
@@ -64,19 +54,19 @@ format2_scientific(x, decimal.mark = ",", ...)
 
 \item{...}{arguments given to methods such as \code{\link[=format]{format()}}}
 
-\item{format}{format to use, can be set with human-readable text such as \code{"d mmmm yyyy"} or POSIX such as \code{"\%e \%B \%Y"}}
-
-\item{percent}{logical to transform numeric to percentage (character)}
-
 \item{round}{number of decimals to round to}
 
 \item{force.decimals}{force printing decimals, even with trailing zeroes}
 
 \item{decimal.mark, big.mark}{decimal and thousands limiters}
 
-\item{locale}{language to set for dates}
-
 \item{min.length}{minimal length of output, overwrites \code{force.decimals}}
+
+\item{percent}{logical to transform numeric to percentage (character)}
+
+\item{format}{format to use, can be set with human-readable text such as \code{"d mmmm yyyy"} or POSIX such as \code{"\%e \%B \%Y"}}
+
+\item{locale}{language to set for dates}
 }
 \value{
 \code{\link[=format2]{format2()}} always returns a \link{character}.
@@ -89,6 +79,7 @@ The \code{\link[=format2_scientific]{format2_scientific()}} function returns an 
 }
 \examples{
 format2("2021-01-01")
+format2("2021-01-01", "yyyy-qq")
 
 format2(Sys.time(), "d mmmm yyyy HH:MM")
 

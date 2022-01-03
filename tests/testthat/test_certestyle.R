@@ -155,10 +155,24 @@ test_that("format2 works", {
   dt <- Sys.Date()
   expect_identical(format2(dt, "dd-mm-yyyy"),
                    format(dt, "%d-%m-%Y"))
+  expect_true(is.factor(format2(dt, "mmm")))
+  expect_true(is.factor(format2(dt, "mmmm")))
+  # should return Dutch month:
+  expect_true(as.character(format2(dt, "mmmm")) %in% c("januari", "februari", "maart",
+                                                       "april", "mei", "juni",
+                                                       "juli", "augustus", "september",
+                                                       "oktober", "november", "december"))
+  
+  expect_identical(format2(c("2021-05-10T11:00:00.0000000", "2021-05-10T11:00:00")),
+                   as.character(as.POSIXct(c("2021-05-10 11:00:00", "2021-05-10 11:00:00"))))
+  expect_identical(format2("2022-01-01"), "1 januari 2022")
+  
+  expect_identical(format2("2022-01-01", "yyyy-Q"), "2022-1")
+  expect_identical(format2("2022-01-01", "yyyy-QQ"), "2022-Q1")
+  expect_identical(format2("2022-01-01", "yyyy-qq"), "2022-Q1")
   
   tm <- Sys.time()
-  expect_identical(format2(tm),
-                   format(tm, "%H:%M:%S"))
+  expect_identical(format2(tm), format(tm))
   
   expect_identical(format2(0.123), "0,12")
   expect_identical(format2("0.123"), "0,12")

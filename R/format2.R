@@ -35,6 +35,7 @@
 #' @return [format2()] always returns a [character].
 #' @examples
 #' format2("2021-01-01")
+#' format2("2021-01-01", "yyyy-qq")
 #' 
 #' format2(Sys.time(), "d mmmm yyyy HH:MM")
 #' 
@@ -54,38 +55,20 @@ format2 <- function(x,...) {
 #' @rdname format2
 #' @importFrom readr guess_parser
 #' @export
-format2.default <- function(x,
-                            format = "d mmmm yyyy",
-                            percent = FALSE,
-                            round = ifelse(percent, 1, 2),
-                            force.decimals = ifelse(percent, TRUE, FALSE),
-                            decimal.mark = ",",
-                            big.mark = ".",
-                            locale = "nl",
-                            ...) {
-  if (percent == TRUE) {
-    format2(as.percentage(x),
-            round = round,
-            force.decimals = force.decimals,
-            decimal.mark = decimal.mark,
-            big.mark = big.mark,
-            ...)
+format2.default <- function(x, ...) {
+  if (isTRUE(list(...)$percent)) {
+    format2(as.percentage(x), ...)
   } else {
-    if (identical(class(x), "NULL") || inherits(x, c("list", "call", "function", "formula", "expression", "matrix"))) {
-      format(x, ...)
-    } else if (tryCatch(guess_parser(x) == "date", error = function(e) FALSE)) {
-      # fails on factor, so wrapped it in tryCatch()
-      format2(as.Date(x), format = format, locale = locale, ...)
-    } else if (all(is.double2(x))) {
-      format2(as.double2(x),
-              round = round,
-              force.decimals = force.decimals,
-              decimal.mark = decimal.mark,
-              big.mark = big.mark,
-              ...)
+    # all below have to be wrapped in tryCatch to also work for e.g. functions and calls
+    if (tryCatch(guess_parser(x) == "date", error = function(e) FALSE)) {
+      format2(as.Date(x), ...)
+    } else if (tryCatch(guess_parser(x) == "datetime", error = function(e) FALSE)) {
+      format2(as.POSIXct(gsub("([0-9])T([0-9])", "\\1 \\2", x)), ...)
+    } else if (tryCatch(all(is.double2(x)), error = function(e) FALSE)) {
+      format2(as.double2(x), ...)
     } else {
       # fall back to base R format(), e.g. for character
-      format(x, digits = round, ...)
+      format(x, ...)
     }
   }
 }
@@ -182,7 +165,7 @@ format2.Date <- function(x,
 #' @rdname format2
 #' @export
 format2.POSIXt <- function(x,
-                           format = "HH:MM:SS",
+                           format = "yyyy-mm-dd HH:MM:SS",
                            locale = "nl",
                            ...) {
   coerce_datetime(x = x, format = format, locale = locale, ...)
