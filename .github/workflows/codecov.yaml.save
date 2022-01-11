@@ -47,14 +47,7 @@ jobs:
         with:
           extra-packages: covr
 
-      - name: Generate Dutch locale for examples
-        if: runner.os == 'Linux'
-        run: |
-          sudo locale-gen nl_NL
-          sudo locale-gen nl_NL.UTF-8
-          sudo update-locale
 
       - name: Test coverage
         run: covr::codecov()
         shell: Rscript {0}
-
