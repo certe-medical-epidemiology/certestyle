@@ -18,5 +18,4 @@
 # ===================================================================== #
 
 #' @keywords internal
-#' @importFrom extrafont font_install
 "_PACKAGE"
