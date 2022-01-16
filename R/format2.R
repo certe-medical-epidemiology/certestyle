@@ -22,8 +22,8 @@
 #' Formatting with readable `format` settings and Dutch defaults
 #' @param x vector of values
 #' @param round number of decimals to round to
-#' @param force.decimals force printing decimals, even with trailing zeroes
-#' @param min.length minimal length of output, overwrites `force.decimals`
+#' @param force_decimals force printing decimals, even with trailing zeroes
+#' @param min_length minimal length of output, overwrites `force_decimals`
 #' @param format format to use, can be set with human-readable text such as `"d mmmm yyyy"` or POSIX such as `"%e %B %Y"`
 #' @param locale language to set for dates
 #' @param decimal.mark,big.mark decimal and thousands limiters
@@ -44,7 +44,7 @@
 #' format2(c(1024, 0.123))
 #' 
 #' format2(2.1)
-#' format2(2.1, force.decimals = TRUE) # since default is 2 decimals
+#' format2(2.1, force_decimals = TRUE) # since default is 2 decimals
 #' 
 #' p <- cleaner::as.percentage(0.123)
 #' format2(p)
@@ -78,17 +78,17 @@ format2.default <- function(x, ...) {
 #' @export
 format2.numeric <- function(x,
                             round = ifelse(percent, 1, 2),
-                            force.decimals = ifelse(percent, TRUE, FALSE),
+                            force_decimals = ifelse(percent, TRUE, FALSE),
                             decimal.mark = ",",
                             big.mark = ".",
-                            min.length = 0,
+                            min_length = 0,
                             percent = FALSE,
                             ...) {
   
   if (percent == TRUE) {
     format2(x = as.percentage(x),
             round = round,
-            force.decimals = force.decimals,
+            force_decimals = force_decimals,
             decimal.mark = decimal.mark,
             big.mark = big.mark)
   } else {
@@ -96,25 +96,25 @@ format2.numeric <- function(x,
       return(character())
     }
     
-    if (min.length > 0) {
-      if (force.decimals == TRUE) {
-        warning('`force.decimals = TRUE` will be overwritten by `min.length = ', min.length, '`.')
+    if (min_length > 0) {
+      if (force_decimals == TRUE) {
+        warning('`force_decimals = TRUE` will be overwritten by `min_length = ', min_length, '`.')
       }
       x <- formatC(as.integer(x),
-                   width = min.length,
+                   width = min_length,
                    flag = "0")
     } else {
-      if (force.decimals == TRUE) {
+      if (force_decimals == TRUE) {
         x <- formatC(
           round(as.double(x), digits = round),
-          digits = round,
+          digits = round, # for latest R? ifelse(identical(round, 0), 1, round),
           big.mark = big.mark,
           decimal.mark = decimal.mark,
           format = "f"
         )
       } else {
         x <- format(
-          round(as.double(x), round),
+          round(as.double(x), digits = round),
           scientific = FALSE,
           big.mark = big.mark,
           decimal.mark = decimal.mark
@@ -133,6 +133,7 @@ format2.numeric <- function(x,
 #' @export
 format2.percentage <- function(x,
                                round = NULL,
+                               force_decimals = TRUE,
                                decimal.mark = ",",
                                big.mark = ".",
                                ...) {
@@ -140,10 +141,10 @@ format2.percentage <- function(x,
   if (length(x) == 0) {
     return(character())
   }
-  percentage(as.double(x),
-             digits = round,
-             decimal.mark = decimal.mark,
-             big.mark = big.mark)
+  x <- as.double(x) * 100
+  out <- format2(x, round = guess_decimals(x, round, minimum = 0), force_decimals = force_decimals)
+  out[!is.na(out)] <- paste0(out[!is.na(out)], "%")
+  out
 }
 
 #' @rdname format2
@@ -183,13 +184,13 @@ format2.hms <- function(x,
 #' @export
 format2.difftime <- function(x,
                              round = 2,
-                             force.decimals = FALSE,
+                             force_decimals = FALSE,
                              decimal.mark = ",",
                              big.mark = ".",
                              ...) {
   format2.numeric(x,
                   round = round,
-                  force.decimals = force.decimals,
+                  force_decimals = force_decimals,
                   percent = FALSE,
                   decimal.mark = decimal.mark,
                   ...)
