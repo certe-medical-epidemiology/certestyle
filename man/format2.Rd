@@ -20,15 +20,22 @@ format2(x, ...)
 \method{format2}{numeric}(
   x,
   round = ifelse(percent, 1, 2),
-  force.decimals = ifelse(percent, TRUE, FALSE),
+  force_decimals = ifelse(percent, TRUE, FALSE),
   decimal.mark = ",",
   big.mark = ".",
-  min.length = 0,
+  min_length = 0,
   percent = FALSE,
   ...
 )
 
-\method{format2}{percentage}(x, round = NULL, decimal.mark = ",", big.mark = ".", ...)
+\method{format2}{percentage}(
+  x,
+  round = NULL,
+  force_decimals = TRUE,
+  decimal.mark = ",",
+  big.mark = ".",
+  ...
+)
 
 \method{format2}{percent}(...)
 
@@ -41,7 +48,7 @@ format2(x, ...)
 \method{format2}{difftime}(
   x,
   round = 2,
-  force.decimals = FALSE,
+  force_decimals = FALSE,
   decimal.mark = ",",
   big.mark = ".",
   ...
@@ -56,11 +63,11 @@ format2_scientific(x, decimal.mark = ",", ...)
 
 \item{round}{number of decimals to round to}
 
-\item{force.decimals}{force printing decimals, even with trailing zeroes}
+\item{force_decimals}{force printing decimals, even with trailing zeroes}
 
 \item{decimal.mark, big.mark}{decimal and thousands limiters}
 
-\item{min.length}{minimal length of output, overwrites \code{force.decimals}}
+\item{min_length}{minimal length of output, overwrites \code{force_decimals}}
 
 \item{percent}{logical to transform numeric to percentage (character)}
 
@@ -88,7 +95,7 @@ format2(1024)
 format2(c(1024, 0.123))
 
 format2(2.1)
-format2(2.1, force.decimals = TRUE) # since default is 2 decimals
+format2(2.1, force_decimals = TRUE) # since default is 2 decimals
 
 p <- cleaner::as.percentage(0.123)
 format2(p)
