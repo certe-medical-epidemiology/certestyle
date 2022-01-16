@@ -85,16 +85,23 @@
 <span class="fu">format2</span><span class="op">(</span>
   <span class="va">x</span>,
   round <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">percent</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,
-  force.decimals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">percent</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
+  force_decimals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">percent</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>,
   decimal.mark <span class="op">=</span> <span class="st">","</span>,
   big.mark <span class="op">=</span> <span class="st">"."</span>,
-  min.length <span class="op">=</span> <span class="fl">0</span>,
+  min_length <span class="op">=</span> <span class="fl">0</span>,
   percent <span class="op">=</span> <span class="cn">FALSE</span>,
   <span class="va">...</span>
 <span class="op">)</span>
 
 <span class="co"># S3 method for percentage</span>
-<span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, round <span class="op">=</span> <span class="cn">NULL</span>, decimal.mark <span class="op">=</span> <span class="st">","</span>, big.mark <span class="op">=</span> <span class="st">"."</span>, <span class="va">...</span><span class="op">)</span>
+<span class="fu">format2</span><span class="op">(</span>
+  <span class="va">x</span>,
+  round <span class="op">=</span> <span class="cn">NULL</span>,
+  force_decimals <span class="op">=</span> <span class="cn">TRUE</span>,
+  decimal.mark <span class="op">=</span> <span class="st">","</span>,
+  big.mark <span class="op">=</span> <span class="st">"."</span>,
+  <span class="va">...</span>
+<span class="op">)</span>
 
 <span class="co"># S3 method for percent</span>
 <span class="fu">format2</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>
@@ -112,7 +119,7 @@
 <span class="fu">format2</span><span class="op">(</span>
   <span class="va">x</span>,
   round <span class="op">=</span> <span class="fl">2</span>,
-  force.decimals <span class="op">=</span> <span class="cn">FALSE</span>,
+  force_decimals <span class="op">=</span> <span class="cn">FALSE</span>,
   decimal.mark <span class="op">=</span> <span class="st">","</span>,
   big.mark <span class="op">=</span> <span class="st">"."</span>,
   <span class="va">...</span>
@@ -129,12 +136,12 @@
 <dd><p>arguments given to methods such as <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code></p></dd>
 <dt>round</dt>
 <dd><p>number of decimals to round to</p></dd>
-<dt>force.decimals</dt>
+<dt>force_decimals</dt>
 <dd><p>force printing decimals, even with trailing zeroes</p></dd>
 <dt>decimal.mark, big.mark</dt>
 <dd><p>decimal and thousands limiters</p></dd>
-<dt>min.length</dt>
-<dd><p>minimal length of output, overwrites <code>force.decimals</code></p></dd>
+<dt>min_length</dt>
+<dd><p>minimal length of output, overwrites <code>force_decimals</code></p></dd>
 <dt>percent</dt>
 <dd><p>logical to transform numeric to percentage (character)</p></dd>
 <dt>format</dt>
@@ -159,7 +166,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-Q1"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"d mmmm yyyy HH:MM"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "16 januari 2022 09:49"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "16 januari 2022 18:00"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># content-aware of decimal use</span></span>
 <span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fl">1024</span><span class="op">)</span></span>
@@ -169,8 +176,8 @@
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fl">2.1</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2,1"</span>
-<span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fl">2.1</span>, force.decimals <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># since default is 2 decimals</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2,1"</span>
+<span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fl">2.1</span>, force_decimals <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># since default is 2 decimals</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2,10"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">cleaner</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/cleaner/man/percentage.html" class="external-link">as.percentage</a></span><span class="op">(</span><span class="fl">0.123</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
