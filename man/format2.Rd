@@ -102,8 +102,15 @@ format2(p)
 
 # use format2_scientific for scientific labels in plots:
 if (require("certeplot2")) {
+
+   # y axis without scientific notation
+   plot2(mtcars,
+         y = hp * 1000)
+   
+   # y axis with scientific notation
    plot2(mtcars,
          y = hp * 1000,
          y.labels = format2_scientific)
+         
 }
 }

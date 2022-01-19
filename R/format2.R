@@ -29,7 +29,6 @@
 #' @param decimal.mark,big.mark decimal and thousands limiters
 #' @param percent logical to transform numeric to percentage (character)
 #' @param ... arguments given to methods such as [format()]
-#' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
 #' @rdname format2
 #' @export
 #' @return [format2()] always returns a [character].
@@ -266,30 +265,40 @@ coerce_datetime <- function(x, format, locale, ...) {
 }
 
 #' @rdname format2
+#' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
 #' @export
 #' @examples 
 #' 
 #' # use format2_scientific for scientific labels in plots:
 #' if (require("certeplot2")) {
+#' 
+#'    # y axis without scientific notation
+#'    plot2(mtcars,
+#'          y = hp * 1000)
+#'    
+#'    # y axis with scientific notation
 #'    plot2(mtcars,
 #'          y = hp * 1000,
 #'          y.labels = format2_scientific)
+#'          
 #' }
 format2_scientific <- function(x, 
                                decimal.mark = ",",
                                ...) {
-  # source: http://stackoverflow.com/a/24241954
+  # based on http://stackoverflow.com/a/24241954
   
-  # turn in to character string in scientific notation
-  l <- format(as.double(x), scientific = TRUE)
+  # turn into character string in scientific notation
+  txt <- format(as.double(x), scientific = TRUE)
   # quote the part before the exponent to keep all the digits
-  l <- gsub("^(.*)e", "'\\1'e", l)
+  txt <- gsub("^(.*)e", "'\\1'e", txt)
+  # replace zero with an actual zero
+  txt <- gsub("' *0'e[+]00", "0", txt)
   # remove + of exponent
-  l <- gsub("e+", "e", l, fixed = TRUE)
+  txt <- gsub("e+", "e", txt, fixed = TRUE)
   # turn the 'e+' into plotmath format
-  l <- gsub("e", "%*%10^", l)
-  # replace comma
-  l <- gsub(".", decimal.mark, l, fixed = TRUE)
+  txt <- gsub("e", "%*%10^", txt, fixed = TRUE)
+  # replace decimal mark
+  txt <- gsub(".", decimal.mark, txt, fixed = TRUE)
   # return this as an expression
-  parse(text = l)
+  parse(text = txt)
 }
