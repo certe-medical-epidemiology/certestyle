@@ -300,16 +300,22 @@ rep.colourpicker <- function(x, ...) {
 #' @noRd
 #' @export
 unique.colourpicker <- function(x, ...) {
-  structure(stats::setNames(unique(as.character(x), ...), unique(names(x))),
-            class = class(x))
+  if (is.null(names(x))) {
+    return(colourpicker(unique(as.character(x))))
+  }
+  out <- data.frame(vals = as.character(x),
+                    nms = names(x),
+                    stringsAsFactors = FALSE)
+  out$uniq <- paste(out$vals, out$nms)
+  out <- unique(out, fromLast = TRUE)
+  colourpicker(stats::setNames(out$vals, out$nms))
 }
 
 #' @method c colourpicker
 #' @noRd
 #' @export
-c.colourpicker <- function(x, ...) {
-  structure(c(as.character(x), ...),
-            class = class(x))
+c.colourpicker <- function(...) {
+  colourpicker(unlist(lapply(list(...), as.character)))
 }
 
 #' @rdname colourpicker

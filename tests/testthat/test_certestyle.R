@@ -109,6 +109,7 @@ test_that("colourpicker works", {
   expect_s3_class(c(colourpicker("red"), colourpicker("red")), "colourpicker")
   expect_s3_class(rev(c(colourpicker("red"), colourpicker("blue"))), "colourpicker")
   expect_length(unique(c(colourpicker("red"), colourpicker("red"))), 1)
+  expect_length(unique(c(col1 = colourpicker("red"), col2 = colourpicker("red"))), 2)
   expect_s3_class(unique(c(colourpicker("red"), colourpicker("red"))), "colourpicker")
   
   expect_warning(colourpicker("qwerty"))
