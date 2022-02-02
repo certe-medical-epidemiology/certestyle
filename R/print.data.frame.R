@@ -20,7 +20,12 @@
 #' @importFrom pillar tbl_sum
 #' @export
 tbl_sum.printed_dataframe <- function(x) {
-  dims <- paste(format(NROW(x), big.mark = ","), "×", format(NCOL(x), big.mark = ","))
+  if (isTRUE(base::l10n_info()$`UTF-8`)) {
+    cross <- "\u00d7"
+  } else {
+    cross <- "x"
+  }
+  dims <- paste(format(NROW(x), big.mark = ","), cross, format(NCOL(x), big.mark = ","))
   names(dims) <- paste("A", paste(rev(attributes(x)$original_classes), collapse = "/"))
   dims
 }
