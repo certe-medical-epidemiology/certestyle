@@ -223,4 +223,5 @@ test_that("tibble printing works", {
   options(print.data.frame_as_tibble = TRUE)
   expect_output(print(mtcars))
   expect_output(print(tibble::as_tibble(mtcars)))
+  expect_output(print(data.frame(a = 123, b = TRUE, c = "text")))
 })

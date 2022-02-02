@@ -90,6 +90,6 @@ pillar_shaft.logical <- function(x, ...) {
   out <- trimws(format(x))
   out[x] <- font_green("TRUE")
   out[!x] <- font_red("FALSE")
-  out[is.na(x)] <- pillar::style_na(NA)
+  out[is.na(x)] <- pillar::style_subtle(NA)
   pillar::new_pillar_shaft_simple(out, width = 5, align = "left")
 }
