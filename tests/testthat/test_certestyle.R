@@ -219,13 +219,8 @@ test_that("toproper works", {
   expect_identical(toproper("this is a sentence.", every_word = TRUE), "This is a Sentence.")
 })
 
-test_that("Certe styler works", {
-  expect_identical(as.character(styler::style_text("example_isolates %>% count(hospital_id, gender) %>% plot2(x.title = \"Hospital\", y.title = \"Count\", title = \"Count isolates per hospital/gender\")",
-                                                   style = certedata_style_transformer)),
-                   c("example_isolates %>%",
-                     "  count(hospital_id,",
-                     "        gender) %>%",
-                     "  plot2(x.title = \"Hospital\",",
-                     "        y.title = \"Count\",",
-                     "        title = \"Count isolates per hospital/gender\")"))
+test_that("tibble printing works", {
+  options(print.data.frame_as_tibble = TRUE)
+  expect_output(print(mtcars))
+  expect_output(print(dplyr::starwars))
 })

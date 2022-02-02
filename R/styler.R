@@ -21,7 +21,7 @@
 #'
 #' @description Use this styler for formatting code by setting this as an option:
 #' 
-#' `options(styler.addins_style_transformer = "certedata_style_transformer()")`
+#' `options(styler.addins_style_transformer = "certe_style_transformer()")`
 #' 
 #' Then use the keyboard shortcut of the `styler` package to apply the formatting.
 #' @param ... arguments passed on to [styler::tidyverse_style()]
@@ -48,7 +48,7 @@
 #' @importFrom styler tidyverse_style
 #' @importFrom purrr some negate
 #' @export
-certedata_style_transformer <- function(...) {
+certe_style_transformer <- function(...) {
   certe_style <- tidyverse_style(...)
 
   # line breaks between *all* arguments if line breaks between *any*
