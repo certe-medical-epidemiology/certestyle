@@ -222,5 +222,5 @@ test_that("toproper works", {
 test_that("tibble printing works", {
   options(print.data.frame_as_tibble = TRUE)
   expect_output(print(mtcars))
-  expect_output(print(dplyr::starwars))
+  expect_output(print(tibble::as_tibble(mtcars)))
 })

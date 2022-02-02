@@ -33,7 +33,6 @@ update_certe_cols <- function() {
 }
 
 # for expanding the colours from dark to light
-#' @importFrom dplyr dplyr::case_when
 expand_colours <- function(colour.list, extended_spectrum) {
   
   lightness_values <- c(-0.30, 0.35, 0.50, 0.70, 0.85, 0.95)

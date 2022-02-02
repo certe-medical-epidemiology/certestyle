@@ -26,7 +26,7 @@ tbl_sum.printed_dataframe <- function(x) {
 }
 
 #' @method print data.frame
-#' @noRd
+#' @inherit base::print.data.frame
 #' @export print.data.frame
 #' @export
 print.data.frame <- function(x, ...) {
