@@ -236,3 +236,9 @@ test_that("tibble printing works", {
   expect_output(print(tibble::as_tibble(mtcars)))
   expect_output(print(data.frame(a = 123, b = TRUE, c = "text")))
 })
+
+test_that("rmd template work", {
+  expect_false(rmarkdown_date() == "")
+  expect_false(rmarkdown_template_file() == "")
+  expect_false(rmarkdown_template_folder() == "")
+})
