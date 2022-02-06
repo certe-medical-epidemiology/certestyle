@@ -239,6 +239,8 @@ test_that("tibble printing works", {
 
 test_that("rmd template work", {
   expect_false(rmarkdown_date() == "")
-  expect_false(rmarkdown_template_file() == "")
-  expect_false(rmarkdown_template_folder() == "")
+  expect_false(rmarkdown_template("latex") == "")
+  expect_false(rmarkdown_template("word") == "")
+  expect_error(rmarkdown_template("other") == "")
+  expect_false(rmarkdown_logo() == "")
 })

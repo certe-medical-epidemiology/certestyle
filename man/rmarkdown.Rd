@@ -5,8 +5,8 @@
 \alias{rmarkdown_author}
 \alias{rmarkdown_date}
 \alias{rmarkdown_table}
-\alias{rmarkdown_template_file}
-\alias{rmarkdown_template_folder}
+\alias{rmarkdown_template}
+\alias{rmarkdown_logo}
 \title{Markdown Template Properties}
 \usage{
 rmarkdown_author(user_id = NULL)
@@ -15,9 +15,9 @@ rmarkdown_date(date = Sys.Date())
 
 rmarkdown_table(...)
 
-rmarkdown_template_file()
+rmarkdown_template(type = "latex")
 
-rmarkdown_template_folder()
+rmarkdown_logo(logo_type = "centre")
 }
 \arguments{
 \item{user_id}{user ID at Certe, defaults to currently logged in user}
@@ -25,7 +25,14 @@ rmarkdown_template_folder()
 \item{date}{Date to print in "d mmmm yyyy"}
 
 \item{...}{data set to print using \code{\link[certetoolbox:tbl_flextable]{certetoolbox::tbl_flextable()}}}
+
+\item{type}{defaults to "latex", must be "latex" or "word" (case-insensitive)}
+
+\item{logo_type}{type of logo, must be "centre" or "footer" (case-insensitive)}
 }
 \description{
 These functions can be used in R Markdown documents.
+}
+\details{
+For LaTeX, 4 logo files can be used to add to the resulting PDF file: \code{logocentre} (38x58 mm), \code{logoleft} (38x58 mm), \code{logoright} (38x58 mm) and \code{logofooter} (7 mm high). They must be set as YAML parameters in an R Markdown file header.
 }

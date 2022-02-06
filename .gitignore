@@ -48,3 +48,6 @@ Thumbs.db
 
 # themes
 *.rstheme
+
+# LaTex leftover
+*.log
