@@ -171,6 +171,7 @@ test_that("format2 works", {
   expect_identical(format2("2022-01-01", "yyyy-Q"), "2022-1")
   expect_identical(format2("2022-01-01", "yyyy-QQ"), "2022-Q1")
   expect_identical(format2("2022-01-01", "yyyy-qq"), "2022-Q1")
+  expect_identical(format2(rep("2022-01-01", 10), "yyyy-qq"), rep("2022-Q1", 10))
   
   tm <- Sys.time()
   expect_identical(format2(tm), format(tm))

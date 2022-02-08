@@ -131,7 +131,7 @@ format2.numeric <- function(x,
 #' @importFrom cleaner percentage
 #' @export
 format2.percentage <- function(x,
-                               round = NULL,
+                               round = 1,
                                force_decimals = TRUE,
                                decimal.mark = ",",
                                big.mark = ".",
@@ -144,13 +144,6 @@ format2.percentage <- function(x,
   out <- format2(x, round = guess_decimals(x, round, minimum = 0), force_decimals = force_decimals)
   out[!is.na(out)] <- paste0(out[!is.na(out)], "%")
   out
-}
-
-#' @rdname format2
-#' @export
-format2.percent <- function(...) {
-  .Deprecated("format2.percentage()", package = "certestyle")
-  format2.percentage(...)
 }
 
 #' @rdname format2
@@ -247,7 +240,11 @@ coerce_datetime <- function(x, format, locale, ...) {
   if (any(df$form %like% "(q|qq)")) {
     df$quarter <- quarter(df$dat)
     df$quarter[df$form %like% "qq"] <- paste0("Q", df$quarter[df$form %like% "qq"])
-    df$form <- gsub(pattern = '(q|qq)+', replacement = df$quarter, x = df$form)
+    df$form <- mapply(gsub,
+                      df$quarter,
+                      df$form,
+                      MoreArgs = list(pattern = "(q|qq)+"),
+                      USE.NAMES = FALSE)
   }
   
   if (!is.null(old_option)) {

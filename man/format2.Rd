@@ -5,7 +5,6 @@
 \alias{format2.default}
 \alias{format2.numeric}
 \alias{format2.percentage}
-\alias{format2.percent}
 \alias{format2.Date}
 \alias{format2.POSIXt}
 \alias{format2.hms}
@@ -30,14 +29,12 @@ format2(x, ...)
 
 \method{format2}{percentage}(
   x,
-  round = NULL,
+  round = 1,
   force_decimals = TRUE,
   decimal.mark = ",",
   big.mark = ".",
   ...
 )
-
-\method{format2}{percent}(...)
 
 \method{format2}{Date}(x, format = "d mmmm yyyy", locale = "nl", ...)
 
