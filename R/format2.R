@@ -140,10 +140,11 @@ format2.percentage <- function(x,
   if (length(x) == 0) {
     return(character())
   }
-  x <- as.double(x) * 100
-  out <- format2(x, round = guess_decimals(x, round, minimum = 0), force_decimals = force_decimals)
-  out[!is.na(out)] <- paste0(out[!is.na(out)], "%")
-  out
+  # this will call cleaner:::format.percentage
+  trimws(format(x,
+                digits = round,
+                decimal.mark = decimal.mark,
+                big.mark = big.mark))
 }
 
 #' @rdname format2

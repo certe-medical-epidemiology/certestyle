@@ -17,8 +17,7 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
-#' @importFrom pillar tbl_sum
-#' @export
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
 tbl_sum.printed_dataframe <- function(x) {
   if (isTRUE(base::l10n_info()$`UTF-8`)) {
     cross <- "\u00d7"
@@ -30,15 +29,11 @@ tbl_sum.printed_dataframe <- function(x) {
   dims
 }
 
-#' @method print data.frame
-#' @inherit base::print.data.frame
-#' @export print.data.frame
-#' @export
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
 print.data.frame <- function(x, ...) {
   # print data.frames as tibbles, if `tibble` is installed
   # and option 'print.data.frame_as_tibble' is TRUE
-  if (isTRUE(as.logical(getOption("print.data.frame_as_tibble", FALSE))) &&
-      "tibble" %in% rownames(utils::installed.packages())) {
+  if ("tibble" %in% rownames(utils::installed.packages())) {
     msg <- FALSE
     if (!identical(rownames(x), as.character(seq_len(NROW(x))))) {
       msg <- TRUE
@@ -48,7 +43,7 @@ print.data.frame <- function(x, ...) {
     tibble <- tibble::as_tibble(x)
     class(tibble) <- c("printed_dataframe", class(tibble))
     attr(tibble, "original_classes") <- classes
-    print(tibble, ...)
+    print(tibble, ..., na.print = NA)
     if (isTRUE(msg)) {
       message("NOTE: Row names printed as first column.")
     }
@@ -72,20 +67,19 @@ tibble_col_format2_l <- function(x, ...) {
   pillar::new_pillar_shaft_simple(out, align = "left", width = chars)
 }
 
-#' @importFrom pillar pillar_shaft
-#' @export
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
 pillar_shaft.integer <- tibble_col_format2_r
 
-#' @importFrom pillar pillar_shaft
-#' @export
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
 pillar_shaft.double <- tibble_col_format2_r
 
-#' @importFrom pillar pillar_shaft
-#' @export
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
+pillar_shaft.numeric <- tibble_col_format2_r
+
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
 pillar_shaft.character <- tibble_col_format2_l
 
-#' @importFrom pillar pillar_shaft
-#' @export
+# will be exported using s3_register if option `print.data.frame_as_tibble` is set
 pillar_shaft.logical <- function(x, ...) {
   out <- trimws(format(x))
   out[x] <- font_green("TRUE")

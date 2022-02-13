@@ -1,6 +1,6 @@
 Package: certestyle
 Title: A Certe R Package for Applying Certe Organisational Style
-Version: 1.2.2
+Version: 1.2.3
 Authors@R: c(
   person(given = c("Matthijs", "S."), 
          family = "Berends",
@@ -22,11 +22,9 @@ Imports:
   cleaner (>= 1.5.2),
   crayon (>= 1.4.0),
   lubridate (>= 1.7.0),
-  pillar (>= 1.5.0),
   purrr (>= 0.3.4),
   readr (>= 1.4.0),
   rstudioapi (>= 0.8),
-  tibble (>= 3.0.0),
   styler (>= 1.3.2),
   viridisLite (>= 0.4.0),
   yaml (>= 2.2.0)
@@ -37,7 +35,9 @@ Suggests:
   certeprojects,
   hms (>= 1.0.0),
   knitr (>= 1.0.0),
-  testthat (>= 2.0.0)
+  pillar (>= 1.5.0),
+  testthat (>= 2.0.0),
+  tibble (>= 3.0.0)
 License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
