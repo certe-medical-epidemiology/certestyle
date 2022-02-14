@@ -17,18 +17,18 @@ rmarkdown_table(...)
 
 rmarkdown_template(type = "latex")
 
-rmarkdown_logo(logo_type = "centre")
+rmarkdown_logo(logo_type = "front")
 }
 \arguments{
 \item{user_id}{user ID at Certe, defaults to currently logged in user}
 
 \item{date}{Date to print in "d mmmm yyyy"}
 
-\item{...}{data set to print using \code{\link[certetoolbox:tbl_flextable]{certetoolbox::tbl_flextable()}}}
+\item{...}{data set (and options) to pass on to \link[certetoolbox:tbl_flextable]{tbl_flextable()}}
 
 \item{type}{defaults to "latex", must be "latex" or "word" (case-insensitive)}
 
-\item{logo_type}{type of logo, must be "centre" or "footer" (case-insensitive)}
+\item{logo_type}{type of logo, must be "front" or "footer" (case-insensitive). For the LaTeX template, the front logo must be max 16x7 cm, and the footer logo must be max 16x0.7 cm.}
 }
 \description{
 These functions can be used in R Markdown documents.

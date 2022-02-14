@@ -414,8 +414,9 @@ $endif$
 % Certe-specifieke instellingen
 % ------------------------------------------------------------------------------------------------- 
 
-% Titel van inhoudsopgave moet hier ingesteld worden
+% Titels van 'table of contents' en 'abstract' moeten hier ingesteld worden
 \renewcommand*\contentsname{Inhoudsopgave}
+\renewcommand*\abstractname{Samenvatting}
 
 % Standaard lettertypes instellen
 \usepackage{fontspec}
@@ -445,11 +446,12 @@ $endif$
 % Footer opmaken met paginanummers en klein Certe-logo
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{ifthen}
 \pagestyle{fancy}
 \fancyhf{} % anders komen koptitels in the header
 \renewcommand\headrulewidth{0pt}
 \cfoot{\number\value{page} van \pageref{LastPage}\\
-       \includegraphics[height=7mm,keepaspectratio]{$logofooter$}}
+       \ifthenelse{\equal{$logofooter$}{}}{}{\includegraphics[height=7mm,keepaspectratio]{$logofooter$}}}
        
 % \usepackage{grffile}
 
@@ -459,7 +461,7 @@ $endif$
 $if(has-frontmatter)$
   \frontmatter
 $endif$
-$if(title)$
+$if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
   $if(beamer)$
     \frame{\titlepage}
   $else$
@@ -468,7 +470,7 @@ $if(title)$
 
       \begin{center}
         \vspace*{-36mm}
-        \includegraphics[width=60mm,height=60mm,keepaspectratio]{$logocentre$}
+        \ifthenelse{\equal{$logofront$}{}}{}{\includegraphics[width=210mm,height=70mm,keepaspectratio]{$logofront$}}
         
         \vfill
         
@@ -477,12 +479,12 @@ $if(title)$
         
         \vspace{5mm}
         
-        \LARGE
+        \LARGE % dit is iets groter dan \large
         \textbf{$subtitle$}
 
         \vspace{5mm}
         
-        \large
+        \large % dit is iets kleiner dan \LARGE
         \textbf{$subtitle2$}
         
         \vfill

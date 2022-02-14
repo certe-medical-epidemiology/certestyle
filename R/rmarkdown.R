@@ -40,7 +40,7 @@ rmarkdown_date <- function(date = Sys.Date()) {
 }
 
 #' @rdname rmarkdown
-#' @param ... data set to print using [certetoolbox::tbl_flextable()]
+#' @param ... data set (and options) to pass on to [tbl_flextable()][certetoolbox::tbl_flextable()]
 #' @export
 rmarkdown_table <- function(...) {
   knitr::knit_print(certetoolbox::tbl_flextable(...))
@@ -58,12 +58,21 @@ rmarkdown_template <- function(type = "latex") {
   } else {
     stop("invalid 'type' for rmarkdown_template_file(), must be 'latex' or 'word'")
   }
-  system.file(paste0("rmarkdown/latextemplate/", template_file), package = "certestyle")
+  out <- system.file(paste0("rmarkdown/latextemplate/", template_file), package = "certestyle")
+  if (out == "") {
+    stop("Template file '", template_file, "' not found in certestyle package", call. = FALSE)
+  }
+  out
 }
 
 #' @rdname rmarkdown
-#' @param logo_type type of logo, must be "centre" or "footer" (case-insensitive)
+#' @param logo_type type of logo, must be "front" or "footer" (case-insensitive). For the LaTeX template, the front logo must be max 16x7 cm, and the footer logo must be max 16x0.7 cm.
 #' @export
-rmarkdown_logo <- function(logo_type = "centre") {
-  system.file(paste0("rmarkdown/latextemplate/certe", tolower(logo_type)[1], ".pdf"), package = "certestyle")
+rmarkdown_logo <- function(logo_type = "front") {
+  logo_file <- paste0("certe", tolower(logo_type)[1], ".pdf")
+  out <- system.file(paste0("rmarkdown/latextemplate/", logo_file), package = "certestyle")
+  if (out == "") {
+    stop("Logo file '", logo_file, "' not found in certestyle package", call. = FALSE)
+  }
+  out
 }
