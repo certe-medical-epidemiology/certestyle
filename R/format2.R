@@ -290,11 +290,15 @@ format2_scientific <- function(x,
   # quote the part before the exponent to keep all the digits
   txt <- gsub("^(.*)e", "'\\1'e", txt)
   # replace zero with an actual zero
-  txt <- gsub("' *0'e[+]00", "0", txt)
+  txt <- gsub("' *[0.]+'e[+]00", "0", txt)
   # remove + of exponent
   txt <- gsub("e+", "e", txt, fixed = TRUE)
   # turn the 'e+' into plotmath format
   txt <- gsub("e", "%*%10^", txt, fixed = TRUE)
+  # if all expressions start with "1 x", delete that
+  if (all(txt %like% "^'1'%\\*%")) {
+    txt <- gsub("^'1'%\\*%", "", txt)
+  }
   # replace decimal mark
   txt <- gsub(".", decimal.mark, txt, fixed = TRUE)
   # return this as an expression

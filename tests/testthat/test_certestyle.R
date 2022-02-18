@@ -191,6 +191,8 @@ test_that("format2 works", {
   expect_equal(format2(difftime(tm, tm - 10)), "10")
   
   expect_identical(class(format2_scientific(1)), "expression")
+  expect_identical(as.character(format2_scientific(c(1e3, 1e4))),
+                   as.character(expression(10^03, 10^04)))
 })
 
 test_that("is.double2 works", {
