@@ -4,19 +4,28 @@
 \alias{rstudio_install_certe_themes}
 \alias{rstudio_set_certe_light}
 \alias{rstudio_set_certe_dark}
+\alias{rstudio_set_certe_light_nonbold}
+\alias{rstudio_set_certe_dark_nonbold}
 \title{Certe Themes for RStudio}
 \usage{
-rstudio_install_certe_themes()
+rstudio_install_certe_themes(apply_theme = "Certe Light")
 
 rstudio_set_certe_light()
 
 rstudio_set_certe_dark()
+
+rstudio_set_certe_light_nonbold()
+
+rstudio_set_certe_dark_nonbold()
+}
+\arguments{
+\item{apply_theme}{The theme to apply after install}
 }
 \description{
 Install and apply RStudio syntax highlighting in Certe theme colours.
 }
 \details{
-This package comes with two styles that can be installed with \code{\link[=rstudio_install_certe_themes]{rstudio_install_certe_themes()}}: "Certe Light" and "Certe Dark". Needless to say, this function requires RStudio.
+This package comes with four RStudio editor themes that can be installed with \code{\link[=rstudio_install_certe_themes]{rstudio_install_certe_themes()}}: "Certe Light", "Certe Light Non-Bold", "Certe Dark" and "Certe Dark Non-Bold".
 
 Quickly apply the light theme with \code{\link[=rstudio_set_certe_light]{rstudio_set_certe_light()}} and the dark theme with \code{\link[=rstudio_set_certe_dark]{rstudio_set_certe_dark()}} (they will be installed if needed).
 }
