@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.6</span>
       </span>
     </div>
 
@@ -76,16 +76,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rstudio_install_certe_themes</span><span class="op">(</span><span class="op">)</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rstudio_install_certe_themes</span><span class="op">(</span>apply_theme <span class="op">=</span> <span class="st">"Certe Light"</span><span class="op">)</span>
 
 <span class="fu">rstudio_set_certe_light</span><span class="op">(</span><span class="op">)</span>
 
-<span class="fu">rstudio_set_certe_dark</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu">rstudio_set_certe_dark</span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu">rstudio_set_certe_light_nonbold</span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu">rstudio_set_certe_dark_nonbold</span><span class="op">(</span><span class="op">)</span></code></pre></div>
     </div>
 
+    <div id="arguments">
+    <h2>Arguments</h2>
+    <dl><dt>apply_theme</dt>
+<dd><p>The theme to apply after install</p></dd>
+</dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>This package comes with two styles that can be installed with <code>rstudio_install_certe_themes()</code>: "Certe Light" and "Certe Dark". Needless to say, this function requires RStudio.</p>
+    <p>This package comes with four RStudio editor themes that can be installed with <code>rstudio_install_certe_themes()</code>: "Certe Light", "Certe Light Non-Bold", "Certe Dark" and "Certe Dark Non-Bold".</p>
 <p>Quickly apply the light theme with <code>rstudio_set_certe_light()</code> and the dark theme with <code>rstudio_set_certe_dark()</code> (they will be installed if needed).</p>
     </div>
 
