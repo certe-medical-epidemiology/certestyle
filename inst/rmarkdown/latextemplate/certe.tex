@@ -1,7 +1,7 @@
 %
 %
 %
-% Zie de Certe-opmaak van regel 415
+% Zie de Certe-opmaak m.n. vanaf regel 415
 %
 % Matthijs Berends, februari 2022
 %
@@ -27,9 +27,9 @@ $endif$
 $if(fontsize)$
   $fontsize$,
 $endif$
-$if(lang)$
-  $babel-lang$,
-$endif$
+% $if(lang)$
+%   $babel-lang$,
+% $endif$
 $if(papersize)$
   $papersize$paper,
 $endif$
@@ -54,7 +54,7 @@ $if(background-image)$
 $endif$
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
-\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{caption label separator}{. } % dit laatste was: {: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
 $for(beameroption)$
@@ -209,6 +209,7 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 $endif$
 \usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
@@ -218,9 +219,9 @@ $endif$
 $if(author-meta)$
   pdfauthor={$author-meta$},
 $endif$
-$if(lang)$
-  pdflang={$lang$},
-$endif$
+% $if(lang)$
+  pdflang={dutch},
+% $endif$
 $if(subject)$
   pdfsubject={$subject$},
 $endif$
@@ -236,7 +237,7 @@ $if(colorlinks)$
 $else$
   hidelinks,
 $endif$
-  pdfcreator={LaTeX via pandoc}}
+  pdfcreator={Stichting Certe}}
 \urlstyle{same} % disable monospaced font for URLs
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allow verbatim text in footnotes
@@ -414,9 +415,9 @@ $endif$
 % Certe-specifieke instellingen
 % ------------------------------------------------------------------------------------------------- 
 
-% Titels van 'table of contents' en 'abstract' moeten hier ingesteld worden
-\renewcommand*\contentsname{Inhoudsopgave}
-\renewcommand*\abstractname{Samenvatting}
+% Nederlandse namen voor secties zoals Inhoudsopgave, Samenvatting en Lijst met figuren
+\usepackage[dutch]{babel}
+\selectlanguage{dutch}
 
 % Standaard lettertypes instellen
 \usepackage{fontspec}
@@ -452,8 +453,6 @@ $endif$
 \renewcommand\headrulewidth{0pt}
 \cfoot{\number\value{page} van \pageref{LastPage}\\
        \ifthenelse{\equal{$logofooter$}{}}{}{\includegraphics[height=7mm,keepaspectratio]{$logofooter$}}}
-       
-% \usepackage{grffile}
 
 \begin{document}
 % paginanummering uitzetten (voor 1e pagina):
@@ -518,12 +517,12 @@ $include-before$
 $endfor$
 $if(toc)$
 $if(toc-title)$
-\renewcommand*\contentsname{$toc-title$}
+\renewcommand*\contentsname{Inhoudsopgave}
 $endif$
 $if(beamer)$
 \begin{frame}[allowframebreaks]
 $if(toc-title)$
-  \frametitle{$toc-title$}
+  \frametitle{Inhoudsopgave}
 $endif$
 \tableofcontents[hideallsubsections]
 \end{frame}
@@ -542,9 +541,11 @@ $endif$
 
 $if(lot)$
 \listoftables
+\newpage
 $endif$
 $if(lof)$
 \listoffigures
+\newpage
 $endif$
 $if(linestretch)$
 \setstretch{$linestretch$}
