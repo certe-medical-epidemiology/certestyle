@@ -322,8 +322,6 @@ c.colourpicker <- function(...) {
 #' @param white number between `[0, 1]` to add white to `x`
 #' @export
 add_white <- function(x, white) {
-  # scale down to [0, 0.5]:
-  white <- white / 2
   x <- as.character(colourpicker(x))
   r <- strtoi(substr(x, 2, 3), 16)
   g <- strtoi(substr(x, 4, 5), 16)
@@ -332,9 +330,11 @@ add_white <- function(x, white) {
   out <- character(length(x))
   for (i in seq_len(length(x))) {
     hsl <- rgb2hsl(r[i], g[i], b[i], a[i])
-    hsl[3] <- min(1, hsl[3] + white)
+    hsl[3] <- hsl[3] + white * (1 - hsl[3])
     rgb <- hsl2rgb(hsl[1], hsl[2], hsl[3])
-    out[i] <- concat(as.character(as.hexmode(c(rgb[1], rgb[2], rgb[3]))))
+    rgb <- as.character(as.hexmode(c(rgb[1], rgb[2], rgb[3])))
+    rgb[nchar(rgb) == 1] <- paste0("0", rgb[nchar(rgb) == 1])
+    out[i] <- concat(rgb)
   }
   colourpicker(out)
 }
