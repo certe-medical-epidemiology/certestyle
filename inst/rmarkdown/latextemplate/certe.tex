@@ -3,7 +3,8 @@
 %
 % Zie de Certe-opmaak m.n. vanaf regel 415
 %
-% Matthijs Berends, februari 2022
+% Matthijs Berends en Erwin Hassing 
+% februari-mei 2022
 %
 %
 %
@@ -27,9 +28,9 @@ $endif$
 $if(fontsize)$
   $fontsize$,
 $endif$
-% $if(lang)$
-%   $babel-lang$,
-% $endif$
+$if(lang)$
+  $babel-lang$,
+$endif$
 $if(papersize)$
   $papersize$paper,
 $endif$
@@ -54,7 +55,7 @@ $if(background-image)$
 $endif$
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
-\setbeamertemplate{caption label separator}{. } % dit laatste was: {: }
+\setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
 $for(beameroption)$
@@ -242,12 +243,10 @@ $endif$
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allow verbatim text in footnotes
 $endif$
-$if(geometry)$
 $if(beamer)$
 \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
 $else$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-$endif$
+\usepackage[a4paper, portrait, top=30mm,bottom=30mm,right=24mm,left=24mm]{geometry}
 $endif$
 $if(beamer)$
 \newif\ifbibliography
@@ -376,7 +375,7 @@ $endif$
 $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
-\newenvironment{cslreferences}%
+\newenvironment{CSLReferences}%
   {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
@@ -416,8 +415,9 @@ $endif$
 % ------------------------------------------------------------------------------------------------- 
 
 % Nederlandse namen voor secties zoals Inhoudsopgave, Samenvatting en Lijst met figuren
-\usepackage[dutch]{babel}
+\usepackage{babel}
 \selectlanguage{dutch}
+\renewcommand*\contentsname{Inhoudsopgave}
 
 % Standaard lettertypes instellen
 \usepackage{fontspec}
@@ -425,15 +425,28 @@ $endif$
 \setsansfont{Calibri}
 \setmonofont{Fira Code}
 
-% A4 instellen met een werkgebied van 6.3" bij 9.9" (dat lijkt op wat Word standaard doet)
-\usepackage[a4paper, portrait, left=24mm, right=24mm, bottom=30mm, top=30mm]{geometry}
+% Voor de blauwe strook op de titelpagina
+\usepackage{tcolorbox}
 
 % Ondersteunen van landscape pagina's door tekst tussen \begin{landscape} en \end{landscape} te zetten
 \usepackage{lscape}
 
-% Certe-kleuren voor headers
-\definecolor{certeblauw}{RGB}{1, 97, 126}
-\definecolor{certeroze}{RGB}{224, 72, 131}
+% Certe-kleuren voor headers en Quarto callouts
+\definecolor{certeblauw}{HTML}{01617E}
+\definecolor{certeroze}{HTML}{E04883}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{E04883}
+\definecolor{quarto-callout-caution-color}{HTML}{E04883}
+% \definecolor{quarto-callout-color-frame}{HTML}{acacac}
+% \definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-important-color-frame}{HTML}{E04883}
+\definecolor{quarto-callout-important-color}{HTML}{E04883}
+\definecolor{quarto-callout-note-color-frame}{HTML}{01617E}
+\definecolor{quarto-callout-note-color}{HTML}{01617E}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{8B9934}
+\definecolor{quarto-callout-tip-color}{HTML}{8B9934}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{E04883}
+\definecolor{quarto-callout-warning-color}{HTML}{E04883}
+
 \usepackage{sectsty}
 % kop 1
 \sectionfont{\color{certeblauw}\selectfont}
@@ -472,19 +485,28 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
         \ifthenelse{\equal{$logofront$}{}}{}{\includegraphics[width=210mm,height=70mm,keepaspectratio]{$logofront$}}
         
         \vfill
-        
-        \Huge
-        \textbf{$title$}
+
+        \begin{tcolorbox}[size=tight,oversize,sharp corners,
+          colback=certeblauw,
+          colframe=certeblauw,
+          left=100pt,
+          right=100pt,
+          toprule=14mm,
+          bottomrule=14mm,
+          fontupper=\Huge,
+          halign=right]
+          \textcolor{white}{\textbf{$title$}}
+        \end{tcolorbox}
         
         \vspace{5mm}
         
         \LARGE % dit is iets groter dan \large
-        \textbf{$subtitle$}
+        \hspace*{\fill}\textbf{$subtitle$}
 
         \vspace{5mm}
         
         \large % dit is iets kleiner dan \LARGE
-        \textbf{$subtitle2$}
+        \hspace*{\fill}\textbf{$subtitle2$}
         
         \vfill
         
