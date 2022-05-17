@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.12</span>
       </span>
     </div>
 
@@ -88,13 +88,13 @@
 
 <span class="fu">font_red_bg</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
 
-<span class="fu">font_silver</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
-
 <span class="fu">font_white</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
 
 <span class="fu">font_yellow</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
 
 <span class="fu">font_subtle</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
+
+<span class="fu">font_silver</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
 
 <span class="fu">font_grey</span><span class="op">(</span><span class="va">...</span>, collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span>
 
@@ -114,17 +114,21 @@
 <dt>collapse</dt>
 <dd><p>character to separate the text elements. Use <code>collapse = NULL</code> to <em>not</em> collapse the input.</p></dd>
 </dl></div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>Most colours are adapted based on the RStudio theme (dark/light).</p>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_black</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #080808;">TEXT TEST</span> </span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_red</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">TEXT TEST</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #FF0000;">TEXT TEST</span> </span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_green</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">TEXT TEST</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #AFAF5F;">TEXT TEST</span> </span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_blue</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB;">TEXT TEST</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #008787;">TEXT TEST</span> </span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_bold</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">TEXT TEST</span> </span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_italic</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
@@ -132,7 +136,7 @@
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_underline</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="text-decoration: underline;">TEXT TEST</span> </span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu">font_red_bg</span><span class="op">(</span><span class="fu">font_white</span><span class="op">(</span><span class="st">"TEXT TEST"</span><span class="op">)</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BBBBBB; background-color: #BB0000;">TEXT TEST</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #EEEEEE; background-color: #FF0000;">TEXT TEST</span> </span>
 </code></pre></div>
     </div>
   </div>
