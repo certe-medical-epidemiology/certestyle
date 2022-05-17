@@ -8,10 +8,10 @@
 \alias{font_magenta}
 \alias{font_red}
 \alias{font_red_bg}
-\alias{font_silver}
 \alias{font_white}
 \alias{font_yellow}
 \alias{font_subtle}
+\alias{font_silver}
 \alias{font_grey}
 \alias{font_bold}
 \alias{font_italic}
@@ -31,13 +31,13 @@ font_red(..., collapse = " ")
 
 font_red_bg(..., collapse = " ")
 
-font_silver(..., collapse = " ")
-
 font_white(..., collapse = " ")
 
 font_yellow(..., collapse = " ")
 
 font_subtle(..., collapse = " ")
+
+font_silver(..., collapse = " ")
 
 font_grey(..., collapse = " ")
 
@@ -56,6 +56,9 @@ font_stripstyle(...)
 }
 \description{
 Add colours and font formatting to console text.
+}
+\details{
+Most colours are adapted based on the RStudio theme (dark/light).
 }
 \examples{
 cat(font_black("TEXT TEST"), "\n")

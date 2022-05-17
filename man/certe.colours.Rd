@@ -14,7 +14,9 @@ certe.colours
 This is a character vector with all Certe colours. It is used by \code{\link[=colourpicker]{colourpicker()}}.
 }
 \details{
-The colours are:\preformatted{#>      certeblauw      certegroen       certeroze       certegeel       certelila 
+The colours are:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{#>      certeblauw      certegroen       certeroze       certegeel       certelila 
 #>       "#01617E"       "#8B9934"       "#E04883"       "#FFE400"       "#AB79B3" 
 #>  certezachtlila     certeblauw2     certegroen2      certeroze2      certegeel2 
 #>       "#D6B6D6"       "#1691B6"       "#B8C375"       "#E192B1"       "#EEE06A" 
@@ -32,6 +34,6 @@ The colours are:\preformatted{#>      certeblauw      certegroen       certeroze
 #>       "#FDFCFD"       "#043342"       "#4B5220"       "#BE2A63"       "#AA9909" 
 #>      certelila0 certezachtlila0 
 #>       "#8C5994"       "#C8A2C8"
-}
+}\if{html}{\out{</div>}}
 }
 \keyword{datasets}

@@ -17,6 +17,11 @@
 #  useful, but it comes WITHOUT ANY WARRANTY OR LIABILITY.              #
 # ===================================================================== #
 
+#' @importFrom rstudioapi getThemeInfo
+is_dark_theme <- function() {
+  isTRUE(tryCatch(getThemeInfo()$dark, error = function(e) FALSE))
+}
+
 s3_register <- function(generic, class, method = NULL) {
   stopifnot(is.character(generic), length(generic) == 1)
   stopifnot(is.character(class), length(class) == 1)

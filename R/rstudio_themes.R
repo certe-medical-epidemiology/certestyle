@@ -36,8 +36,7 @@ rstudio_install_certe_themes <- function(apply_theme = "Certe Light") {
   first_dark_theme <- names(which(vapply(FUN.VALUE = logical(1), themes, function(t) t$isDark)))[1]
   first_light_theme <- names(which(vapply(FUN.VALUE = logical(1), themes, function(t) !t$isDark)))[1]
   
-  now_dark <- getThemeInfo()$dark
-  if (now_dark) {
+  if (is_dark_theme()) {
     try(applyTheme(first_dark_theme), silent = TRUE)
   } else {
     try(applyTheme(first_light_theme), silent = TRUE)

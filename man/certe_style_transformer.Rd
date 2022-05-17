@@ -17,18 +17,22 @@ Use this styler for formatting code by setting this as an option:
 Then use the keyboard shortcut of the \code{styler} package to apply the formatting.
 }
 \details{
-The Certe styler keeps the first argument of a function on the same line, puts all following arguments on a new line, and does not add another new line after the last argument. This makes these lines:\preformatted{example_isolates \%>\% count(hospital_id, gender) \%>\% plot2(x.title = "Hospital", y.title = "Count", title = "Count isolates per hospital/gender")
+The Certe styler keeps the first argument of a function on the same line, puts all following arguments on a new line, and does not add another new line after the last argument. This makes these lines:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{example_isolates \%>\% count(hospital_id, gender) \%>\% plot2(x.title = "Hospital", y.title = "Count", title = "Count isolates per hospital/gender")
 
 example_isolates \%>\%
   count(hospital_id, gender) \%>\%
   plot2(x.title = "Hospital", y.title = "Count", title = "Count isolates per hospital/gender")
-}
+}\if{html}{\out{</div>}}
 
-Change into:\preformatted{example_isolates \%>\%
+Change into:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{example_isolates \%>\%
   count(hospital_id,
         gender) \%>\%
   plot2(x.title = "Hospital",
         y.title = "Count",
         title = "Count isolates per hospital/gender")
-}
+}\if{html}{\out{</div>}}
 }

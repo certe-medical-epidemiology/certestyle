@@ -27,9 +27,9 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `"certe0"` to `"certe6"` (higher numbers give lighter colours)
 #' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 to 6)
 #' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 5, with names "S", "SI", "I", "IR", "R")
-#' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - ``"', viridisLite_colours, '"``', collapse = "")`
-#' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - ``"', c(if (getRversion() >= 4) grDevices::palette.pals() else character(0), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"``', collapse = "")`
-#' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('``"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"``', collapse = ", ")`
+#' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - \u0060"', viridisLite_colours, '"\u0060', collapse = "")`
+#' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - \u0060"', c(grDevices::palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"\u0060', collapse = "")`
+#' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('\u0060"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"\u0060', collapse = ", ")`
 #' @param length size of the vector to be returned
 #' @param opacity amount of opacity (0 = solid, 1 = transparent)
 #' @param ... not used at the moment
@@ -148,8 +148,8 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     } else if (x %in% viridisLite_colours) {
       x <- viridis(length, option = x)
       
-    } else if (getRversion() >= 4 && x %in% tolower(utils::getFromNamespace("palette.pals", asNamespace("grDevices"))())) {
-      x <- utils::getFromNamespace("palette.colors", asNamespace("grDevices"))(length, palette = x)
+    } else if (x %in% tolower(grDevices::palette.pals())) {
+      x <- grDevices::palette.colors(length, palette = x)
       # some support names, so return the object
       return(structure(x, class = c("colourpicker", "character")))
       
