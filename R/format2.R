@@ -141,10 +141,12 @@ format2.percentage <- function(x,
     return(character())
   }
   # this will call cleaner:::format.percentage
-  trimws(format(x,
+  out <- trimws(format(x,
                 digits = round,
                 decimal.mark = decimal.mark,
                 big.mark = big.mark))
+  out[out == "NA%"] <- NA_character_
+  out
 }
 
 #' @rdname format2
