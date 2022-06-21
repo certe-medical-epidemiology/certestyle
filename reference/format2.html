@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.14</span>
       </span>
     </div>
 
@@ -122,6 +122,9 @@
   <span class="va">...</span>
 <span class="op">)</span>
 
+<span class="co"># S3 method for object_size</span>
+<span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, round <span class="op">=</span> <span class="fl">2</span>, decimal.mark <span class="op">=</span> <span class="st">","</span>, <span class="va">...</span><span class="op">)</span>
+
 <span class="fu">format2_scientific</span><span class="op">(</span><span class="va">x</span>, decimal.mark <span class="op">=</span> <span class="st">","</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
     </div>
 
@@ -129,26 +132,45 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>vector of values</p></dd>
+
+
 <dt>...</dt>
 <dd><p>arguments given to methods such as <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code></p></dd>
+
+
 <dt>round</dt>
 <dd><p>number of decimals to round to</p></dd>
+
+
 <dt>force_decimals</dt>
 <dd><p>force printing decimals, even with trailing zeroes</p></dd>
+
+
 <dt>decimal.mark, big.mark</dt>
 <dd><p>decimal and thousands limiters</p></dd>
+
+
 <dt>min_length</dt>
 <dd><p>minimal length of output, overwrites <code>force_decimals</code></p></dd>
+
+
 <dt>percent</dt>
 <dd><p>logical to transform numeric to percentage (character)</p></dd>
+
+
 <dt>format</dt>
 <dd><p>format to use, can be set with human-readable text such as <code>"d mmmm yyyy"</code> or POSIX such as <code>"%e %B %Y"</code></p></dd>
+
+
 <dt>locale</dt>
 <dd><p>language to set for dates</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>format2()</code> always returns a <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p>
+    
+
+<p><code>format2()</code> always returns a <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -163,7 +185,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-Q1"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"d mmmm yyyy HH:MM"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "30 mei 2022 13:03"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "21 juni 2022 12:36"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># content-aware of decimal use</span></span>
 <span class="r-in"><span class="fu">format2</span><span class="op">(</span><span class="fl">1024</span><span class="op">)</span></span>
@@ -213,7 +235,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
