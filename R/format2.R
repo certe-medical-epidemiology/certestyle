@@ -191,6 +191,26 @@ format2.difftime <- function(x,
                   ...)
 }
 
+#' @rdname format2
+#' @export
+format2.object_size <- function(x,
+                                round = 2,
+                                decimal.mark = ",",
+                                ...) {
+  x <- as.double(x)
+  # Adapted from:
+  # http://jeffreysambells.com/2012/10/25/human-readable-filesize-php
+  size <- c("B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+  factor <- floor((nchar(formatC(x, format = "f", digits = 0)) - 1) / 3)
+  factor[factor > length(size) - 1] <- length(size) - 1
+  # added slight improvement; no decimals for B and kB:
+  round <- rep(round, length(x))
+  round[size[factor + 1]  %in% c("B", "kB")] <- 0
+  out <- paste(sprintf(paste0("%.", round, "f"), x / (1024 ^ factor)), size[factor + 1])
+  out <- trimws(gsub(".", decimal.mark, out, fixed = TRUE))
+  out
+}
+
 #' @importFrom lubridate month quarter
 #' @importFrom cleaner format_datetime
 coerce_datetime <- function(x, format, locale, ...) {

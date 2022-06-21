@@ -9,6 +9,7 @@
 \alias{format2.POSIXt}
 \alias{format2.hms}
 \alias{format2.difftime}
+\alias{format2.object_size}
 \alias{format2_scientific}
 \title{Formatting with readable \code{format} settings and Dutch defaults}
 \usage{
@@ -50,6 +51,8 @@ format2(x, ...)
   big.mark = ".",
   ...
 )
+
+\method{format2}{object_size}(x, round = 2, decimal.mark = ",", ...)
 
 format2_scientific(x, decimal.mark = ",", ...)
 }
