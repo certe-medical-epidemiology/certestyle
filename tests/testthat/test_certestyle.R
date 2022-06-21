@@ -193,6 +193,8 @@ test_that("format2 works", {
   expect_identical(class(format2_scientific(1)), "expression")
   expect_identical(as.character(format2_scientific(c(1e3, 1e4))),
                    as.character(expression(10^03, 10^04)))
+  
+  expect_equal(format2(object.size(iris)), "7 kB")
 })
 
 test_that("is.double2 works", {
