@@ -76,15 +76,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">colourpicker</span><span class="op">(</span><span class="va">x</span>, length <span class="op">=</span> <span class="fl">1</span>, opacity <span class="op">=</span> <span class="fl">0</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for colourpicker</span>
-<span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for colourpicker</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">add_white</span><span class="op">(</span><span class="va">x</span>, <span class="va">white</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">colourpicker</span><span class="op">(</span><span class="va">x</span>, length <span class="op">=</span> <span class="fl">1</span>, opacity <span class="op">=</span> <span class="fl">0</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for colourpicker</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for colourpicker</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">add_white</span><span class="op">(</span><span class="va">x</span>, <span class="va">white</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -163,35 +163,35 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certegroen"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certegroen"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#8B9934"<span style="background-color: #AFAF5F;"> </span> </span>
-<span class="r-in"><span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe"</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe"</span>, <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#01617E"<span style="background-color: #008787;"> </span> "#8B9934"<span style="background-color: #AFAF5F;"> </span> "#E04883"<span style="background-color: #FF5FAF;"> </span> "#FFE400"<span style="background-color: #FFFF00;"> </span> "#AB79B3"<span style="background-color: #D787D7;"> </span> </span>
-<span class="r-in"><span class="fu">colourpicker</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"certeblauw"</span>, <span class="st">"red"</span>, <span class="st">"tan1"</span>, <span class="st">"#ffa"</span>, <span class="st">"FFAA00"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">colourpicker</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"certeblauw"</span>, <span class="st">"red"</span>, <span class="st">"tan1"</span>, <span class="st">"#ffa"</span>, <span class="st">"FFAA00"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#01617E"<span style="background-color: #008787;"> </span> "#FF0000"<span style="background-color: #FF0000;"> </span> "#FFA54F"<span style="background-color: #FFAF5F;"> </span> "#FFFFAA"<span style="background-color: #FFFFAF;"> </span> "#FFAA00"<span style="background-color: #FFAF00;"> </span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">2.5</span>, <span class="fl">1.5</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="co"># set plot margins for below plots</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Certe colours</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span>
-<span class="r-in">        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe"</span>, <span class="fl">12</span><span class="op">)</span>,</span>
-<span class="r-in">        main <span class="op">=</span> <span class="st">"'certe': uses 'certe' + 'certe3'"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">2.5</span>, <span class="fl">1.5</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="co"># set plot margins for below plots</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Certe colours</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe"</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"'certe': uses 'certe' + 'certe3'"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span>
-<span class="r-in">        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe2"</span>, <span class="fl">12</span><span class="op">)</span>,</span>
-<span class="r-in">        main <span class="op">=</span> <span class="st">"'certe2': uses 'certe2' + 'certe4'"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe2"</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"'certe2': uses 'certe2' + 'certe4'"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span>
-<span class="r-in">        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe3"</span>, <span class="fl">12</span><span class="op">)</span>,</span>
-<span class="r-in">        main <span class="op">=</span> <span class="st">"'certe3': uses 'certe3' + 'certe5'"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe3"</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"'certe3': uses 'certe3' + 'certe5'"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># all colourblind-safe colour palettes from the famous viridisLite package</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span>
-<span class="r-in">        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"viridis"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># all colourblind-safe colour palettes from the famous viridisLite package</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"viridis"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-4.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span>
-<span class="r-in">        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"magma"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"magma"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-5.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -207,7 +207,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
