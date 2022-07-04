@@ -288,6 +288,9 @@ coerce_datetime <- function(x, format, locale, ...) {
 #' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
 #' @export
 #' @examples 
+#' format2_scientific(c(12345, 12345678))
+#' 
+#' format2_scientific(c(12345, 12345678), round = 1)
 #' 
 #' # use format2_scientific for scientific labels in plots:
 #' if (require("certeplot2")) {
@@ -302,27 +305,22 @@ coerce_datetime <- function(x, format, locale, ...) {
 #'          y.labels = format2_scientific)
 #'          
 #' }
-format2_scientific <- function(x, 
+format2_scientific <- function(x,
+                               round = 2,
                                decimal.mark = ",",
                                ...) {
-  # based on http://stackoverflow.com/a/24241954
   
   # turn into character string in scientific notation
   txt <- format(as.double(x), scientific = TRUE)
-  # quote the part before the exponent to keep all the digits
-  txt <- gsub("^(.*)e", "'\\1'e", txt)
-  # replace zero with an actual zero
-  txt <- gsub("' *[0.]+'e[+]00", "0", txt)
-  # remove + of exponent
-  txt <- gsub("e+", "e", txt, fixed = TRUE)
-  # turn the 'e+' into plotmath format
-  txt <- gsub("e", "%*%10^", txt, fixed = TRUE)
-  # if all expressions start with "1 x", delete that
-  if (all(txt %like% "^'1'%\\*%")) {
-    txt <- gsub("^'1'%\\*%", "", txt)
-  }
-  # replace decimal mark
-  txt <- gsub(".", decimal.mark, txt, fixed = TRUE)
-  # return this as an expression
-  parse(text = txt)
+  out <- rep(NA_character_, length(x))
+  
+  out[!is.na(x)] <- paste0("'", 
+                           gsub(".", decimal.mark, round(as.double(gsub("^(.*?)e.*", "\\1", txt[!is.na(x)])), digits = round), fixed = TRUE), 
+                           "'%*%10^", 
+                           as.double(gsub("^.*?e(.*)", "\\1", txt[!is.na(x)])))
+  # remove leading zeroes
+  out[!is.na(x) & out == "'0'%*%10^0"] <- "0"
+  # and ones
+  out[!is.na(x)] <- gsub("'1'%*%", "", out[!is.na(x)], fixed = TRUE)
+  parse(text = out)
 }

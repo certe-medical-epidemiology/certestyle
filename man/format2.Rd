@@ -54,7 +54,7 @@ format2(x, ...)
 
 \method{format2}{object_size}(x, round = 2, decimal.mark = ",", ...)
 
-format2_scientific(x, decimal.mark = ",", ...)
+format2_scientific(x, round = 2, decimal.mark = ",", ...)
 }
 \arguments{
 \item{x}{vector of values}
@@ -99,6 +99,9 @@ format2(2.1, force_decimals = TRUE) # since default is 2 decimals
 
 p <- cleaner::as.percentage(0.123)
 format2(p)
+format2_scientific(c(12345, 12345678))
+
+format2_scientific(c(12345, 12345678), round = 1)
 
 # use format2_scientific for scientific labels in plots:
 if (require("certeplot2")) {
