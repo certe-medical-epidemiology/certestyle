@@ -47,7 +47,7 @@
 #' 
 #' p <- cleaner::as.percentage(0.123)
 #' format2(p)
-format2 <- function(x,...) {
+format2 <- function(x, ...) {
   UseMethod("format2")
 }
 
@@ -97,7 +97,7 @@ format2.numeric <- function(x,
     
     if (min_length > 0) {
       if (force_decimals == TRUE) {
-        warning('`force_decimals = TRUE` will be overwritten by `min_length = ', min_length, '`.')
+        warning("`force_decimals = TRUE` will be overwritten by `min_length = ", min_length, "`.")
       }
       x <- formatC(as.integer(x),
                    width = min_length,
@@ -221,7 +221,7 @@ coerce_datetime <- function(x, format, locale, ...) {
     if (locale %like% "^[a-z]{2}$") {
       locale <- paste0(tolower(locale), "_", toupper(locale))
     }
-    if (Sys.getlocale("LC_TIME") %like% ".UTF-8" & locale %unlike% ".UTF-8") {
+    if (Sys.getlocale("LC_TIME") %like% ".UTF-8" && locale %unlike% ".UTF-8") {
       locale <- paste0(locale, ".UTF-8")
     }
     # exception for Dutch on Windows
@@ -248,7 +248,7 @@ coerce_datetime <- function(x, format, locale, ...) {
   }
   
   if (inherits(x, c("hms", "difftime", "POSIXlt"))) {
-    if (all(x %like% '^[0-9]+:[0-9]+')) {
+    if (all(x %like% "^[0-9]+:[0-9]+")) {
       x <- paste("1970-01-01", x)
     }
     df <- data.frame(dat = as.POSIXct(x), form = format(as.POSIXct(x), format), stringsAsFactors = FALSE)
@@ -263,18 +263,20 @@ coerce_datetime <- function(x, format, locale, ...) {
   if (any(df$form %like% "(q|qq)")) {
     df$quarter <- quarter(df$dat)
     df$quarter[df$form %like% "qq"] <- paste0("Q", df$quarter[df$form %like% "qq"])
-    df$form <- mapply(gsub,
-                      df$quarter,
-                      df$form,
-                      MoreArgs = list(pattern = "(q|qq)+"),
-                      USE.NAMES = FALSE)
+    df$form <- unlist(Map(gsub,
+                          df$quarter,
+                          df$form,
+                          MoreArgs = list(pattern = "(q|qq)+"),
+                          USE.NAMES = FALSE))
   }
   
   if (!is.null(old_option)) {
     tryCatch(Sys.setlocale("LC_TIME", locale = old_option),
-             error = function(e) warning("Unable to reset original language when running: ",
-                                         'Sys.setlocale("LC_TIME", locale = "', old_option, '")',
-                                         call. = FALSE))
+             error = function(e) {
+               warning("Unable to reset original language when running: ",
+                       'Sys.setlocale("LC_TIME", locale = "', old_option, '")',
+                       call. = FALSE)
+             })
   }
   
   if (format == "unix") {

@@ -36,7 +36,7 @@ update_certe_cols <- function() {
 expand_colours <- function(colour.list, extended_spectrum) {
   
   lightness_values <- c(-0.30, 0.35, 0.50, 0.70, 0.85, 0.95)
-  saturation_values <- c( 0.9, 0.80, 0.85, 0.90, 0.80, 0.6)
+  saturation_values <- c(0.9, 0.80, 0.85, 0.90, 0.80, 0.6)
   if (extended_spectrum == FALSE) {
     lightness_values <- lightness_values[c(1, 3, 6)]
     saturation_values <- saturation_values[c(1, 3, 6)]
@@ -84,4 +84,3 @@ expand_colours <- function(colour.list, extended_spectrum) {
   colour.list <- vapply(FUN.VALUE = character(1), colour.list, function(x) rgb(x[1], x[2], x[3], maxColorValue = 255))
   colour.list
 }
-
