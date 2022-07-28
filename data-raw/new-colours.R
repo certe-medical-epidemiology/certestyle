@@ -61,7 +61,7 @@ expand_colours <- function(colour.list, extended_spectrum) {
           l_new <- hsl[3] + ((1 - hsl[3]) * -0.15)
         } else if (tint == 2) {
           l_new <- hsl[3] + ((1 - hsl[3]) * 0.20)
-        } else if (tint == 3 & extended_spectrum == TRUE) {
+        } else if (tint == 3 && extended_spectrum == TRUE) {
           l_new <- hsl[3] + ((1 - hsl[3]) * 0.30)
         } else {
           l_new <- hsl[3] + ((1 - hsl[3]) * lightness_values[tint])

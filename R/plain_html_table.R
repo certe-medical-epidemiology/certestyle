@@ -45,7 +45,7 @@ plain_html_table <- function(x, max_col = Inf) {
   
   if (ncol(x) > max_col) {
     # set maximum number of cols
-    x <- x[, c(1:max_col), drop = FALSE]
+    x <- x[, seq_len(max_col), drop = FALSE]
   }
   
   # header
