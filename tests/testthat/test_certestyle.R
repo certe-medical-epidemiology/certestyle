@@ -249,3 +249,28 @@ test_that("rmd template work", {
   expect_error(rmarkdown_template("other") == "")
   expect_false(rmarkdown_logo() == "")
 })
+
+test_that("dec_mark and big_mark work", {
+  expect_true(dec_mark() %in% c(",", "."))
+  expect_true(big_mark() %in% c(",", ".", " ", ""))
+  
+  options(dec_mark = ",", big_mark = NULL)
+  expect_identical(dec_mark(), ",")
+  expect_identical(big_mark(), ".")
+  
+  options(dec_mark = ".", big_mark = NULL)
+  expect_identical(dec_mark(), ".")
+  expect_identical(big_mark(), " ")
+  
+  options(dec_mark = ".", big_mark = ",")
+  expect_identical(dec_mark(), ".")
+  expect_identical(big_mark(), ",")
+  
+  options(dec_mark = "|", big_mark = NULL)
+  expect_warning(dec_mark())
+  options(dec_mark = NULL, big_mark = "|")
+  expect_warning(big_mark())
+  
+  # clean up
+  options(dec_mark = NULL, big_mark = NULL)
+})

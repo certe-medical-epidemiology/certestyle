@@ -399,9 +399,10 @@ $endif$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 \date{$date$}
 $if(beamer)$
-  $if(institute)$
-    \institute{$for(institute)$$institute$$sep$ \and $endfor$}
-  $endif$
+  \institute{Stichting Certe}
+  % $if(institute)$
+  %   \institute{$for(institute)$$institute$$sep$ \and $endfor$}
+  % $endif$
   $if(titlegraphic)$
     \titlegraphic{\includegraphics{$titlegraphic$}}
   $endif$

@@ -78,8 +78,8 @@ format2.default <- function(x, ...) {
 format2.numeric <- function(x,
                             round = ifelse(percent, 1, 2),
                             force_decimals = ifelse(percent, TRUE, FALSE),
-                            decimal.mark = ",",
-                            big.mark = ".",
+                            decimal.mark = dec_mark(),
+                            big.mark = big_mark(),
                             min_length = 0,
                             percent = FALSE,
                             ...) {
@@ -133,8 +133,8 @@ format2.numeric <- function(x,
 format2.percentage <- function(x,
                                round = 1,
                                force_decimals = TRUE,
-                               decimal.mark = ",",
-                               big.mark = ".",
+                               decimal.mark = dec_mark(),
+                               big.mark = big_mark(),
                                ...) {
   
   if (length(x) == 0) {
@@ -180,8 +180,8 @@ format2.hms <- function(x,
 format2.difftime <- function(x,
                              round = 2,
                              force_decimals = FALSE,
-                             decimal.mark = ",",
-                             big.mark = ".",
+                             decimal.mark = dec_mark(),
+                             big.mark = big_mark(),
                              ...) {
   format2.numeric(x,
                   round = round,
@@ -195,7 +195,7 @@ format2.difftime <- function(x,
 #' @export
 format2.object_size <- function(x,
                                 round = 2,
-                                decimal.mark = ",",
+                                decimal.mark = dec_mark(),
                                 ...) {
   x <- as.double(x)
   # Adapted from:
@@ -307,7 +307,7 @@ coerce_datetime <- function(x, format, locale, ...) {
 #' }
 format2_scientific <- function(x,
                                round = 2,
-                               decimal.mark = ",",
+                               decimal.mark = dec_mark(),
                                ...) {
   
   # turn into character string in scientific notation
