@@ -148,6 +148,31 @@ test_that("font colours works", {
                    c("test1", "test2"))
 })
 
+test_that("dec_mark and big_mark work", {
+  expect_true(dec_mark() %in% c(",", "."))
+  expect_true(big_mark() %in% c(",", ".", " ", ""))
+  
+  options(dec_mark = ",", big_mark = NULL)
+  expect_identical(dec_mark(), ",")
+  expect_identical(big_mark(), ".")
+  
+  options(dec_mark = ".", big_mark = NULL)
+  expect_identical(dec_mark(), ".")
+  expect_identical(big_mark(), " ")
+  
+  options(dec_mark = ".", big_mark = ",")
+  expect_identical(dec_mark(), ".")
+  expect_identical(big_mark(), ",")
+  
+  options(dec_mark = "|", big_mark = NULL)
+  expect_warning(dec_mark())
+  options(dec_mark = NULL, big_mark = "|")
+  expect_warning(big_mark())
+})
+
+# for the rest of the unit tests
+options(dec_mark = ",", big_mark = ".")
+
 test_that("format2 works", {
   
   expect_identical(format2(mean), format(mean))

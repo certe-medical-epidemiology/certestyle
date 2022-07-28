@@ -21,8 +21,8 @@ format2(x, ...)
   x,
   round = ifelse(percent, 1, 2),
   force_decimals = ifelse(percent, TRUE, FALSE),
-  decimal.mark = ",",
-  big.mark = ".",
+  decimal.mark = dec_mark(),
+  big.mark = big_mark(),
   min_length = 0,
   percent = FALSE,
   ...
@@ -32,8 +32,8 @@ format2(x, ...)
   x,
   round = 1,
   force_decimals = TRUE,
-  decimal.mark = ",",
-  big.mark = ".",
+  decimal.mark = dec_mark(),
+  big.mark = big_mark(),
   ...
 )
 
@@ -47,14 +47,14 @@ format2(x, ...)
   x,
   round = 2,
   force_decimals = FALSE,
-  decimal.mark = ",",
-  big.mark = ".",
+  decimal.mark = dec_mark(),
+  big.mark = big_mark(),
   ...
 )
 
-\method{format2}{object_size}(x, round = 2, decimal.mark = ",", ...)
+\method{format2}{object_size}(x, round = 2, decimal.mark = dec_mark(), ...)
 
-format2_scientific(x, round = 2, decimal.mark = ",", ...)
+format2_scientific(x, round = 2, decimal.mark = dec_mark(), ...)
 }
 \arguments{
 \item{x}{vector of values}
