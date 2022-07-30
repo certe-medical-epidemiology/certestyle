@@ -3,11 +3,14 @@
 \name{dec_mark}
 \alias{dec_mark}
 \alias{big_mark}
+\alias{dec_mark_english}
 \title{Use Decimal Comma?}
 \usage{
 dec_mark()
 
 big_mark()
+
+dec_mark_english()
 }
 \description{
 These functions determine which characters the decimal mark and big mark should be that are used in the Certe \R package functions. They base the determination on the \R \link[=Sys.getlocale]{locale user settings}.
@@ -16,6 +19,8 @@ These functions determine which characters the decimal mark and big mark should 
 For \code{\link[=dec_mark]{dec_mark()}}: this returns a comma (\code{","}) on Dutch systems, and a full stop (\code{"."}) otherwise. If the \link[=options]{option} \code{"dec_mark"} is set, that value will be used if it is either a comma or a full stop.
 
 For \code{\link[=big_mark]{big_mark()}}: this returns a full stop if \code{\link[=dec_mark]{dec_mark()}} returns a comma, and a space otherwise. If the \link[=options]{option} \code{"big_mark"} is set, that value will be used if it is either a comma (\code{","}) or a full stop (\code{"."}) or a space (\code{" "}) or an empty character (\code{""}).
+
+The function \code{\link[=dec_mark_english]{dec_mark_english()}} is short for \code{options(dec_mark = ".", big_mark = " ")} and useful for using the Certe \R packages in English-based academic research. This function is session-specific, meaning that it must be set in every new \R session (which is intended).
 }
 \examples{
 # according the current user settings / OS language:

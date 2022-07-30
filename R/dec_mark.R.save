@@ -79,8 +79,15 @@ big_mark <- function() {
 }
 
 #' @rdname dec_mark
-#' @details The function [dec_mark_english()] is short for `options(dec_mark = ".", big_mark = " ")` and useful for using the Certe \R packages in English-based academic research. This function is session-specific, meaning that it must be set in every new \R session (which is intended).
+#' @details Using [dec_mark_english()] is short for `options(dec_mark = ".", big_mark = " ")` and useful for using the Certe \R packages in 
 #' @export
 dec_mark_english <- function() {
   options(dec_mark = ".", big_mark = " ")
 }
+
+#' @rdname dec_mark
+#' @export
+dec_mark_reset <- function() {
+  options(dec_mark = NULL, big_mark = NULL)
+}
+

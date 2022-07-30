@@ -52,7 +52,7 @@ format2(x, ...)
   ...
 )
 
-\method{format2}{object_size}(x, round = 2, decimal.mark = dec_mark(), ...)
+\method{format2}{object_size}(x, round = 1, decimal.mark = dec_mark(), ...)
 
 format2_scientific(x, round = 2, decimal.mark = dec_mark(), ...)
 }

@@ -194,20 +194,31 @@ format2.difftime <- function(x,
 #' @rdname format2
 #' @export
 format2.object_size <- function(x,
-                                round = 2,
+                                round = 1,
                                 decimal.mark = dec_mark(),
                                 ...) {
-  x <- as.double(x)
+  bytes <- x
+  decimals <- round
+  
+  if ("certetoolbox" %in% utils::installed.packages()) {
+    return(certetoolbox::size_humanreadable(bytes = bytes, decimals = decimals, decimal.mark = decimal.mark))
+  }
+  
+  bytes <- as.double(bytes)
   # Adapted from:
   # http://jeffreysambells.com/2012/10/25/human-readable-filesize-php
   size <- c("B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
-  factor <- floor((nchar(formatC(x, format = "f", digits = 0)) - 1) / 3)
+  factor <- floor((nchar(formatC(bytes, format = "f", digits = 0)) - 1) / 3)
   factor[factor > length(size) - 1] <- length(size) - 1
   # added slight improvement; no decimals for B and kB:
-  round <- rep(round, length(x))
-  round[size[factor + 1]  %in% c("B", "kB")] <- 0
-  out <- paste(sprintf(paste0("%.", round, "f"), x / (1024 ^ factor)), size[factor + 1])
-  out <- trimws(gsub(".", decimal.mark, out, fixed = TRUE))
+  decimals_bak <- decimals[1]
+  decimals <- rep(decimals[1], length(bytes))
+  decimals[size[factor + 1] %in% c("B", "kB")] <- 0
+  # but do set decimal for kB under 100 kB
+  decimals[size[factor + 1] == "kB" & (bytes / 1024) < 100] <- decimals_bak
+  # format
+  out <- paste(sprintf(paste0("%.", decimals, "f"), bytes / (1024 ^ factor)), size[factor + 1])
+  out <- trimws(gsub(".", decimal.mark, out, fixed = TRUE)) 
   out
 }
 
