@@ -19,9 +19,9 @@
 
 #' Markdown Template Properties
 #' 
-#' These functions can be used in R Markdown documents.
+#' These functions can be used in Quarto or R Markdown documents.
 #' @param user_id user ID at Certe, defaults to currently logged in user
-#' @details For LaTeX, 4 logo files can be used to add to the resulting PDF file: `logocentre` (38x58 mm), `logoleft` (38x58 mm), `logoright` (38x58 mm) and `logofooter` (7 mm high). They must be set as YAML parameters in an R Markdown file header.
+#' @details For LaTeX (such as PDF export using Quarto or R Markdown), 2 logo files can be used to add to the resulting PDF file: `logocentre` (max 16x7 cm) and `logofooter` (max 16x0.7 cm). They must be set in a Quarto or R Markdown YAML header.
 #' @name rmarkdown
 #' @rdname rmarkdown
 #' @export
@@ -43,7 +43,42 @@ rmarkdown_date <- function(date = Sys.Date()) {
 #' @param ... data set (and options) to pass on to [tbl_flextable()][certetoolbox::tbl_flextable()]
 #' @export
 rmarkdown_table <- function(...) {
+  if (!"certetoolbox" %in% utils::installed.packages()) {
+    stop("rmarkdown_table() requires the 'certetoolbox' package")
+  }
   knitr::knit_print(certetoolbox::tbl_flextable(...))
+}
+
+#' @rdname rmarkdown
+#' @param card_number Trello card number
+#' @details [rmarkdown_document_id()] returns a document identifier composed of: the Trello card number, the Trello card creation date/time, and the current date/time.
+#' @export
+rmarkdown_document_id <- function(card_number = NULL) {
+  if (!"certeprojects" %in% utils::installed.packages()) {
+    stop("rmarkdown_document_id() requires the 'certeprojects' package")
+  }
+  if (missing(card_number)) {
+    card_number <- certeprojects::project_get_id(ask = FALSE)
+  }
+  if (is.null(card_number) || is.na(card_number)) {
+    # return only current timestamp
+    return(format2(Sys.time(), "yyyymmddHHMMss"))
+  } else {
+    full_trello_id <- certeprojects::trello_search()
+    creation_date <- full_trello_id |>
+      substr(1, 8) |>
+      as.dec |>
+      as.POSIXct()
+    # format creation timestamp
+    if (is.na(creation_date)) {
+      creation_timestamp <- ""
+    } else {
+      creation_timestamp <- paste0("-", format2(creation_date, "yyyymmddHHMMss"))
+    }
+    return(paste0("p", card_number,
+                  creation_timestamp,
+                  "-", format2(Sys.time(), "yyyymmddHHMMss")))
+  }
 }
 
 #' @rdname rmarkdown
