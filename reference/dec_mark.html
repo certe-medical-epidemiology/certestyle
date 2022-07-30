@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.3</span>
       </span>
     </div>
 
@@ -78,13 +78,16 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dec_mark</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">big_mark</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">big_mark</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dec_mark_english</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="details">
     <h2>Details</h2>
     <p>For <code>dec_mark()</code>: this returns a comma (<code>","</code>) on Dutch systems, and a full stop (<code>"."</code>) otherwise. If the <a href="https://rdrr.io/r/base/options.html" class="external-link">option</a> <code>"dec_mark"</code> is set, that value will be used if it is either a comma or a full stop.</p>
 <p>For <code>big_mark()</code>: this returns a full stop if <code>dec_mark()</code> returns a comma, and a space otherwise. If the <a href="https://rdrr.io/r/base/options.html" class="external-link">option</a> <code>"big_mark"</code> is set, that value will be used if it is either a comma (<code>","</code>) or a full stop (<code>"."</code>) or a space (<code>" "</code>) or an empty character (<code>""</code>).</p>
+<p>The function <code>dec_mark_english()</code> is short for <code>options(dec_mark = ".", big_mark = " ")</code> and useful for using the Certe <span style="R">R</span> packages in English-based academic research. This function is session-specific, meaning that it must be set in every new <span style="R">R</span> session (which is intended).</p>
     </div>
 
     <div id="ref-examples">
