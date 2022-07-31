@@ -2,7 +2,7 @@ pandoc: 2.14.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-07-30T10:56Z
+last_built: 2022-07-31T12:20Z
 urls:
   reference: https://certe-medical-epidemiology.github.io/certestyle/reference
   article: https://certe-medical-epidemiology.github.io/certestyle/articles
