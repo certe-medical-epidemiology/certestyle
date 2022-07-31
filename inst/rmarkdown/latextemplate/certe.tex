@@ -246,7 +246,7 @@ $endif$
 $if(beamer)$
 \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
 $else$
-\usepackage[a4paper, portrait, top=30mm,bottom=30mm,right=24mm,left=24mm]{geometry}
+\usepackage[a4paper, portrait, top=24mm,bottom=30mm,right=24mm,left=24mm]{geometry}
 $endif$
 $if(beamer)$
 \newif\ifbibliography
@@ -435,6 +435,7 @@ $endif$
 % Certe-kleuren voor headers en Quarto callouts
 \definecolor{certeblauw}{HTML}{01617E}
 \definecolor{certeroze}{HTML}{E04883}
+\definecolor{lichtgrijs}{HTML}{DDDDDD}
 \definecolor{quarto-callout-caution-color-frame}{HTML}{E04883}
 \definecolor{quarto-callout-caution-color}{HTML}{E04883}
 % \definecolor{quarto-callout-color-frame}{HTML}{acacac}
@@ -482,7 +483,7 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
     \begin{titlepage}
 
       \begin{center}
-        \vspace*{-36mm}
+        \vspace*{-30mm}
         \ifthenelse{\equal{$logofront$}{}}{}{\includegraphics[width=210mm,height=70mm,keepaspectratio]{$logofront$}}
         
         \vfill
@@ -512,11 +513,14 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
         \vfill
         
       \end{center}
+      \begin{flushleft}
+        \tiny
+        \textcolor{lichtgrijs}{\rotatebox{90}{\textbf{$identifier$}}}
+        \vspace*{-12mm}
+      \end{flushleft}
       \begin{flushright}
         \large
-        \textcolor{certeblauw}{\textbf{$author$}}
-
-        \textcolor{certeblauw}{\textbf{$date$}}
+        \textcolor{certeblauw}{\textbf{$author$ \\ $date$}}
         \vspace*{-10mm}
       \end{flushright}
     \end{titlepage}
