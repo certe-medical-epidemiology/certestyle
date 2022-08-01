@@ -33,6 +33,12 @@ rmarkdown_author <- function(user_id = NULL) {
 }
 
 #' @rdname rmarkdown
+#' @export
+rmarkdown_department <- function() {
+  read_secret("department.name")
+}
+
+#' @rdname rmarkdown
 #' @param date Date to print in "d mmmm yyyy"
 #' @export
 rmarkdown_date <- function(date = Sys.Date()) {

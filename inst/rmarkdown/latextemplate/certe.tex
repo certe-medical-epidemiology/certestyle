@@ -435,11 +435,11 @@ $endif$
 % Certe-kleuren voor headers en Quarto callouts
 \definecolor{certeblauw}{HTML}{01617E}
 \definecolor{certeroze}{HTML}{E04883}
-\definecolor{lichtgrijs}{HTML}{DDDDDD}
+\definecolor{lichtgrijs}{HTML}{CBCBCB}
 \definecolor{quarto-callout-caution-color-frame}{HTML}{E04883}
 \definecolor{quarto-callout-caution-color}{HTML}{E04883}
-% \definecolor{quarto-callout-color-frame}{HTML}{acacac}
-% \definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-color-frame}{HTML}{01617E}
+\definecolor{quarto-callout-color}{HTML}{01617E}
 \definecolor{quarto-callout-important-color-frame}{HTML}{E04883}
 \definecolor{quarto-callout-important-color}{HTML}{E04883}
 \definecolor{quarto-callout-note-color-frame}{HTML}{01617E}
@@ -459,7 +459,7 @@ $endif$
 % kop 4
 \paragraphfont{\color{certeroze}\itshape\selectfont}
 
-% Footer opmaken met paginanummers en klein Certe-logo
+% footer opmaken met paginanummers en klein Certe-logo
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{ifthen}
@@ -513,16 +513,15 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
         \vfill
         
       \end{center}
-      \begin{flushleft}
-        \tiny
-        \textcolor{lichtgrijs}{\rotatebox{90}{\textbf{$identifier$}}}
-        \vspace*{-12mm}
-      \end{flushleft}
-      \begin{flushright}
-        \large
-        \textcolor{certeblauw}{\textbf{$author$ \\ $date$}}
-        \vspace*{-10mm}
-      \end{flushright}
+
+      \hspace*{\fill}\large\textcolor{certeblauw}{\textbf{$date$}}
+      
+      \scriptsize % dit is iets kleiner dan \small, maar groter dan \tiny
+      \textcolor{lichtgrijs}{\textbf{$identifier$}}
+      \hspace*{\fill}\large\textcolor{certeblauw}{\textbf{$author$}}
+      
+      \vspace*{-10mm}
+      
     \end{titlepage}
   $endif$
 

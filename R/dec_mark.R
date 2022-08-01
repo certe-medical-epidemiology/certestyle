@@ -54,7 +54,7 @@ dec_mark <- function() {
   }
   
   locale <- Sys.getlocale(category = "LC_ALL")
-  if (locale %like% "(nl_NL|Dutch)") {
+  if (locale %like% "(nl_NL|Dutch|Netherlands)") {
     return(",")
   } else {
     return(".")

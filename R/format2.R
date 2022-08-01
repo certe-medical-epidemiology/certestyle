@@ -300,7 +300,7 @@ coerce_datetime <- function(x, format, locale, ...) {
 #' @rdname format2
 #' @details The [format2_scientific()] function returns an [expression] and can be used in `ggplot2` plots.
 #' @export
-#' @examples 
+#' @examples
 #' format2_scientific(c(12345, 12345678))
 #' 
 #' format2_scientific(c(12345, 12345678), round = 1)

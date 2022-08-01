@@ -3,6 +3,7 @@
 \name{rmarkdown}
 \alias{rmarkdown}
 \alias{rmarkdown_author}
+\alias{rmarkdown_department}
 \alias{rmarkdown_date}
 \alias{rmarkdown_table}
 \alias{rmarkdown_template}
@@ -10,6 +11,8 @@
 \title{Markdown Template Properties}
 \usage{
 rmarkdown_author(user_id = NULL)
+
+rmarkdown_department()
 
 rmarkdown_date(date = Sys.Date())
 
