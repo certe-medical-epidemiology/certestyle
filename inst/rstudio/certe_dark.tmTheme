@@ -62,22 +62,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Constanten (NULL&#x2f;TRUE&#x2f;FALSE), cursief in RMarkdown</string>
-			<key>scope</key>
-			<string>constant.language</string>
-			<key>settings</key>
-			<dict>
-				<key>foreground</key>
-				<string>#E192B1</string>
-				<key>fontStyle</key>
-				<string> italic </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
 			<string>Overige constanten</string>
 			<key>scope</key>
-			<string>constant, constant.character, constant.other</string>
+			<string>constant, constant.character, constant.other, constant.language</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>

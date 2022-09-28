@@ -97,7 +97,7 @@ rstudio_install_certe_themes <- function(apply_theme = "Certe Light") {
   rstudio_apply_theme(themename = apply_theme)
   
   message("Certe themes installed: ", paste(added, collapse = ", "), "\n",
-          "Current theme set to:   ", getThemeInfo()$editor)
+          "Current theme set to: ", getThemeInfo()$editor)
 }
 
 #' @importFrom rstudioapi applyTheme
