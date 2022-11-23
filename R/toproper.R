@@ -30,8 +30,8 @@ toproper <- function(text,
   if (isTRUE(every_word)) {
     text <- tools::toTitleCase(text)
   }
-  if (grepl("^[a-z]+( |$)", text, ignore.case = FALSE)) {
-    substr(text, 1, 1) <- toupper(substr(text, 1, 1))
-  }
+  ifelse (grepl("^[a-z]+( |$)", text, ignore.case = FALSE),
+          substr(text, 1, 1) <- toupper(substr(text, 1, 1)),
+          text)
   text
 }
