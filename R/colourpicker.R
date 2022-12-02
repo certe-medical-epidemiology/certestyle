@@ -38,6 +38,8 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `x = "certe"` tries to only return the `"certe"` colours (`"certeblauw"`, `"certegroen"`, ...), the `"certe3"` colours (`"certeblauw3"`, `"certegroen3"`, ...) and the `"certe5"` colours (`"certeblauw5"`, `"certegroen5"`, ...)
 #' * `x = "certe2"` tries to only return the regular `"certe2"` colours (`"certeblauw2"`, `"certegroen2"`, ...), the `"certe4"` colours (`"certeblauw4"`, `"certegroen4"`, ...) and the `"certe6"` colours (`"certeblauw6"`, `"certegroen6"`, ...)
 #' * `x = "certe3"` tries to only return the `"certe3"` colours (`"certeblauw3"`, `"certegroen3"`, ...) and the `"certe5"` colours (`"certeblauw5"`, `"certegroen5"`, ...)
+#' 
+#' A palette from \R will be expanded where needed, so even `colourpicker("R4", length = 20)` will work, despite "R4" only supporting a maximum of eight colours.
 #' @return [character] vector in HTML format (i.e., `"#AABBCC"`) with new class `colourpicker`
 #' @rdname colourpicker
 #' @importFrom grDevices rainbow heat.colors terrain.colors topo.colors col2rgb colours grey.colors rgb
@@ -66,6 +68,13 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #'         col = colourpicker("viridis", 7))
 #' barplot(1:7,
 #'         col = colourpicker("magma", 7))
+#'
+#' barplot(1:8,
+#'         col = colourpicker("R", 8),
+#'         main = "R3 and R4 have a max of 8 colours...")
+#' barplot(1:20,
+#'         col = colourpicker("R", 20),
+#'         main = "Not anymore!")
 colourpicker <- function(x, length = 1, opacity = 0, ...) {
   
   if (is.null(x)) {
@@ -148,10 +157,20 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     } else if (x %in% viridisLite_colours) {
       x <- viridis(length, option = x)
       
-    } else if (x %in% tolower(grDevices::palette.pals())) {
-      x <- grDevices::palette.colors(length, palette = x)
+    } else if (x %in% tolower(c("R", grDevices::palette.pals()))) {
+      if (toupper(x) == "R") {
+        x <- "R4"
+      }
+      new_cols <- tryCatch(grDevices::palette.colors(length, palette = x),
+                           error = function(e) NULL,
+                           warning = function(w) NULL)
+      if (is.null(new_cols)) {
+        # failed or returned a warning, so now try to expand the colour palette with an 8-sized basis
+        new_cols <- grDevices::colorRampPalette(grDevices::palette.colors(8, palette = x))(length)
+        warning("Colour palette expanded using grDevices::colorRampPalette()", call. = FALSE)
+      }
       # some support names, so return the object
-      return(structure(x, class = c("colourpicker", "character")))
+      return(structure(new_cols, class = c("colourpicker", "character")))
       
     } else if (x == "topo") {
       x <- topo.colors(length)

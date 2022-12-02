@@ -21,15 +21,14 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker(NULL)), "#FFFFFF00")
   expect_identical(as.character(colourpicker(NA)), "#FFFFFF00")
   
-  expect_identical(colourpicker("viridis", 10),
-                   colourpicker(viridisLite::viridis(10)))
-  if (getRversion() >= 4) {
-    expect_identical(grDevices::palette.colors(8, "R3"),
-                     as.character(colourpicker("R3", 8)))
-    expect_identical(grDevices::palette.colors(8, "R4"),
-                     as.character(colourpicker("R4", 8)))
-  }
-  
+  expect_identical(colourpicker("viridis", 10, opacity = TRUE),
+                   colourpicker(viridisLite::viridis(10, alpha = 0)))
+  expect_identical(grDevices::palette.colors(8, "R3"),
+                   as.character(colourpicker("R3", 8)))
+  expect_identical(grDevices::palette.colors(8, "R4"),
+                   as.character(colourpicker("R4", 8)))
+  expect_warning(colourpicker("R", 20))
+    
   expect_identical(as.character(colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))),
                    c("#01617E", "#FF0000", "#FFA54F", "#FFFFAA", "#FFAA00"))
   
