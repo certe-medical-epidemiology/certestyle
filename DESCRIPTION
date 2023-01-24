@@ -1,6 +1,6 @@
 Package: certestyle
 Title: A Certe R Package for Applying Certe Organisational Style
-Version: 1.3.9
+Version: 1.3.10
 Authors@R: c(
   person(given = c("Matthijs", "S."), 
          family = "Berends",
@@ -17,7 +17,7 @@ Description: A Certe R Package for applying the organisational colours
   This package is part of the 'certedata' universe.
 URL: https://certe-medical-epidemiology.github.io/certestyle, https://github.com/certe-medical-epidemiology/certestyle
 Depends: 
-  R (>= 4.2.0)
+  R (>= 4.1.0)
 Imports:
   cleaner (>= 1.5.2),
   crayon (>= 1.4.0),
