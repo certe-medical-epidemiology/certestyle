@@ -26,7 +26,7 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `"certe"`
 #' * `"certe0"` to `"certe6"` (higher numbers give lighter colours)
 #' * `"certeblauw"`, `"certegroen"`, `"certeroze"`, `"certegeel"`, `"certelila"`, or `"certezachtlila"` (or any of these followed by a 0 to 6)
-#' * `"certe_rsi"` or `"certe_rsi2"` for certeroze/certegeel/certegroen (will **always** return length 5, with names "S", "SI", "I", "IR", "R")
+#' * `"certe_sir"` or `"certe_sir2"` for certeroze/certegeel/certegroen (will **always** return length 5, with names "S", "SI", "I", "IR", "R")
 #' * One of the colourblind-safe `viridisLite` palettes: `r paste0('\n  - \u0060"', viridisLite_colours, '"\u0060', collapse = "")`
 #' * One of the built-in palettes in \R (currently \R `r paste(R.version$major, R.version$minor, sep = ".")`): `r paste0('\n  - \u0060"', c(grDevices::palette.pals(), "topo", "heatmap", "rainbow", "terrain", "greyscale", "grayscale"), '"\u0060', collapse = "")`
 #' * One of the `r length(colours())` built-in [colours()] in \R, such as `r paste0('\u0060"', sort(sample(colours()[colours() %unlike% "^grey|gray"], 5)), '"\u0060', collapse = ", ")`
@@ -91,12 +91,12 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     stop("Either the length of `x`, or `length` must be 1")
   }
   
-  # exceptions for "certe_rsi" and "certe_rsi2"
+  # exceptions for "certe_sir" and "certe_sir2"
   # they are named vectors for ggplot2::ggplot() and certeplot2::plot2()
-  if (identical(x, "certe_rsi")) {
+  if (identical(x, "certe_sir") || identical(x, "certe_rsi")) {
     return(structure(colourpicker(c("certegroen", "certegroen", "certegeel", "certeroze", "certeroze")),
                      names = c("S", "SI", "I", "IR", "R")))
-  } else if (identical(x, "certe_rsi2")) {
+  } else if (identical(x, "certe_sir2") || identical(x, "certe_rsi2")) {
     return(structure(colourpicker(c("certegroen2", "certegroen2", "certegeel2", "certeroze2", "certeroze2")),
                      names = c("S", "SI", "I", "IR", "R")))
   }

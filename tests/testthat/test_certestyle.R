@@ -53,6 +53,18 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker("certelila")), unname(certe.colours[names(certe.colours) == "certelila"]))
   expect_identical(as.character(colourpicker("certezachtlila")), unname(certe.colours[names(certe.colours) == "certezachtlila"]))
   
+  expect_identical(as.character(colourpicker("certe_sir")),
+                   c(S = "#8B9934",
+                     SI = "#8B9934",
+                     I = "#FFE400",
+                     IR = "#E04883",
+                     R = "#E04883"))
+  expect_identical(as.character(colourpicker("certe_sir2")),
+                   c(S = "#B8C375",
+                     SI = "#B8C375",
+                     I = "#EEE06A",
+                     IR = "#E192B1",
+                     R = "#E192B1"))
   expect_identical(as.character(colourpicker("certe_rsi")),
                    c(S = "#8B9934",
                      SI = "#8B9934",

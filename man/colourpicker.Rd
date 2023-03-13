@@ -21,7 +21,7 @@ add_white(x, white)
 \item \code{"certe"}
 \item \code{"certe0"} to \code{"certe6"} (higher numbers give lighter colours)
 \item \code{"certeblauw"}, \code{"certegroen"}, \code{"certeroze"}, \code{"certegeel"}, \code{"certelila"}, or \code{"certezachtlila"} (or any of these followed by a 0 to 6)
-\item \code{"certe_rsi"} or \code{"certe_rsi2"} for certeroze/certegeel/certegroen (will \strong{always} return length 5, with names "S", "SI", "I", "IR", "R")
+\item \code{"certe_sir"} or \code{"certe_sir2"} for certeroze/certegeel/certegroen (will \strong{always} return length 5, with names "S", "SI", "I", "IR", "R")
 \item One of the colourblind-safe \code{viridisLite} palettes:
 \itemize{
 \item \code{"viridis"}
@@ -33,7 +33,7 @@ add_white(x, white)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R (currently \R 4.2.1):
+\item One of the built-in palettes in \R (currently \R 4.2.2):
 \itemize{
 \item \code{"R3"}
 \item \code{"R4"}
@@ -58,7 +58,7 @@ add_white(x, white)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"lightgoldenrodyellow"}, \code{"mistyrose"}, \code{"papayawhip"}, \code{"peachpuff2"}, \code{"steelblue"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"lightgreen"}, \code{"mediumaquamarine"}, \code{"mediumpurple4"}, \code{"mistyrose"}, \code{"plum1"}
 }}
 
 \item{length}{size of the vector to be returned}
