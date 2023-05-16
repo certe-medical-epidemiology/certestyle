@@ -334,21 +334,22 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
-$if(lang)$
-\ifxetex
-  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
-  \usepackage{polyglossia}
-  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
-$for(polyglossia-otherlangs)$
-  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
-$endfor$
-\else
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
-$if(babel-newcommands)$
-  $babel-newcommands$
-$endif$
-\fi
-$endif$
+% dit stuk is niet meer nodig, wordt verderop gedaan in onze instellingen
+% $if(lang)$
+% % \ifxetex
+%   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
+% %   \usepackage{polyglossia}
+% %   \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+% % $for(polyglossia-otherlangs)$
+% %   \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+% % $endfor$
+% % \else
+%   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+% $if(babel-newcommands)$
+%   $babel-newcommands$
+% $endif$
+% % \fi
+% $endif$
 $if(dir)$
 \ifxetex
   % Load bidi as late as possible as it modifies e.g. graphicx
@@ -432,8 +433,13 @@ $endif$
 % Ondersteunen van landscape pagina's door tekst tussen \begin{landscape} en \end{landscape} te zetten
 \usepackage{lscape}
 
-% Voor sommige tabellen (longtable) nodig
+% Deze pakketten zijn nodig voor extra brede tabellen, geeft anders error:
+% (https://tex.stackexchange.com/a/631393/195799)
 \usepackage{array}
+\usepackage{ragged2e}  % for '\RaggedRight' macro
+\usepackage{calc}      % for '\widthof' macro
+\newcolumntype{P}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
+\newcolumntype{L}{>{\RaggedRight}X}
 
 % Certe-kleuren voor headers en Quarto callouts
 \definecolor{certeblauw}{HTML}{01617E}
