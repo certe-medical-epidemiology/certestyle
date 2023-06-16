@@ -62,6 +62,11 @@ rstudio_install_certe_themes <- function(apply_theme = "Certe Light") {
   font_features <- c(".ace_editor {",
                      "  /* ss02 is for straight >= and ss06 is for less visible first backslash (for escaping) */",
                      '  font-feature-settings: "ss02", "ss06";',
+                     "}",
+                     # TODO will print like this :)
+                     ".ace_comment.ace_keyword.ace_operator {",
+                     "  color: red;", 
+                     "  font-weight: bold;",
                      "}")
   light <- c(light, font_features)
   dark <- c(dark, font_features)
