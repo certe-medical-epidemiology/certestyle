@@ -340,97 +340,18 @@ c.colourpicker <- function(...) {
 #' @rdname colourpicker
 #' @param white number between `[0, 1]` to add white to `x`
 #' @export
+#' @examples
+#' 
+#' 
+#' colours <- colourpicker("R4", 8)
+#' colours
+#' add_white(colours, 0.25)
+#' add_white(colours, 0.5)
+#' add_white(colours, 0.75)
 add_white <- function(x, white) {
-  x <- as.character(colourpicker(x))
-  r <- strtoi(substr(x, 2, 3), 16)
-  g <- strtoi(substr(x, 4, 5), 16)
-  b <- strtoi(substr(x, 6, 7), 16)
-  a <- strtoi(substr(x, 8, 9), 16)
-  out <- character(length(x))
-  for (i in seq_len(length(x))) {
-    hsl <- rgb2hsl(r[i], g[i], b[i], a[i])
-    hsl[3] <- hsl[3] + white * (1 - hsl[3])
-    rgb <- hsl2rgb(hsl[1], hsl[2], hsl[3])
-    rgb <- as.character(as.hexmode(c(rgb[1], rgb[2], rgb[3])))
-    rgb[nchar(rgb) == 1] <- paste0("0", rgb[nchar(rgb) == 1])
-    out[i] <- concat(rgb)
-  }
+  white <- min(1000, max(1, 1000 - (white * 1000)))
+  out <- unname(vapply(FUN.VALUE = character(1),
+                       x,
+                       function(y) grDevices::colorRampPalette(c("white", y))(1000)[white]))
   colourpicker(out)
-}
-
-# below from plotwidgets::rgb2hsl and plotwidgets::hsl2rgb under same license
-hsl2rgb <- function(h, s, l, a = NULL) {
-  if (is.null(a) || is.na(a)) {
-    hsl <- as.matrix(c(h, s, l))
-  } else {
-    hsl <- as.matrix(c(h, s, l, a))
-  }
-  
-  if (nrow(hsl) == 4) {
-    alpha <- hsl[4, , drop = FALSE]
-    hsl <- hsl[-4, , drop = FALSE]
-  }
-  else {
-    alpha <- NULL
-  }
-  H <- hsl[1, ]
-  S <- hsl[2, ]
-  L <- hsl[3, ]
-  C <- (1 - abs(2 * L - 1)) * S
-  X <- C * (1 - abs(((H / 60) %% 2) - 1))
-  m <- L - C/2
-  rgb <- matrix(0, ncol = ncol(hsl), nrow = 3)
-  rownames(rgb) <- c("R", "G", "B")
-  iX <- c(2, 1, 3, 2, 1, 3)
-  iC <- c(1, 2, 2, 3, 3, 1)
-  for (i in 1:6) {
-    sel <- 60 * (i - 1) <= H & H < 60 * i
-    kX <- iX[i]
-    kC <- iC[i]
-    rgb[kX, sel] <- X[sel]
-    rgb[kC, sel] <- C[sel]
-  }
-  rgb <- rgb + rep(m, each = 3)
-  rgb <- round(rgb * 255)
-  if (!is.null(alpha))
-    rgb <- rbind(rgb, alpha = alpha)
-  as.double(rgb)
-}
-
-rgb2hsl <- function(r, g, b, a = NULL) {
-  if (is.null(a) || is.na(a)) {
-    rgb <- as.matrix(c(r, g, b), )
-  } else {
-    rgb <- as.matrix(c(r, g, b, a))
-  }
-  
-  if (nrow(rgb) == 4) {
-    alpha <- rgb[4, , drop = FALSE]
-    rgb <- rgb[-4, , drop = FALSE]
-  }
-  else {
-    alpha <- NULL
-  }
-  rgb <- rgb / 255
-  mins <- apply(rgb, 2, min)
-  maxs <- apply(rgb, 2, max)
-  d <- maxs - mins
-  L <- (maxs + mins) / 2
-  S <- d / (1 - abs(2 * L - 1))
-  sel <- d == 0
-  S[sel] <- 0
-  wmax <- apply(rgb, 2, which.max)
-  H <- L
-  HR <- (rgb[2, ] - rgb[3, ]) / (maxs - mins)
-  HG <- 2 + (rgb[3, ] - rgb[1, ]) / (maxs - mins)
-  HB <- 4 + (rgb[1, ] - rgb[2, ]) / (maxs - mins)
-  sel <- wmax == 1
-  H[sel] <- HR[sel]
-  sel <- wmax == 2
-  H[sel] <- HG[sel]
-  sel <- wmax == 3
-  H[sel] <- HB[sel]
-  H <- (H * 60) %% 360
-  H[mins == maxs] <- 0
-  as.double(rbind(H = H, S = S, L = L, alpha = alpha))
 }

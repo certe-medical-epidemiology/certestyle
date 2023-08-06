@@ -33,7 +33,7 @@ add_white(x, white)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R (currently \R 4.2.2):
+\item One of the built-in palettes in \R (currently \R 4.3.1):
 \itemize{
 \item \code{"R3"}
 \item \code{"R4"}
@@ -58,7 +58,7 @@ add_white(x, white)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"lightgreen"}, \code{"mediumaquamarine"}, \code{"mediumpurple4"}, \code{"mistyrose"}, \code{"plum1"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"aquamarine3"}, \code{"blue4"}, \code{"cyan2"}, \code{"lightblue3"}, \code{"royalblue3"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -115,4 +115,11 @@ barplot(1:8,
 barplot(1:20,
         col = colourpicker("R", 20),
         main = "Not anymore!")
+
+
+colours <- colourpicker("R4", 8)
+colours
+add_white(colours, 0.25)
+add_white(colours, 0.5)
+add_white(colours, 0.75)
 }
