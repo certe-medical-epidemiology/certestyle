@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.16</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
 <li><p><code>"greyscale"</code></p></li>
 <li><p><code>"grayscale"</code></p></li>
 </ul></li>
-<li><p>One of the 657 built-in <code><a href="https://rdrr.io/r/grDevices/colors.html" class="external-link">colours()</a></code> in <span style="R">R</span>, such as <code>"aquamarine3"</code>, <code>"blue4"</code>, <code>"cyan2"</code>, <code>"lightblue3"</code>, <code>"royalblue3"</code></p></li>
+<li><p>One of the 657 built-in <code><a href="https://rdrr.io/r/grDevices/colors.html" class="external-link">colours()</a></code> in <span style="R">R</span>, such as <code>"chocolate1"</code>, <code>"orangered2"</code>, <code>"palevioletred2"</code>, <code>"powderblue"</code>, <code>"thistle4"</code></p></li>
 </ul></dd>
 
 
@@ -195,30 +195,26 @@
 <span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"magma"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>,</span></span>
-<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R"</span>, <span class="fl">8</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"R3 and R4 have a max of 8 colours..."</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">8</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"Some palettes have only 8 colours..."</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-6.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>,</span></span>
-<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R"</span>, <span class="fl">20</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">20</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>        main <span class="op">=</span> <span class="st">"Not anymore!"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Colour palette expanded using grDevices::colorRampPalette()</span>
 <span class="r-plt img"><img src="colourpicker-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">colours</span> <span class="op">&lt;-</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">colours</span> <span class="op">&lt;-</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">colours</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#000000"<span style="background-color: #080808;"> </span> "#DF536B"<span style="background-color: #FF5F87;"> </span> "#61D04F"<span style="background-color: #87D75F;"> </span> "#2297E6"<span style="background-color: #00AFFF;"> </span> "#28E2E5"<span style="background-color: #00FFFF;"> </span> "#CD0BBC"<span style="background-color: #D700D7;"> </span> "#F5C710"<span style="background-color: #FFD700;"> </span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] "#9E9E9E"<span style="background-color: #949494;"> </span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#000000"<span style="background-color: #080808;"> </span> "#DF536B"<span style="background-color: #FF5F87;"> </span> "#61D04F"<span style="background-color: #87D75F;"> </span> "#2297E6"<span style="background-color: #00AFFF;"> </span> "#28E2E5"<span style="background-color: #00FFFF;"> </span> "#CD0BBC"<span style="background-color: #D700D7;"> </span> </span>
 <span class="r-in"><span><span class="fu">add_white</span><span class="op">(</span><span class="va">colours</span>, <span class="fl">0.25</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#3F3F3F"<span style="background-color: #444444;"> </span> "#E77E90"<span style="background-color: #FF87AF;"> </span> "#88DB7B"<span style="background-color: #AFFF87;"> </span> "#59B1EC"<span style="background-color: #87D7FF;"> </span> "#5DE9EB"<span style="background-color: #87FFFF;"> </span> "#D948CC"<span style="background-color: #FF5FD7;"> </span> "#F7D54B"<span style="background-color: #FFD75F;"> </span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] "#B6B6B6"<span style="background-color: #B2B2B2;"> </span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#3F3F3F"<span style="background-color: #444444;"> </span> "#E77E90"<span style="background-color: #FF87AF;"> </span> "#88DB7B"<span style="background-color: #AFFF87;"> </span> "#59B1EC"<span style="background-color: #87D7FF;"> </span> "#5DE9EB"<span style="background-color: #87FFFF;"> </span> "#D948CC"<span style="background-color: #FF5FD7;"> </span> </span>
 <span class="r-in"><span><span class="fu">add_white</span><span class="op">(</span><span class="va">colours</span>, <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#7F7F7F"<span style="background-color: #808080;"> </span> "#EFA9B5"<span style="background-color: #FFAFD7;"> </span> "#B0E7A7"<span style="background-color: #D7FFAF;"> </span> "#90CBF2"<span style="background-color: #AFD7FF;"> </span> "#93F0F2"<span style="background-color: #AFFFFF;"> </span> "#E685DD"<span style="background-color: #FFAFFF;"> </span> "#FAE387"<span style="background-color: #FFFFAF;"> </span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] "#CECECE"<span style="background-color: #C6C6C6;"> </span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#7F7F7F"<span style="background-color: #808080;"> </span> "#EFA9B5"<span style="background-color: #FFAFD7;"> </span> "#B0E7A7"<span style="background-color: #D7FFAF;"> </span> "#90CBF2"<span style="background-color: #AFD7FF;"> </span> "#93F0F2"<span style="background-color: #AFFFFF;"> </span> "#E685DD"<span style="background-color: #FFAFFF;"> </span> </span>
 <span class="r-in"><span><span class="fu">add_white</span><span class="op">(</span><span class="va">colours</span>, <span class="fl">0.75</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#BFBFBF"<span style="background-color: #B2B2B2;"> </span> "#F7D4DA"<span style="background-color: #FFD7FF;"> </span> "#D7F3D3"<span style="background-color: #FFFFD7;"> </span> "#C7E5F8"<span style="background-color: #D7FFFF;"> </span> "#C9F7F8"<span style="background-color: #D7FFFF;"> </span> "#F2C2EE"<span style="background-color: #FFD7FF;"> </span> "#FCF1C3"<span style="background-color: #FFFFD7;"> </span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] "#E6E6E6"<span style="background-color: #DADADA;"> </span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#BFBFBF"<span style="background-color: #B2B2B2;"> </span> "#F7D4DA"<span style="background-color: #FFD7FF;"> </span> "#D7F3D3"<span style="background-color: #FFFFD7;"> </span> "#C7E5F8"<span style="background-color: #D7FFFF;"> </span> "#C9F7F8"<span style="background-color: #D7FFFF;"> </span> "#F2C2EE"<span style="background-color: #FFD7FF;"> </span> </span>
 </code></pre></div>
     </div>
   </div>
