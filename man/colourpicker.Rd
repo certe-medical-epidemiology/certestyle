@@ -58,7 +58,7 @@ add_white(x, white)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"aquamarine3"}, \code{"blue4"}, \code{"cyan2"}, \code{"lightblue3"}, \code{"royalblue3"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"chocolate1"}, \code{"orangered2"}, \code{"palevioletred2"}, \code{"powderblue"}, \code{"thistle4"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -109,15 +109,15 @@ barplot(1:7,
 barplot(1:7,
         col = colourpicker("magma", 7))
 
-barplot(1:8,
-        col = colourpicker("R", 8),
-        main = "R3 and R4 have a max of 8 colours...")
-barplot(1:20,
-        col = colourpicker("R", 20),
+barplot(8:1,
+        col = colourpicker("R4", 8),
+        main = "Some palettes have only 8 colours...")
+barplot(20:1,
+        col = colourpicker("R4", 20),
         main = "Not anymore!")
 
 
-colours <- colourpicker("R4", 8)
+colours <- colourpicker("R4", 6)
 colours
 add_white(colours, 0.25)
 add_white(colours, 0.5)

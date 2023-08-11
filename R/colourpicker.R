@@ -69,11 +69,11 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' barplot(1:7,
 #'         col = colourpicker("magma", 7))
 #'
-#' barplot(1:8,
-#'         col = colourpicker("R", 8),
-#'         main = "R3 and R4 have a max of 8 colours...")
-#' barplot(1:20,
-#'         col = colourpicker("R", 20),
+#' barplot(8:1,
+#'         col = colourpicker("R4", 8),
+#'         main = "Some palettes have only 8 colours...")
+#' barplot(20:1,
+#'         col = colourpicker("R4", 20),
 #'         main = "Not anymore!")
 colourpicker <- function(x, length = 1, opacity = 0, ...) {
   
@@ -343,7 +343,7 @@ c.colourpicker <- function(...) {
 #' @examples
 #' 
 #' 
-#' colours <- colourpicker("R4", 8)
+#' colours <- colourpicker("R4", 6)
 #' colours
 #' add_white(colours, 0.25)
 #' add_white(colours, 0.5)

@@ -127,11 +127,11 @@ test_that("colourpicker works", {
 })
 
 test_that("adding white to a colour works", {
-  expect_identical(as.character(add_white("red", 0.1)), "#FF1A1A")
+  expect_identical(as.character(add_white("red", 0.1)), "#FF1919")
   expect_identical(as.character(add_white("red", 0.2)), "#FF3333")
-  expect_identical(as.character(add_white("red", 0.3)), "#FF4D4D")
+  expect_identical(as.character(add_white("red", 0.3)), "#FF4C4C")
   expect_identical(as.character(add_white("red", 0.4)), "#FF6666")
-  expect_identical(as.character(add_white("red", 0.5)), "#FF8080")
+  expect_identical(as.character(add_white("red", 0.5)), "#FF7F7F")
   expect_identical(as.character(add_white("red", 0.95)), "#FFF2F2")
 })
 
