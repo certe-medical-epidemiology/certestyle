@@ -460,11 +460,22 @@ $endif$
 
 \usepackage{sectsty}
 % kop 1
-\sectionfont{\color{certeblauw}\selectfont}
+\sectionfont{\newpage\color{certeblauw}\selectfont}
 % kop 2
 \subsectionfont{\color{certeroze}\selectfont}
 % kop 3
 \subsubsectionfont{\color{certeblauw}\selectfont}
+
+% links in certeroze
+\usepackage[normalem]{ulem} % underlining
+\hypersetup{
+  colorlinks = true,
+  urlcolor = certeroze, % external hyperlinks
+  filecolor = linkcolor, % file links
+  % linkcolor = linkcolor, % internal links (like ToC)
+  % citecolor = linkcolor, % citations
+}
+\renewcommand{\url}[1]{\textcolor{certeroze}{\underline{\urlstyle{same}\href{#1}{#1}}}}
 
 % footer opmaken met paginanummers en klein Certe-logo
 \usepackage{fancyhdr}
