@@ -445,6 +445,7 @@ $endif$
 \definecolor{certeblauw}{HTML}{01617E}
 \definecolor{certeroze}{HTML}{E04883}
 \definecolor{lichtgrijs}{HTML}{CBCBCB}
+\definecolor{zwart}{HTML}{000000}
 \definecolor{quarto-callout-caution-color-frame}{HTML}{E04883}
 \definecolor{quarto-callout-caution-color}{HTML}{E04883}
 \definecolor{quarto-callout-color-frame}{HTML}{01617E}
@@ -471,9 +472,9 @@ $endif$
 \hypersetup{
   colorlinks = true,
   urlcolor = certeroze, % external hyperlinks
-  filecolor = linkcolor, % file links
-  % linkcolor = linkcolor, % internal links (like ToC)
-  % citecolor = linkcolor, % citations
+  filecolor = certeroze, % file links
+  linkcolor = zwart, % internal links (like ToC)
+  citecolor = zwart, % citations
 }
 \renewcommand{\url}[1]{\textcolor{certeroze}{\underline{\urlstyle{same}\href{#1}{#1}}}}
 
