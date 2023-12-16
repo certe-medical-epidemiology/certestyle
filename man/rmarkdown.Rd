@@ -20,7 +20,7 @@ rmarkdown_table(...)
 
 rmarkdown_template(type = "latex")
 
-rmarkdown_logo(logo_type = "front")
+rmarkdown_logo(logo_type = "certe")
 }
 \arguments{
 \item{user_id}{user ID at Certe, defaults to currently logged in user}
@@ -31,7 +31,7 @@ rmarkdown_logo(logo_type = "front")
 
 \item{type}{defaults to "latex", must be "latex" or "word" (case-insensitive)}
 
-\item{logo_type}{type of logo, must be "front" or "footer" (case-insensitive). For the LaTeX template, the front logo must be max 16x7 cm, and the footer logo must be max 16x0.7 cm.}
+\item{logo_type}{type of logo, must be one of the files in /inst/rmarkdown/latextemplate of the certestyle package. For the LaTeX template, the front logo must be 16x7 cm, and the footer logo must be 16x0.7 cm.}
 }
 \description{
 These functions can be used in R Markdown documents.

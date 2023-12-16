@@ -24,7 +24,7 @@ $if(CJKmainfont)$
   \PassOptionsToPackage{space}{xeCJK}
 $endif$
 %
-\documentclass[
+\documentclass[twoside, % twoside zorgt ervoor dat tex weet dat er even en oneven paginas zijn voor verticalbars
 $if(fontsize)$
   $fontsize$,
 $endif$
@@ -126,15 +126,25 @@ $else$
 $endif$
 \defaultfontfeatures{Scale=MatchLowercase}
 \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-% $if(mainfont)$
-%   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
-% $endif$
-% $if(sansfont)$
-%   \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-% $endif$
-% $if(monofont)$
-%   \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
-% $endif$
+$if(mainfont)$
+\setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$else$
+\setmainfont{Calibri}
+$endif$
+$if(sansfont)$
+\setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+$else$
+$if(mainfont)$
+\setsansfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$else$
+\setsansfont{Calibri}
+$endif$
+$endif$
+$if(monofont)$
+\setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
+$else$
+\setmonofont{Fira Code}
+$endif$
 % $for(fontfamilies)$
 %   \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
 % $endfor$
@@ -220,9 +230,9 @@ $endif$
 $if(author-meta)$
   pdfauthor={$author-meta$},
 $endif$
-% $if(lang)$
-  pdflang={dutch},
-% $endif$
+$if(lang)$
+  pdflang=$lang$,
+$endif$
 $if(subject)$
   pdfsubject={$subject$},
 $endif$
@@ -231,10 +241,10 @@ $if(keywords)$
 $endif$
 $if(colorlinks)$
   colorlinks=true,
-  linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-  filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
-  citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
-  urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+  % linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+  % filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
+  % citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+  % urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
 $else$
   hidelinks,
 $endif$
@@ -246,7 +256,7 @@ $endif$
 $if(beamer)$
 \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
 $else$
-\usepackage[a4paper, portrait, top=24mm,bottom=30mm,right=24mm,left=24mm]{geometry}
+\usepackage[a4paper, portrait, top=13mm,bottom=24mm,right=24mm,left=24mm]{geometry}
 $endif$
 $if(beamer)$
 \newif\ifbibliography
@@ -416,18 +426,12 @@ $endif$
 % Certe-specifieke instellingen
 % ------------------------------------------------------------------------------------------------- 
 
-% Nederlandse namen voor secties zoals Inhoudsopgave, Samenvatting en Lijst met figuren
+% Nederlandse namen voor secties in R Markdown (niet nodig voor Quarto)
 \usepackage{babel}
 \selectlanguage{dutch}
 \renewcommand*\contentsname{Inhoudsopgave}
 
-% Standaard lettertypes instellen
-\usepackage{fontspec}
-\setmainfont{Calibri}
-\setsansfont{Calibri}
-\setmonofont{Fira Code}
-
-% Voor de blauwe strook op de titelpagina
+% Voor de strook op de titelpagina
 \usepackage{tcolorbox}
 
 % Ondersteunen van landscape pagina's door tekst tussen \begin{landscape} en \end{landscape} te zetten
@@ -441,51 +445,112 @@ $endif$
 \newcolumntype{P}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
 \newcolumntype{L}{>{\RaggedRight}X}
 
-% Certe-kleuren voor headers en Quarto callouts
-\definecolor{certeblauw}{HTML}{01617E}
-\definecolor{certeroze}{HTML}{E04883}
-\definecolor{lichtgrijs}{HTML}{CBCBCB}
-\definecolor{zwart}{HTML}{000000}
-\definecolor{quarto-callout-caution-color-frame}{HTML}{E04883}
-\definecolor{quarto-callout-caution-color}{HTML}{E04883}
-\definecolor{quarto-callout-color-frame}{HTML}{01617E}
-\definecolor{quarto-callout-color}{HTML}{01617E}
-\definecolor{quarto-callout-important-color-frame}{HTML}{E04883}
-\definecolor{quarto-callout-important-color}{HTML}{E04883}
-\definecolor{quarto-callout-note-color-frame}{HTML}{01617E}
-\definecolor{quarto-callout-note-color}{HTML}{01617E}
-\definecolor{quarto-callout-tip-color-frame}{HTML}{8B9934}
-\definecolor{quarto-callout-tip-color}{HTML}{8B9934}
-\definecolor{quarto-callout-warning-color-frame}{HTML}{E04883}
-\definecolor{quarto-callout-warning-color}{HTML}{E04883}
+% Kleuren voor headers en Quarto callouts
+\usepackage{xstring}
+$if(colour-main)$
+% als er een hoofdkleur ingesteld is, deze aan de volgende elementen geven:
+\newcommand{\colourFrontpageTitlebanner}{$colour-main$}
+\newcommand{\colourVerticalbars}{$colour-main$}
+\newcommand{\colourSubtitle}{$colour-main$}
+\newcommand{\colourSubtitleTwo}{$colour-main$}
+\newcommand{\colourAuthorDate}{$colour-main$}
+\newcommand{\colourHeaderOne}{$colour-main$}
+\renewcommand{\colourFrontpageTitlebanner}{$if(colour-frontpage-titlebanner)$$colour-frontpage-titlebanner$$else$01617E$endif$} % standaard certeblauw
+\renewcommand{\colourVerticalbars}{$if(colour-verticalbars)$$colour-verticalbars$$else$01617E$endif$} % standaard certeblauw
+\renewcommand{\colourSubtitle}{$if(colour-subtitle)$$colour-subtitle$$else$01617E$endif$} % standaard certeblauw
+\renewcommand{\colourSubtitleTwo}{$if(colour-subtitle2)$$colour-subtitle2$$else$\colourSubtitle$endif$} % standaard colour-subtitle
+\renewcommand{\colourAuthorDate}{$if(colour-author-date)$$colour-author-date$$else$01617E$endif$} % standaard certeblauw
+\renewcommand{\colourHeaderOne}{$if(colour-header1)$$colour-header1$$else$01617E$endif$} % standaard certeblauw
+$else$
+\newcommand{\colourFrontpageTitlebanner}{$if(colour-frontpage-titlebanner)$$colour-frontpage-titlebanner$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourVerticalbars}{$if(colour-verticalbars)$$colour-verticalbars$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourSubtitle}{$if(colour-subtitle)$$colour-subtitle$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourSubtitleTwo}{$if(colour-subtitle2)$$colour-subtitle2$$else$\colourSubtitle$endif$} % standaard colour-subtitle
+\newcommand{\colourAuthorDate}{$if(colour-author-date)$$colour-author-date$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourHeaderOne}{$if(colour-header1)$$colour-header1$$else$01617E$endif$} % standaard certeblauw
+$endif$
+% overige elementen:
+\newcommand{\colourFrontpageFull}{$if(colour-frontpage-full)$$colour-frontpage-full$$else$FFFFFF$endif$} % standaard wit
+\newcommand{\colourTitle}{$if(colour-title)$$colour-title$$else$FFFFFF$endif$} % standaard wit
+\newcommand{\colourIdentifier}{$if(colour-identifier)$$colour-identifier$$else$CBCBCB$endif$} % standaard grijs
+\newcommand{\colourHeaderTwo}{$if(colour-header2)$$colour-header2$$else$E04883$endif$} % standaard certeroze
+\newcommand{\colourHeaderThree}{$if(colour-header3)$$colour-header3$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourUrl}{$if(colour-url)$$colour-url$$else$E04883$endif$} % standaard certeroze
+% hastags verwijderen uit HTML
+\StrSubstitute{\colourFrontpageTitlebanner}{\#}{}[\colourFrontpageTitlebanner]
+\StrSubstitute{\colourFrontpageFull}{\#}{}[\colourFrontpageFull]
+\StrSubstitute{\colourVerticalbars}{\#}{}[\colourVerticalbars]
+\StrSubstitute{\colourTitle}{\#}{}[\colourTitle]
+\StrSubstitute{\colourSubtitle}{\#}{}[\colourSubtitle]
+\StrSubstitute{\colourSubtitleTwo}{\#}{}[\colourSubtitleTwo]
+\StrSubstitute{\colourAuthorDate}{\#}{}[\colourAuthorDate]
+\StrSubstitute{\colourIdentifier}{\#}{}[\colourIdentifier]
+\StrSubstitute{\colourHeaderOne}{\#}{}[\colourHeaderOne]
+\StrSubstitute{\colourHeaderTwo}{\#}{}[\colourHeaderTwo]
+\StrSubstitute{\colourHeaderThree}{\#}{}[\colourHeaderThree]
+\StrSubstitute{\colourUrl}{\#}{}[\colourUrl]
+% kleuren instellen
+\definecolor{colour-frontpage-titlebanner}{HTML}{\colourFrontpageTitlebanner}
+\definecolor{colour-frontpage-full}{HTML}{\colourFrontpageFull}
+\definecolor{colour-verticalbars}{HTML}{\colourVerticalbars}
+\definecolor{colour-title}{HTML}{\colourTitle}
+\definecolor{colour-subtitle}{HTML}{\colourSubtitle}
+\definecolor{colour-subtitle2}{HTML}{\colourSubtitleTwo}
+\definecolor{colour-author-date}{HTML}{\colourAuthorDate}
+\definecolor{colour-identifier}{HTML}{\colourIdentifier}
+\definecolor{colour-header1}{HTML}{\colourHeaderOne}
+\definecolor{colour-header2}{HTML}{\colourHeaderTwo}
+\definecolor{colour-header3}{HTML}{\colourHeaderThree}
+\definecolor{colour-url}{HTML}{\colourUrl}
+% ook wat Quarto callout-vlakken
+\definecolor{quarto-callout-caution-color-frame}{HTML}{\colourHeaderTwo}
+\definecolor{quarto-callout-caution-color}{HTML}{\colourHeaderTwo}
+\definecolor{quarto-callout-color-frame}{HTML}{\colourHeaderOne}
+\definecolor{quarto-callout-color}{HTML}{\colourHeaderOne}
+\definecolor{quarto-callout-important-color-frame}{HTML}{\colourHeaderTwo}
+\definecolor{quarto-callout-important-color}{HTML}{\colourHeaderTwo}
+\definecolor{quarto-callout-note-color-frame}{HTML}{\colourHeaderOne}
+\definecolor{quarto-callout-note-color}{HTML}{\colourHeaderOne}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{\colourHeaderThree}
+\definecolor{quarto-callout-tip-color}{HTML}{\colourHeaderThree}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{\colourHeaderTwo}
+\definecolor{quarto-callout-warning-color}{HTML}{\colourHeaderTwo}
 
 \usepackage{sectsty}
 % kop 1
-\sectionfont{\newpage\color{certeblauw}\selectfont}
+\sectionfont{\newpage\color{colour-header1}\selectfont}
 % kop 2
-\subsectionfont{\color{certeroze}\selectfont}
+\subsectionfont{\color{colour-header2}\selectfont}
 % kop 3
-\subsubsectionfont{\color{certeblauw}\selectfont}
+\subsubsectionfont{\color{colour-header3}\selectfont}
 
-% links in certeroze
+% links in secundaire kleur
 \usepackage[normalem]{ulem} % underlining
 \hypersetup{
   colorlinks = true,
-  urlcolor = certeroze, % external hyperlinks
-  filecolor = certeroze, % file links
-  linkcolor = zwart, % internal links (like ToC)
-  citecolor = zwart, % citations
+  urlcolor = colour-url, % external hyperlinks
+  filecolor = colour-url, % file links
+  linkcolor = black, % internal links (like ToC)
+  citecolor = black, % citations
 }
-\renewcommand{\url}[1]{\textcolor{certeroze}{\underline{\urlstyle{same}\href{#1}{#1}}}}
+\renewcommand{\url}[1]{\textcolor{colour-url}{\urlstyle{same}\href{#1}{#1}}}
+\let\oldhref\href
+\renewcommand{\href}[2]{\textcolor{colour-url}{\underline{\oldhref{#1}{#2}}}}
 
 % footer opmaken met paginanummers en klein Certe-logo
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{ifthen}
 \pagestyle{fancy}
-\fancyhf{} % anders komen koptitels in the header
-\renewcommand\headrulewidth{0pt}
-\cfoot{\number\value{page} van \pageref{LastPage}\\
+\fancyhf{} % % header en footer leeghalen, anders komen koptitels in the header
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+% verticale balken links en rechts (14 mm komt uit definitie a4paper eerder (24 - 10 = 14)
+\fancyhead[LO]{\makebox[-14mm][r]{\color{colour-verticalbars}\rule{10mm}{\paperheight}}} % LE = left, odd
+\fancyhead[RE]{\makebox[-14mm][l]{\color{colour-verticalbars}\rule{10mm}{\paperheight}}} % RO = right, even
+
+% paginanummers in footer, standaard ' van ' tussen paginanummers
+\cfoot{\number\value{page}$if(footer-page-delim)$ $footer-page-delim$ $else$ van $endif$\pageref{LastPage}\\
        \ifthenelse{\equal{$logofooter$}{}}{}{\includegraphics[height=7mm,keepaspectratio]{$logofooter$}}}
 
 \begin{document}
@@ -498,46 +563,47 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
   $if(beamer)$
     \frame{\titlepage}
   $else$
-    % \maketitle % = oude manier, hieronder aangepast voor Certe:
+    % \maketitle % = oude manier, hieronder aangepast voor mooie voorpagina:
     \begin{titlepage}
+      \pagecolor{colour-frontpage-full}
 
       \begin{center}
-        \vspace*{-30mm}
+        \vspace*{-19mm}
         \ifthenelse{\equal{$logofront$}{}}{}{\includegraphics[width=210mm,height=70mm,keepaspectratio]{$logofront$}}
         
         \vfill
 
         \begin{tcolorbox}[size=tight,oversize,sharp corners,
-          colback=certeblauw,
-          colframe=certeblauw,
-          left=100pt,
-          right=100pt,
-          toprule=14mm,
-          bottomrule=14mm,
+          colback=colour-frontpage-titlebanner,
+          colframe=colour-frontpage-titlebanner,
+          left=100pt,  % interne margin in de tekstbox
+          right=100pt, % interne margin in de tekstbox
+          toprule=14mm, % dikte van de rand (= bovenkant banner tot aan tekst)
+          bottomrule=14mm, % dikte van de rand (= onderkant banner tot aan tekst)
           fontupper=\Huge,
-          halign=right]
-          \textcolor{white}{\textbf{$title$}}
+          halign=right] % tekst rechts uitlijnen
+          \textcolor{colour-title}{\textbf{$title$}}
         \end{tcolorbox}
         
         \vspace{5mm}
         
         \LARGE % dit is iets groter dan \large
-        \hspace*{\fill}\textcolor{certeblauw}{\textbf{$subtitle$}}
+        \hspace*{\fill}\textcolor{colour-subtitle}{\textbf{$subtitle$}}
 
         \vspace{5mm}
         
         \large % dit is iets kleiner dan \LARGE
-        \hspace*{\fill}\textcolor{certeblauw}{\textbf{$subtitle2$}}
+        \hspace*{\fill}\textcolor{colour-subtitle2}{\textbf{$subtitle2$}}
         
         \vfill
         
       \end{center}
 
-      \hspace*{\fill}\large\textcolor{certeblauw}{\textbf{$date$}}
+      \hspace*{\fill}\large\textcolor{colour-author-date}{\textbf{$date$}}
       
       \scriptsize % dit is iets kleiner dan \small, maar groter dan \tiny
-      \textcolor{lichtgrijs}{\textbf{$identifier$}}
-      \hspace*{\fill}\large\textcolor{certeblauw}{\textbf{$author$}}
+      \textcolor{colour-identifier}{\textbf{$identifier$}}
+      \hspace*{\fill}\large\textcolor{colour-author-date}{\textbf{$author$}}
       
       \vspace*{-10mm}
       
@@ -545,6 +611,7 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
   $endif$
 
   \newpage
+  \pagecolor{white}
 
   $if(abstract)$
   \begin{abstract}
@@ -562,12 +629,12 @@ $include-before$
 $endfor$
 $if(toc)$
 $if(toc-title)$
-\renewcommand*\contentsname{Inhoudsopgave}
+%\renewcommand*\contentsname{Inhoudsopgave} % niet nodig voor Quarto (gaat met 'lang'), alleen Rmd
 $endif$
 $if(beamer)$
 \begin{frame}[allowframebreaks]
 $if(toc-title)$
-  \frametitle{Inhoudsopgave}
+%\frametitle{Inhoudsopgave} % niet nodig voor Quarto (gaat met 'lang'), alleen Rmd
 $endif$
 \tableofcontents[hideallsubsections]
 \end{frame}

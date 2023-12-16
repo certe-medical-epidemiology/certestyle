@@ -72,10 +72,17 @@ rmarkdown_template <- function(type = "latex") {
 }
 
 #' @rdname rmarkdown
-#' @param logo_type type of logo, must be "front" or "footer" (case-insensitive). For the LaTeX template, the front logo must be max 16x7 cm, and the footer logo must be max 16x0.7 cm.
+#' @param logo_type type of logo, must be one of the files in /inst/rmarkdown/latextemplate of the certestyle package. For the LaTeX template, the front logo must be 16x7 cm, and the footer logo must be 16x0.7 cm.
 #' @export
-rmarkdown_logo <- function(logo_type = "front") {
-  logo_file <- paste0("certe", tolower(logo_type)[1], ".pdf")
+rmarkdown_logo <- function(logo_type = "certe") {
+  if (logo_type == "front") {
+    # legacy
+    logo_type <- "certe"
+  } else if (logo_type == "footer") {
+    # legacy
+    logo_type <- "certefooter"
+  }
+  logo_file <- paste0(logo_type[1], ".pdf")
   out <- system.file(paste0("rmarkdown/latextemplate/", logo_file), package = "certestyle")
   if (out == "") {
     stop("Logo file '", logo_file, "' not found in certestyle package", call. = FALSE)
