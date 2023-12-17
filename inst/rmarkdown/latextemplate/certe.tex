@@ -445,86 +445,104 @@ $endif$
 \newcolumntype{P}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
 \newcolumntype{L}{>{\RaggedRight}X}
 
-% Kleuren voor headers en Quarto callouts
+% Kleuren voor headings en Quarto callouts
 \usepackage{xstring}
 $if(colour-main)$
 % als er een hoofdkleur ingesteld is, deze aan de volgende elementen geven:
-\newcommand{\colourFrontpageTitlebanner}{$colour-main$}
+\newcommand{\colourTitlepageTitlebanner}{$colour-main$}
 \newcommand{\colourVerticalbars}{$colour-main$}
 \newcommand{\colourSubtitle}{$colour-main$}
 \newcommand{\colourSubtitleTwo}{$colour-main$}
 \newcommand{\colourAuthorDate}{$colour-main$}
-\newcommand{\colourHeaderOne}{$colour-main$}
-\renewcommand{\colourFrontpageTitlebanner}{$if(colour-frontpage-titlebanner)$$colour-frontpage-titlebanner$$else$01617E$endif$} % standaard certeblauw
-\renewcommand{\colourVerticalbars}{$if(colour-verticalbars)$$colour-verticalbars$$else$01617E$endif$} % standaard certeblauw
-\renewcommand{\colourSubtitle}{$if(colour-subtitle)$$colour-subtitle$$else$01617E$endif$} % standaard certeblauw
-\renewcommand{\colourSubtitleTwo}{$if(colour-subtitle2)$$colour-subtitle2$$else$\colourSubtitle$endif$} % standaard colour-subtitle
-\renewcommand{\colourAuthorDate}{$if(colour-author-date)$$colour-author-date$$else$01617E$endif$} % standaard certeblauw
-\renewcommand{\colourHeaderOne}{$if(colour-header1)$$colour-header1$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourHeadingOne}{$colour-main$}
+% instellingen overschrijven die toch ingesteld staan
+$if(colour-titlepage-titlebanner)$\renewcommand{\colourTitlepageTitlebanner}{$colour-titlepage-titlebanner$}$endif$
+$if(colour-verticalbars)$\renewcommand{\colourVerticalbars}{$colour-verticalbars$}$endif$
+$if(colour-subtitle)$\renewcommand{\colourSubtitle}{$colour-subtitle$}$endif$
+$if(colour-subtitle2)$\renewcommand{\colourSubtitleTwo}{$colour-subtitle2$}$endif$
+$if(colour-author-date)$\renewcommand{\colourAuthorDate}{$colour-author-date$}$endif$
+$if(colour-heading1)$\renewcommand{\colourHeadingOne}{$colour-heading1$}$endif$
 $else$
-\newcommand{\colourFrontpageTitlebanner}{$if(colour-frontpage-titlebanner)$$colour-frontpage-titlebanner$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourTitlepageTitlebanner}{$if(colour-titlepage-titlebanner)$$colour-titlepage-titlebanner$$else$01617E$endif$} % standaard certeblauw
 \newcommand{\colourVerticalbars}{$if(colour-verticalbars)$$colour-verticalbars$$else$01617E$endif$} % standaard certeblauw
 \newcommand{\colourSubtitle}{$if(colour-subtitle)$$colour-subtitle$$else$01617E$endif$} % standaard certeblauw
 \newcommand{\colourSubtitleTwo}{$if(colour-subtitle2)$$colour-subtitle2$$else$\colourSubtitle$endif$} % standaard colour-subtitle
 \newcommand{\colourAuthorDate}{$if(colour-author-date)$$colour-author-date$$else$01617E$endif$} % standaard certeblauw
-\newcommand{\colourHeaderOne}{$if(colour-header1)$$colour-header1$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourHeadingOne}{$if(colour-heading1)$$colour-heading1$$else$01617E$endif$} % standaard certeblauw
 $endif$
 % overige elementen:
-\newcommand{\colourFrontpageFull}{$if(colour-frontpage-full)$$colour-frontpage-full$$else$FFFFFF$endif$} % standaard wit
+\newcommand{\colourTitlepageFull}{$if(colour-titlepage-full)$$colour-titlepage-full$$else$FFFFFF$endif$} % standaard wit
 \newcommand{\colourTitle}{$if(colour-title)$$colour-title$$else$FFFFFF$endif$} % standaard wit
 \newcommand{\colourIdentifier}{$if(colour-identifier)$$colour-identifier$$else$CBCBCB$endif$} % standaard grijs
-\newcommand{\colourHeaderTwo}{$if(colour-header2)$$colour-header2$$else$E04883$endif$} % standaard certeroze
-\newcommand{\colourHeaderThree}{$if(colour-header3)$$colour-header3$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourHeadingTwo}{$if(colour-heading2)$$colour-heading2$$else$E04883$endif$} % standaard certeroze
+\newcommand{\colourHeadingThree}{$if(colour-heading3)$$colour-heading3$$else$01617E$endif$} % standaard certeblauw
 \newcommand{\colourUrl}{$if(colour-url)$$colour-url$$else$E04883$endif$} % standaard certeroze
 % hastags verwijderen uit HTML
-\StrSubstitute{\colourFrontpageTitlebanner}{\#}{}[\colourFrontpageTitlebanner]
-\StrSubstitute{\colourFrontpageFull}{\#}{}[\colourFrontpageFull]
+\StrSubstitute{\colourTitlepageTitlebanner}{\#}{}[\colourTitlepageTitlebanner]
+\StrSubstitute{\colourTitlepageFull}{\#}{}[\colourTitlepageFull]
 \StrSubstitute{\colourVerticalbars}{\#}{}[\colourVerticalbars]
 \StrSubstitute{\colourTitle}{\#}{}[\colourTitle]
 \StrSubstitute{\colourSubtitle}{\#}{}[\colourSubtitle]
 \StrSubstitute{\colourSubtitleTwo}{\#}{}[\colourSubtitleTwo]
 \StrSubstitute{\colourAuthorDate}{\#}{}[\colourAuthorDate]
 \StrSubstitute{\colourIdentifier}{\#}{}[\colourIdentifier]
-\StrSubstitute{\colourHeaderOne}{\#}{}[\colourHeaderOne]
-\StrSubstitute{\colourHeaderTwo}{\#}{}[\colourHeaderTwo]
-\StrSubstitute{\colourHeaderThree}{\#}{}[\colourHeaderThree]
+\StrSubstitute{\colourHeadingOne}{\#}{}[\colourHeadingOne]
+\StrSubstitute{\colourHeadingTwo}{\#}{}[\colourHeadingTwo]
+\StrSubstitute{\colourHeadingThree}{\#}{}[\colourHeadingThree]
 \StrSubstitute{\colourUrl}{\#}{}[\colourUrl]
 % kleuren instellen
-\definecolor{colour-frontpage-titlebanner}{HTML}{\colourFrontpageTitlebanner}
-\definecolor{colour-frontpage-full}{HTML}{\colourFrontpageFull}
+\definecolor{colour-titlepage-titlebanner}{HTML}{\colourTitlepageTitlebanner}
+\definecolor{colour-titlepage-full}{HTML}{\colourTitlepageFull}
 \definecolor{colour-verticalbars}{HTML}{\colourVerticalbars}
 \definecolor{colour-title}{HTML}{\colourTitle}
 \definecolor{colour-subtitle}{HTML}{\colourSubtitle}
 \definecolor{colour-subtitle2}{HTML}{\colourSubtitleTwo}
 \definecolor{colour-author-date}{HTML}{\colourAuthorDate}
 \definecolor{colour-identifier}{HTML}{\colourIdentifier}
-\definecolor{colour-header1}{HTML}{\colourHeaderOne}
-\definecolor{colour-header2}{HTML}{\colourHeaderTwo}
-\definecolor{colour-header3}{HTML}{\colourHeaderThree}
+\definecolor{colour-heading1}{HTML}{\colourHeadingOne}
+\definecolor{colour-heading2}{HTML}{\colourHeadingTwo}
+\definecolor{colour-heading3}{HTML}{\colourHeadingThree}
 \definecolor{colour-url}{HTML}{\colourUrl}
 % ook wat Quarto callout-vlakken
-\definecolor{quarto-callout-caution-color-frame}{HTML}{\colourHeaderTwo}
-\definecolor{quarto-callout-caution-color}{HTML}{\colourHeaderTwo}
-\definecolor{quarto-callout-color-frame}{HTML}{\colourHeaderOne}
-\definecolor{quarto-callout-color}{HTML}{\colourHeaderOne}
-\definecolor{quarto-callout-important-color-frame}{HTML}{\colourHeaderTwo}
-\definecolor{quarto-callout-important-color}{HTML}{\colourHeaderTwo}
-\definecolor{quarto-callout-note-color-frame}{HTML}{\colourHeaderOne}
-\definecolor{quarto-callout-note-color}{HTML}{\colourHeaderOne}
-\definecolor{quarto-callout-tip-color-frame}{HTML}{\colourHeaderThree}
-\definecolor{quarto-callout-tip-color}{HTML}{\colourHeaderThree}
-\definecolor{quarto-callout-warning-color-frame}{HTML}{\colourHeaderTwo}
-\definecolor{quarto-callout-warning-color}{HTML}{\colourHeaderTwo}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{\colourHeadingTwo}
+\definecolor{quarto-callout-caution-color}{HTML}{\colourHeadingTwo}
+\definecolor{quarto-callout-color-frame}{HTML}{\colourHeadingOne}
+\definecolor{quarto-callout-color}{HTML}{\colourHeadingOne}
+\definecolor{quarto-callout-important-color-frame}{HTML}{\colourHeadingTwo}
+\definecolor{quarto-callout-important-color}{HTML}{\colourHeadingTwo}
+\definecolor{quarto-callout-note-color-frame}{HTML}{\colourHeadingOne}
+\definecolor{quarto-callout-note-color}{HTML}{\colourHeadingOne}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{\colourHeadingThree}
+\definecolor{quarto-callout-tip-color}{HTML}{\colourHeadingThree}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{\colourHeadingTwo}
+\definecolor{quarto-callout-warning-color}{HTML}{\colourHeadingTwo}
+
+% logos
+\newcommand{\titlepageLogo}{}
+$if(logofront)$
+\renewcommand{\titlepageLogo}{$logofront$}
+$endif$
+$if(titlepage-logo)$
+\renewcommand{\titlepageLogo}{$titlepage-logo$}
+$endif$
+
+\newcommand{\footerLogo}{}
+$if(logofooter)$
+\renewcommand{\footerLogo}{$logofooter$}
+$endif$
+$if(footer-logo)$
+\renewcommand{\footerLogo}{$footer-logo$}
+$endif$
 
 \usepackage{sectsty}
 % kop 1
-\sectionfont{\newpage\color{colour-header1}\selectfont}
+\sectionfont{\newpage\color{colour-heading1}\selectfont}
 % kop 2
-\subsectionfont{\color{colour-header2}\selectfont}
+\subsectionfont{\color{colour-heading2}\selectfont}
 % kop 3
-\subsubsectionfont{\color{colour-header3}\selectfont}
+\subsubsectionfont{\color{colour-heading3}\selectfont}
 
-% links in secundaire kleur
+% kleur van links
 \usepackage[normalem]{ulem} % underlining
 \hypersetup{
   colorlinks = true,
@@ -551,7 +569,7 @@ $endif$
 
 % paginanummers in footer, standaard ' van ' tussen paginanummers
 \cfoot{\number\value{page}$if(footer-page-delim)$ $footer-page-delim$ $else$ van $endif$\pageref{LastPage}\\
-       \ifthenelse{\equal{$logofooter$}{}}{}{\includegraphics[height=7mm,keepaspectratio]{$logofooter$}}}
+       \ifthenelse{\equal{\footerLogo}{}}{}{\includegraphics[height=7mm,keepaspectratio]{\footerLogo}}}
 
 \begin{document}
 % paginanummering uitzetten (voor 1e pagina):
@@ -565,17 +583,17 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
   $else$
     % \maketitle % = oude manier, hieronder aangepast voor mooie voorpagina:
     \begin{titlepage}
-      \pagecolor{colour-frontpage-full}
+      \pagecolor{colour-titlepage-full}
 
       \begin{center}
         \vspace*{-19mm}
-        \ifthenelse{\equal{$logofront$}{}}{}{\includegraphics[width=210mm,height=70mm,keepaspectratio]{$logofront$}}
+        \ifthenelse{\equal{\titlepageLogo}{}}{}{\includegraphics[width=210mm,height=70mm,keepaspectratio]{\titlepageLogo}}
         
         \vfill
 
         \begin{tcolorbox}[size=tight,oversize,sharp corners,
-          colback=colour-frontpage-titlebanner,
-          colframe=colour-frontpage-titlebanner,
+          colback=colour-titlepage-titlebanner,
+          colframe=colour-titlepage-titlebanner,
           left=100pt,  % interne margin in de tekstbox
           right=100pt, % interne margin in de tekstbox
           toprule=14mm, % dikte van de rand (= bovenkant banner tot aan tekst)

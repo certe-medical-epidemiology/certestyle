@@ -82,7 +82,8 @@ rmarkdown_logo <- function(logo_type = "certe") {
     # legacy
     logo_type <- "certefooter"
   }
-  logo_file <- paste0(logo_type[1], ".pdf")
+  logo_file <- paste0(tolower(logo_type[1]), ".pdf")
+  logo_file <- gsub(".pdf.pdf", ".pdf", logo_file, fixed = TRUE)
   out <- system.file(paste0("rmarkdown/latextemplate/", logo_file), package = "certestyle")
   if (out == "") {
     stop("Logo file '", logo_file, "' not found in certestyle package", call. = FALSE)

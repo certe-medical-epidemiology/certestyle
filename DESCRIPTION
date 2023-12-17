@@ -1,6 +1,6 @@
 Package: certestyle
 Title: A Certe R Package for Applying Certe Organisational Style
-Version: 1.4.0
+Version: 1.4.1
 Authors@R: c(
   person(given = c("Matthijs", "S."), 
          family = "Berends",
@@ -36,6 +36,7 @@ Suggests:
   hms (>= 1.0.0),
   knitr (>= 1.0.0),
   pillar (>= 1.5.0),
+  rmarkdown,
   testthat (>= 2.0.0),
   tibble (>= 3.0.0)
 License: GPL-2
@@ -43,3 +44,4 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Config/testthat/edition: 2
+VignetteBuilder: knitr
