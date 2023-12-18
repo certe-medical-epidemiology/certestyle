@@ -36,6 +36,3 @@ rmarkdown_logo(logo_type = "certe")
 \description{
 These functions can be used in R Markdown documents.
 }
-\details{
-For LaTeX, 4 logo files can be used to add to the resulting PDF file: \code{logocentre} (38x58 mm), \code{logoleft} (38x58 mm), \code{logoright} (38x58 mm) and \code{logofooter} (7 mm high). They must be set as YAML parameters in an R Markdown file header.
-}

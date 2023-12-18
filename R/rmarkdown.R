@@ -21,7 +21,6 @@
 #' 
 #' These functions can be used in R Markdown documents.
 #' @param user_id user ID at Certe, defaults to currently logged in user
-#' @details For LaTeX, 4 logo files can be used to add to the resulting PDF file: `logocentre` (38x58 mm), `logoleft` (38x58 mm), `logoright` (38x58 mm) and `logofooter` (7 mm high). They must be set as YAML parameters in an R Markdown file header.
 #' @name rmarkdown
 #' @rdname rmarkdown
 #' @export

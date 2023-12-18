@@ -1,5 +1,7 @@
 ---
 title: "TeX Template Settings"
+description: >
+  Learn how set the options of the certestyle TeX template.
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{TeX Template Settings}
@@ -291,12 +293,13 @@ colour-main: "`r certestyle::colourpicker('certeroze')`"
 colour-titlepage-titlebanner: "`r certestyle::colourpicker('certeroze2')`"
 # certeroze3, lighter than certeroze2
 colour-titlepage-full: "`r certestyle::colourpicker('certeroze3')`"
-colour-subtitle: "`r certestyle::colourpicker('certeroze3')`"
-colour-subtitle2: "`r certestyle::colourpicker('certeroze3')`"
+colour-subtitle: "`r certestyle::colourpicker('certeroze3')`"  # this effectively hides the text
+colour-subtitle2: "`r certestyle::colourpicker('certeroze3')`" # this effectively hides the text
 colour-verticalbars: "`r certestyle::colourpicker('certeroze3')`"
 # all certeroze5, a very bright certeroze variant
 colour-author-date: "`r certestyle::colourpicker('certeroze5')`"
 colour-identifier: "`r certestyle::colourpicker('certeroze5')`"
+
 # and the logos
 titlepage-logo: "`r certestyle::rmarkdown_logo('certe-tekst-wit-links')`"
 footer-logo: "`r certestyle::rmarkdown_logo('footer')`"
