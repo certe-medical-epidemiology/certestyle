@@ -66,7 +66,7 @@ a, a code {
   /* function names */
   font-weight: bold;
 }
-.cn {
+.cn,.ch {
   /* values such as TRUE and NULL */
   color: #E04883;
   font-style: italic;
@@ -82,4 +82,23 @@ a, a code {
 .st {
   /* text strings */
   color: #8B9934;
+}
+
+
+/* certestyle-specific */ 
+.template-article blockquote p {
+  font-size: 0.8em !important;
+}
+.template-article h3 * {
+  color: black !important;
+}
+.template-article h3 {
+  font-size: 20px !important;
+}
+.template-article img {
+  margin-right: 4% !important;
+  border: 1px solid #ccc !important;
+}
+.template-article code * {
+  font-weight: normal !important;
 }

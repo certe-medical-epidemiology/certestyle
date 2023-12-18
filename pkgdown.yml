@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   tex-template: tex-template.html
-last_built: 2023-12-17T20:54Z
+last_built: 2023-12-18T12:19Z
 urls:
   reference: https://certe-medical-epidemiology.github.io/certestyle/reference
   article: https://certe-medical-epidemiology.github.io/certestyle/articles
