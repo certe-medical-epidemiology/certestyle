@@ -235,7 +235,7 @@ For backwards compatibility, `logofooter` can also be used instead of `footer-lo
 
 ## Examples
 
-These example work in both R Markdown and Quarto. For each example, this is set:
+These examples work in both R Markdown and Quarto. For each example, this was set:
 
 ```{yaml, eval = FALSE}
 title: "Titel analyse"
@@ -245,33 +245,26 @@ author: "Certe Medische Epidemiologie"
 date: "`r Sys.Date()`"
 date-format: "D MMMM YYYY"
 identifier: "abc123456"
+# logo's
+titlepage-logo: "`r certestyle::rmarkdown_logo('certe')`"
+footer-logo: "`r certestyle::rmarkdown_logo('footer')`"
 ```
 
 ### Example 1: Default
 
-This is the default; aside from logo's, no additional formatting has been defined:
-
-```{yaml, eval = FALSE}
-# ... the above part with title, etc. ...
-titlepage-logo: "`r certestyle::rmarkdown_logo('certe')`"
-footer-logo: "`r certestyle::rmarkdown_logo('footer')`"
-```
+This is the default; no additional formatting has been defined:
 
 ```{r, echo = FALSE, out.width = "40%"}
 knitr::include_graphics("example1-p1.jpg")
 knitr::include_graphics("example1-p2.jpg")
 ```
 
-
 ### Example 2: Colour change
 
 This example sets `colour-main` to directly influence different elements such as the title page elements, and heading 1:
 
 ```{yaml, eval = FALSE}
-# ... the above part with title, etc. ...
 colour-main: "`r certestyle::colourpicker('certeroze')`"
-titlepage-logo: "`r certestyle::rmarkdown_logo('certe')`"
-footer-logo: "`r certestyle::rmarkdown_logo('footer')`"
 ```
 
 ```{r, echo = FALSE, out.width = "40%"}
@@ -284,24 +277,21 @@ knitr::include_graphics("example2-p2.jpg")
 This example adds another logo (white Certe letters, aligned to the left) and uses `colour-titlepage-full` to give the title page a completely new look:
 
 ```{yaml, eval = FALSE}
-# ... the above part with title, etc. ...
-
 # certeroze for main elements
 colour-main: "`r certestyle::colourpicker('certeroze')`"
+
 # certeroze2, somewhat lighter than certeroze
 colour-titlepage-titlebanner: "`r certestyle::colourpicker('certeroze2')`"
+
 # certeroze3, lighter than certeroze2
 colour-titlepage-full: "`r certestyle::colourpicker('certeroze3')`"
-colour-subtitle: "`r certestyle::colourpicker('certeroze3')`"  # this effectively hides the text
-colour-subtitle2: "`r certestyle::colourpicker('certeroze3')`" # this effectively hides the text
+colour-subtitle: "`r certestyle::colourpicker('certeroze3')`"  # this effectively makes text invisible
+colour-subtitle2: "`r certestyle::colourpicker('certeroze3')`" # this effectively makes text invisible
 colour-verticalbars: "`r certestyle::colourpicker('certeroze3')`"
-# all certeroze5, a very bright certeroze variant
+
+# certeroze5, a very bright certeroze variant
 colour-author-date: "`r certestyle::colourpicker('certeroze5')`"
 colour-identifier: "`r certestyle::colourpicker('certeroze5')`"
-
-# and the logos
-titlepage-logo: "`r certestyle::rmarkdown_logo('certe-tekst-wit-links')`"
-footer-logo: "`r certestyle::rmarkdown_logo('footer')`"
 ```
 
 ```{r, echo = FALSE, out.width = "40%"}
