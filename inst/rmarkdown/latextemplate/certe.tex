@@ -545,6 +545,10 @@ $endif$
 % kop 3
 \subsubsectionfont{\color{colour-heading3}\selectfont}
 
+% dit zorgt ervoor dat het toegestaan is om whitespace onderaan pagina's te laten;
+% we gebruiken `\documentclass[twoside, ...]`, wat normaal dit niet toelaat en pagina-inhoud 'stretcht'
+\raggedbottom
+
 % kleur van links
 \usepackage[normalem]{ulem} % underlining
 \hypersetup{
@@ -571,7 +575,11 @@ $endif$
 \fancyhead[RE]{\makebox[-14mm][l]{\color{colour-verticalbars}\rule{10mm}{\paperheight}}} % RO = right, even
 
 % paginanummers in footer, standaard ' van ' tussen paginanummers
-\cfoot{\number\value{page}$if(footer-page-delim)$ $footer-page-delim$ $else$ van $endif$\pageref{LastPage}\\
+\newcommand{\translateOf}
+  {\ifthenelse{\equal{$lang$}{nl}}{ van }
+  {\ifthenelse{\equal{$lang$}{de}}{ von }
+  { of }}}
+\cfoot{$if(footer-page-numbers)$\number\value{page}\translateOf\pageref{LastPage}$endif$\\
        \ifthenelse{\equal{\footerLogo}{}}{}{\includegraphics[height=7mm,keepaspectratio]{\footerLogo}}}
 
 \begin{document}

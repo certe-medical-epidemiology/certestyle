@@ -44,7 +44,7 @@ lang: "nl"
 
 Note that this snippet is not required on Quarto if [making use of `_quarto.yaml` in a parent folder](https://quarto.org/docs/projects/quarto-projects.html#metadata-merging).
 
-Setting `lang` will make sure that all automated TeX texts are translated, such as "Table of Contents", "List of Figures", "Table", "Figure", etc. This setting accepts an [ISO-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+Setting `lang` will make sure that all automated TeX texts are translated, such as "Table of Contents", "List of Figures", "Table", "Figure", etc. This setting accepts an [ISO-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) such as `"nl"` for Dutch and `"de"` for German.
 
 ## Title Page
 
@@ -214,17 +214,16 @@ monofont: "Fira Code"
 
 They have to be installed on the system level. Cross-platform fonts (that are available on Windows, macOS, and Linux) are e.g. Verdana and Arial for `mainfont`, and Courier New for `monofont`.
 
-
 ## Footer
 
-At the bottom of each page after the title page, page numbers are given in the format `"x of y"`. The text `" of "` can be set in the YAML header, using `footer-page-delim`. Note that spaces before and after this text will be ignored by LaTeX.
+At the bottom of each page after the title page, page numbers can be printed in the format `"x of y"`:
 
 ```{yaml, eval = FALSE}
-footer-page-delim: " van "
-footer-page-delim: "van" # same
+footer-page-numbers: true
+lang: "nl"
 ```
 
-For other language-specific changes, set `lang` to an [ISO-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+Note that the text `" of "` is language-specific. This text is set in the TeX template and only supports `lang: nl` (which prints `"x van y"`) and `lang: de` (which prints `"x von y"`). It will print `"x of y"` in all other cases.
 
 Below the footer text, a PDF file can be placed, e.g. with a small organisational logo. It must be 16x0.7 cm.
 
