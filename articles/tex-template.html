@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5</span>
       </span>
     </div>
 
@@ -361,23 +361,22 @@ instead of <code>footer-logo</code>.</p>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>These example work in both R Markdown and Quarto. For each example,
-this is set:</p>
+<p>These examples work in both R Markdown and Quarto. For each example,
+this was set:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Titel analyse"</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Dit is een ondertitel"</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"En dit is een nog kleinere ondertitel"</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Certe Medische Epidemiologie"</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r Sys.Date()`"</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">date-format</span><span class="kw">:</span><span class="at"> </span><span class="st">"D MMMM YYYY"</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"abc123456"</span></span></code></pre></div>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"abc123456"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># logo's</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">titlepage-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('certe')`"</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="example-1-default">Example 1: Default<a class="anchor" aria-label="anchor" href="#example-1-default"></a>
 </h3>
-<p>This is the default; aside from logo’s, no additional formatting has
-been defined:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ... the above part with title, etc. ...</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">titlepage-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('certe')`"</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
+<p>This is the default; no additional formatting has been defined:</p>
 <p><img src="example1-p1.jpg" width="40%"><img src="example1-p2.jpg" width="40%"></p>
 </div>
 <div class="section level3">
@@ -385,10 +384,7 @@ been defined:</p>
 </h3>
 <p>This example sets <code>colour-main</code> to directly influence
 different elements such as the title page elements, and heading 1:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ... the above part with title, etc. ...</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">titlepage-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('certe')`"</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span></code></pre></div>
 <p><img src="example2-p1.jpg" width="40%"><img src="example2-p2.jpg" width="40%"></p>
 </div>
 <div class="section level3">
@@ -397,24 +393,21 @@ different elements such as the title page elements, and heading 1:</p>
 <p>This example adds another logo (white Certe letters, aligned to the
 left) and uses <code>colour-titlepage-full</code> to give the title page
 a completely new look:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ... the above part with title, etc. ...</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze for main elements</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze2, somewhat lighter than certeroze</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze2')`"</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze3, lighter than certeroze2</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co">  # this effectively hides the text</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co"> # this effectively hides the text</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-verticalbars</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># all certeroze5, a very bright certeroze variant</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># and the logos</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">titlepage-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('certe-tekst-wit-links')`"</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze for main elements</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze2, somewhat lighter than certeroze</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze2')`"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze3, lighter than certeroze2</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co">  # this effectively makes text invisible</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co"> # this effectively makes text invisible</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-verticalbars</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># certeroze5, a very bright certeroze variant</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span></code></pre></div>
 <p><img src="example3-p1.jpg" width="40%"><img src="example3-p2.jpg" width="40%"></p>
 </div>
 </div>
