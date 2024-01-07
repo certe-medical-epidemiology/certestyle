@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.4</span>
       </span>
     </div>
 
@@ -154,7 +154,8 @@ use of <code>_quarto.yaml</code> in a parent folder</a>.</p>
 <p>Setting <code>lang</code> will make sure that all automated TeX texts
 are translated, such as “Table of Contents”, “List of Figures”, “Table”,
 “Figure”, etc. This setting accepts an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" class="external-link">ISO-639-1
-code</a>.</p>
+code</a> such as <code>"nl"</code> for Dutch and <code>"de"</code> for
+German.</p>
 </div>
 <div class="section level2">
 <h2 id="title-page">Title Page<a class="anchor" aria-label="anchor" href="#title-page"></a>
@@ -342,15 +343,15 @@ Arial for <code>mainfont</code>, and Courier New for
 <div class="section level2">
 <h2 id="footer">Footer<a class="anchor" aria-label="anchor" href="#footer"></a>
 </h2>
-<p>At the bottom of each page after the title page, page numbers are
-given in the format <code>"x of y"</code>. The text <code>" of "</code>
-can be set in the YAML header, using <code>footer-page-delim</code>.
-Note that spaces before and after this text will be ignored by
-LaTeX.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-page-delim</span><span class="kw">:</span><span class="at"> </span><span class="st">" van "</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-page-delim</span><span class="kw">:</span><span class="at"> </span><span class="st">"van"</span><span class="co"> # same</span></span></code></pre></div>
-<p>For other language-specific changes, set <code>lang</code> to an <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" class="external-link">ISO-639-1
-code</a>.</p>
+<p>At the bottom of each page after the title page, page numbers can be
+printed in the format <code>"x of y"</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-page-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> </span><span class="st">"nl"</span></span></code></pre></div>
+<p>Note that the text <code>" of "</code> is language-specific. This
+text is set in the TeX template and only supports <code>lang: nl</code>
+(which prints <code>"x van y"</code>) and <code>lang: de</code> (which
+prints <code>"x von y"</code>). It will print <code>"x of y"</code> in
+all other cases.</p>
 <p>Below the footer text, a PDF file can be placed, e.g. with a small
 organisational logo. It must be 16x0.7 cm.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
