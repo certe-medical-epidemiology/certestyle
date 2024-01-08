@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.6</span>
       </span>
     </div>
 
@@ -209,7 +209,7 @@ for date formats.</p>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date-format</span><span class="kw">:</span><span class="at"> </span><span class="st">"D MMMM YYYY"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for R Markdown</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r format2(Sys.Date(), 'd mmmm yyyy')`"</span></span></code></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::format2(Sys.Date(), 'd mmmm yyyy')`"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="identifier">
@@ -291,7 +291,8 @@ these keys to <code>true</code>. Their default is
 feel of the resulting document. All colours must be set in HTML-codes,
 with or without <code>#</code>, such as <code>#000000</code> or
 <code>000000</code> for black. Colour names (such as
-<code>"black"</code>) do not work.</p>
+<code>"black"</code>) do not work, unless
+<code><a href="../reference/colourpicker.html">certestyle::colourpicker()</a></code> is used.</p>
 <p>These are the defaults and what they mean:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"#01617E"</span><span class="co"> # horizontal banner colour for the title</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FFFFFF"</span><span class="co"> # full page colour for title page</span></span>
@@ -343,15 +344,16 @@ Arial for <code>mainfont</code>, and Courier New for
 <div class="section level2">
 <h2 id="footer">Footer<a class="anchor" aria-label="anchor" href="#footer"></a>
 </h2>
-<p>At the bottom of each page after the title page, page numbers can be
-printed in the format <code>"x of y"</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-page-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> </span><span class="st">"nl"</span></span></code></pre></div>
-<p>Note that the text <code>" of "</code> is language-specific. This
-text is set in the TeX template and only supports <code>lang: nl</code>
+<p>At the bottom of each page after the title page, you can remove the
+page numbers:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove-footer-page-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<p>The page numbers will be print in the format <code>"x of y"</code>
+Note that the text <code>" of "</code> is language-specific. This text
+is set in the TeX template and only supports <code>lang: nl</code>
 (which prints <code>"x van y"</code>) and <code>lang: de</code> (which
-prints <code>"x von y"</code>). It will print <code>"x of y"</code> in
-all other cases.</p>
+prints <code>"x von y"</code>). It will assume Dutch if
+<code>lang</code> is not set. It will print <code>"x of y"</code> in all
+other cases.</p>
 <p>Below the footer text, a PDF file can be placed, e.g. with a small
 organisational logo. It must be 16x0.7 cm.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
