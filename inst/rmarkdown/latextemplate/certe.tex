@@ -518,6 +518,7 @@ $endif$
 \definecolor{quarto-callout-warning-color}{HTML}{\colourHeadingTwo}
 
 % captions van grafieken en tabellen links uitgelijnd, punt ipv dubbele punt ("Figuur 1." ipv "Figuur 1:") en Figuur/Tabel in vet
+\usepackage{caption}
 \captionsetup{labelsep=period, justification=justified, singlelinecheck=false, labelfont=bf}
 
 % logos
@@ -576,10 +577,11 @@ $endif$
 
 % paginanummers in footer, standaard ' van ' tussen paginanummers
 \newcommand{\translateOf}
+  {\ifthenelse{\equal{$lang$}{}}{ van } % standaard 'van' als lang ontbreekt
   {\ifthenelse{\equal{$lang$}{nl}}{ van }
   {\ifthenelse{\equal{$lang$}{de}}{ von }
-  { of }}}
-\cfoot{$if(footer-page-numbers)$\number\value{page}\translateOf\pageref{LastPage}$endif$\\
+  { of }}}}
+\cfoot{$if(remove-footer-page-numbers)$$else$\number\value{page}\translateOf\pageref{LastPage}$endif$\\
        \ifthenelse{\equal{\footerLogo}{}}{}{\includegraphics[height=7mm,keepaspectratio]{\footerLogo}}}
 
 \begin{document}

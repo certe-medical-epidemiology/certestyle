@@ -83,7 +83,7 @@ date: "`r Sys.Date()`" # R prints Date objects as YYYY-MM-DD, so that's safe
 date-format: "D MMMM YYYY"
 
 # for R Markdown
-date: "`r format2(Sys.Date(), 'd mmmm yyyy')`"
+date: "`r certestyle::format2(Sys.Date(), 'd mmmm yyyy')`"
 ```
 
 ### `identifier`
@@ -159,7 +159,7 @@ lof: true # List of Figures
 
 ## Colours
 
-All colours can be set separately, greatly influencing the look and feel of the resulting document. All colours must be set in HTML-codes, with or without `#`, such as `#000000` or `000000` for black. Colour names (such as `"black"`) do not work.
+All colours can be set separately, greatly influencing the look and feel of the resulting document. All colours must be set in HTML-codes, with or without `#`, such as `#000000` or `000000` for black. Colour names (such as `"black"`) do not work, unless `certestyle::colourpicker()` is used.
 
 These are the defaults and what they mean:
 
@@ -216,14 +216,13 @@ They have to be installed on the system level. Cross-platform fonts (that are av
 
 ## Footer
 
-At the bottom of each page after the title page, page numbers can be printed in the format `"x of y"`:
+At the bottom of each page after the title page, you can remove the page numbers:
 
 ```{yaml, eval = FALSE}
-footer-page-numbers: true
-lang: "nl"
+remove-footer-page-numbers: true
 ```
 
-Note that the text `" of "` is language-specific. This text is set in the TeX template and only supports `lang: nl` (which prints `"x van y"`) and `lang: de` (which prints `"x von y"`). It will print `"x of y"` in all other cases.
+The page numbers will be print in the format `"x of y"` Note that the text `" of "` is language-specific. This text is set in the TeX template and only supports `lang: nl` (which prints `"x van y"`) and `lang: de` (which prints `"x von y"`). It will assume Dutch if `lang` is not set. It will print `"x of y"` in all other cases.
 
 Below the footer text, a PDF file can be placed, e.g. with a small organisational logo. It must be 16x0.7 cm.
 
