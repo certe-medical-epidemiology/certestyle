@@ -58,7 +58,7 @@ add_white(x, white)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"azure1"}, \code{"blue3"}, \code{"darkseagreen4"}, \code{"honeydew2"}, \code{"lightsteelblue2"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"brown3"}, \code{"indianred1"}, \code{"olivedrab4"}, \code{"powderblue"}, \code{"white"}
 }}
 
 \item{length}{size of the vector to be returned}

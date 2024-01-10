@@ -89,3 +89,59 @@ rmarkdown_logo <- function(logo_type = "certe") {
   }
   out
 }
+
+#' Get Current Markdown Colour
+#' 
+#' This function determines the Certe theme colour currently used in a markdown document (Quarto or R Markdown), based on the YAML header.
+#' @details
+#' It returns a Certe colour if one is set in the YAML header, and checks in this order:
+#' 
+#' 1. `colour-main`
+#' 2. `colour-titlepage-titlebanner`
+#' 3. `colour-titlepage-full`
+#' 4. `colour-verticalbars`
+#' 5. `colour-heading1`
+#' 
+#' If none is set, it returns `"certeblauw"`.
+#' 
+#' This function is the default to set the theme for [`tbl_flextable()`][certetoolbox::tbl_flextable()].
+#' @export
+current_markdown_colour <- function() {
+  params <- rmarkdown::metadata
+  convert_to_certe_colour <- function(col) {
+    if (grepl("certe", col)) {
+      return(gsub(".*(certe[a-z]+).*", "\\1", col))
+    } else {
+      if (!grepl("^#", col)) {
+        col <- paste0("#", col)
+      }
+      # check 'certe.colours' (a certestyle object)
+      out <- names(certe.colours[certe.colours == col])
+      if (length(out) == 0 || !grepl("certe", out)) {
+        return("")
+      } else {
+        # return without numbers, so "certegroen" instead of "certegroen3"
+        return(gsub("[^a-z]", "", out))
+      }
+    }
+  }
+  if ("colour-main" %in% names(params) && grepl("certe", convert_to_certe_colour(params$`colour-main`))) {
+    # take main colour if set
+    convert_to_certe_colour(params$`colour-main`)
+  } else if ("colour-titlepage-titlebanner" %in% names(params) && grepl("certe", convert_to_certe_colour(params$`colour-titlepage-titlebanner`))) {
+    # take vertical bars colour if set
+    convert_to_certe_colour(params$`colour-titlepage-titlebanner`)
+  } else if ("colour-titlepage-full" %in% names(params) && grepl("certe", convert_to_certe_colour(params$`colour-titlepage-full`))) {
+    # take vertical bars colour if set
+    convert_to_certe_colour(params$`colour-titlepage-full`)
+  } else if ("colour-verticalbars" %in% names(params) && grepl("certe", convert_to_certe_colour(params$`colour-verticalbars`))) {
+    # take vertical bars colour if set
+    convert_to_certe_colour(params$`colour-verticalbars`)
+  } else if ("colour-heading1" %in% names(params) && grepl("certe", convert_to_certe_colour(params$`colour-heading1`))) {
+    # take heading 1 colour if set
+    convert_to_certe_colour(params$`colour-heading1`)
+  } else {
+    # default
+    "certeblauw"
+  }
+}
