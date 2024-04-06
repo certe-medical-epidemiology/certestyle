@@ -474,20 +474,20 @@ $if(colour-subtitle2)$\renewcommand{\colourSubtitleTwo}{$colour-subtitle2$}$endi
 $if(colour-author-date)$\renewcommand{\colourAuthorDate}{$colour-author-date$}$endif$
 $if(colour-heading1)$\renewcommand{\colourHeadingOne}{$colour-heading1$}$endif$
 $else$
-\newcommand{\colourTitlepageTitlebanner}{$if(colour-titlepage-titlebanner)$$colour-titlepage-titlebanner$$else$01617E$endif$} % standaard certeblauw
-\newcommand{\colourVerticalbars}{$if(colour-verticalbars)$$colour-verticalbars$$else$01617E$endif$} % standaard certeblauw
-\newcommand{\colourSubtitle}{$if(colour-subtitle)$$colour-subtitle$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourTitlepageTitlebanner}{$if(colour-titlepage-titlebanner)$$colour-titlepage-titlebanner$$else$4A647D$endif$} % standaard certeblauw
+\newcommand{\colourVerticalbars}{$if(colour-verticalbars)$$colour-verticalbars$$else$4A647D$endif$} % standaard certeblauw
+\newcommand{\colourSubtitle}{$if(colour-subtitle)$$colour-subtitle$$else$4A647D$endif$} % standaard certeblauw
 \newcommand{\colourSubtitleTwo}{$if(colour-subtitle2)$$colour-subtitle2$$else$\colourSubtitle$endif$} % standaard colour-subtitle
-\newcommand{\colourAuthorDate}{$if(colour-author-date)$$colour-author-date$$else$01617E$endif$} % standaard certeblauw
-\newcommand{\colourHeadingOne}{$if(colour-heading1)$$colour-heading1$$else$01617E$endif$} % standaard certeblauw
+\newcommand{\colourAuthorDate}{$if(colour-author-date)$$colour-author-date$$else$4A647D$endif$} % standaard certeblauw
+\newcommand{\colourHeadingOne}{$if(colour-heading1)$$colour-heading1$$else$4A647D$endif$} % standaard certeblauw
 $endif$
 % overige elementen:
 \newcommand{\colourTitlepageFull}{$if(colour-titlepage-full)$$colour-titlepage-full$$else$FFFFFF$endif$} % standaard wit
 \newcommand{\colourTitle}{$if(colour-title)$$colour-title$$else$FFFFFF$endif$} % standaard wit
 \newcommand{\colourIdentifier}{$if(colour-identifier)$$colour-identifier$$else$CBCBCB$endif$} % standaard grijs
-\newcommand{\colourHeadingTwo}{$if(colour-heading2)$$colour-heading2$$else$E04883$endif$} % standaard certeroze
-\newcommand{\colourHeadingThree}{$if(colour-heading3)$$colour-heading3$$else$01617E$endif$} % standaard certeblauw
-\newcommand{\colourUrl}{$if(colour-url)$$colour-url$$else$E04883$endif$} % standaard certeroze
+\newcommand{\colourHeadingTwo}{$if(colour-heading2)$$colour-heading2$$else$B4527F$endif$} % standaard certeroze
+\newcommand{\colourHeadingThree}{$if(colour-heading3)$$colour-heading3$$else$4A647D$endif$} % standaard certeblauw
+\newcommand{\colourUrl}{$if(colour-url)$$colour-url$$else$B4527F$endif$} % standaard certeroze
 % hastags verwijderen uit HTML
 \StrSubstitute{\colourTitlepageTitlebanner}{\#}{}[\colourTitlepageTitlebanner]
 \StrSubstitute{\colourTitlepageFull}{\#}{}[\colourTitlepageFull]

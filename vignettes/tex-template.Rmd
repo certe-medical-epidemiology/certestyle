@@ -164,18 +164,18 @@ All colours can be set separately, greatly influencing the look and feel of the 
 These are the defaults and what they mean:
 
 ```{yaml, eval = FALSE}
-colour-titlepage-titlebanner: "#01617E" # horizontal banner colour for the title
+colour-titlepage-titlebanner: "#4A647D" # horizontal banner colour for the title
 colour-titlepage-full: "#FFFFFF" # full page colour for title page
-colour-verticalbars: "#01617E" # 1 cm wide vertical bar to left (odd) and right (even) page edges
+colour-verticalbars: "#4A647D" # 1 cm wide vertical bar to left (odd) and right (even) page edges
 colour-title: "#FFFFFF" # colour of title
-colour-subtitle: "#01617E" # colour of subtitle
+colour-subtitle: "#4A647D" # colour of subtitle
 colour-subtitle2: `colour-subtitle` # exception - this is the same as `colour-subtitle` at default
-colour-author-date: "#01617E" # colour of author name and date on title page
+colour-author-date: "#4A647D" # colour of author name and date on title page
 colour-identifier: "#CBCBCB" # colour of project identifier on title page
-colour-heading1: "#01617E" # colour of heading 1
-colour-heading2: "#E04883" # colour of heading 2
-colour-heading3: "#01617E" # colour of heading 3
-colour-url: "#E04883" # colour of for URL's and href, so [text](www.site.com) and <www.site.com>
+colour-heading1: "#4A647D" # colour of heading 1
+colour-heading2: "#B4527F" # colour of heading 2
+colour-heading3: "#4A647D" # colour of heading 3
+colour-url: "#B4527F" # colour of for URL's and href, so [text](www.site.com) and <www.site.com>
 ```
 
 You can set these using a function as well:
