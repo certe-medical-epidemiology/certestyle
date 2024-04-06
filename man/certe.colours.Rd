@@ -17,23 +17,23 @@ This is a character vector with all Certe colours. It is used by \code{\link[=co
 The colours are:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{#>      certeblauw      certegroen       certeroze       certegeel       certelila 
-#>       "#01617E"       "#8B9934"       "#E04883"       "#FFE400"       "#AB79B3" 
+#>       "#4A647D"       "#93984C"       "#B4527F"       "#E4D559"       "#825988" 
 #>  certezachtlila     certeblauw2     certegroen2      certeroze2      certegeel2 
-#>       "#D6B6D6"       "#1691B6"       "#B8C375"       "#E192B1"       "#EEE06A" 
+#>       "#CEB9D6"       "#69849C"       "#B8BB8B"       "#C794AC"       "#E4DD9C" 
 #>      certelila2 certezachtlila2     certeblauw3     certegroen3      certeroze3 
-#>       "#C6ACCA"       "#E2D2E2"       "#14AFDE"       "#CAD393"       "#EAA9C2" 
+#>       "#AE92B1"       "#DED3E2"       "#7A93A9"       "#C9CCA5"       "#D5ACBF" 
 #>      certegeel3      certelila3 certezachtlila3     certeblauw4     certegroen4 
-#>       "#F5EA89"       "#D3BED7"       "#E9DCE9"       "#93E1F8"       "#E0E6BD" 
+#>       "#ECE6B1"       "#C1ABC4"       "#E6DDE9"       "#C5D0DB"       "#DFE1C8" 
 #>      certeroze4      certegeel4      certelila4 certezachtlila4     certeblauw5 
-#>       "#F3CADA"       "#FBF4B6"       "#E5D8E7"       "#F2EAF2"       "#CCEEF9" 
+#>       "#E7CCD8"       "#F5F1CF"       "#DACCDC"       "#F0EAF2"       "#E2E7EC" 
 #>     certegroen5      certeroze5      certegeel5      certelila5 certezachtlila5 
-#>       "#EFF1DF"       "#F8E6ED"       "#FBF8DD"       "#F2ECF3"       "#F8F5F8" 
+#>       "#EEEFE4"       "#F2E6EB"       "#F9F7E8"       "#ECE6ED"       "#F7F4F8" 
 #>     certeblauw6     certegroen6      certeroze6      certegeel6      certelila6 
-#>       "#F0F8FB"       "#F9FAF5"       "#FCF7F9"       "#FCFCF5"       "#FAF9FB" 
+#>       "#F6F7F8"       "#F9F9F6"       "#FAF7F8"       "#FCFBF8"       "#F8F6F8" 
 #> certezachtlila6     certeblauw0     certegroen0      certeroze0      certegeel0 
-#>       "#FDFCFD"       "#043342"       "#4B5220"       "#BE2A63"       "#AA9909" 
+#>       "#FCFBFC"       "#3A4D5D"       "#5A5D33"       "#7F3C5B"       "#D4C230" 
 #>      certelila0 certezachtlila0 
-#>       "#8C5994"       "#C8A2C8"
+#>       "#503852"       "#BEA5C7"
 }\if{html}{\out{</div>}}
 }
 \keyword{datasets}

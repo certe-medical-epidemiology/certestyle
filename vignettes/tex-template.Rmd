@@ -208,7 +208,7 @@ colour-heading1: "#FF0000" # red
 Use `mainfont` for the general font, and `monofont` for syntaxes. The default values are:
 
 ```{yaml, eval = FALSE}
-mainfont: "Calibri"
+mainfont: "Source Sans Pro"
 monofont: "Fira Code"
 ```
 

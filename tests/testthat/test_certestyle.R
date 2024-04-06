@@ -30,7 +30,7 @@ test_that("colourpicker works", {
   expect_warning(colourpicker("R", 20))
     
   expect_identical(as.character(colourpicker(c("certeblauw", "red", "tan1", "#ffa", "FFAA00"))),
-                   c("#01617E", "#FF0000", "#FFA54F", "#FFFFAA", "#FFAA00"))
+                   c("#4A647D", "#FF0000", "#FFA54F", "#FFFFAA", "#FFAA00"))
   
   expect_identical(as.character(colourpicker("certe", 12)),
                    unname(c(certe.colours[1:6], certe.colours[13:18])))
@@ -53,30 +53,30 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker("certelila")), unname(certe.colours[names(certe.colours) == "certelila"]))
   expect_identical(as.character(colourpicker("certezachtlila")), unname(certe.colours[names(certe.colours) == "certezachtlila"]))
   
-  expect_identical(as.character(colourpicker("certe_sir")),
-                   c(S = "#8B9934",
-                     SI = "#8B9934",
-                     I = "#FFE400",
-                     IR = "#E04883",
-                     R = "#E04883"))
-  expect_identical(as.character(colourpicker("certe_sir2")),
-                   c(S = "#B8C375",
-                     SI = "#B8C375",
-                     I = "#EEE06A",
-                     IR = "#E192B1",
-                     R = "#E192B1"))
-  expect_identical(as.character(colourpicker("certe_rsi")),
-                   c(S = "#8B9934",
-                     SI = "#8B9934",
-                     I = "#FFE400",
-                     IR = "#E04883",
-                     R = "#E04883"))
-  expect_identical(as.character(colourpicker("certe_rsi2")),
-                   c(S = "#B8C375",
-                     SI = "#B8C375",
-                     I = "#EEE06A",
-                     IR = "#E192B1",
-                     R = "#E192B1"))
+  expect_identical(colourpicker("certe_sir"),
+                   c(S = colourpicker("certegroen"),
+                     SI = colourpicker("certegroen"),
+                     I = colourpicker("certegeel"),
+                     IR = colourpicker("certeroze"),
+                     R = colourpicker("certeroze")))
+  expect_identical(colourpicker("certe_sir2"),
+                   c(S = colourpicker("certegroen2"),
+                     SI = colourpicker("certegroen2"),
+                     I = colourpicker("certegeel2"),
+                     IR = colourpicker("certeroze2"),
+                     R = colourpicker("certeroze2")))
+  expect_identical(colourpicker("certe_rsi"),
+                   c(S = colourpicker("certegroen"),
+                     SI = colourpicker("certegroen"),
+                     I = colourpicker("certegeel"),
+                     IR = colourpicker("certeroze"),
+                     R = colourpicker("certeroze")))
+  expect_identical(colourpicker("certe_rsi2"),
+                   c(S = colourpicker("certegroen2"),
+                     SI = colourpicker("certegroen2"),
+                     I = colourpicker("certegeel2"),
+                     IR = colourpicker("certeroze2"),
+                     R = colourpicker("certeroze2")))
   
   expect_identical(as.character(colourpicker("red")), "#FF0000")
   expect_identical(as.character(colourpicker("red", opacity = 0.5)), "#FF000080")
