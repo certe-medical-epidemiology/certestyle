@@ -30,6 +30,7 @@ tbl_sum.printed_dataframe <- function(x) {
 }
 
 # will be exported using s3_register if option `print.data.frame_as_tibble` is set
+#' @noRd
 print.data.frame <- function(x, ...) {
   # print data.frames as tibbles, if `tibble` is installed
   # and option 'print.data.frame_as_tibble' is TRUE

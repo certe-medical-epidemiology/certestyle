@@ -1,0 +1,47 @@
+---
+title: "Test"
+subtitle: "Sub 1"
+subtitle2: "Sub 2"
+author: "Aut"
+date: today
+format:
+  # docx:
+  #   reference-doc: "certestyle/inst/rmarkdown/latextemplate/certe.docx"
+  pdf:
+    template: "certestyle/inst/rmarkdown/latextemplate/certe.tex"
+titlepage-logo: "certestyle/inst/rmarkdown/latextemplate/certe.pdf"
+footer-logo: "certestyle/inst/rmarkdown/latextemplate/certefooter.pdf"
+fig-height: 6
+fig-dpi: 300
+lang: "nl"
+---
+
+# Heading 1
+
+Lorem sem gravida lacus nibh fusce **fermentum**: curabitur feugiat iaculis. Ultricies *gravida nisi fringilla* aliquet parturient
+tempor cursus venenatis. Viverra rhoncus `nimepnaeos` **`volutpar`** *`ultrices`* in praesent, conubia duis, himenaeos velit scelerisque.
+
+
+
+```{r}
+#| echo: true
+#| message: false
+#| fig-cap: "Lorem sem gravida lacus nibh fusce fermentum curabitur feugiat iaculis."
+#| fig-height: 4
+#| fig-width: 4
+library(certeplot2)
+plot2(admitted_patients, 
+      x = ward,
+      y = n(),
+      category = hospital,
+      colour = "certeblauw",
+      title = "",
+      x.title = "",
+      y.title = "")
+```
+
+```{r}
+#| echo: false
+#| #| fig-cap: "Test 2"
+# plot2(admitted_patients, ward, n(), age_group, colour = "certe", title = "Plot 2")
+```

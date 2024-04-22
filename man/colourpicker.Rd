@@ -58,7 +58,7 @@ add_white(x, white)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"darkseagreen3"}, \code{"lawngreen"}, \code{"lightsalmon"}, \code{"seagreen"}, \code{"white"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"brown"}, \code{"gold"}, \code{"greenyellow"}, \code{"purple"}, \code{"tan3"}
 }}
 
 \item{length}{size of the vector to be returned}
@@ -83,6 +83,8 @@ Certe colours will be chosen as divergent as possible if the required output len
 \item \code{x = "certe3"} tries to only return the \code{"certe3"} colours (\code{"certeblauw3"}, \code{"certegroen3"}, ...) and the \code{"certe5"} colours (\code{"certeblauw5"}, \code{"certegroen5"}, ...)
 }
 
+When using a single Certe colour with \code{length > 1}, a palette will be generated based on \*, \*2, \*3, \*4, and \*5. For example, \code{colourpicker("certeblauw", 5)} will return the colours \code{"certeblauw"}, \code{"certeblauw2"}, \code{"certeblauw3"}, \code{"certeblauw4"}, and \code{"certeblauw5"}.
+
 A palette from \R will be expanded where needed, so even \code{colourpicker("R4", length = 20)} will work, despite "R4" only supporting a maximum of eight colours.
 }
 \examples{
@@ -102,6 +104,12 @@ barplot(12:1,
 barplot(12:1,
         col = colourpicker("certe3", 12),
         main = "'certe3': uses 'certe3' + 'certe5'")
+barplot(5:1,
+        col = colourpicker("certeblauw", 5),
+        main = "'certeblauw'")
+barplot(12:1,
+        col = colourpicker("certeblauw", 12),
+        main = "'certeblauw': auto-extended range")
 
 # all colourblind-safe colour palettes from the famous viridisLite package
 barplot(1:7,

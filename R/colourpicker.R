@@ -39,6 +39,8 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' * `x = "certe2"` tries to only return the regular `"certe2"` colours (`"certeblauw2"`, `"certegroen2"`, ...), the `"certe4"` colours (`"certeblauw4"`, `"certegroen4"`, ...) and the `"certe6"` colours (`"certeblauw6"`, `"certegroen6"`, ...)
 #' * `x = "certe3"` tries to only return the `"certe3"` colours (`"certeblauw3"`, `"certegroen3"`, ...) and the `"certe5"` colours (`"certeblauw5"`, `"certegroen5"`, ...)
 #' 
+#' When using a single Certe colour with `length > 1`, a palette will be generated based on \*, \*2, \*3, \*4, and \*5. For example, `colourpicker("certeblauw", 5)` will return the colours `"certeblauw"`, `"certeblauw2"`, `"certeblauw3"`, `"certeblauw4"`, and `"certeblauw5"`.
+#' 
 #' A palette from \R will be expanded where needed, so even `colourpicker("R4", length = 20)` will work, despite "R4" only supporting a maximum of eight colours.
 #' @return [character] vector in HTML format (i.e., `"#AABBCC"`) with new class `colourpicker`
 #' @rdname colourpicker
@@ -62,6 +64,12 @@ viridisLite_colours <- c("viridis", "magma", "inferno", "plasma", "cividis", "ro
 #' barplot(12:1,
 #'         col = colourpicker("certe3", 12),
 #'         main = "'certe3': uses 'certe3' + 'certe5'")
+#' barplot(5:1,
+#'         col = colourpicker("certeblauw", 5),
+#'         main = "'certeblauw'")
+#' barplot(12:1,
+#'         col = colourpicker("certeblauw", 12),
+#'         main = "'certeblauw': auto-extended range")
 #' 
 #' # all colourblind-safe colour palettes from the famous viridisLite package
 #' barplot(1:7,
@@ -115,7 +123,14 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
     
     if (x %like% "certe") {
       
-      if (x == "certe") {
+      if (x %like% "certe[a-z]+" && length > 1) {
+        # palette for single Certe colour (e.g. certeblauw, generate palette based on that colour)
+        certe_selection <- certe.colours[names(certe.colours) %like% x & names(certe.colours) %unlike% "[06]"]
+        if (length(certe_selection) < length) {
+          certe_selection <- grDevices::colorRampPalette(certe_selection)(length)
+        }
+        
+      } else if (x == "certe") {
         certe_selection <- certe.colours[names(certe.colours) %unlike% "0"]
         if (length <= sum(names(certe_selection) %unlike% "[246]")) {
           # since we don't need so many colours, only keep e.g. certeblauw, certeblauw3, certeblauw5
@@ -150,8 +165,11 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
       } else {
         certe_selection <- certe.colours[names(certe.colours) %like% "certe[a-z]+6"]
       }
-      # extend, to be sure a long length (despite the duplicates)
-      certe_selection <- rep(certe_selection, 3)
+      
+      if (length(certe_selection) < length) {
+        # extend, to be sure a long length (despite the duplicates)
+        certe_selection <- rep(certe_selection, 3)
+      }
       x <- certe_selection[seq_len(min(length, length(certe_selection)))]
       
     } else if (x %in% viridisLite_colours) {

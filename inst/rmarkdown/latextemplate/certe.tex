@@ -561,7 +561,7 @@ $endif$
 % we gebruiken `\documentclass[twoside, ...]`, wat normaal dit niet toelaat en pagina-inhoud 'stretcht'
 \raggedbottom
 
-% kleur van links
+% kleur van links en syntax
 \usepackage[normalem]{ulem} % underlining
 \hypersetup{
   colorlinks = true,
@@ -573,6 +573,13 @@ $endif$
 \renewcommand{\url}[1]{\textcolor{colour-url}{\urlstyle{same}\href{#1}{#1}}}
 \let\oldhref\href
 \renewcommand{\href}[2]{\textcolor{colour-url}{\underline{\oldhref{#1}{#2}}}}
+% syntax highlighting:
+\let\oldtexttt\texttt % \texttt{} wordt gebruikt voor syntax
+\renewcommand{\texttt}[1]{\colorbox{colour-url!5}{\textcolor{colour-url}{\oldtexttt{#1}}}} % `colour-url!5` is achtergrond 5% kleur, 95% wit
+\renewcommand{\FunctionTok}[1]{\textcolor{colour-url}{#1}}
+\renewcommand{\NormalTok}[1]{\textcolor{colour-url}{#1}}
+\renewcommand{\AttributeTok}[1]{\textcolor{colour-url!60}{#1}}
+\renewcommand{\StringTok}[1]{\textcolor{colour-url!85}{#1}}
 
 % footer opmaken met paginanummers en klein Certe-logo
 \usepackage{fancyhdr}
@@ -630,12 +637,16 @@ $if(title)$ % dus er komt geen voorpagina als er geen titel ingevuld is
         \vspace{5mm}
         
         \LARGE % dit is iets groter dan \large
-        \hspace*{\fill}\textcolor{colour-subtitle}{\textbf{$subtitle$}}
+        \begin{flushright}
+          \hspace*{\fill}\textcolor{colour-subtitle}{\textbf{$subtitle$}}
+        \end{flushright}
 
         \vspace{5mm}
         
         \large % dit is iets kleiner dan \LARGE
-        \hspace*{\fill}\textcolor{colour-subtitle2}{\textbf{$subtitle2$}}
+        \begin{flushright}
+          \textcolor{colour-subtitle2}{\textbf{$subtitle2$}}
+        \end{flushright}
         
         \vfill
         

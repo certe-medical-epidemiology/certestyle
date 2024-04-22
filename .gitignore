@@ -52,3 +52,5 @@ Thumbs.db
 # LaTex leftover
 *.log
 inst/doc
+
+data-raw/quarto-test.pdf
