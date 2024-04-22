@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.4</span>
       </span>
     </div>
 
@@ -83,9 +83,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">current_markdown_colour</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">current_markdown_colour</span><span class="op">(</span>default <span class="op">=</span> <span class="st">"certeblauw"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
+    <div id="arguments">
+    <h2>Arguments</h2>
+    <dl><dt>default</dt>
+<dd><p>default colour</p></dd>
+
+</dl></div>
     <div id="details">
     <h2>Details</h2>
     <p>It returns a Certe colour if one is set in the YAML header, and checks in this order:</p><ol><li><p><code>colour-main</code></p></li>
@@ -93,8 +99,13 @@
 <li><p><code>colour-titlepage-full</code></p></li>
 <li><p><code>colour-verticalbars</code></p></li>
 <li><p><code>colour-heading1</code></p></li>
-</ol><p>If none is set, it returns <code>"certeblauw"</code>.</p>
+</ol><p>If none is set, it returns the default setting, which is <code>"certeblauw"</code>.</p>
 <p>This function is the default to set the theme for <code><a href="https://certe-medical-epidemiology.github.io/certetoolbox/reference/tbl_flextable.html" class="external-link">tbl_flextable()</a></code>.</p>
+<p>It can be also be used for <code><a href="https://certe-medical-epidemiology.github.io/certeplot2/reference/plot2.html" class="external-link">plot2()</a></code>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># will turn e.g. 'certeblauw' or 'certeroze' based on PDF format settings</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(certeplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>admitted_patients <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">plot2</span>(<span class="at">colour =</span> <span class="fu">current_markdown_colour</span>())</span></code></pre><p></p></div>
     </div>
 
   </div>
