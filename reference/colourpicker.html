@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.2</span>
       </span>
     </div>
 
@@ -133,7 +133,7 @@
 <li><p><code>"greyscale"</code></p></li>
 <li><p><code>"grayscale"</code></p></li>
 </ul></li>
-<li><p>One of the 657 built-in <code><a href="https://rdrr.io/r/grDevices/colors.html" class="external-link">colours()</a></code> in <span style="R">R</span>, such as <code>"darkseagreen3"</code>, <code>"lawngreen"</code>, <code>"lightsalmon"</code>, <code>"seagreen"</code>, <code>"white"</code></p></li>
+<li><p>One of the 657 built-in <code><a href="https://rdrr.io/r/grDevices/colors.html" class="external-link">colours()</a></code> in <span style="R">R</span>, such as <code>"brown"</code>, <code>"gold"</code>, <code>"greenyellow"</code>, <code>"purple"</code>, <code>"tan3"</code></p></li>
 </ul></dd>
 
 
@@ -166,7 +166,8 @@
     <p>Certe colours will be chosen as divergent as possible if the required output length is not too high. For example:</p><ul><li><p><code>x = "certe"</code> tries to only return the <code>"certe"</code> colours (<code>"certeblauw"</code>, <code>"certegroen"</code>, ...), the <code>"certe3"</code> colours (<code>"certeblauw3"</code>, <code>"certegroen3"</code>, ...) and the <code>"certe5"</code> colours (<code>"certeblauw5"</code>, <code>"certegroen5"</code>, ...)</p></li>
 <li><p><code>x = "certe2"</code> tries to only return the regular <code>"certe2"</code> colours (<code>"certeblauw2"</code>, <code>"certegroen2"</code>, ...), the <code>"certe4"</code> colours (<code>"certeblauw4"</code>, <code>"certegroen4"</code>, ...) and the <code>"certe6"</code> colours (<code>"certeblauw6"</code>, <code>"certegroen6"</code>, ...)</p></li>
 <li><p><code>x = "certe3"</code> tries to only return the <code>"certe3"</code> colours (<code>"certeblauw3"</code>, <code>"certegroen3"</code>, ...) and the <code>"certe5"</code> colours (<code>"certeblauw5"</code>, <code>"certegroen5"</code>, ...)</p></li>
-</ul><p>A palette from <span style="R">R</span> will be expanded where needed, so even <code>colourpicker("R4", length = 20)</code> will work, despite "R4" only supporting a maximum of eight colours.</p>
+</ul><p>When using a single Certe colour with <code>length &gt; 1</code>, a palette will be generated based on \*, \*2, \*3, \*4, and \*5. For example, <code>colourpicker("certeblauw", 5)</code> will return the colours <code>"certeblauw"</code>, <code>"certeblauw2"</code>, <code>"certeblauw3"</code>, <code>"certeblauw4"</code>, and <code>"certeblauw5"</code>.</p>
+<p>A palette from <span style="R">R</span> will be expanded where needed, so even <code>colourpicker("R4", length = 20)</code> will work, despite "R4" only supporting a maximum of eight colours.</p>
     </div>
 
     <div id="ref-examples">
@@ -193,24 +194,32 @@
 <span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certe3"</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>        main <span class="op">=</span> <span class="st">"'certe3': uses 'certe3' + 'certe5'"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="colourpicker-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certeblauw"</span>, <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"'certeblauw'"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="colourpicker-4.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">12</span><span class="op">:</span><span class="fl">1</span>,</span></span>
+<span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"certeblauw"</span>, <span class="fl">12</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">"'certeblauw': auto-extended range"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="colourpicker-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># all colourblind-safe colour palettes from the famous viridisLite package</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span></span>
 <span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"viridis"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="colourpicker-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="colourpicker-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span></span>
 <span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"magma"</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="colourpicker-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="colourpicker-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">8</span><span class="op">:</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">8</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>        main <span class="op">=</span> <span class="st">"Some palettes have only 8 colours..."</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="colourpicker-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="colourpicker-8.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="fl">20</span><span class="op">:</span><span class="fl">1</span>,</span></span>
 <span class="r-in"><span>        col <span class="op">=</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">20</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>        main <span class="op">=</span> <span class="st">"Not anymore!"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Colour palette expanded using grDevices::colorRampPalette()</span>
-<span class="r-plt img"><img src="colourpicker-7.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="colourpicker-9.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">colours</span> <span class="op">&lt;-</span> <span class="fu">colourpicker</span><span class="op">(</span><span class="st">"R4"</span>, <span class="fl">6</span><span class="op">)</span></span></span>
@@ -236,7 +245,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer></div>
