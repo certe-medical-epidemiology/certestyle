@@ -4,7 +4,10 @@
 \alias{current_markdown_colour}
 \title{Get Current Markdown Colour}
 \usage{
-current_markdown_colour()
+current_markdown_colour(default = "certeblauw")
+}
+\arguments{
+\item{default}{default colour}
 }
 \description{
 This function determines the Certe theme colour currently used in a markdown document (Quarto or R Markdown), based on the YAML header.
@@ -19,7 +22,15 @@ It returns a Certe colour if one is set in the YAML header, and checks in this o
 \item \code{colour-heading1}
 }
 
-If none is set, it returns \code{"certeblauw"}.
+If none is set, it returns the default setting, which is \code{"certeblauw"}.
 
 This function is the default to set the theme for \code{\link[certetoolbox:tbl_flextable]{tbl_flextable()}}.
+
+It can be also be used for \code{\link[certeplot2:plot2]{plot2()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{# will turn e.g. 'certeblauw' or 'certeroze' based on PDF format settings
+library(certeplot2)
+admitted_patients |>
+  plot2(colour = current_markdown_colour())
+}\if{html}{\out{</div>}}
 }

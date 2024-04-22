@@ -132,6 +132,12 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
         if (length(certe_selection) < length) {
           certe_selection <- grDevices::colorRampPalette(certe_selection)(length)
         }
+        if (length == 2) {
+          certe_selection <- c(certe_selection[1], certe_selection[3])
+        }
+        if (length == 3) {
+          certe_selection <- c(certe_selection[1], certe_selection[2], certe_selection[4])
+        }
         
       } else if (x == "certe") {
         certe_selection <- certe.colours[names(certe.colours) %unlike% "0"]

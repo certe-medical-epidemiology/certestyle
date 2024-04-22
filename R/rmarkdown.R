@@ -93,6 +93,7 @@ rmarkdown_logo <- function(logo_type = "certe") {
 #' Get Current Markdown Colour
 #' 
 #' This function determines the Certe theme colour currently used in a markdown document (Quarto or R Markdown), based on the YAML header.
+#' @param default default colour
 #' @details
 #' It returns a Certe colour if one is set in the YAML header, and checks in this order:
 #' 
@@ -102,11 +103,20 @@ rmarkdown_logo <- function(logo_type = "certe") {
 #' 4. `colour-verticalbars`
 #' 5. `colour-heading1`
 #' 
-#' If none is set, it returns `"certeblauw"`.
+#' If none is set, it returns the default setting, which is `"certeblauw"`.
 #' 
 #' This function is the default to set the theme for [`tbl_flextable()`][certetoolbox::tbl_flextable()].
+#' 
+#' It can be also be used for [`plot2()`][certeplot2::plot2()]: 
+#' 
+#' ```
+#' # will turn e.g. 'certeblauw' or 'certeroze' based on PDF format settings
+#' library(certeplot2)
+#' admitted_patients |>
+#'   plot2(colour = current_markdown_colour())
+#' ```
 #' @export
-current_markdown_colour <- function() {
+current_markdown_colour <- function(default = "certeblauw") {
   params <- rmarkdown::metadata
   convert_to_certe_colour <- function(col) {
     if (grepl("certe", col)) {
@@ -141,7 +151,6 @@ current_markdown_colour <- function() {
     # take heading 1 colour if set
     convert_to_certe_colour(params$`colour-heading1`)
   } else {
-    # default
-    "certeblauw"
+    default
   }
 }
