@@ -94,6 +94,9 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
   x <- tolower(x)
   opacity <- as.double(opacity)
   length <- as.double(length)
+  if (all(is.na(length))) {
+    stop("length must be a numeric value")
+  }
   
   if ((length(x) > 1 && length != 1) | (length > 1 && length(x) != 1)) {
     stop("Either the length of `x`, or `length` must be 1")

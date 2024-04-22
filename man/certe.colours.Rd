@@ -19,9 +19,9 @@ The colours are:
 \if{html}{\out{<div class="sourceCode">}}\preformatted{#>      certeblauw      certegroen       certeroze       certegeel       certelila 
 #>       "#4A647D"       "#93984C"       "#B4527F"       "#E4D559"       "#825988" 
 #>  certezachtlila     certeblauw2     certegroen2      certeroze2      certegeel2 
-#>       "#CEB9D6"       "#69849C"       "#B8BB8B"       "#C794AC"       "#E4DD9C" 
+#>       "#CEB9D6"       "#69849C"       "#AEB278"       "#C581A0"       "#E4DD9C" 
 #>      certelila2 certezachtlila2     certeblauw3     certegroen3      certeroze3 
-#>       "#AE92B1"       "#DED3E2"       "#7A93A9"       "#C9CCA5"       "#D5ACBF" 
+#>       "#AE92B1"       "#DED3E2"       "#97AABB"       "#C9CCA5"       "#D5ACBF" 
 #>      certegeel3      certelila3 certezachtlila3     certeblauw4     certegroen4 
 #>       "#ECE6B1"       "#C1ABC4"       "#E6DDE9"       "#C5D0DB"       "#DFE1C8" 
 #>      certeroze4      certegeel4      certelila4 certezachtlila4     certeblauw5 
@@ -34,6 +34,32 @@ The colours are:
 #>       "#FCFBFC"       "#3A4D5D"       "#5A5D33"       "#7F3C5B"       "#D4C230" 
 #>      certelila0 certezachtlila0 
 #>       "#503852"       "#BEA5C7"
+}\if{html}{\out{</div>}}
+
+In RGB:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{#>         certeblauw         certegroen          certeroze          certegeel 
+#>  rgb(74, 100, 125)  rgb(147, 152, 76)  rgb(180, 82, 127)  rgb(228, 213, 89) 
+#>          certelila     certezachtlila        certeblauw2        certegroen2 
+#>  rgb(130, 89, 136) rgb(206, 185, 214) rgb(105, 132, 156) rgb(174, 178, 120) 
+#>         certeroze2         certegeel2         certelila2    certezachtlila2 
+#> rgb(197, 129, 160) rgb(228, 221, 156) rgb(174, 146, 177) rgb(222, 211, 226) 
+#>        certeblauw3        certegroen3         certeroze3         certegeel3 
+#> rgb(151, 170, 187) rgb(201, 204, 165) rgb(213, 172, 191) rgb(236, 230, 177) 
+#>         certelila3    certezachtlila3        certeblauw4        certegroen4 
+#> rgb(193, 171, 196) rgb(230, 221, 233) rgb(197, 208, 219) rgb(223, 225, 200) 
+#>         certeroze4         certegeel4         certelila4    certezachtlila4 
+#> rgb(231, 204, 216) rgb(245, 241, 207) rgb(218, 204, 220) rgb(240, 234, 242) 
+#>        certeblauw5        certegroen5         certeroze5         certegeel5 
+#> rgb(226, 231, 236) rgb(238, 239, 228) rgb(242, 230, 235) rgb(249, 247, 232) 
+#>         certelila5    certezachtlila5        certeblauw6        certegroen6 
+#> rgb(236, 230, 237) rgb(247, 244, 248) rgb(246, 247, 248) rgb(249, 249, 246) 
+#>         certeroze6         certegeel6         certelila6    certezachtlila6 
+#> rgb(250, 247, 248) rgb(252, 251, 248) rgb(248, 246, 248) rgb(252, 251, 252) 
+#>        certeblauw0        certegroen0         certeroze0         certegeel0 
+#>    rgb(58, 77, 93)    rgb(90, 93, 51)   rgb(127, 60, 91)  rgb(212, 194, 48) 
+#>         certelila0    certezachtlila0 
+#>    rgb(80, 56, 82) rgb(190, 165, 199)
 }\if{html}{\out{</div>}}
 }
 \keyword{datasets}

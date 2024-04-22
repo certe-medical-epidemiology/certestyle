@@ -24,7 +24,13 @@
 #' 
 #' ```{r, echo = FALSE, comment = "#>"}
 #' certe.colours
-#' ````
+#' ```
+#' 
+#' In RGB:
+#' 
+#' ```{r, echo = FALSE, comment = "#>"}
+#' print(sapply(certe.colours, function(x) paste0("rgb(", paste0(as.character(col2rgb(x)), collapse = ", "), ")")), quote = FALSE)
+#' ```
 #' @export
 "certe.colours"
 
@@ -37,12 +43,12 @@ certe.colours <- c(
   certelila = "#825988",
   certezachtlila = "#CEB9D6",
   certeblauw2 = "#69849C",
-  certegroen2 = "#B8BB8B",
-  certeroze2 = "#C794AC",
+  certegroen2 = "#AEB278", # "#B8BB8B",
+  certeroze2 = "#C581A0", # "#C794AC",
   certegeel2 = "#E4DD9C",
   certelila2 = "#AE92B1",
   certezachtlila2 = "#DED3E2",
-  certeblauw3 = "#7A93A9",
+  certeblauw3 = "#97AABB", # "#7A93A9",
   certegroen3 = "#C9CCA5",
   certeroze3 = "#D5ACBF",
   certegeel3 = "#ECE6B1",
