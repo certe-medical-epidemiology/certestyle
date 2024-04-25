@@ -576,6 +576,10 @@ $endif$
 % syntax highlighting:
 \let\oldtexttt\texttt % \texttt{} wordt gebruikt voor syntax
 \renewcommand{\texttt}[1]{\colorbox{colour-url!5}{\textcolor{colour-url}{\oldtexttt{#1}}}} % `colour-url!5` is achtergrond 5% kleur, 95% wit
+\providecommand{\FunctionTok}[1]{}
+\providecommand{\NormalTok}[1]{}
+\providecommand{\AttributeTok}[1]{}
+\providecommand{\StringTok}[1]{}
 \renewcommand{\FunctionTok}[1]{\textcolor{colour-url}{#1}}
 \renewcommand{\NormalTok}[1]{\textcolor{colour-url}{#1}}
 \renewcommand{\AttributeTok}[1]{\textcolor{colour-url!60}{#1}}
