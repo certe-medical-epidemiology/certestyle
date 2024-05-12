@@ -90,7 +90,7 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker("mako", 4)), substr(viridis(4, option = "mako"), 1, 7))
   expect_identical(as.character(colourpicker("turbo", 4)), substr(viridis(4, option = "turbo"), 1, 7))
   
-  if (getRversion() >= 4) {
+  if (getRversion() >= "4") {
     for (palette in grDevices::palette.pals()) {
       # this will test for "R3", "R4", "Okabe-Ito", etc.
       expect_identical(as.character(colourpicker(palette, 8)), grDevices::palette.colors(8, palette = palette))
