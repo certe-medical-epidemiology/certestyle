@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.7</span>
       </span>
     </div>
 
@@ -247,6 +247,18 @@ to specify the library path.</p>
 <p>For backwards compatibility, <code>logofront</code> can also be used
 instead of <code>titlepage-logo</code>.</p>
 </div>
+<div class="section level3">
+<h3 id="alignment">Alignment<a class="anchor" aria-label="anchor" href="#alignment"></a>
+</h3>
+<p>The alignment of the title page items can be set to
+<code>right</code>, <code>left</code>, or <code>center</code>. These are
+the default values:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">align-title</span><span class="kw">:</span><span class="at"> </span><span class="st">"right"</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">align-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"right"</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">align-subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"right"</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">align-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"right"</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">align-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"left"</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="figures-tables-and-table-of-contents">Figures, Tables, and Table of Contents<a class="anchor" aria-label="anchor" href="#figures-tables-and-table-of-contents"></a>
@@ -254,23 +266,23 @@ instead of <code>titlepage-logo</code>.</p>
 <p>Setting the initial height and width of figures, and the table of
 contents (<code>toc</code>), is dependent on whether you use the TeX
 template for R Markdown or Quarto.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># for Quarto</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some title"</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="fl">6.5</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.5</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co"># for R Markdown</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some title"</span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">    # notice the underscore (_), instead of a hyphen (-)</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">    # and placement below output &gt; pdf_document</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="at">    </span><span class="fu">fig_width</span><span class="kw">:</span><span class="at"> </span><span class="fl">6.5</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="at">    </span><span class="fu">fig_height</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.5</span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># for Quarto</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some title"</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="fl">6.5</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.5</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># for R Markdown</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some title"</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">    # notice the underscore (_), instead of a hyphen (-)</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">    # and placement below output &gt; pdf_document</span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="at">    </span><span class="fu">fig_width</span><span class="kw">:</span><span class="at"> </span><span class="fl">6.5</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="at">    </span><span class="fu">fig_height</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.5</span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code></pre></div>
 <p>Values have to be set in inch, so remember that <span class="math inline">\(cm = inch * 2.54\)</span>. The default figure
 width of 6.5 inch (16.5 cm) is approximately page-wide for A4
 portrait.</p>
@@ -279,10 +291,10 @@ List of Figures (<code>lof</code>) can be printed. They are similar to a
 Table of Contents and will print just after the title page, by setting
 these keys to <code>true</code>. Their default is
 <code>false</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Quarto</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some title"</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">lot</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # List of Tables</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">lof</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # List of Figures</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Quarto</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some title"</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">lot</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # List of Tables</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">lof</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # List of Figures</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="colours">Colours<a class="anchor" aria-label="anchor" href="#colours"></a>
@@ -294,23 +306,23 @@ with or without <code>#</code>, such as <code>#000000</code> or
 <code>"black"</code>) do not work, unless
 <code><a href="../reference/colourpicker.html">certestyle::colourpicker()</a></code> is used.</p>
 <p>These are the defaults and what they mean:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # horizontal banner colour for the title</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FFFFFF"</span><span class="co"> # full page colour for title page</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="fu">colour-verticalbars</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # 1 cm wide vertical bar to left (odd) and right (even) page edges</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="fu">colour-title</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FFFFFF"</span><span class="co"> # colour of title</span></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">colour-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of subtitle</span></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">colour-subtitle2</span><span class="kw">:</span><span class="at"> `colour-subtitle`</span><span class="co"> # exception - this is the same as `colour-subtitle` at default</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="fu">colour-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of author name and date on title page</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="fu">colour-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"#CBCBCB"</span><span class="co"> # colour of project identifier on title page</span></span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="fu">colour-heading1</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of heading 1</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="fu">colour-heading2</span><span class="kw">:</span><span class="at"> </span><span class="st">"#B4527F"</span><span class="co"> # colour of heading 2</span></span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="fu">colour-heading3</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of heading 3</span></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="fu">colour-url</span><span class="kw">:</span><span class="at"> </span><span class="st">"#B4527F"</span><span class="co"> # colour of for URL's and href, so [text](www.site.com) and &lt;www.site.com&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # horizontal background banner colour for the title</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FFFFFF"</span><span class="co"> # full page colour for title page</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">colour-verticalbars</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # 1 cm wide vertical bar to left (odd) and right (even) page edges</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="fu">colour-title</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FFFFFF"</span><span class="co"> # colour of title</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">colour-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of subtitle</span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="fu">colour-subtitle2</span><span class="kw">:</span><span class="at"> `colour-subtitle`</span><span class="co"> # exception - this is the same as `colour-subtitle` at default</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="fu">colour-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of author name and date on title page</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="fu">colour-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"#CBCBCB"</span><span class="co"> # colour of project identifier on title page</span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="fu">colour-heading1</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of heading 1</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="fu">colour-heading2</span><span class="kw">:</span><span class="at"> </span><span class="st">"#B4527F"</span><span class="co"> # colour of heading 2</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="fu">colour-heading3</span><span class="kw">:</span><span class="at"> </span><span class="st">"#4A647D"</span><span class="co"> # colour of heading 3</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="fu">colour-url</span><span class="kw">:</span><span class="at"> </span><span class="st">"#B4527F"</span><span class="co"> # colour of for URL's and href, so [text](www.site.com) and &lt;www.site.com&gt;</span></span></code></pre></div>
 <p>You can set these using a function as well:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span></code></pre></div>
-<div class="section level4">
-<h4 id="using-colour-main">Using <code>colour-main</code><a class="anchor" aria-label="anchor" href="#using-colour-main"></a>
-</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="using-colour-main">Using <code>colour-main</code><a class="anchor" aria-label="anchor" href="#using-colour-main"></a>
+</h3>
 <p>Furthermore, <code>colour-main</code> can be set as a default for the
 following fields:</p>
 <ul>
@@ -324,9 +336,37 @@ following fields:</p>
 <p>This means that you can quickly change the primary colours of the
 template. You can set <code>colour-main</code> and then override some of
 the colours it sets.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># set main colours to certeroze, but set heading 1 to red:</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">colour-heading1</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FF0000"</span><span class="co"> # red</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># set main colours to certeroze, but set heading 1 to red:</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">colour-heading1</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FF0000"</span><span class="co"> # red</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="colour-of-callout-blocks">Colour of Callout Blocks<a class="anchor" aria-label="anchor" href="#colour-of-callout-blocks"></a>
+</h3>
+<p>In Quarto, the so-called <a href="https://quarto.org/docs/authoring/callouts.html" class="external-link">callout
+blocks</a> will take colours from headings as follows:</p>
+<ul>
+<li>
+<code>callout-note</code>: same colour as
+<code>colour-heading1</code>
+</li>
+<li>
+<code>callout-caution</code>: same colour as
+<code>colour-heading2</code>
+</li>
+<li>
+<code>callout-important</code>: same colour as
+<code>colour-heading2</code>
+</li>
+<li>
+<code>callout-warning</code>: same colour as
+<code>colour-heading2</code>
+</li>
+<li>
+<code>callout-tip</code>: same colour as
+<code>colour-heading3</code>
+</li>
+</ul>
 </div>
 </div>
 <div class="section level2">
@@ -334,19 +374,19 @@ the colours it sets.</p>
 </h2>
 <p>Use <code>mainfont</code> for the general font, and
 <code>monofont</code> for syntaxes. The default values are:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Source Sans Pro"</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">monofont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fira Code"</span></span></code></pre></div>
-<p>They have to be installed on the system level. Cross-platform fonts
-(that are available on Windows, macOS, and Linux) are e.g. Verdana and
-Arial for <code>mainfont</code>, and Courier New for
-<code>monofont</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Source Sans Pro"</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">monofont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fira Code"</span></span></code></pre></div>
+<p>They have to be installed on the system level. Examples of
+cross-platform fonts (that are available on Windows, macOS, and Linux,
+without installation) are e.g. ‘Verdana’ and ‘Arial’ for
+<code>mainfont</code>, and ‘Courier New’ for <code>monofont</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="footer">Footer<a class="anchor" aria-label="anchor" href="#footer"></a>
 </h2>
 <p>At the bottom of each page after the title page, you can remove the
 page numbers:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">remove-footer-page-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">remove-footer-page-numbers</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 <p>The page numbers will be print in the format <code>"x of y"</code>
 Note that the text <code>" of "</code> is language-specific. This text
 is set in the TeX template and only supports <code>lang: nl</code>
@@ -356,7 +396,9 @@ prints <code>"x von y"</code>). It will assume Dutch if
 other cases.</p>
 <p>Below the footer text, a PDF file can be placed, e.g. with a small
 organisational logo. It must be 16x0.7 cm.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
+<p>To remove the logo:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">""</span></span></code></pre></div>
 <p>For backwards compatibility, <code>logofooter</code> can also be used
 instead of <code>footer-logo</code>.</p>
 </div>
@@ -365,16 +407,16 @@ instead of <code>footer-logo</code>.</p>
 </h2>
 <p>These examples work in both R Markdown and Quarto. For each example,
 this was set:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Titel analyse"</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Dit is een ondertitel"</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"En dit is een nog kleinere ondertitel"</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Certe Medische Epidemiologie"</span></span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r Sys.Date()`"</span></span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="fu">date-format</span><span class="kw">:</span><span class="at"> </span><span class="st">"D MMMM YYYY"</span></span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a><span class="fu">identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"abc123456"</span></span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="co"># logo's</span></span>
-<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="fu">titlepage-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('certe')`"</span></span>
-<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Titel analyse"</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"Dit is een ondertitel"</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"En dit is een nog kleinere ondertitel"</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Certe Medische Epidemiologie"</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r Sys.Date()`"</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="fu">date-format</span><span class="kw">:</span><span class="at"> </span><span class="st">"D MMMM YYYY"</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="fu">identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"abc123456"</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># logo's</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="fu">titlepage-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('certe')`"</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="fu">footer-logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::rmarkdown_logo('footer')`"</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="example-1-default">Example 1: Default<a class="anchor" aria-label="anchor" href="#example-1-default"></a>
 </h3>
@@ -386,7 +428,7 @@ this was set:</p>
 </h3>
 <p>This example sets <code>colour-main</code> to directly influence
 different elements such as the title page elements, and heading 1:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span></code></pre></div>
 <p><img src="example2-p1.jpg" width="40%"><img src="example2-p2.jpg" width="40%"></p>
 </div>
 <div class="section level3">
@@ -395,21 +437,21 @@ different elements such as the title page elements, and heading 1:</p>
 <p>This example adds another logo (white Certe letters, aligned to the
 left) and uses <code>colour-titlepage-full</code> to give the title page
 a completely new look:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># certeroze for main elements</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co"># certeroze2, somewhat lighter than certeroze</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze2')`"</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co"># certeroze3, lighter than certeroze2</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="fu">colour-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co">  # this effectively makes text invisible</span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="fu">colour-subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co"> # this effectively makes text invisible</span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="fu">colour-verticalbars</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># certeroze5, a very bright certeroze variant</span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="fu">colour-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="fu">colour-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># certeroze for main elements</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="fu">colour-main</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze')`"</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co"># certeroze2, somewhat lighter than certeroze</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="fu">colour-titlepage-titlebanner</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze2')`"</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co"># certeroze3, lighter than certeroze2</span></span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="fu">colour-titlepage-full</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="fu">colour-subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co">  # this effectively makes text invisible</span></span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="fu">colour-subtitle2</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span><span class="co"> # this effectively makes text invisible</span></span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="fu">colour-verticalbars</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze3')`"</span></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="co"># certeroze5, a very bright certeroze variant</span></span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="fu">colour-author-date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a><span class="fu">colour-identifier</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r certestyle::colourpicker('certeroze5')`"</span></span></code></pre></div>
 <p><img src="example3-p1.jpg" width="40%"><img src="example3-p2.jpg" width="40%"></p>
 </div>
 </div>
