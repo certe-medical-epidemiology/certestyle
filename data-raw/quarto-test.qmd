@@ -10,6 +10,7 @@ format:
   pdf:
     template: "certestyle/inst/rmarkdown/latextemplate/certe.tex"
 titlepage-logo: "certestyle/inst/rmarkdown/latextemplate/certe.pdf"
+identifier: "12304-1230123-23424"
 footer-logo: "certestyle/inst/rmarkdown/latextemplate/certefooter.pdf"
 fig-height: 6
 fig-dpi: 300
@@ -34,7 +35,7 @@ plot2(admitted_patients,
       x = ward,
       y = n(),
       category = hospital,
-      colour = "certeblauw",
+      colour = certestyle::current_markdown_colour(),
       title = "",
       x.title = "",
       y.title = "")

@@ -122,6 +122,18 @@ titlepage-logo: "/path/to/library/certestyle/rmarkdown/latextemplate/certe.pdf"
 
 For backwards compatibility, `logofront` can also be used instead of `titlepage-logo`.
 
+### Alignment
+
+The alignment of the title page items can be set to `right`, `left`, or `center`. These are the default values:
+
+```{yaml, eval = FALSE}
+align-title: "right"
+align-subtitle: "right"
+align-subtitle2: "right"
+align-author-date: "right"
+align-identifier: "left"
+```
+
 ## Figures, Tables, and Table of Contents
 
 Setting the initial height and width of figures, and the table of contents (`toc`), is dependent on whether you use the TeX template for R Markdown or Quarto.
@@ -164,7 +176,7 @@ All colours can be set separately, greatly influencing the look and feel of the 
 These are the defaults and what they mean:
 
 ```{yaml, eval = FALSE}
-colour-titlepage-titlebanner: "#4A647D" # horizontal banner colour for the title
+colour-titlepage-titlebanner: "#4A647D" # horizontal background banner colour for the title
 colour-titlepage-full: "#FFFFFF" # full page colour for title page
 colour-verticalbars: "#4A647D" # 1 cm wide vertical bar to left (odd) and right (even) page edges
 colour-title: "#FFFFFF" # colour of title
@@ -184,7 +196,7 @@ You can set these using a function as well:
 colour-titlepage-full: "`r certestyle::colourpicker('certeroze3')`"
 ```
 
-#### Using `colour-main`
+### Using `colour-main`
 
 Furthermore, `colour-main` can be set as a default for the following fields:
 
@@ -203,6 +215,16 @@ colour-main: "`r certestyle::colourpicker('certeroze')`"
 colour-heading1: "#FF0000" # red
 ```
 
+### Colour of Callout Blocks
+
+In Quarto, the so-called [callout blocks](https://quarto.org/docs/authoring/callouts.html) will take colours from headings as follows:
+
+* `callout-note`: same colour as `colour-heading1`
+* `callout-caution`: same colour as `colour-heading2`
+* `callout-important`: same colour as `colour-heading2`
+* `callout-warning`: same colour as `colour-heading2`
+* `callout-tip`: same colour as `colour-heading3`
+
 ## Fonts
 
 Use `mainfont` for the general font, and `monofont` for syntaxes. The default values are:
@@ -212,7 +234,7 @@ mainfont: "Source Sans Pro"
 monofont: "Fira Code"
 ```
 
-They have to be installed on the system level. Cross-platform fonts (that are available on Windows, macOS, and Linux) are e.g. Verdana and Arial for `mainfont`, and Courier New for `monofont`.
+They have to be installed on the system level. Examples of cross-platform fonts (that are available on Windows, macOS, and Linux, without installation) are e.g. 'Verdana' and 'Arial' for `mainfont`, and 'Courier New' for `monofont`.
 
 ## Footer
 
@@ -228,6 +250,12 @@ Below the footer text, a PDF file can be placed, e.g. with a small organisationa
 
 ```{yaml, eval = FALSE}
 footer-logo: "`r certestyle::rmarkdown_logo('footer')`"
+```
+
+To remove the logo:
+
+```{yaml, eval = FALSE}
+footer-logo: ""
 ```
 
 For backwards compatibility, `logofooter` can also be used instead of `footer-logo`.
