@@ -24,7 +24,7 @@
 #' `options(styler.addins_style_transformer = "certe_style_transformer()")`
 #' 
 #' Then use the keyboard shortcut of the `styler` package to apply the formatting.
-#' @param ... arguments passed on to [styler::tidyverse_style()]
+#' @param ... arguments passed on to `styler::tidyverse_style()`
 #' @details The Certe styler keeps the first argument of a function on the same line, puts all following arguments on a new line, and does not add another new line after the last argument. This makes these lines:
 #'
 #' ```
@@ -45,11 +45,13 @@
 #'         y.title = "Count",
 #'         title = "Count isolates per hospital/gender")
 #' ```
-#' @importFrom styler tidyverse_style
 #' @importFrom purrr some negate
 #' @export
 certe_style_transformer <- function(...) {
-  certe_style <- tidyverse_style(...)
+  if (!"styler" %in% rownames(utils::installed.packages())) {
+    stop("This requires the 'styler' package", call. = FALSE)
+  }
+  certe_style <- styler::tidyverse_style(...)
 
   # line breaks between *all* arguments if line breaks between *any*
   certe_style$line_break$set_linebreak_each_argument_if_multi_line <- function(pd) {

@@ -7,7 +7,7 @@
 certe_style_transformer(...)
 }
 \arguments{
-\item{...}{arguments passed on to \code{\link[styler:tidyverse_style]{styler::tidyverse_style()}}}
+\item{...}{arguments passed on to \code{styler::tidyverse_style()}}
 }
 \description{
 Use this styler for formatting code by setting this as an option:
