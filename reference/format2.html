@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">certestyle</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -25,42 +25,42 @@
       <ul class="nav navbar-nav"><li>
   <a href="../index.html">
     <span class="fa fa-home"></span>
-     
+
     Home
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
     <span class="fa fa-book-open"></span>
-     
+
     Manual
   </a>
 </li>
 <li>
   <a href="../articles/tex-template.html">
     <span class="fa fa-file-pdf"></span>
-     
+
     TeX Template Settings
   </a>
 </li>
 <li>
   <a href="https://github.com/certe-medical-epidemiology/certestyle" class="external-link">
     <span class="fab fa-github"></span>
-     
+
     Source Code
   </a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/certe-medical-epidemiology" class="external-link">
     <span class="fab fa-github"></span>
-     
+
     Certe Med Epi
   </a>
 </li>
 <li>
   <a href="https://certe.nl" class="external-link">
     <span class="fa fa-flask"></span>
-     
+
     Certe Website
   </a>
 </li>
@@ -68,13 +68,13 @@
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Formatting with readable <code>format</code> settings and Dutch defaults</h1>
-    <small class="dont-index">Source: <a href="https://github.com/certe-medical-epidemiology/certestyle/blob/HEAD/R/format2.R" class="external-link"><code>R/format2.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/certe-medical-epidemiology/certestyle/blob/main/R/format2.R" class="external-link"><code>R/format2.R</code></a></small>
     <div class="hidden name"><code>format2.Rd</code></div>
     </div>
 
@@ -85,10 +85,10 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for default</span></span>
+<span><span class="co"># Default S3 method</span></span>
 <span><span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for numeric</span></span>
+<span><span class="co"># S3 method for class 'numeric'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  round <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">percent</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
@@ -100,7 +100,7 @@
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for percentage</span></span>
+<span><span class="co"># S3 method for class 'percentage'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  round <span class="op">=</span> <span class="fl">1</span>,</span>
@@ -110,16 +110,16 @@
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for Date</span></span>
+<span><span class="co"># S3 method for class 'Date'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, format <span class="op">=</span> <span class="st">"d mmmm yyyy"</span>, locale <span class="op">=</span> <span class="st">"nl"</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for POSIXt</span></span>
+<span><span class="co"># S3 method for class 'POSIXt'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, format <span class="op">=</span> <span class="st">"yyyy-mm-dd HH:MM:SS"</span>, locale <span class="op">=</span> <span class="st">"nl"</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for hms</span></span>
+<span><span class="co"># S3 method for class 'hms'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, format <span class="op">=</span> <span class="st">"HH:MM:SS"</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for difftime</span></span>
+<span><span class="co"># S3 method for class 'difftime'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  round <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -129,7 +129,7 @@
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S3 method for object_size</span></span>
+<span><span class="co"># S3 method for class 'object_size'</span></span>
 <span><span class="fu">format2</span><span class="op">(</span><span class="va">x</span>, round <span class="op">=</span> <span class="fl">1</span>, decimal.mark <span class="op">=</span> <span class="fu"><a href="dec_mark.html">dec_mark</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">format2_scientific</span><span class="op">(</span><span class="va">x</span>, round <span class="op">=</span> <span class="fl">2</span>, decimal.mark <span class="op">=</span> <span class="fu"><a href="dec_mark.html">dec_mark</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -137,47 +137,47 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>x</dt>
+
+
+<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>vector of values</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>arguments given to methods such as <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code></p></dd>
 
 
-<dt>round</dt>
+<dt id="arg-round">round<a class="anchor" aria-label="anchor" href="#arg-round"></a></dt>
 <dd><p>number of decimals to round to</p></dd>
 
 
-<dt>force_decimals</dt>
+<dt id="arg-force-decimals">force_decimals<a class="anchor" aria-label="anchor" href="#arg-force-decimals"></a></dt>
 <dd><p>force printing decimals, even with trailing zeroes</p></dd>
 
 
-<dt>decimal.mark, big.mark</dt>
+<dt id="arg-decimal-mark-big-mark">decimal.mark, big.mark<a class="anchor" aria-label="anchor" href="#arg-decimal-mark-big-mark"></a></dt>
 <dd><p>decimal and thousands limiters</p></dd>
 
 
-<dt>min_length</dt>
+<dt id="arg-min-length">min_length<a class="anchor" aria-label="anchor" href="#arg-min-length"></a></dt>
 <dd><p>minimal length of output, overwrites <code>force_decimals</code></p></dd>
 
 
-<dt>percent</dt>
+<dt id="arg-percent">percent<a class="anchor" aria-label="anchor" href="#arg-percent"></a></dt>
 <dd><p>logical to transform numeric to percentage (character)</p></dd>
 
 
-<dt>format</dt>
+<dt id="arg-format">format<a class="anchor" aria-label="anchor" href="#arg-format"></a></dt>
 <dd><p>format to use, can be set with human-readable text such as <code>"d mmmm yyyy"</code> or POSIX such as <code>"%e %B %Y"</code></p></dd>
 
 
-<dt>locale</dt>
+<dt id="arg-locale">locale<a class="anchor" aria-label="anchor" href="#arg-locale"></a></dt>
 <dd><p>language to set for dates</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p><code>format2()</code> always returns a <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p>
+    <p><code>format2()</code> always returns a <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -192,7 +192,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-Q1"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">format2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"d mmmm yyyy HH:MM"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "13 juni 2024 09:35"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "8 juli 2024 07:21"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># content-aware of decimal use</span></span></span>
 <span class="r-in"><span><span class="fu">format2</span><span class="op">(</span><span class="fl">1024</span><span class="op">)</span></span></span>
@@ -247,15 +247,15 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
