@@ -26,8 +26,8 @@ update_certe_cols <- function() {
       certegroen = c(147, 152, 77), # from thin top line on website
       certeroze = c(180, 82, 127), # from thin top line on website
       certegeel = c(229, 214, 89), # from thin top line on website
-      certelila = c(131, 89, 136), # from font colour on website homepage
-      certezachtlila = c(206, 185, 214) # from thin top line on website
+      certelila = c(206, 185, 214), # from thin top line on website
+      certebruin = c(153, 137, 98) # from PPT = #998962)
     ),
     extended_spectrum = TRUE)
 }
@@ -35,6 +35,8 @@ update_certe_cols <- function() {
 # for expanding the colours from dark to light
 expand_colours <- function(colour.list, extended_spectrum) {
   
+  # these are the settings for getting *0, *2, *3, *4, *5, *6
+  # so e.g. certeblauw0, certeblauw2, certeblauw3, certeblauw4, certeblauw5, certeblauw6
   lightness_values <- c(-0.30, 0.35, 0.50, 0.70, 0.85, 0.95)
   saturation_values <- c(0.90, 0.80, 0.85, 0.90, 0.80, 0.60)
   if (extended_spectrum == FALSE) {

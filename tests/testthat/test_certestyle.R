@@ -51,7 +51,7 @@ test_that("colourpicker works", {
   expect_identical(as.character(colourpicker("certeroze")), unname(certe.colours[names(certe.colours) == "certeroze"]))
   expect_identical(as.character(colourpicker("certegeel")), unname(certe.colours[names(certe.colours) == "certegeel"]))
   expect_identical(as.character(colourpicker("certelila")), unname(certe.colours[names(certe.colours) == "certelila"]))
-  expect_identical(as.character(colourpicker("certezachtlila")), unname(certe.colours[names(certe.colours) == "certezachtlila"]))
+  expect_identical(as.character(colourpicker("certebruin")), unname(certe.colours[names(certe.colours) == "certebruin"]))
   
   expect_identical(colourpicker("certe_sir"),
                    c(S = colourpicker("certegroen"),
