@@ -26,7 +26,7 @@ If none is set, it returns the default setting, which is \code{"certeblauw"}.
 
 This function is the default to set the theme for \code{\link[certetoolbox:tbl_flextable]{tbl_flextable()}}.
 
-It can be also be used for \code{\link[certeplot2:plot2]{plot2()}}:
+It can be also be used for \code{\link[certeplot2:reexports]{plot2()}}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{# will turn e.g. 'certeblauw' or 'certeroze' based on PDF format settings
 library(certeplot2)

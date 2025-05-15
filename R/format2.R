@@ -29,12 +29,15 @@
 #' @param decimal.mark,big.mark decimal and thousands limiters
 #' @param percent logical to transform numeric to percentage (character)
 #' @param ... arguments given to methods such as [format()]
+#' @details
+#' Use q/qq/Q/QQ for quartiles, and t/tt/T/TT for four-month periods ('tertaal' in Dutch).
 #' @rdname format2
 #' @export
 #' @return [format2()] always returns a [character].
 #' @examples
 #' format2("2021-01-01")
 #' format2("2021-01-01", "yyyy-qq")
+#' format2("2021-01-01", "yyyy-tt")
 #' 
 #' format2(Sys.time(), "d mmmm yyyy HH:MM")
 #' 
@@ -278,6 +281,17 @@ coerce_datetime <- function(x, format, locale, ...) {
                           df$quarter,
                           df$form,
                           MoreArgs = list(pattern = "(q|qq)+"),
+                          USE.NAMES = FALSE))
+  }
+  # replace tertile
+  if (any(df$form %like% "(^t|tt)")) {
+    tertiles <- rep(1:3, each = 4)
+    df$tertile <- tertiles[month(df$dat, label = FALSE)]
+    df$tertile[df$form %like% "tt"] <- paste0("T", df$tertile[df$form %like% "tt"])
+    df$form <- unlist(Map(gsub,
+                          df$tertile,
+                          df$form,
+                          MoreArgs = list(pattern = "(^t|tt)+"),
                           USE.NAMES = FALSE))
   }
   

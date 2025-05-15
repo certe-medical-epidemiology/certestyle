@@ -82,11 +82,14 @@ format2_scientific(x, round = 2, decimal.mark = dec_mark(), ...)
 Formatting with readable \code{format} settings and Dutch defaults
 }
 \details{
+Use q/qq/Q/QQ for quartiles, and t/tt/T/TT for four-month periods ('tertaal' in Dutch).
+
 The \code{\link[=format2_scientific]{format2_scientific()}} function returns an \link{expression} and can be used in \code{ggplot2} plots.
 }
 \examples{
 format2("2021-01-01")
 format2("2021-01-01", "yyyy-qq")
+format2("2021-01-01", "yyyy-tt")
 
 format2(Sys.time(), "d mmmm yyyy HH:MM")
 
