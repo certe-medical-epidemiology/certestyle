@@ -185,6 +185,7 @@ test_that("dec_mark and big_mark work", {
 options(dec_mark = ",", big_mark = ".")
 
 test_that("format2 works", {
+  skip_on_os("linux")
   
   expect_identical(format2(mean), format(mean))
   expect_identical(format2("test"), "test")

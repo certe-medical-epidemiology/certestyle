@@ -33,7 +33,7 @@ add_white(x, white)
 \item \code{"mako"}
 \item \code{"turbo"}
 }
-\item One of the built-in palettes in \R (currently \R 4.4.2):
+\item One of the built-in palettes in \R (currently \R 4.5.1):
 \itemize{
 \item \code{"R3"}
 \item \code{"R4"}
@@ -58,7 +58,7 @@ add_white(x, white)
 \item \code{"greyscale"}
 \item \code{"grayscale"}
 }
-\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"antiquewhite1"}, \code{"chocolate3"}, \code{"dodgerblue3"}, \code{"paleturquoise1"}, \code{"royalblue2"}
+\item One of the 657 built-in \code{\link[=colours]{colours()}} in \R, such as \code{"brown2"}, \code{"lawngreen"}, \code{"magenta"}, \code{"snow4"}, \code{"wheat"}
 }}
 
 \item{length}{size of the vector to be returned}
