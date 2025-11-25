@@ -107,7 +107,7 @@ rmarkdown_logo <- function(logo_type = "certe") {
 #' 
 #' This function is the default to set the theme for [`tbl_flextable()`][certetoolbox::tbl_flextable()].
 #' 
-#' It can be also be used for [`plot2()`][certeplot2::plot2()]: 
+#' It can be also be used for [`plot2()`][plot2::plot2()]: 
 #' 
 #' ```
 #' # will turn e.g. 'certeblauw' or 'certeroze' based on PDF format settings

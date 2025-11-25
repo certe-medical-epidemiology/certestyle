@@ -103,7 +103,7 @@ colourpicker <- function(x, length = 1, opacity = 0, ...) {
   }
   
   # exceptions for "certe_sir" and "certe_sir2"
-  # they are named vectors for ggplot2::ggplot() and certeplot2::plot2()
+  # they are named vectors for ggplot2::ggplot() and plot2::plot2()
   if (identical(x, "certe_sir") || identical(x, "certe_rsi")) {
     return(structure(colourpicker(c("certegroen", "certegroen", "certegeel", "certeroze", "certeroze")),
                      names = c("S", "SI", "I", "IR", "R")))
