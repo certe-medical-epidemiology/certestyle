@@ -1,9 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.1.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   tex-template: tex-template.html
-last_built: 2025-09-30T09:27Z
+last_built: 2025-11-25T10:37Z
 urls:
   reference: https://certe-medical-epidemiology.github.io/certestyle/reference
   article: https://certe-medical-epidemiology.github.io/certestyle/articles
