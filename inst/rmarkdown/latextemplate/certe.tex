@@ -426,12 +426,13 @@ $endif$
 % Certe-specifieke instellingen
 % ------------------------------------------------------------------------------------------------- 
 
-% Nederlandse namen voor secties in R Markdown (niet nodig voor Quarto)
-\usepackage{babel}
-\selectlanguage{dutch}
+% Nederlandse namen voor secties in R Markdown / Quarto
+\usepackage[dutch]{babel}
+\addto\captionsdutch{%
+  \renewcommand{\figurename}{Figuur}%
+  \renewcommand{\tablename}{Tabel}%
+}
 \renewcommand*\contentsname{Inhoudsopgave}
-\setlocalecaption{nil}{figure}{Figuur}
-\setlocalecaption{nil}{table}{Tabel}
 
 \providecommand{\pandocbounded}[1]{#1} % nodig sinds jan 2026 na pakketten updaten, geeft anders fout dat deze functie niet bestaat
 
